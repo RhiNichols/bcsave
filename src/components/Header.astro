@@ -1,0 +1,75 @@
+---
+const links = [
+  { href: "/dogs", label: "Available Dogs" },
+  { href: "/#adopt", label: "Adopt" },
+  { href: "/#foster", label: "Foster" },
+  { href: "/#volunteer", label: "Volunteer" },
+  { href: "/#about", label: "About" },
+];
+---
+
+<header class="hdr">
+  <div class="wrap hdr__bar">
+    <a class="brand" href="/">
+      <img
+        class="brand__mark"
+        src="/logo-mark.png"
+        alt=""
+        width="260"
+        height="107"
+        fetchpriority="high"
+      />
+      <span>
+        Border Collie Save &amp; Rescue
+        <span class="brand__sub">Central &amp; North Texas</span>
+      </span>
+    </a>
+
+    <button
+      class="hdr__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      aria-label="Open menu"
+    >
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="7" x2="21" y2="7"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="17" x2="21" y2="17"></line>
+      </svg>
+    </button>
+
+    <nav class="hdr__nav" id="site-nav" aria-label="Main">
+      <ul>
+        {links.map((l) => (
+          <li><a href={l.href}>{l.label}</a></li>
+        ))}
+        <li><a class="btn btn--ember" href="/donate">Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Progressive enhancement: nav is a plain list until JS upgrades it.
+  const btn = document.querySelector<HTMLButtonElement>(".hdr__toggle");
+  const nav = document.querySelector<HTMLElement>(".hdr__nav");
+
+  if (btn && nav) {
+    btn.addEventListener("click", () => {
+      const open = nav.getAttribute("data-open") === "true";
+      nav.setAttribute("data-open", String(!open));
+      btn.setAttribute("aria-expanded", String(!open));
+      btn.setAttribute("aria-label", open ? "Open menu" : "Close menu");
+    });
+
+    // Tapping a link should close the sheet, including same-page anchors.
+    nav.addEventListener("click", (e) => {
+      if ((e.target as HTMLElement).closest("a")) {
+        nav.setAttribute("data-open", "false");
+        btn.setAttribute("aria-expanded", "false");
+        btn.setAttribute("aria-label", "Open menu");
+      }
+    });
+  }
+</script>

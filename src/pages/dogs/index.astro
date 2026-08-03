@@ -1,0 +1,114 @@
+---
+import Base from "../../layouts/Base.astro";
+import DogCard from "../../components/DogCard.astro";
+import { dogs, locations, ageGroup } from "../../data/dogs";
+import { forms } from "../../data/links";
+
+// Sort puppies and younger dogs first — that is what most visitors arrive for,
+// and it keeps the top of the grid lively.
+const order = { puppy: 0, young: 1, adult: 2, senior: 3 } as const;
+const sorted = [...dogs].sort(
+  (a, b) => order[ageGroup(a)] - order[ageGroup(b)]
+);
+
+const regions = locations();
+---
+
+<Base
+  title={`${dogs.length} Border Collies Available for Adoption — BCSAVE`}
+  description="Browse every Border Collie currently available for adoption through Border Collie Save & Rescue in Central and North Texas."
+>
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="eyebrow">Available dogs</p>
+      <h2>{dogs.length} dogs are looking for homes</h2>
+      <p class="lede">
+        Every one is in a foster home right now. Tap a dog to read their story.
+        Do not see the right fit? New dogs come in most weeks.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-bottom: 4rem;">
+    <!-- Filters are progressive enhancement: without JS every dog shows. -->
+    <div class="filters" role="group" aria-label="Filter dogs">
+      <button class="chip" data-filter="all" aria-pressed="true">
+        All ({dogs.length})
+      </button>
+      <button class="chip" data-filter="age:puppy" aria-pressed="false">Puppies</button>
+      <button class="chip" data-filter="age:young" aria-pressed="false">Under 3</button>
+      <button class="chip" data-filter="age:adult" aria-pressed="false">Adults</button>
+      <button class="chip" data-filter="age:senior" aria-pressed="false">Seniors</button>
+      <button class="chip" data-filter="sex:Female" aria-pressed="false">Female</button>
+      <button class="chip" data-filter="sex:Male" aria-pressed="false">Male</button>
+      {
+        regions.map((r) => (
+          <button class="chip" data-filter={`location:${r}`} aria-pressed="false">
+            {r.replace(/\s*\(.*\)/, "")}
+          </button>
+        ))
+      }
+    </div>
+
+    <p id="filter-count" class="lede" aria-live="polite" style="font-size: 0.95rem;"></p>
+
+    <ul class="dog-grid" id="dog-grid">
+      {sorted.map((dog, i) => <DogCard dog={dog} eager={i < 6} />)}
+    </ul>
+
+    <p id="filter-empty" class="notice" hidden>
+      No dogs match that filter right now. Try another, or
+      <a href={forms.adopt}>apply anyway</a> — we match people to dogs as they come in.
+    </p>
+  </section>
+
+  <section class="section section--tight band">
+    <div class="wrap center">
+      <h2 style="color: var(--white);">Not sure which dog is right?</h2>
+      <p style="color: rgba(255,253,249,0.88); max-width: 52ch; margin-inline: auto;">
+        Apply anyway. We match people to dogs, not the other way round — and the
+        dog who suits you may not have arrived yet.
+      </p>
+      <div class="btn-row mt-2" style="justify-content: center;">
+        <a class="btn btn--light" href={forms.adopt}>Start an application</a>
+        <a class="btn btn--ghost" style="color: #fffdf9;" href={forms.foster}>
+          Foster instead
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>(".chip");
+  const grid = document.getElementById("dog-grid");
+  const empty = document.getElementById("filter-empty");
+  const count = document.getElementById("filter-count");
+
+  if (grid && empty && count) {
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>(".dog"));
+
+    const apply = (filter: string) => {
+      const [key, value] = filter.split(":");
+      let shown = 0;
+
+      for (const card of cards) {
+        const match = key === "all" || card.dataset[key] === value;
+        card.hidden = !match;
+        if (match) shown++;
+      }
+
+      empty.hidden = shown > 0;
+      count.textContent =
+        filter === "all" ? "" : `Showing ${shown} of ${cards.length} dogs`;
+    };
+
+    for (const chip of chips) {
+      chip.addEventListener("click", () => {
+        for (const c of chips) c.setAttribute("aria-pressed", "false");
+        chip.setAttribute("aria-pressed", "true");
+        apply(chip.dataset.filter ?? "all");
+      });
+    }
+  }
+</script>

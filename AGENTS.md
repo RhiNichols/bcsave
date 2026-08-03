@@ -44,7 +44,8 @@ Content: `/about/`, `/faqs/`, `/events/`, `/lostdog/`, `/ddi/`, `/qr/`
 Money: `/donate/`, `/give/`, `/payment-confirmation/`, `/payment-failed/`, `/thankyou/`
 Commerce: `/shop/`, `/wooshop/`
 Cruft to drop: `/sandbox/`, `/sandbox-copy/`, `/sandbox-alumni/`, `/sandbox-available-dogs/`,
-`/alumni-old-wp/`
+`/alumni-old-wp/`, plus `/wooshop/`, `/payment-confirmation/`, `/payment-failed/` (all dead — see
+verification section below)
 
 ### External links to preserve
 
@@ -55,27 +56,52 @@ Cruft to drop: `/sandbox/`, `/sandbox-copy/`, `/sandbox-alumni/`, `/sandbox-avai
 
 Primary CTAs sitewide: **Donate, Adopt, Foster, Volunteer**.
 
-## Known risk: donations and shop are on-site WordPress
+## What actually powers the current site (verified 2026-08-03)
 
-The sitemap shows `/payment-confirmation/`, `/payment-failed/`, and `/wooshop/`. That means donations
-and merch are **not** simple third-party embeds — they're running through WordPress, almost certainly
-WooCommerce and/or a donation plugin like GiveWP. A static Astro site cannot run WooCommerce checkout.
+Checked by fetching the live pages and reading their asset paths — not inferred from the sitemap.
+An earlier version of this file guessed WooCommerce/GiveWP and treated checkout as the blocking risk.
+**That was wrong.** There is no WooCommerce, no GiveWP, and no Stripe or PayPal SDK anywhere on the
+site.
 
-This is the hardest part of the migration and it is unresolved. Options, roughly in order of
-recommendation:
+**Donations → Give Lively.** Both `/donate/` and `/give/` load one external script and nothing else:
 
-1. **Move donations to a hosted platform.** Zeffy is 100% free for nonprofits (no platform fee, no
-   percentage cut) — for an all-volunteer rescue that likely *increases* net donations versus what
-   they pay now. Givebutter and Donorbox are alternatives with fees.
-2. **Move the shop to a hosted embed** (Shopify Lite, Square Online, Ecwid) or drop it if merch
-   volume is low — worth asking whether the shop actually earns anything.
-3. **Keep WordPress alive purely for checkout** on a subdomain, with the new static site handling
-   everything else. Ugly but lowest risk.
+```
+https://secure.givelively.org/widgets/simple_donation/border-collie-save-and-rescue-inc.js
+  ?show_suggested_amount_buttons=false&show_in_honor_of=true&address_required=false
+```
 
-Do not promise a launch date until this is settled — it is the one piece that could block cutover.
+Portable as-is. Paste it into Astro and it keeps working.
 
-The application forms (`/adopt-form/` etc.) still need checking: if they're Gravity Forms or similar
-WordPress plugins, they need a replacement too (a hosted form service, or Astro + a form endpoint).
+**Shop → FulfillEngine.** `/shop/` is an iframe to
+`https://app.fulfillengine.com/campaign/bcsave-online-store` (print-on-demand fundraising store).
+Also portable as-is.
+
+**Do not migrate donations.** Give Lively is already free-to-the-nonprofit, so the earlier Zeffy pitch
+in this file was based on a false premise and has been dropped. Moving payment rails is risk with no
+upside. Confirm what Give Lively actually costs them before reconsidering.
+
+**Dead pages, not evidence of commerce.** `/wooshop/` is titled "WOOCOMMERCE SHOP" but loads zero
+WooCommerce assets — they already migrated off Woo. `/payment-confirmation/` and `/payment-failed/`
+are empty leftovers from the same era. All three are cruft to drop.
+
+**Presentation layer (all being replaced anyway):** theme `page-builder-framework`, plus Elementor,
+Elementor Pro, Essential Addons for Elementor, and MegaMenu.
+
+### The one real WordPress dependency: Green Forms
+
+All five applications (`/adopt-form/`, `/foster-form/`, `/volunteer-form/`, `/os-form/`, `/apply/`)
+run on the `halfdata-green-forms` plugin — **not** Gravity Forms. Notes:
+
+- Forms render client-side via `https://bcsave.org/wp-admin/admin-ajax.php`. The field definitions
+  are **not in the page HTML**, so they can't be scraped — reproducing them needs WP admin access or
+  filling each form manually to capture the fields.
+- It loads `signature_pad.min.js`, so adoption applications **collect an e-signature**. Whether that
+  signature is legally load-bearing for them or just a formality decides which replacement works.
+- Submissions land in the WordPress database. Ask where they get read from today, and whether anyone
+  needs the back catalogue.
+
+This is the only piece that genuinely can't come along — and it's a far smaller problem than
+checkout would have been. It is no longer a reason to withhold a launch estimate.
 
 ## Still unknown
 

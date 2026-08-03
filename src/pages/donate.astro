@@ -1,0 +1,92 @@
+---
+import Base from "../layouts/Base.astro";
+import { giveLively, shop, forms } from "../data/links";
+---
+
+<Base
+  title="Donate to Border Collie Save & Rescue"
+  description="Your donation pays for the medical care that lets an all-volunteer Texas rescue say yes to the next Border Collie. 501(c)(3) — tax deductible."
+  hideCta={true}
+>
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="eyebrow">Donate</p>
+      <h1 style="font-size: clamp(2rem, 6vw, 3.4rem); max-width: 18ch;">
+        Vet bills decide how many dogs we can save.
+      </h1>
+      <p class="lede" style="margin-bottom: clamp(1.5rem, 4vw, 2.75rem);">
+        Border Collie Save and Rescue has no paid staff and no shelter building.
+        Nearly everything donated goes straight into medical care — heartworm
+        treatment, fracture repair, emergency surgery, spay and neuter — for
+        dogs who arrive needing all of it.
+      </p>
+
+      <div class="detail">
+        <!-- ------------------------------------------------ give lively --
+             Widget first in the DOM so it is the first thing a phone shows.
+             This is the org's existing Give Lively account, unchanged from the
+             WordPress site — same processor, same receipts. Nothing about this
+             rebuild touches how donations are handled.
+        -->
+        <div>
+          <div class="panel">
+            <h2 style="font-size: 1.4rem; margin-bottom: 0.9rem;">Give now</h2>
+
+            <!-- Give Lively's loader looks for one element carrying BOTH the
+                 id and the class. Splitting them stops the widget rendering. -->
+            <div id="give-lively-widget" class="gl-simple-donation-widget"></div>
+
+            <noscript>
+              <p class="notice">
+                The donation form needs JavaScript. You can still donate
+                directly at
+                <a href="https://secure.givelively.org/donate/border-collie-save-and-rescue-inc">
+                  secure.givelively.org</a
+                >.
+              </p>
+            </noscript>
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--ink-faint); margin-top: 1rem;">
+            Donations are processed securely by Give Lively. Border Collie Save
+            and Rescue, Inc. is a registered 501(c)(3) nonprofit, so your gift is
+            tax deductible.
+          </p>
+        </div>
+
+        <!-- ------------------------------------------------ other ways -- -->
+        <div>
+          <div class="panel">
+            <h2 style="font-size: 1.25rem;">Other ways to help</h2>
+            <p style="color: var(--ink-soft); font-size: 0.96rem;">
+              Money is not the only thing that keeps a rescue running — and
+              fostering is genuinely the bottleneck on how many dogs we can take.
+            </p>
+            <ul style="margin: 0 0 1.3rem; padding-left: 1.1rem; color: var(--ink-soft);">
+              <li>Foster a dog — it costs you nothing, we cover the medical.</li>
+              <li>Volunteer for transport, events, photography or home visits.</li>
+              <li>Buy merch — proceeds come back to the dogs.</li>
+            </ul>
+            <div class="btn-row">
+              <a class="btn btn--brand btn--block" href={forms.foster}>Foster a dog</a>
+              <a class="btn btn--ghost btn--block" href={forms.volunteer}>Volunteer</a>
+              <a class="btn btn--ghost btn--block" href={shop} rel="noopener" target="_blank">
+                Shop merch
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script is:inline define:vars={{ src: giveLively.src }}>
+  // Give Lively's embed appends its loader to <head>; it then finds
+  // #give-lively-widget and renders into it.
+  (function () {
+    var gl = document.createElement("script");
+    gl.src = src;
+    document.getElementsByTagName("head")[0].appendChild(gl);
+  })();
+</script>

@@ -1,0 +1,159 @@
+---
+import Base from "../../layouts/Base.astro";
+import DogCard from "../../components/DogCard.astro";
+import { dogs, isPuppy } from "../../data/dogs";
+import type { Dog } from "../../data/dogs";
+import { forms } from "../../data/links";
+
+export function getStaticPaths() {
+  return dogs.map((dog) => ({ params: { slug: dog.slug }, props: { dog } }));
+}
+
+interface Props {
+  dog: Dog;
+}
+
+const { dog } = Astro.props;
+
+const facts = [
+  ["Sex", dog.sex],
+  ["Age", dog.age],
+  ["Weight", dog.weight],
+  ["Colour", dog.color],
+  ["Coat", dog.coat],
+  ["Energy", dog.energy],
+  ["Spayed/Neutered", dog.fixed],
+  ["Heartworm", dog.heartworm],
+  ["Location", dog.location],
+  ["Adoption fee", dog.fee],
+].filter(([, v]) => v && v !== "TBD" && v !== "Unassigned");
+
+const paragraphs = dog.bio.split("\n\n").filter(Boolean);
+
+// A few other dogs to keep people browsing rather than bouncing.
+const more = dogs.filter((d) => d.slug !== dog.slug).slice(0, 4);
+---
+
+<Base
+  title={`${dog.name} — Available for Adoption | BCSAVE`}
+  description={paragraphs[0]?.slice(0, 155) ??
+    `${dog.name} is a Border Collie available for adoption through Border Collie Save & Rescue.`}
+>
+  <section class="section section--tight">
+    <div class="wrap">
+      <a class="backlink" href="/dogs">&larr; All available dogs</a>
+
+      <div class="detail">
+        <!-- ------------------------------------------------------ gallery -->
+        <div>
+          <div class="gallery__main">
+            <img
+              id="main-photo"
+              src={`${dog.images[0]}.webp`}
+              alt={`${dog.name}, a Border Collie available for adoption`}
+              width="1100"
+              height="825"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
+
+          {
+            dog.images.length > 1 && (
+              <div class="gallery__thumbs" role="group" aria-label={`More photos of ${dog.name}`}>
+                {dog.images.map((img, i) => (
+                  <button type="button" data-full={`${img}.webp`} aria-current={i === 0 ? "true" : "false"}>
+                    <img
+                      src={`${img}-t.webp`}
+                      alt={`Photo ${i + 1} of ${dog.name}`}
+                      width="68"
+                      height="68"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </button>
+                ))}
+              </div>
+            )
+          }
+        </div>
+
+        <!-- -------------------------------------------------------- aside -->
+        <div class="detail__aside">
+          <h1 style="font-size: clamp(2.1rem, 6vw, 3.2rem); margin-bottom: 0.2em;">
+            {dog.name}
+          </h1>
+          <p class="lede" style="margin-bottom: 1.4rem;">
+            {[dog.sex, dog.age, dog.weight].filter(Boolean).join(" · ")}
+            {isPuppy(dog) && " · Puppy"}
+          </p>
+
+          <dl class="factlist">
+            {
+              facts.map(([label, value]) => (
+                <div class="fact">
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </div>
+              ))
+            }
+          </dl>
+
+          <div class="btn-row">
+            <a class="btn btn--ember btn--block" href={forms.adopt}>
+              Apply to adopt {dog.name}
+            </a>
+            <a class="btn btn--ghost btn--block" href={forms.foster}>Foster instead</a>
+          </div>
+
+          <p style="font-size: 0.88rem; color: var(--ink-faint); margin-top: 1rem;">
+            Applications are reviewed by volunteers, so give us a few days. We
+            check references and talk through whether {dog.name} genuinely suits
+            your home.
+          </p>
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------------------ bio -->
+      {
+        paragraphs.length > 0 && (
+          <div class="bio" style="max-width: 68ch; margin-top: clamp(2rem, 5vw, 3.5rem);">
+            <h2 style="font-size: clamp(1.5rem, 4vw, 2rem);">About {dog.name}</h2>
+            {paragraphs.map((p) => <p>{p}</p>)}
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------- more -- -->
+  <section class="section section--tight" style="background: var(--paper-warm);">
+    <div class="wrap">
+      <h2 style="font-size: clamp(1.4rem, 3.5vw, 1.9rem);">More dogs waiting</h2>
+      <ul class="dog-grid mt-2">
+        {more.map((d) => <DogCard dog={d} />)}
+      </ul>
+      <div class="btn-row mt-2">
+        <a class="btn btn--brand" href="/dogs">See all {dogs.length} dogs</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Swap the main photo when a thumbnail is tapped. No library needed.
+  const main = document.getElementById("main-photo") as HTMLImageElement | null;
+  const thumbs = document.querySelectorAll<HTMLButtonElement>(
+    ".gallery__thumbs button"
+  );
+
+  for (const btn of thumbs) {
+    btn.addEventListener("click", () => {
+      const full = btn.dataset.full;
+      if (!main || !full) return;
+      main.src = full;
+      for (const b of thumbs) b.setAttribute("aria-current", "false");
+      btn.setAttribute("aria-current", "true");
+    });
+  }
+</script>

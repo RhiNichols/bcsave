@@ -1,0 +1,47 @@
+---
+import type { Dog } from "../data/dogs";
+import { isPuppy, ageGroup } from "../data/dogs";
+
+interface Props {
+  dog: Dog;
+  /** First few cards on a page should load eagerly; the rest lazy-load. */
+  eager?: boolean;
+}
+
+const { dog, eager = false } = Astro.props;
+const img = dog.images[0];
+const snippet = dog.bio.split("\n\n")[0] ?? "";
+---
+
+<li
+  class="dog"
+  data-sex={dog.sex}
+  data-age={ageGroup(dog)}
+  data-location={dog.location}
+>
+  <div class="dog__media">
+    <img
+      src={`${img}-t.webp`}
+      srcset={`${img}-t.webp 500w, ${img}.webp 1100w`}
+      sizes="(min-width: 68rem) 260px, (min-width: 40rem) 33vw, 90vw"
+      alt={`${dog.name}, a Border Collie available for adoption`}
+      width="500"
+      height="625"
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+    />
+    {isPuppy(dog) && <span class="dog__tag dog__tag--puppy">Puppy</span>}
+  </div>
+
+  <div class="dog__body">
+    <h3 class="dog__name"><a href={`/dogs/${dog.slug}`}>{dog.name}</a></h3>
+    <p class="dog__meta">
+      {[dog.sex, dog.age, dog.weight].filter(Boolean).join(" · ")}
+    </p>
+    {snippet && <p class="dog__snippet">{snippet}</p>}
+    <div class="dog__foot">
+      <span class="dog__fee">{dog.fee}</span>
+      <span class="dog__cta">Meet {dog.name} &rarr;</span>
+    </div>
+  </div>
+</li>

@@ -1,17 +1,311 @@
 ---
+import Base from "../layouts/Base.astro";
+import DogCard from "../components/DogCard.astro";
+import { dogs, featured, locations } from "../data/dogs";
+import { forms, partners, shop } from "../data/links";
 
+const picks = featured(8);
+const regionCount = locations().length;
+const fees = [...new Set(dogs.map((d) => d.fee))].filter(Boolean).sort();
+
+/*
+ * NOTE FOR RHIANNON: these impact amounts are plausible for a rescue this size
+ * but they are NOT taken from BCSAVE's books — I made them up as placeholders.
+ * Confirm real figures with the treasurer before this goes in front of anyone.
+ */
+const tiers = [
+  { amt: "$25", txt: "Vaccines and a microchip for one intake dog." },
+  { amt: "$75", txt: "A month of food and heartworm prevention in foster care." },
+  { amt: "$150", txt: "Spay or neuter surgery — required before every adoption." },
+  { amt: "$400", txt: "Full heartworm treatment for a dog who arrives positive." },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base
+  title="Border Collie Save & Rescue — Adopt a Border Collie in Texas"
+  description="An all-volunteer 501(c)(3) rescuing, rehabbing and rehoming Border Collies across Central and North Texas. Meet the dogs waiting for homes."
+>
+  <!-- ------------------------------------------------------------ hero -- -->
+  <section class="hero">
+    <div class="hero__media">
+      <img
+        src="/dogs/azriel-0.webp"
+        alt=""
+        width="1000"
+        height="618"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </div>
+    <div class="wrap hero__inner">
+      <p class="hero__eyebrow">
+        <span class="pulse" aria-hidden="true"></span>
+        {dogs.length} dogs available right now
+      </p>
+      <h1>Every one of them is waiting on somebody.</h1>
+      <p class="hero__lede">
+        We pull Border Collies out of Texas shelters and desperate situations,
+        get them healthy, and place them with people who understand the breed.
+        No paid staff. No shelter building. Just foster homes and volunteers.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--ember btn--block" href="/dogs">Meet the Dogs</a>
+        <a class="btn btn--light btn--block" href="/donate">Donate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ----------------------------------------------------------- stats -- -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="stats__grid">
+        <div class="stat">
+          <span class="stat__num">{dogs.length}</span>
+          <span class="stat__label">Dogs in our care</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">{regionCount}</span>
+          <span class="stat__label">Texas regions</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">100%</span>
+          <span class="stat__label">Volunteer run</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">501(c)(3)</span>
+          <span class="stat__label">Tax deductible</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------ dog picks -- -->
+  <section class="section" id="dogs">
+    <div class="wrap">
+      <p class="eyebrow">Available now</p>
+      <h2>Dogs looking for a home</h2>
+      <p class="lede">
+        Every dog is in a foster home getting medical care, basic training and a
+        chance to be a dog again. Adoption fees run {fees[0]}&ndash;{fees.at(-1)}
+        and cover spay/neuter, vaccines and microchipping.
+      </p>
+
+      <ul class="dog-grid mt-2">
+        {picks.map((dog, i) => <DogCard dog={dog} eager={i < 4} />)}
+      </ul>
+
+      <div class="btn-row mt-2">
+        <a class="btn btn--brand" href="/dogs">
+          See all {dogs.length} available dogs
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------ how it works -->
+  <section
+    class="section section--tight"
+    id="adopt"
+    style="background: var(--paper-warm);"
+  >
+    <div class="wrap">
+      <p class="eyebrow">Adopting</p>
+      <h2>How adoption works</h2>
+      <p class="lede">
+        Border Collies are not easy dogs. We place carefully, and we would
+        rather take our time than get it wrong.
+      </p>
+
+      <ol class="steps mt-2">
+        <li>
+          <h3>Apply</h3>
+          <p>
+            Fill out the adoption application. Tell us about your home, your
+            experience, and what your days actually look like.
+          </p>
+        </li>
+        <li>
+          <h3>Talk it through</h3>
+          <p>
+            We follow up with references, a vet check, and a conversation about
+            which dogs would genuinely suit you — which may not be the one you
+            first spotted.
+          </p>
+        </li>
+        <li>
+          <h3>Meet and go home</h3>
+          <p>
+            Meet the dog with their foster. Many adoptions start as a trial so
+            everyone — including the dog — gets a say.
+          </p>
+        </li>
+      </ol>
+
+      <div class="btn-row mt-2">
+        <a class="btn btn--ember" href={forms.adopt}>
+          Start an adoption application
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ----------------------------------------------------- ways to help -- -->
+  <section class="section" id="foster">
+    <div class="wrap">
+      <p class="eyebrow">Get involved</p>
+      <h2>Four ways to help</h2>
+
+      <div class="cards cards--4 mt-2">
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+            </svg>
+          </div>
+          <h3>Adopt</h3>
+          <p>Give a dog the home they have been waiting for.</p>
+          <a class="btn btn--ghost" href="/dogs">See the dogs</a>
+        </article>
+
+        <article class="card">
+          <div class="card__icon card__icon--brand" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12h4l2-7 4 14 2-7h6"></path>
+            </svg>
+          </div>
+          <h3>Foster</h3>
+          <p>
+            We have no shelter building. Every dog we take in is a dog someone
+            opened their home to — fostering is the hard limit on how many we
+            can save.
+          </p>
+          <a class="btn btn--ghost" href={forms.foster}>Apply to foster</a>
+        </article>
+
+        <article class="card">
+          <div class="card__icon card__icon--brand" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>Volunteer</h3>
+          <p>
+            Transport, events, photography, home visits, admin — all of it
+            helps.
+          </p>
+          <a class="btn btn--ghost" href={forms.volunteer}>Volunteer with us</a>
+        </article>
+
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3>Donate</h3>
+          <p>Medical care is our largest expense by a wide margin.</p>
+          <a class="btn btn--ember" href="/donate">Donate now</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------- donate band -- -->
+  <section class="section band band--ember" id="donate">
+    <div class="wrap band__inner band__inner--split">
+      <div>
+        <p class="eyebrow" style="color: rgba(255,253,249,0.78);">Donate</p>
+        <h2>Vet bills are what stop us taking the next dog.</h2>
+        <p>
+          Heartworm treatment, fracture repair, emergency surgery — the dogs who
+          need us most are almost always the expensive ones. Every dollar goes
+          to their care, because nobody here draws a salary.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--light btn--block" href="/donate">Donate to BCSAVE</a>
+          <a
+            class="btn btn--ghost btn--block"
+            style="color: #fffdf9;"
+            href={shop}
+            rel="noopener"
+            target="_blank">Shop merch</a
+          >
+        </div>
+      </div>
+
+      <div class="give-tiers">
+        {
+          tiers.map((t) => (
+            <div class="give-tier">
+              <span class="give-tier__amt">{t.amt}</span>
+              <span class="give-tier__txt">{t.txt}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------ about -- -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="cards cards--2">
+        <div>
+          <p class="eyebrow">Who we are</p>
+          <h2>An all-volunteer rescue in Springtown, Texas</h2>
+          <p class="lede">
+            Border Collie Save and Rescue, Inc. is a 501(c)(3) nonprofit
+            dedicated to rescuing, rehabbing and rehoming Border Collies and
+            Border Collie mixes taken in throughout Central and North Texas from
+            toxic or desperate situations.
+          </p>
+          <p class="lede">
+            Dogs go into foster homes where their medical needs are tended to,
+            they are spayed or neutered, given any physical and mental
+            rehabilitation they need, started on basic training, and given a
+            loving and safe place to live — before we place them with adopters
+            who genuinely meet that dog's needs.
+          </p>
+        </div>
+
+        <div class="panel">
+          <h3>Found a stray Border Collie?</h3>
+          <p style="color: var(--ink-soft);">
+            If you have found a dog wearing a BCSAVE tag, or you need to
+            surrender a Border Collie you can no longer keep, start here.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--brand btn--block" href="https://bcsave.org/lostdog/">
+              Found a dog
+            </a>
+            <a class="btn btn--ghost btn--block" href={forms.surrender}>
+              Owner surrender
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------- partners -- -->
+  <section class="section section--tight" style="background: var(--paper-warm);">
+    <div class="wrap center">
+      <p class="eyebrow">Friends of BCSAVE</p>
+      <h2 style="font-size: clamp(1.4rem, 3.5vw, 1.9rem);">
+        Thank you for helping us make our mission possible
+      </h2>
+      <div class="partners mt-2">
+        {
+          partners.map((p) => (
+            <a href={p.url} rel="noopener" target="_blank" aria-label={p.name}>
+              <img src={p.img} alt={p.name} loading="lazy" decoding="async" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
