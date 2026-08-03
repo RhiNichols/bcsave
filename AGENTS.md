@@ -82,9 +82,11 @@ WordPress plugins, they need a replacement too (a hosted form service, or Astro 
 - **Real replacement vs. pitch mockup.** Whether Rhiannon has official access to the org's WordPress
   admin, content export, and DNS, or is building this on spec to show them. The build is identical
   until launch, but migration planning depends on it.
-- **Which CMS for dog listings.** Requirement is settled (volunteers must post dogs without her);
-  the tool isn't. Decap (git-based, free) or Sanity (hosted, free tier) are the likely candidates.
-  Addable later without restructuring — build with Astro content collections so the swap is cheap.
+- **Which CMS for dog listings.** Requirement is settled — multiple volunteers must be able to
+  publish a dog without a developer in the loop. Listings turn over constantly and a single-publisher
+  bottleneck means dogs get posted to Facebook instead and the site goes stale. The tool isn't
+  settled: Decap (git-based, free) or Sanity (hosted, free tier) are the likely candidates. Addable
+  later without restructuring — build with Astro content collections so the swap is cheap.
 
 Honest caveat worth revisiting with her: replacing the site makes her the org's de facto webmaster
 indefinitely. Worth naming out loud before cutover, not after.
