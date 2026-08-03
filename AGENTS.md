@@ -87,6 +87,36 @@ are empty leftovers from the same era. All three are cruft to drop.
 **Presentation layer (all being replaced anyway):** theme `page-builder-framework`, plus Elementor,
 Elementor Pro, Essential Addons for Elementor, and MegaMenu.
 
+### Dog listings → ShelterManager (this settles the CMS question)
+
+`/our-dogs/` is an iframe to **ShelterManager** (Animal Shelter Manager), account `BCSAVE`
+(internal id `jb3344`). The dog data was never in WordPress:
+
+```
+https://service.sheltermanager.com/asmservice?account=BCSAVE&method=html_adoptable_animals
+```
+
+- The default `html_adoptable_animals` method is **public, no auth**, and returns full records:
+  name, sex, age, weight, colour, coat, energy, spay/neuter, heartworm status, region, adoption fee,
+  a prose bio, and up to 8 photos per dog. As of 2026-08-03 that's 63 adoptable dogs.
+- The `json_`, `xml_` and `csv_` variants exist but require credentials. If Rhiannon can get the
+  ShelterManager service username/password, switch to `json_adoptable_animals` — parsing HTML is a
+  workaround, not the destination.
+- `?template=animalviewadoptable` is BCSAVE's own custom template and returns images only. Don't use
+  it as a data source.
+- Animal photos: `asmservice?account=jb3344&method=animal_image&animalid=<id>` (add `&seq=N` for
+  extra shots).
+
+**This means volunteers already publish dogs without a developer.** They do it in ShelterManager,
+which is also where medical records and adoption workflow live. Adding Decap or Sanity would create
+a *second* place to type the same dog — strictly worse. The site should read ShelterManager, not
+replace it.
+
+Current implementation: dogs are fetched, parsed and committed as `src/data/dogs.json`, with photos
+converted to WebP under `public/dogs/`. That's a build-time snapshot, so **the site goes stale until
+it is rebuilt.** Options once it matters: a scheduled rebuild (Cloudflare Pages cron / GitHub
+Action), or fetch at build time in an Astro loader.
+
 ### The one real WordPress dependency: Green Forms
 
 All five applications (`/adopt-form/`, `/foster-form/`, `/volunteer-form/`, `/os-form/`, `/apply/`)
@@ -103,16 +133,25 @@ run on the `halfdata-green-forms` plugin — **not** Gravity Forms. Notes:
 This is the only piece that genuinely can't come along — and it's a far smaller problem than
 checkout would have been. It is no longer a reason to withhold a launch estimate.
 
+## Settled
+
+- **CMS for dog listings.** Resolved: **ShelterManager already is the CMS.** Volunteers publish dogs
+  there today and the site reads that feed. Do not add Decap or Sanity for dogs.
+- **Who Rhiannon is.** She is a BCSAVE volunteer, foster and donor of 15+ years who currently screens
+  adoption applicants — an insider, not an outside contractor pitching a redesign. She came to BCSAVE
+  after Border Collie Rescue Texas closed.
+
 ## Still unknown
 
-- **Real replacement vs. pitch mockup.** Whether Rhiannon has official access to the org's WordPress
-  admin, content export, and DNS, or is building this on spec to show them. The build is identical
-  until launch, but migration planning depends on it.
-- **Which CMS for dog listings.** Requirement is settled — multiple volunteers must be able to
-  publish a dog without a developer in the loop. Listings turn over constantly and a single-publisher
-  bottleneck means dogs get posted to Facebook instead and the site goes stale. The tool isn't
-  settled: Decap (git-based, free) or Sanity (hosted, free tier) are the likely candidates. Addable
-  later without restructuring — build with Astro content collections so the swap is cheap.
+- **Credentials.** Whether she holds WordPress admin, the ShelterManager service login, and DNS.
+  Screening applicants implies some access, but it hasn't been confirmed. The ShelterManager login in
+  particular would upgrade the dog feed from scraped HTML to real JSON.
+- **How applications are actually reviewed.** She screens applicants, so any Green Forms replacement
+  has to preserve *her* workflow, not just capture fields. Ask before proposing a form tool.
+- **Whether the adoption e-signature is legally load-bearing** or just a formality. Decides whether a
+  simple hosted form is enough.
+- **Real impact figures.** The donate-page giving tiers in `src/pages/index.astro` are invented
+  placeholders. They need real numbers from the treasurer before anyone outside sees them.
 
 Honest caveat worth revisiting with her: replacing the site makes her the org's de facto webmaster
 indefinitely. Worth naming out loud before cutover, not after.
