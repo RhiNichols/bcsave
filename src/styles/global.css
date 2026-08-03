@@ -971,18 +971,14 @@ p {
 
 /* --------------------------------------------------------- filter bar -- */
 
+/* Wraps rather than scrolls. A horizontal scroller hides options behind an
+   invisible affordance — fine on touch, unusable with a trackpad. Every
+   filter stays on screen at every width. */
 .filters {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
   margin-bottom: 1.75rem;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.filters::-webkit-scrollbar {
-  display: none;
 }
 
 .chip {
@@ -990,18 +986,38 @@ p {
   min-height: 42px;
   display: inline-flex;
   align-items: center;
-  padding: 0.5rem 1.05rem;
+  padding: 0.5rem 0.95rem;
   border-radius: 999px;
   border: 1px solid var(--line);
   background: var(--white);
   color: var(--ink-soft);
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
   transition: background-color 0.15s ease, color 0.15s ease,
     border-color 0.15s ease;
+}
+
+.chip:hover {
+  border-color: var(--ink-faint);
+  color: var(--ink);
+}
+
+/* Group label sitting on its own line above a run of chips */
+.filters__label {
+  flex: 0 0 100%;
+  margin: 0.4rem 0 -0.1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.filters__label:first-child {
+  margin-top: 0;
 }
 
 .chip[aria-pressed="true"] {

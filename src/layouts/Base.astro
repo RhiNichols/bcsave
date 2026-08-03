@@ -9,12 +9,17 @@ interface Props {
   description?: string;
   /** Hide the sticky mobile donate bar (e.g. on the donate page itself). */
   hideCta?: boolean;
+  /** Override the sticky bar's left-hand action. */
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 const {
   title,
   description = "Border Collie Save & Rescue is an all-volunteer 501(c)(3) rescuing, rehabbing and rehoming Border Collies across Central and North Texas.",
   hideCta = false,
+  ctaLabel,
+  ctaHref,
 } = Astro.props;
 ---
 
@@ -43,6 +48,6 @@ const {
       <slot />
     </main>
     <Footer />
-    {!hideCta && <StickyCta />}
+    {!hideCta && <StickyCta label={ctaLabel} href={ctaHref} />}
   </body>
 </html>

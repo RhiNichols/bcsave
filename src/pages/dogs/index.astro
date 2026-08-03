@@ -12,11 +12,17 @@ const sorted = [...dogs].sort(
 );
 
 const regions = locations();
+
+// Chip counts, so nobody taps a filter that returns nothing.
+const counts = { puppy: 0, young: 0, adult: 0, senior: 0 };
+for (const d of dogs) counts[ageGroup(d)]++;
 ---
 
 <Base
   title={`${dogs.length} Border Collies Available for Adoption — BCSAVE`}
   description="Browse every Border Collie currently available for adoption through Border Collie Save & Rescue in Central and North Texas."
+  ctaLabel="Apply to Adopt"
+  ctaHref={forms.adopt}
 >
   <section class="section section--tight">
     <div class="wrap">
@@ -32,15 +38,32 @@ const regions = locations();
   <section class="wrap" style="padding-bottom: 4rem;">
     <!-- Filters are progressive enhancement: without JS every dog shows. -->
     <div class="filters" role="group" aria-label="Filter dogs">
+      <p class="filters__label" id="f-age">Age</p>
       <button class="chip" data-filter="all" aria-pressed="true">
-        All ({dogs.length})
+        All {dogs.length}
       </button>
-      <button class="chip" data-filter="age:puppy" aria-pressed="false">Puppies</button>
-      <button class="chip" data-filter="age:young" aria-pressed="false">Under 3</button>
-      <button class="chip" data-filter="age:adult" aria-pressed="false">Adults</button>
-      <button class="chip" data-filter="age:senior" aria-pressed="false">Seniors</button>
+      <button class="chip" data-filter="age:puppy" aria-pressed="false">
+        Puppies ({counts.puppy})
+      </button>
+      <button class="chip" data-filter="age:young" aria-pressed="false">
+        Under 3 ({counts.young})
+      </button>
+      <button class="chip" data-filter="age:adult" aria-pressed="false">
+        Adults ({counts.adult})
+      </button>
+      {
+        counts.senior > 0 && (
+          <button class="chip" data-filter="age:senior" aria-pressed="false">
+            Seniors ({counts.senior})
+          </button>
+        )
+      }
+
+      <p class="filters__label">Sex</p>
       <button class="chip" data-filter="sex:Female" aria-pressed="false">Female</button>
       <button class="chip" data-filter="sex:Male" aria-pressed="false">Male</button>
+
+      <p class="filters__label">Region</p>
       {
         regions.map((r) => (
           <button class="chip" data-filter={`location:${r}`} aria-pressed="false">
