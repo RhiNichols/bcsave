@@ -1,0 +1,48 @@
+name: Build and deploy to Cloudflare Pages
+
+# Three triggers:
+#  - push:     ship changes as soon as they land on main
+#  - schedule: re-pull ShelterManager so adopted dogs drop off the site
+#  - manual:   "Run workflow" button for when someone needs it refreshed now
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Every 3 hours. Dogs are added and adopted throughout the day, and a
+    # stale listing means applications for a dog that is already home.
+    - cron: "0 */3 * * *"
+  workflow_dispatch:
+
+# A scheduled run and a push run must never deploy over each other.
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Re-fetches dogs from ShelterManager, then builds. Photos already in the
+      # repo are reused; only new dogs cost a download.
+      - name: Build site
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=bcsave --branch=main
