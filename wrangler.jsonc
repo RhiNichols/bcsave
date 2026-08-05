@@ -7,6 +7,9 @@
   // this config covers local and temporary-preview deploys.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "bcsave-preview",
+  // Pinned so a deploy can never land in the wrong account — this login has
+  // access to two, and only this one serves the URL that has been shared.
+  "account_id": "00804eb9ff865dd924e8e8cd6fb23f93",
   "compatibility_date": "2026-08-05",
   "assets": {
     "directory": "./dist",
