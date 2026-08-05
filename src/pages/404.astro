@@ -1,0 +1,43 @@
+---
+import Base from "../layouts/Base.astro";
+import DogCard from "../components/DogCard.astro";
+import { dogs, featured } from "../data/dogs";
+
+/*
+ * Dogs get adopted, so links to their pages go stale — shared on Facebook, or
+ * saved by someone who came back a week later. A dead end is a lost adopter,
+ * so this page leads straight back to dogs who are still waiting.
+ */
+const picks = featured(4);
+---
+
+<Base
+  title="Page not found — Border Collie Save & Rescue"
+  description="That page could not be found, but there are still Border Collies waiting for homes."
+>
+  <section class="section">
+    <div class="wrap center">
+      <p class="eyebrow">404</p>
+      <h1 style="max-width: 18ch; margin-inline: auto;">
+        This page has wandered off.
+      </h1>
+      <p class="lede">
+        If you followed a link to a particular dog, there is a good chance they
+        have been adopted — which is the best possible reason for a broken
+        link. These dogs are still waiting.
+      </p>
+      <div class="btn-row mt-2" style="justify-content: center;">
+        <a class="btn btn--ember" href="/dogs">See all {dogs.length} dogs</a>
+        <a class="btn btn--ghost" href="/">Back to the homepage</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" style="background: var(--paper-warm);">
+    <div class="wrap">
+      <ul class="dog-grid">
+        {picks.map((dog) => <DogCard dog={dog} level={2} />)}
+      </ul>
+    </div>
+  </section>
+</Base>

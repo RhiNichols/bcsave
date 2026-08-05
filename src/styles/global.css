@@ -691,6 +691,12 @@ h3 {
   grid-template-columns: 1fr;
 }
 
+/* Same min-width:auto trap as .detail — stops any wide child from widening
+   its column and scrolling the page sideways. */
+.cards > * {
+  min-width: 0;
+}
+
 @media (min-width: 40rem) {
   .cards--2 {
     grid-template-columns: repeat(2, 1fr);
@@ -1026,6 +1032,7 @@ h3 {
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  text-decoration: none;
   transition: background-color 0.15s ease, color 0.15s ease,
     border-color 0.15s ease;
 }
@@ -1054,6 +1061,78 @@ h3 {
   background: var(--ink);
   border-color: var(--ink);
   color: var(--paper);
+}
+
+/* ---------------------------------------------------------------- faq -- */
+
+/* Native <details> — no JavaScript, works before hydration, and the browser
+   handles keyboard and screen-reader behaviour for free. */
+.faq {
+  display: grid;
+  gap: 0.7rem;
+  max-width: 60rem;
+}
+
+.faq__item {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.faq__item[open] {
+  border-color: var(--brand);
+  box-shadow: var(--shadow-sm);
+}
+
+.faq__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  min-height: 56px;
+  cursor: pointer;
+  font-weight: 650;
+  font-size: 1rem;
+  line-height: 1.4;
+  list-style: none;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__item summary:hover {
+  color: var(--brand);
+}
+
+.faq__chev {
+  flex: 0 0 auto;
+  color: var(--ink-faint);
+  transition: transform 0.2s ease;
+}
+
+.faq__item[open] .faq__chev {
+  transform: rotate(180deg);
+}
+
+.faq__body {
+  padding: 0 1.15rem 1.15rem;
+  color: var(--ink-soft);
+}
+
+.faq__body p {
+  margin: 0 0 0.85rem;
+  font-size: 0.97rem;
+}
+
+.faq__body p:last-child {
+  margin-bottom: 0;
+}
+
+.faq__body strong {
+  color: var(--ink);
 }
 
 /* ------------------------------------------------------------ partners -- */

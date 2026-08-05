@@ -1,0 +1,241 @@
+---
+import Base from "../layouts/Base.astro";
+import { dogs } from "../data/dogs";
+import { forms } from "../data/links";
+
+/*
+ * Mission wording is BCSAVE's own, from bcsave.org/about/.
+ *
+ * The Five Freedoms are summarised in our own words rather than copied from
+ * animalsheltering.org, with the source credited and linked — the old site
+ * reproduced them wholesale.
+ */
+const freedoms = [
+  {
+    title: "From hunger and thirst",
+    body: "Fresh water and a diet suited to the individual animal — a puppy, an adult and a senior all need different food on different schedules.",
+  },
+  {
+    title: "From discomfort",
+    body: "Shelter from the elements and a clean, safe place to rest. Bedding, not a cold floor. Room enough that no animal is crowded.",
+  },
+  {
+    title: "From pain, injury and disease",
+    body: "Care that prevents illness, and fast diagnosis and treatment when it happens anyway — vaccines, monitoring, and proper pain relief.",
+  },
+  {
+    title: "To express normal behaviour",
+    body: "Space and facilities to move freely, stretch, run, jump and play — and to choose company or avoid it.",
+  },
+  {
+    title: "From fear and distress",
+    body: "Conditions and handling that avoid mental suffering. Mental health matters as much as physical; sustained stress becomes physical illness.",
+  },
+];
+---
+
+<Base
+  title="About Border Collie Save & Rescue — All-Volunteer Texas Dog Rescue"
+  description="Border Collie Save and Rescue, Inc. is an all-volunteer 501(c)(3) rescuing, rehabbing and rehoming Border Collies and Border Collie mixes across Central and North Texas."
+>
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="eyebrow">About us</p>
+      <h1 style="max-width: 16ch;">A rescue with no building and no payroll.</h1>
+      <p class="lede">
+        Border Collie Save and Rescue, Inc. is an all-volunteer 501(c)(3)
+        nonprofit charitable dog rescue dedicated to rescuing, rehabbing and
+        rehoming Border Collies and Border Collie mixes taken in throughout
+        Central and North Texas from toxic or desperate situations.
+      </p>
+      <p class="lede">
+        Dogs go into foster homes where their medical needs are tended to, they
+        are spayed or neutered, given any physical and mental rehabilitation
+        they need, started on basic training, and given a loving and safe place
+        to live. Finally we place them with vetted adopters who fully meet the
+        needs of that individual dog.
+      </p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------- stats -- -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="stats__grid">
+        <div class="stat">
+          <span class="stat__num">{dogs.length}</span>
+          <span class="stat__label">Dogs in our care</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">0</span>
+          <span class="stat__label">Paid staff</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">0</span>
+          <span class="stat__label">Kennels</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">100%</span>
+          <span class="stat__label">Foster based</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------ how it works -- -->
+  <section class="section">
+    <div class="wrap">
+      <div class="cards cards--2">
+        <div>
+          <p class="eyebrow">Where our dogs come from</p>
+          <h2>No fault of their own</h2>
+          <p style="color: var(--ink-soft);">
+            Many are surrendered to shelters because their people found
+            themselves unable to handle what the dog needed. Others come from
+            owners whose circumstances changed. We take transfers from other
+            rescues who want a breed-specific placement, and we have a network
+            of volunteers who reach out when they find a Border Collie in need,
+            hoping to keep that dog out of a shelter altogether.
+          </p>
+          <p style="color: var(--ink-soft);">
+            Whatever the reason, we do what we can — either bringing the dog
+            into our rescue, or helping place them with a partner rescue who
+            can.
+          </p>
+        </div>
+
+        <div class="panel">
+          <h3>We are 100% foster based</h3>
+          <p style="color: var(--ink-soft);">
+            There is no kennel facility. Foster homes across Texas — and
+            occasionally Oklahoma and Louisiana — are the whole operation. Most
+            dogs go first to a staging foster for an initial assessment, then
+            into a longer-term home where they can settle and be properly
+            cared for until they are adopted.
+          </p>
+          <p style="color: var(--ink-soft); font-weight: 600;">
+            That is also the hard limit on how many dogs we can say yes to.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--ember btn--block" href={forms.foster}>
+              Apply to foster
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------- freedoms -- -->
+  <section class="section section--tight" style="background: var(--paper-warm);">
+    <div class="wrap">
+      <p class="eyebrow">What we hold ourselves to</p>
+      <h2>The Five Freedoms</h2>
+      <p class="lede">
+        Every animal in our care is entitled to all five, every day.
+      </p>
+
+      <ol class="steps mt-2" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));">
+        {
+          freedoms.map((f) => (
+            <li>
+              <h3>{f.title}</h3>
+              <p>{f.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+
+      <p style="font-size: 0.88rem; color: var(--ink-faint); margin-top: 2rem;">
+        Summarised from the Five Freedoms as published by
+        <a href="https://www.animalsheltering.org/page/rescue-group-best-practices-five-freedoms" rel="noopener" target="_blank">
+          Animal Sheltering</a
+        >, a programme of the Humane Society of the United States.
+      </p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------ logo -- -->
+  <section class="section">
+    <div class="wrap">
+      <div class="cards cards--2">
+        <div class="panel" style="display: grid; place-items: center; background: var(--paper-warm);">
+          <img
+            src="/logo.png"
+            alt="The Border Collie Save & Rescue logo"
+            width="640"
+            height="464"
+            {/* width:100% first — a bare max-width would override the global
+                img{max-width:100%} and overflow narrow phones. */}
+            style="width: 100%; max-width: 300px; height: auto;"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div>
+          <p class="eyebrow">Our logo</p>
+          <h2>That crouch is the whole point</h2>
+          <p style="color: var(--ink-soft);">
+            Shepherds along the Scottish borders in the 1800s bred herding dogs
+            whose stance mimicked a wild wolf's — head and chest low and
+            horizontal to the ground, hindquarters higher.
+          </p>
+          <p style="color: var(--ink-soft);">
+            It is ruthlessly practical. The dog conserves energy and can drop
+            instantly to stillness, and the predator's silhouette encourages
+            sheep to bunch together, making them easier to move with less
+            contact. It is one of the reasons the Border Collie is considered
+            the premier sheep herder — and it is the inspiration for our logo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------- position -- -->
+  <section class="section section--tight" style="background: var(--paper-warm);">
+    <div class="wrap">
+      <p class="eyebrow">Where we stand</p>
+      <h2>Position statements</h2>
+
+      <div class="cards cards--3 mt-2">
+        <article class="card">
+          <h3>Positive reinforcement</h3>
+          <p>
+            We train through operant conditioning via positive reinforcement.
+            A fuller statement is being written.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Spay &amp; neuter</h3>
+          <p>
+            Every dog over six months is spayed or neutered before adoption.
+            Younger dogs go home under a spay/neuter contract.
+          </p>
+        </article>
+        <article class="card">
+          <h3>ASPCA &amp; HSUS</h3>
+          <p>
+            We support the work and policies of the ASPCA and the Humane
+            Society of the United States.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- -------------------------------------------------------------- cta -- -->
+  <section class="section band">
+    <div class="wrap center">
+      <h2 style="color: var(--white);">Every dog here got here because someone helped.</h2>
+      <p style="color: rgba(255,253,249,0.88); max-width: 54ch; margin-inline: auto;">
+        Foster, volunteer, adopt or donate — all four are the same job from
+        different angles.
+      </p>
+      <div class="btn-row mt-2" style="justify-content: center;">
+        <a class="btn btn--light" href="/dogs">Meet the dogs</a>
+        <a class="btn btn--ghost" style="color: #fffdf9;" href="/donate">Donate</a>
+      </div>
+    </div>
+  </section>
+</Base>
