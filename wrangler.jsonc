@@ -1,0 +1,18 @@
+{
+  // Static-asset Worker. There is no server-side code — `dist` is uploaded
+  // as-is and Cloudflare serves it from the edge.
+  //
+  // Deploy:  npm run deploy
+  // The GitHub Action uses `wrangler pages deploy` against a claimed account;
+  // this config covers local and temporary-preview deploys.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bcsave-preview",
+  "compatibility_date": "2026-08-05",
+  "assets": {
+    "directory": "./dist",
+    // Serve /dogs/bear for /dogs/bear/ and vice versa, and use our styled
+    // 404.html rather than Cloudflare's default.
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

@@ -55,10 +55,12 @@ jobs:
           echo "::notice::CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets"
           echo "::notice::under Settings > Secrets and variables > Actions to enable it."
 
-      - name: Deploy to Cloudflare Pages
+      # Deploys the static-asset Worker defined in wrangler.jsonc — the same
+      # command as `npm run deploy` locally, so CI and local cannot drift.
+      - name: Deploy to Cloudflare
         if: env.CF_TOKEN != '' && env.CF_ACCOUNT != ''
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ env.CF_TOKEN }}
           accountId: ${{ env.CF_ACCOUNT }}
-          command: pages deploy dist --project-name=bcsave --branch=main
+          command: deploy
