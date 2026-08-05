@@ -1,0 +1,160 @@
+---
+import Base from "../layouts/Base.astro";
+import raw from "../data/alumni.json";
+import { dogs } from "../data/dogs";
+
+interface Alum {
+  id: string;
+  slug: string;
+  name: string;
+  sex: string;
+  location: string;
+  blurb: string;
+  adoptedMonth: string | null;
+  image: string;
+}
+
+const alumni = raw as Alum[];
+
+/*
+ * Adoption months are derived from the ShelterManager feed's `days` filter,
+ * not from a date field — see scripts/fetch-alumni.mjs. The feed caps at 180
+ * records, so this is recent history, not all time.
+ */
+const byMonth = new Map<string, Alum[]>();
+for (const a of alumni) {
+  if (!a.adoptedMonth) continue;
+  const list = byMonth.get(a.adoptedMonth) ?? [];
+  list.push(a);
+  byMonth.set(a.adoptedMonth, list);
+}
+const months = [...byMonth.keys()].sort().reverse();
+
+const monthLabel = (key: string) => {
+  const [y, m] = key.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, 1)).toLocaleString("en-US", {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+};
+
+// Rolling twelve months, counted from the data rather than hardcoded.
+const cutoff = (() => {
+  const d = new Date();
+  d.setUTCMonth(d.getUTCMonth() - 11, 1);
+  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}`;
+})();
+const lastYear = alumni.filter((a) => a.adoptedMonth && a.adoptedMonth >= cutoff).length;
+const busiest = months
+  .map((m) => ({ m, n: byMonth.get(m)!.length }))
+  .sort((a, b) => b.n - a.n)[0];
+---
+
+<Base
+  title="Alumni — Dogs Who Found Their Homes | BCSAVE"
+  description={`${alumni.length} Border Collies placed by Border Collie Save & Rescue. Every one of them was in a foster home first.`}
+>
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="eyebrow">Alumni</p>
+      <h1 style="max-width: 15ch;">{alumni.length} dogs. {alumni.length} homes.</h1>
+      <p class="lede">
+        Every dog below came through a Texas shelter, a surrender, or a
+        situation that was not working — and went home with somebody. This is
+        what the fostering, the vet bills and the applications are actually
+        for.
+      </p>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="wrap">
+      <div class="stats__grid">
+        <div class="stat">
+          <span class="stat__num">{lastYear}</span>
+          <span class="stat__label">Adopted in 12 months</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">{months.length}</span>
+          <span class="stat__label">Months of placements</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">{busiest?.n ?? 0}</span>
+          <span class="stat__label">Best single month</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">{dogs.length}</span>
+          <span class="stat__label">Still waiting</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {
+    months.map((month, mi) => (
+      <section
+        class="section section--tight"
+        style={mi % 2 === 1 ? "background: var(--paper-warm);" : undefined}
+      >
+        <div class="wrap">
+          <div class="alumni__head">
+            <h2>{monthLabel(month)}</h2>
+            <span class="alumni__count">
+              {byMonth.get(month)!.length} home
+              {byMonth.get(month)!.length === 1 ? "" : "s"}
+            </span>
+          </div>
+
+          <ul class="alumni-grid">
+            {byMonth.get(month)!.map((a, i) => (
+              <li class="alum">
+                <div class="alum__media">
+                  <img
+                    src={`${a.image}-t.webp`}
+                    alt={`${a.name}, adopted ${monthLabel(month)}`}
+                    width="500"
+                    height="500"
+                    loading={mi === 0 && i < 6 ? "eager" : "lazy"}
+                    decoding="async"
+                  />
+                </div>
+                <div class="alum__body">
+                  <span class="alum__name">{a.name}</span>
+                  {a.location && a.location !== "Unassigned" && (
+                    <span class="alum__where">{a.location.replace(/\s*\(.*\)/, "")}</span>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="section section--tight band">
+    <div class="wrap center">
+      <h2 style="color: var(--white);">{dogs.length} more are still waiting.</h2>
+      <p style="color: rgba(255,253,249,0.88); max-width: 50ch; margin-inline: auto;">
+        Every dog on this page needed a foster home before they could have a
+        forever one.
+      </p>
+      <div class="btn-row mt-2" style="justify-content: center;">
+        <a class="btn btn--light" href="/dogs">Meet the dogs</a>
+        <a class="btn btn--ghost" style="color: #fffdf9;" href="/donate">Donate</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="wrap">
+      <p style="font-size: 0.85rem; color: var(--ink-faint); max-width: 70ch;">
+        Adoption months are taken from our ShelterManager records. The public
+        feed returns our most recent 180 placements, so dogs adopted before
+        {months.length ? ` ${monthLabel(months.at(-1)!)}` : " then"} are not
+        shown here — they were no less loved.
+      </p>
+    </div>
+  </section>
+</Base>
