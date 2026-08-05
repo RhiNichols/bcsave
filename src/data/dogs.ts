@@ -21,6 +21,26 @@ export interface Dog {
 
 export const dogs = raw as Dog[];
 
+/**
+ * Escape a bio paragraph, then turn bare URLs into real links.
+ *
+ * Volunteers type plain text into ShelterManager, so links arrive unclickable.
+ * Escaping happens first and the only markup added afterwards is our own
+ * anchor, so the result is safe to render with set:html.
+ */
+export function bioParagraphHtml(text: string): string {
+  const escaped = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
+  return escaped.replace(/https?:\/\/[^\s<]+[^\s<.,;:!?)\]]/g, (url) => {
+    const label = url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+    return `<a href="${url}" rel="noopener nofollow" target="_blank">${label}</a>`;
+  });
+}
+
 /** ShelterManager writes ages as "10 weeks", "1 year", "3 years". */
 export function ageInYears(dog: Dog): number {
   const m = dog.age.match(/([\d.]+)\s*(week|month|year)/i);

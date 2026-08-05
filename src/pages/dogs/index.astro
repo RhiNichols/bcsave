@@ -78,7 +78,7 @@ for (const d of dogs) counts[ageGroup(d)]++;
     <p id="filter-count" class="lede" aria-live="polite" style="font-size: 0.95rem;"></p>
 
     <ul class="dog-grid" id="dog-grid">
-      {sorted.map((dog, i) => <DogCard dog={dog} eager={i < 6} />)}
+      {sorted.map((dog, i) => <DogCard dog={dog} eager={i < 6} level={2} />)}
     </ul>
 
     <p id="filter-empty" class="notice" hidden>

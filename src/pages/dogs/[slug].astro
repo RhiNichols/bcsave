@@ -1,7 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import DogCard from "../../components/DogCard.astro";
-import { dogs, isPuppy } from "../../data/dogs";
+import { dogs, isPuppy, bioParagraphHtml } from "../../data/dogs";
 import type { Dog } from "../../data/dogs";
 import { forms } from "../../data/links";
 
@@ -125,7 +125,7 @@ const more = dogs.filter((d) => d.slug !== dog.slug).slice(0, 4);
         paragraphs.length > 0 && (
           <div class="bio" style="max-width: 68ch; margin-top: clamp(2rem, 5vw, 3.5rem);">
             <h2 style="font-size: clamp(1.5rem, 4vw, 2rem);">About {dog.name}</h2>
-            {paragraphs.map((p) => <p>{p}</p>)}
+            {paragraphs.map((p) => <p set:html={bioParagraphHtml(p)} />)}
           </div>
         )
       }

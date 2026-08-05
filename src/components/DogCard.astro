@@ -6,9 +6,15 @@ interface Props {
   dog: Dog;
   /** First few cards on a page should load eagerly; the rest lazy-load. */
   eager?: boolean;
+  /**
+   * Heading level for the dog's name. Cards sit under an h2 on most pages, but
+   * directly under the h1 on /dogs — hardcoding h3 skips a level there.
+   */
+  level?: 2 | 3;
 }
 
-const { dog, eager = false } = Astro.props;
+const { dog, eager = false, level = 3 } = Astro.props;
+const Heading = `h${level}` as "h2" | "h3";
 const img = dog.images[0];
 const snippet = dog.bio.split("\n\n")[0] ?? "";
 ---
@@ -34,7 +40,7 @@ const snippet = dog.bio.split("\n\n")[0] ?? "";
   </div>
 
   <div class="dog__body">
-    <h3 class="dog__name"><a href={`/dogs/${dog.slug}`}>{dog.name}</a></h3>
+    <Heading class="dog__name"><a href={`/dogs/${dog.slug}`}>{dog.name}</a></Heading>
     <p class="dog__meta">
       {[dog.sex, dog.age, dog.weight].filter(Boolean).join(" · ")}
     </p>
