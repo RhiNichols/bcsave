@@ -9,15 +9,16 @@ const regionCount = locations().length;
 const fees = [...new Set(dogs.map((d) => d.fee))].filter(Boolean).sort();
 
 /*
- * NOTE FOR RHIANNON: these impact amounts are plausible for a rescue this size
- * but they are NOT taken from BCSAVE's books — I made them up as placeholders.
- * Confirm real figures with the treasurer before this goes in front of anyone.
+ * Every line below is taken from BCSAVE's own published FAQ — no invented
+ * figures. An earlier draft had made-up dollar amounts per tier; do not
+ * reintroduce those without real numbers from the treasurer.
  */
-const tiers = [
-  { amt: "$25", txt: "Vaccines and a microchip for one intake dog." },
-  { amt: "$75", txt: "A month of food and heartworm prevention in foster care." },
-  { amt: "$150", txt: "Spay or neuter surgery — required before every adoption." },
-  { amt: "$400", txt: "Full heartworm treatment for a dog who arrives positive." },
+const covered = [
+  "Core vaccinations — distemper, adenovirus, parvovirus and parainfluenza",
+  "Bordetella and rabies",
+  "A heartworm test, and treatment for the dogs who come back positive",
+  "Spay or neuter before adoption for every dog over six months",
+  "Foster care for as long as it takes to find the right home",
 ];
 ---
 
@@ -182,7 +183,7 @@ const tiers = [
           <a class="btn btn--ghost" href={forms.foster}>Apply to foster</a>
         </article>
 
-        <article class="card">
+        <article class="card" id="volunteer">
           <div class="card__icon card__icon--brand" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -237,11 +238,16 @@ const tiers = [
       </div>
 
       <div class="give-tiers">
+        <p class="give-tiers__head">Every dog we take in gets:</p>
         {
-          tiers.map((t) => (
+          covered.map((item) => (
             <div class="give-tier">
-              <span class="give-tier__amt">{t.amt}</span>
-              <span class="give-tier__txt">{t.txt}</span>
+              <span class="give-tier__check" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              <span class="give-tier__txt">{item}</span>
             </div>
           ))
         }

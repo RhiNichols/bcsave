@@ -850,12 +850,23 @@ h3 {
   padding: 0.9rem 1rem;
 }
 
-.give-tier__amt {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
+.give-tiers__head {
   font-weight: 700;
+  font-size: 0.95rem;
+  margin: 0 0 0.15rem;
+  color: var(--white);
+}
+
+.give-tier__check {
   flex: 0 0 auto;
-  min-width: 3.4rem;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 253, 249, 0.2);
+  color: var(--white);
+  margin-top: 1px;
 }
 
 .give-tier__txt {
