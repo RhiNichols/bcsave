@@ -218,5 +218,17 @@ async function main() {
 
 main().catch((err) => {
   console.error(`fetch-dogs failed: ${err.message}`);
+
+  // A scheduled rebuild must never be able to take the site down. If
+  // ShelterManager is unreachable, fall back to the dogs.json already in the
+  // repo — stale by a few hours beats a failed deploy. Only fail hard when
+  // there is no snapshot to fall back to.
+  if (existsSync(DATA)) {
+    console.warn("Falling back to the committed src/data/dogs.json.");
+    console.warn("Dogs will be stale until the next successful fetch.");
+    process.exit(0);
+  }
+
+  console.error("No existing dogs.json to fall back to — failing the build.");
   process.exit(1);
 });

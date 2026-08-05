@@ -62,10 +62,16 @@ const more = dogs.filter((d) => d.slug !== dog.slug).slice(0, 4);
             dog.images.length > 1 && (
               <div class="gallery__thumbs" role="group" aria-label={`More photos of ${dog.name}`}>
                 {dog.images.map((img, i) => (
-                  <button type="button" data-full={`${img}.webp`} aria-current={i === 0 ? "true" : "false"}>
+                  <button
+                    type="button"
+                    data-full={`${img}.webp`}
+                    aria-label={`Show photo ${i + 1} of ${dog.name}`}
+                    aria-current={i === 0 ? "true" : "false"}
+                  >
+                    {/* Button carries the label; empty alt avoids a double announcement. */}
                     <img
                       src={`${img}-t.webp`}
-                      alt={`Photo ${i + 1} of ${dog.name}`}
+                      alt=""
                       width="68"
                       height="68"
                       loading="lazy"

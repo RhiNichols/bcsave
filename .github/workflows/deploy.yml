@@ -25,6 +25,12 @@ jobs:
       contents: read
       deployments: write
 
+    # Lifted to job level so the deploy step's `if:` can read them. A secret
+    # referenced directly in an `if:` is always empty.
+    env:
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -40,9 +46,19 @@ jobs:
       - name: Build site
         run: npm run build
 
+      # Until the Cloudflare secrets exist, verify the build and stop there
+      # rather than failing the run on a deploy nobody configured yet.
+      - name: Skip deploy (Cloudflare secrets not set)
+        if: env.CF_TOKEN == '' || env.CF_ACCOUNT == ''
+        run: |
+          echo "::notice::Build succeeded. Deploy skipped — add the"
+          echo "::notice::CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets"
+          echo "::notice::under Settings > Secrets and variables > Actions to enable it."
+
       - name: Deploy to Cloudflare Pages
+        if: env.CF_TOKEN != '' && env.CF_ACCOUNT != ''
         uses: cloudflare/wrangler-action@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ env.CF_TOKEN }}
+          accountId: ${{ env.CF_ACCOUNT }}
           command: pages deploy dist --project-name=bcsave --branch=main

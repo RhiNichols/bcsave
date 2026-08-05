@@ -859,6 +859,13 @@ p {
   gap: clamp(1.5rem, 4vw, 3rem);
 }
 
+/* Grid items default to min-width:auto, so the horizontally scrolling
+   thumbnail strip inside forces its column wider than the phone and the whole
+   page scrolls sideways. Any dog with more than about four photos hit this. */
+.detail > * {
+  min-width: 0;
+}
+
 @media (min-width: 56rem) {
   .detail {
     grid-template-columns: 1.05fr 0.95fr;
@@ -1080,7 +1087,7 @@ p {
   }
 }
 
-.ftr h4 {
+.ftr h3 {
   font-family: var(--font-body);
   font-size: 0.76rem;
   font-weight: 700;

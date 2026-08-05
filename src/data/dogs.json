@@ -60,6 +60,31 @@
     ]
   },
   {
+    "id": "289",
+    "slug": "ace-trafalgar",
+    "name": "Ace Trafalgar",
+    "sex": "Male",
+    "age": "1 year",
+    "weight": "48 lb",
+    "color": "Black & White",
+    "coat": "Rough (Medium)",
+    "energy": "TBD",
+    "fixed": "No",
+    "heartworm": "",
+    "location": "Central Texas (Waco)",
+    "fee": "$300",
+    "bio": "Ace was abandoned as a stray and rescued by a good Samaritan that reached out to us for help.\n\nAce may start off a little shy, but once he feels comfortable, his affectionate and playful personality shines through. He loves greeting familiar faces, enjoys being outdoors, and would thrive with an active family who loves adventures, playtime, and fresh air.\n\nAce is a true Border Collie at heart — smart, energetic, and always ready to chase, herd, or puzzle his way into fun. He does especially well with another playful, energetic dog who can help him burn off all that enthusiasm. He’s also cat-friendly and lives peacefully with a cat now. Inside, Ace is chill; he’s housebroken, can be left alone without issue, and loves settling under the dining table or solving treat puzzles.\n\nWith his nose nudges, joyful energy, and loyal nature, Ace is the kind of dog who will bond deeply with his people and bring so much life to a home. He’s still getting comfortable with leashes and harnesses, but he’s learning and making progress every day. If you’re looking for a clever, loving companion to join you on life’s adventures, Ace may be your perfect match.\n\nSide note: he has gotten to the occasional tennis shoe or stray piece of paper laying around, but otherwise sticks to his toys. And when he's been fulfilled mentally/physically he pretty much ignores the \"enticing\" objects.",
+    "images": [
+      "/dogs/ace-trafalgar-0",
+      "/dogs/ace-trafalgar-1",
+      "/dogs/ace-trafalgar-2",
+      "/dogs/ace-trafalgar-3",
+      "/dogs/ace-trafalgar-4",
+      "/dogs/ace-trafalgar-5",
+      "/dogs/ace-trafalgar-6"
+    ]
+  },
+  {
     "id": "288",
     "slug": "sparky",
     "name": "Sparky",
@@ -76,12 +101,7 @@
     "bio": "Sparky was rescued from a shelter in LA after his former owner went into hospice. Sparky is very smart and affectionate and loyal/eager to please once he bonds with his human - he is border collie through and through and will be a wonderful companion for an experience border collie lover. Since he did not have a very good start in life, he is currently undergoing professional leash training and socialization to make sure he’s well set up for his family.\n\nSparky is fostered in Houston, TX",
     "images": [
       "/dogs/sparky-0",
-      "/dogs/sparky-1",
-      "/dogs/sparky-2",
-      "/dogs/sparky-3",
-      "/dogs/sparky-4",
-      "/dogs/sparky-5",
-      "/dogs/sparky-6"
+      "/dogs/sparky-1"
     ]
   },
   {
@@ -107,27 +127,6 @@
     ]
   },
   {
-    "id": "287",
-    "slug": "houston",
-    "name": "Houston",
-    "sex": "Female",
-    "age": "10 weeks",
-    "weight": "5 lb",
-    "color": "Black & White",
-    "coat": "Not Specified",
-    "energy": "High",
-    "fixed": "No",
-    "heartworm": "",
-    "location": "Hill Country (SA/Austin)",
-    "fee": "$350",
-    "bio": "Houston is an exceptionally talented young Border Collie with all the ingredients of a serious working or sport prospect. She combines tremendous natural athleticism with intense toy drive, exceptional foot speed, and the strongest instinctive herding drive of the litter. Whether she's chasing a toy, working livestock, or problem-solving in the field, Houston approaches every task with focus, determination, and an impressive work ethic well beyond her age.\n\nConfident and independent, Houston is comfortable exploring new environments and meeting new people and dogs without hesitation. Unlike many puppies her age, she's equally happy working close to her handler or confidently solving problems at a distance, making her especially appealing for experienced sport or stock dog homes.\n\nShe possesses outstanding tug and fetch drive, learns quickly, and consistently demonstrates the highest level of environmental awareness and intelligence among her littermates. While still gaining confidence around water and occasionally showing mild signs of resource guarding that should continue to be managed through positive training, Houston's combination of speed, athleticism, confidence, and natural instinct make her an exciting prospect for agility, flyball, disc, herding, or any active lifestyle that gives her a job to do.\n\n•\tOutstanding athletic potential\n\nAn active home interested in dog sports, advanced obedience, herding, or someone wanting a Border Collie that enjoys having a job.\n\n•\tLess naturally affectionate than her siblings.\n\n•\tExtremely high drive with an exceptional work ethic.\n\n•\tBenefits from consistent mental stimulation and structured training.\n\n•\tIndependent personality may be best suited for owners familiar with working Border Collies.",
-    "images": [
-      "/dogs/houston-0",
-      "/dogs/houston-1",
-      "/dogs/houston-2"
-    ]
-  },
-  {
     "id": "286",
     "slug": "dallas",
     "name": "Dallas",
@@ -145,12 +144,7 @@
     "images": [
       "/dogs/dallas-0",
       "/dogs/dallas-1",
-      "/dogs/dallas-2",
-      "/dogs/dallas-3",
-      "/dogs/dallas-4",
-      "/dogs/dallas-5",
-      "/dogs/dallas-6",
-      "/dogs/dallas-7"
+      "/dogs/dallas-2"
     ]
   },
   {
