@@ -1,0 +1,245 @@
+---
+import Base from "../layouts/Base.astro";
+import { dogs } from "../data/dogs";
+
+/*
+ * Internal how-to for volunteers who post dogs.
+ *
+ * Deliberately NOT a website editor. ShelterManager is the system of record —
+ * volunteers already know it, and a second place to type a dog's details is
+ * how a rescue ends up with two versions of the truth. This page just makes
+ * the ShelterManager they already use unambiguous.
+ *
+ * The field list below is authoritative because it mirrors the parser in
+ * scripts/lib/asm.mjs. If that parser changes, change this page too.
+ */
+
+// Exactly what the website reads out of ShelterManager, in the order it
+// appears on a dog's page.
+const usedFields = [
+  { field: "Name", shows: "The dog's name, as the page heading", required: true },
+  { field: "Photos", shows: "Main photo and the thumbnail strip (up to 8)", required: true },
+  { field: "Description", shows: "The whole story section under the photos", required: true },
+  { field: "Sex", shows: "Listed under the name and used by the Female/Male filter", required: false },
+  { field: "Age", shows: "Under the name, and decides the Puppy badge and age filters", required: false },
+  { field: "Weight", shows: "Under the name and in the fact table", required: false },
+  { field: "Colour", shows: "Fact table", required: false },
+  { field: "Coat", shows: "Fact table", required: false },
+  { field: "Energy Level", shows: "Fact table — hidden if left as TBD", required: false },
+  { field: "Spayed/Neutered", shows: "Fact table", required: false },
+  { field: "Heartworm Status", shows: "Fact table", required: false },
+  { field: "Location", shows: "Fact table, and drives the region filters", required: false },
+  { field: "Adoption Fee", shows: "Shown on the dog's card and page", required: false },
+];
+
+const mistakes = [
+  {
+    problem: "The dog isn't on the website at all",
+    cause:
+      "Almost always the dog has no photo. A dog with no photo is skipped entirely, because a listing with no face does not get adopted.",
+    fix: "Add at least one photo in ShelterManager.",
+  },
+  {
+    problem: "The website shows the BCSAVE logo instead of the dog",
+    cause:
+      "ShelterManager sends the logo as a stand-in when a dog has no photo of their own.",
+    fix: "Upload a real photo and it replaces the logo automatically.",
+  },
+  {
+    problem: "The story section is empty",
+    cause: "The description field is blank, or only has a very short line in it.",
+    fix: "Write at least a sentence or two in the description.",
+  },
+  {
+    problem: "Changes haven't shown up yet",
+    cause: "The website refreshes from ShelterManager on a schedule, not instantly.",
+    fix: "Give it a few hours. Nothing is lost — it will appear on the next refresh.",
+  },
+];
+---
+
+<Base
+  title="How to post a dog — BCSAVE volunteer guide"
+  description="Internal guide for BCSAVE volunteers: how to get a dog onto the website using ShelterManager."
+  hideCta={true}
+>
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="eyebrow">Volunteer guide · internal</p>
+      <h1 style="max-width: 17ch;">How to post a dog</h1>
+      <p class="lede">
+        You already know ShelterManager. That is the only place you need to
+        work — the website reads from it automatically. You never have to log
+        into the website or ask anyone to publish for you.
+      </p>
+
+      <div class="notice" style="max-width: 62ch;">
+        <strong>The short version:</strong> add a photo, write the description,
+        make sure the dog is marked adoptable. That is genuinely it.
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------ steps -- -->
+  <section class="section section--tight" style="background: var(--paper-warm);">
+    <div class="wrap">
+      <h2>The three things that matter</h2>
+
+      <ol class="steps mt-2">
+        <li>
+          <h3>Add photos</h3>
+          <p>
+            Open the dog in ShelterManager and go to the <strong>Media</strong>
+            tab. Attach your photos there. The first one — the
+            <strong>preferred</strong> image — becomes the big photo on the
+            website, and up to eight appear in the thumbnail strip.
+          </p>
+          <p>
+            <strong>A dog with no photo does not appear on the website at all.</strong>
+            Photos straight off a phone are fine; the website shrinks them.
+          </p>
+        </li>
+        <li>
+          <h3>Write the description</h3>
+          <p>
+            On the dog's main record, fill in the <strong>Description</strong>
+            field. Whatever you type there becomes their story on the website,
+            exactly as written — so write it for an adopter, not as case notes.
+          </p>
+          <p>
+            Paragraphs are kept. Web links become clickable on their own. There
+            is no length limit.
+          </p>
+        </li>
+        <li>
+          <h3>Make sure the dog is adoptable</h3>
+          <p>
+            The website only lists dogs ShelterManager reports as adoptable. If
+            a dog is complete but missing from the site, this is usually why.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ----------------------------------------------------------- fields -- -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <h2>What the website actually uses</h2>
+      <p class="lede">
+        ShelterManager has a great many fields. The website reads only these —
+        anything else you fill in is for the rescue's own records and will not
+        appear publicly.
+      </p>
+
+      <div class="table-wrap mt-2">
+        <table class="grid-table">
+          <thead>
+            <tr>
+              <th scope="col">Field in ShelterManager</th>
+              <th scope="col">Where it shows up</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              usedFields.map((f) => (
+                <tr>
+                  <th scope="row">
+                    {f.field}
+                    {f.required && <span class="req">needed</span>}
+                  </th>
+                  <td>{f.shows}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size: 0.9rem; color: var(--ink-faint); margin-top: 1rem;">
+        Medical details, intake history, notes and anything else stay private.
+        They are never published.
+      </p>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------- mistakes -- -->
+  <section class="section section--tight" style="background: var(--paper-warm);">
+    <div class="wrap">
+      <h2>If something looks wrong</h2>
+
+      <div class="faq mt-2">
+        {
+          mistakes.map((m) => (
+            <details class="faq__item">
+              <summary>
+                <span>{m.problem}</span>
+                <svg class="faq__chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </summary>
+              <div class="faq__body">
+                <p><strong>Why:</strong> {m.cause}</p>
+                <p><strong>Fix:</strong> {m.fix}</p>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------ admin -- -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="panel" style="max-width: 62rem;">
+        <p class="eyebrow">For whoever manages ShelterManager</p>
+        <h2 style="font-size: clamp(1.3rem, 3.5vw, 1.8rem);">
+          Giving a volunteer exactly enough access
+        </h2>
+        <p style="color: var(--ink-soft);">
+          A volunteer who only posts dogs does not need — and should not have —
+          the run of the system. In ShelterManager, go to
+          <strong>Settings → System user accounts</strong>, create a role
+          called something like <em>Dog Listings</em>, and tick only these five
+          permissions:
+        </p>
+
+        <ul style="color: var(--ink-soft);">
+          <li><strong>View animal</strong> — so they can find the dog</li>
+          <li><strong>Change animal</strong> — so they can write the description</li>
+          <li><strong>View media</strong> — so they can see existing photos</li>
+          <li><strong>Add media</strong> — so they can upload new ones</li>
+          <li><strong>Change media</strong> — so they can set the preferred photo</li>
+        </ul>
+
+        <p style="color: var(--ink-soft);">
+          Leave every other box unticked. Create each volunteer as a
+          <strong>normal user</strong> — not a superuser — and assign them that
+          one role. They log in and see a system they cannot break, and
+          everything they change flows to the website on its own.
+        </p>
+
+        <p class="notice" style="margin-top: 1.25rem;">
+          Worth confirming the exact wording of those five tickboxes against
+          your own ShelterManager screen — the underlying permissions are
+          <code>va</code>, <code>ca</code>, <code>vam</code>, <code>aam</code>
+          and <code>cam</code>, but the labels can differ slightly by version.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight band">
+    <div class="wrap center">
+      <h2 style="color: var(--white);">That's the whole job.</h2>
+      <p style="color: rgba(255,253,249,0.88); max-width: 52ch; margin-inline: auto;">
+        Photo, description, adoptable. The website is currently showing
+        {dogs.length} dogs, and every one of them got there this way.
+      </p>
+      <div class="btn-row mt-2" style="justify-content: center;">
+        <a class="btn btn--light" href="/dogs">See the live listings</a>
+      </div>
+    </div>
+  </section>
+</Base>

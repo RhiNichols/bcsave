@@ -1063,6 +1063,79 @@ h3 {
   color: var(--paper);
 }
 
+/* --------------------------------------------------------------- table -- */
+
+/* Wide tables scroll inside their own box so the page never does. */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.grid-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+  min-width: 30rem;
+}
+
+.grid-table th,
+.grid-table td {
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.grid-table thead th {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  background: var(--paper-warm);
+}
+
+.grid-table tbody th {
+  font-family: var(--font-body);
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.grid-table tbody tr:last-child th,
+.grid-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.grid-table td {
+  color: var(--ink-soft);
+}
+
+.req {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--ember-wash);
+  color: var(--ember-deep);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88em;
+  background: var(--paper-warm);
+  padding: 0.1rem 0.35rem;
+  border-radius: 5px;
+}
+
 /* -------------------------------------------------------------- alumni -- */
 
 .alumni__head {
