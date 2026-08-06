@@ -12,7 +12,13 @@ export const forms = {
   foster: "https://bcsave.org/foster-form/",
   volunteer: "https://bcsave.org/volunteer-form/",
   surrender: "https://bcsave.org/os-form/",
+  // Found-dog report. Takes photo uploads and a captcha, so it stays on
+  // WordPress — a static site cannot host it.
+  lostDog: "https://bcsave.org/lostdog/",
 };
+
+/** Monitored inbox for found-dog reports, from the lost dog form's own page. */
+export const lostDogEmail = "lost@bcsave.org";
 
 export const social = {
   facebook: "https://www.facebook.com/bcsave",

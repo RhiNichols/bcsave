@@ -15,7 +15,7 @@
 import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
-import { parseFeed, idsIn, fetchPhoto, pool, UA } from "./lib/asm.mjs";
+import { parseFeed, idsIn, fetchPhoto, pool, fetchText, breathe } from "./lib/asm.mjs";
 
 const ACCOUNT = "jb3344";
 const BASE = `https://service.sheltermanager.com/asmservice?account=${ACCOUNT}&method=html_adopted_animals`;
@@ -31,11 +31,7 @@ const MONTHS = Number(
 
 const DAY = 86400000;
 
-async function getFeed(days) {
-  const res = await fetch(`${BASE}&days=${days}`, { headers: { "User-Agent": UA } });
-  if (!res.ok) throw new Error(`feed returned ${res.status} for days=${days}`);
-  return res.text();
-}
+const getFeed = (days) => fetchText(`${BASE}&days=${days}`);
 
 async function main() {
   const now = new Date();
@@ -73,6 +69,7 @@ async function main() {
       console.log("  ↑ hit the feed's 180-record cap; older dogs are not retrievable.");
       break;
     }
+    await breathe();
   }
 
   // Full records come from the widest query.

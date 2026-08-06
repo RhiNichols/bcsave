@@ -1,0 +1,150 @@
+---
+import Base from "../layouts/Base.astro";
+import { forms, lostDogEmail } from "../data/links";
+
+/*
+ * The report form itself takes photo uploads and a captcha, so it stays on
+ * WordPress — a static site cannot host it. This page carries the content and
+ * hands off cleanly, rather than the nav dead-ending at the old site.
+ */
+---
+
+<Base
+  title="Found a Dog? — Border Collie Save & Rescue"
+  description="What to do if you have found a Border Collie in Texas, including dogs wearing a BCSAVE tag or microchip."
+  ctaLabel="Report a found dog"
+  ctaHref={forms.lostDog}
+>
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="eyebrow">Found a dog</p>
+      <h1 style="max-width: 17ch;">Found a dog? Start here.</h1>
+      <p class="lede">
+        What to do next depends on whether the dog is one of ours.
+      </p>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------- ours vs stray -- -->
+  <section class="section section--tight" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="cards cards--2">
+        <div class="panel" style="border-color: var(--ember); border-width: 2px;">
+          <p class="eyebrow">Urgent</p>
+          <h2 style="font-size: clamp(1.3rem, 3.5vw, 1.7rem);">
+            The dog has a BCSAVE or ABCR tag, or a microchip that came back to us
+          </h2>
+          <p style="color: var(--ink-soft);">
+            Then the dog is ours and we want to hear from you immediately. Fill
+            out the report form — it takes photos, tag numbers and microchip
+            details — and someone will be with you as soon as possible.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--ember btn--block" href={forms.lostDog}>
+              Report a found BCSAVE dog
+            </a>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--ink-soft); margin: 1rem 0 0;">
+            You can also send updates or photos straight to
+            <a href={`mailto:${lostDogEmail}`}><strong>{lostDogEmail}</strong></a>.
+          </p>
+        </div>
+
+        <div class="panel">
+          <p class="eyebrow" style="color: var(--brand);">More likely</p>
+          <h2 style="font-size: clamp(1.3rem, 3.5vw, 1.7rem);">
+            It is a stray with no connection to us
+          </h2>
+          <p style="color: var(--ink-soft);">
+            As a policy, <strong>we do not take in stray or found dogs</strong>
+            — and that policy exists to get dogs home, not to turn you away.
+          </p>
+          <p style="color: var(--ink-soft);">
+            Lost dogs travel for miles. Even with flyers and neighbourhood apps,
+            an owner may never learn their dog was found. County and city
+            shelters are the first place most people look, so contacting your
+            local shelter genuinely gives this dog the best chance of being
+            reunited.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------ what helps -- -->
+  <section class="section section--tight" style="background: var(--paper-warm);">
+    <div class="wrap">
+      <h2>If you take the dog to a shelter</h2>
+      <p class="lede">
+        Tell us anyway — especially if it is a Border Collie. It changes what we
+        can do next.
+      </p>
+
+      <ol class="steps mt-2">
+        <li>
+          <h3>Send us the details</h3>
+          <p>
+            Which shelter, any intake or ID number they assign, and anything you
+            know about the dog's behaviour.
+          </p>
+        </li>
+        <li>
+          <h3>We follow the dog</h3>
+          <p>
+            With that information we can track them through the shelter system
+            and start looking for a foster home ready for when the stray hold
+            ends.
+          </p>
+        </li>
+        <li>
+          <h3>Ask about in-home fostering</h3>
+          <p>
+            Many shelters let the finder keep the dog while the shelter lists
+            them as found — and will often release the dog to a rescue once the
+            stray hold is over.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------- exceptions -- -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="cards cards--2">
+        <div>
+          <h2 style="font-size: clamp(1.4rem, 4vw, 2rem);">Are there exceptions?</h2>
+          <p style="color: var(--ink-soft);">
+            Occasionally. For example when a dog was clearly abandoned after
+            their owners moved away, or when a stray has been in the same area
+            for a long time.
+          </p>
+          <p style="color: var(--ink-soft);">
+            If you think yours is a special circumstance, fill out the Owner
+            Surrender Questionnaire and we will review it and talk it through
+            with you.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--brand" href={forms.surrender}>
+              Owner Surrender Questionnaire
+            </a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Could you foster instead?</h3>
+          <p style="color: var(--ink-soft);">
+            The reason we cannot say yes to every dog is foster homes, not
+            willingness. If you have room, that is the single thing that changes
+            how many dogs we can take.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--ember btn--block" href={forms.foster}>
+              Apply to foster
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

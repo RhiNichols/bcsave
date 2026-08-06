@@ -15,6 +15,7 @@ import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
+import { fetchText } from "./lib/asm.mjs";
 
 const ACCOUNT = "BCSAVE";
 const FEED = `https://service.sheltermanager.com/asmservice?account=${ACCOUNT}&method=html_adoptable_animals`;
@@ -170,9 +171,7 @@ async function pool(items, workers, fn) {
 
 async function main() {
   console.log(`Fetching ${FEED}`);
-  const res = await fetch(FEED, { headers: { "User-Agent": UA } });
-  if (!res.ok) throw new Error(`Feed returned ${res.status}`);
-  const html = await res.text();
+  const html = await fetchText(FEED);
 
   const dogs = parseFeed(html);
   console.log(`Parsed ${dogs.length} dogs`);

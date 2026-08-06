@@ -1,21 +1,21 @@
-name: Build and deploy to Cloudflare Pages
+name: Build and deploy
 
 # Three triggers:
 #  - push:     ship changes as soon as they land on main
 #  - schedule: re-pull ShelterManager so adopted dogs drop off the site
-#  - manual:   "Run workflow" button for when someone needs it refreshed now
+#  - manual:   "Run workflow" button when someone needs it refreshed now
 on:
   push:
     branches: [main]
   schedule:
     # Every 3 hours. Dogs are added and adopted throughout the day, and a
-    # stale listing means applications for a dog that is already home.
+    # stale listing means applications for a dog who is already home.
     - cron: "0 */3 * * *"
   workflow_dispatch:
 
 # A scheduled run and a push run must never deploy over each other.
 concurrency:
-  group: deploy-pages
+  group: deploy-site
   cancel-in-progress: false
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
       deployments: write
 
     # Lifted to job level so the deploy step's `if:` can read them. A secret
-    # referenced directly in an `if:` is always empty.
+    # referenced directly in an `if:` always evaluates empty.
     env:
       CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -41,10 +41,29 @@ jobs:
 
       - run: npm ci
 
-      # Re-fetches dogs from ShelterManager, then builds. Photos already in the
-      # repo are reused; only new dogs cost a download.
+      # Adoptable dogs turn over constantly, so this runs every time.
+      - name: Refresh available dogs
+        run: npm run fetch:dogs
+
+      # Alumni costs ~25 requests of several MB each to derive adoption months.
+      # Worth it, but not eight times a day — once daily is plenty, and pushes
+      # and manual runs always refresh so you are never stuck with stale data.
+      - name: Decide whether to refresh alumni
+        id: alumni
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "$(date -u +%H)" = "06" ]; then
+            echo "refresh=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "refresh=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Refresh alumni
+        if: steps.alumni.outputs.refresh == 'true'
+        run: npm run fetch:alumni
+
+      # Data is already fetched above, so build without re-fetching.
       - name: Build site
-        run: npm run build
+        run: npm run build:offline
 
       # Until the Cloudflare secrets exist, verify the build and stop there
       # rather than failing the run on a deploy nobody configured yet.
@@ -53,14 +72,15 @@ jobs:
         run: |
           echo "::notice::Build succeeded. Deploy skipped — add the"
           echo "::notice::CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets"
-          echo "::notice::under Settings > Secrets and variables > Actions to enable it."
+          echo "::notice::under Settings > Secrets and variables > Actions."
 
-      # Deploys the static-asset Worker defined in wrangler.jsonc — the same
-      # command as `npm run deploy` locally, so CI and local cannot drift.
+      # Same `wrangler deploy` as `npm run deploy` locally, against the
+      # account pinned in wrangler.jsonc — CI and local cannot drift.
       - name: Deploy to Cloudflare
         if: env.CF_TOKEN != '' && env.CF_ACCOUNT != ''
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ env.CF_TOKEN }}
           accountId: ${{ env.CF_ACCOUNT }}
+          wranglerVersion: "4.118.0"
           command: deploy

@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "fetch:dogs": "node scripts/fetch-dogs.mjs",
+    "fetch:alumni": "node scripts/fetch-alumni.mjs",
     "build": "npm run fetch:dogs && astro build",
     "build:offline": "astro build",
     "deploy": "npm run build && wrangler deploy",

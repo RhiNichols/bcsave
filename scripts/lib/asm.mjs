@@ -12,6 +12,39 @@ import path from "node:path";
 export const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36";
 
+/**
+ * Fetch a feed with retries.
+ *
+ * The widest adopted-animals query runs to ~2.7MB and can take 30s+, and the
+ * connection sometimes drops partway. A scheduled rebuild should not fail over
+ * one flaky read, so back off and try again.
+ */
+export async function fetchText(url, { attempts = 4, timeoutMs = 120000 } = {}) {
+  let lastErr;
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      const res = await fetch(url, {
+        headers: { "User-Agent": UA },
+        signal: AbortSignal.timeout(timeoutMs),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const body = await res.text();
+      if (body.length < 200) throw new Error(`suspiciously short body (${body.length}b)`);
+      return body;
+    } catch (err) {
+      lastErr = err;
+      if (i === attempts) break;
+      const wait = 2000 * 2 ** (i - 1); // 2s, 4s, 8s
+      console.warn(`  retry ${i}/${attempts - 1} after ${err.message} — waiting ${wait / 1000}s`);
+      await new Promise((r) => setTimeout(r, wait));
+    }
+  }
+  throw new Error(`failed after ${attempts} attempts: ${lastErr?.message}`);
+}
+
+/** Be a good neighbour between large sequential reads. */
+export const breathe = (ms = 800) => new Promise((r) => setTimeout(r, ms));
+
 export const FIELDS = [
   "Name", "Sex", "Age", "Weight", "Color", "Coat", "Energy Level",
   "Spayed/Neutered", "Heartworm Status", "Location", "Adoption Fee",
