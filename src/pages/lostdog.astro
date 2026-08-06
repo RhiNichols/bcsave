@@ -39,14 +39,18 @@ import { forms, lostDogEmail } from "../data/links";
             out the report form — it takes photos, tag numbers and microchip
             details — and someone will be with you as soon as possible.
           </p>
+          {/* Both routes are full-size targets on purpose — someone using this
+              page has a loose dog in front of them and one hand free. */}
           <div class="btn-row">
             <a class="btn btn--ember btn--block" href={forms.lostDog}>
               Report a found BCSAVE dog
             </a>
+            <a class="btn btn--ghost btn--block" href={`mailto:${lostDogEmail}`}>
+              Email {lostDogEmail}
+            </a>
           </div>
           <p style="font-size: 0.9rem; color: var(--ink-soft); margin: 1rem 0 0;">
-            You can also send updates or photos straight to
-            <a href={`mailto:${lostDogEmail}`}><strong>{lostDogEmail}</strong></a>.
+            Photos, tag numbers and where you found them help most.
           </p>
         </div>
 
