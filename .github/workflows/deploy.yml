@@ -74,13 +74,24 @@ jobs:
           echo "::notice::CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets"
           echo "::notice::under Settings > Secrets and variables > Actions."
 
-      # Same `wrangler deploy` as `npm run deploy` locally, against the
-      # account pinned in wrangler.jsonc — CI and local cannot drift.
+      # Runs the wrangler pinned in package-lock.json — the same binary
+      # `npm run deploy` uses locally, so CI and a laptop cannot drift.
+      #
+      # This used to be cloudflare/wrangler-action@v3, which fetches its own
+      # wrangler and reports failures as bare "The process '…/npx' failed with
+      # exit code 1" with wrangler's actual error hidden inside a collapsed log
+      # group — unreadable without a GitHub login. Every scheduled run failed
+      # that way for days. Calling wrangler directly keeps its error in the
+      # log, and the trap below repeats the tail as an ::error:: annotation,
+      # which is visible from the API without authenticating.
       - name: Deploy to Cloudflare
         if: env.CF_TOKEN != '' && env.CF_ACCOUNT != ''
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ env.CF_TOKEN }}
-          accountId: ${{ env.CF_ACCOUNT }}
-          wranglerVersion: "4.118.0"
-          command: deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ env.CF_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ env.CF_ACCOUNT }}
+        run: |
+          set -o pipefail
+          if ! npx --no-install wrangler deploy 2>&1 | tee deploy.log; then
+            echo "::error::wrangler deploy failed — $(tail -c 900 deploy.log | tr '\n' ' ' | sed 's/[[:space:]]\+/ /g')"
+            exit 1
+          fi
