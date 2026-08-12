@@ -17,6 +17,11 @@
     // Named so the Worker can hand non-/api/ requests straight back to the
     // asset server.
     "binding": "ASSETS",
+    // Assets are matched before the Worker, and `not_found_handling` below
+    // makes the asset router claim every unmatched path — which swallowed the
+    // API routes and answered them with the 404 page. These prefixes go to the
+    // Worker first; everything else still short-circuits to a static file.
+    "run_worker_first": ["/api/*"],
     // Serve /dogs/bear for /dogs/bear/ and vice versa, and use our styled
     // 404.html rather than Cloudflare's default.
     "html_handling": "auto-trailing-slash",
