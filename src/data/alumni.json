@@ -1,5 +1,15 @@
 [
   {
+    "id": "262",
+    "slug": "winnie",
+    "name": "Winnie",
+    "sex": "Female",
+    "location": "Upper Gulf Coast (Houston)",
+    "blurb": "Winnie and Angel were living as strays in South Texas before being taken in by a good Samaritan. They could be siblings and are both around 1 year old, sweet, dog friendly, and soc",
+    "adoptedMonth": "2026-08",
+    "image": "/alumni/winnie"
+  },
+  {
     "id": "263",
     "slug": "angel",
     "name": "Angel",

@@ -1,5 +1,24 @@
 [
   {
+    "id": "294",
+    "slug": "leonidas",
+    "name": "Leonidas",
+    "sex": "Male",
+    "age": "3 years",
+    "weight": "45 lb",
+    "color": "Black & White",
+    "coat": "Rough (Long)",
+    "energy": "Medium",
+    "fixed": "Yes",
+    "heartworm": "",
+    "location": "Upper Gulf Coast (Houston)",
+    "fee": "$300",
+    "bio": "Leo was rescued from a North Texas shelter after being taken in as a stray.\n\nWe are still learning about him but so far he is a sweet boy that seems to get along with dogs and cats.\n\nLeo is being fostered near Beaumont, Tx",
+    "images": [
+      "/dogs/leonidas-0"
+    ]
+  },
+  {
     "id": "293",
     "slug": "rockie",
     "name": "Rockie",
@@ -15,7 +34,13 @@
     "fee": "$300",
     "bio": "Rockie was surrender to a rural OK shelter due to him having too much energy for his previous family.\n\nSince moving into a foster home, he has shown himself to be the sweetest, affectionate and most happy go lucky pup. He loves other dogs and people and is doing great at crate training, picking up some basic obedience and housebreaking. He can get a little excitable at times, but is learning to settle down well - just a smart little dude that will make an awesome companion with some patience and guidance.\n\nRockie is being fostered in Stillwater, OK. Third party transport options may be available into Texas.",
     "images": [
-      "/dogs/rockie-0"
+      "/dogs/rockie-0",
+      "/dogs/rockie-1",
+      "/dogs/rockie-2",
+      "/dogs/rockie-3",
+      "/dogs/rockie-4",
+      "/dogs/rockie-5",
+      "/dogs/rockie-6"
     ]
   },
   {
@@ -34,7 +59,8 @@
     "fee": "$300",
     "bio": "Shade is a 55 lb., approximately 2 years old mixed boy who was picked up by the shelter in late June after running down the highway. He has a fractured right rear leg and was not able to put weight on it.\n\nA friendly, sweet boy, we were able to pull him into rescue and he's currently under foster and medical care in the DFW area. We will keep you posted on his progress!",
     "images": [
-      "/dogs/shade-0"
+      "/dogs/shade-0",
+      "/dogs/shade-1"
     ]
   },
   {
@@ -54,7 +80,8 @@
     "bio": "Mochi was a stray that was rescued by an independent rescuer that asked us to step in to help find her a breed knowledgeable home.\n\nWe are still getting to know her but she is very affectionate, dog playful and has learned to be good around cats.\n\nMochi is being fostered in Houston, TX",
     "images": [
       "/dogs/mochi-0",
-      "/dogs/mochi-1"
+      "/dogs/mochi-1",
+      "/dogs/mochi-2"
     ]
   },
   {
@@ -75,7 +102,11 @@
     "images": [
       "/dogs/ziti-0",
       "/dogs/ziti-1",
-      "/dogs/ziti-2"
+      "/dogs/ziti-2",
+      "/dogs/ziti-3",
+      "/dogs/ziti-4",
+      "/dogs/ziti-5",
+      "/dogs/ziti-6"
     ]
   },
   {
@@ -95,12 +126,7 @@
     "bio": "Ace was abandoned as a stray and rescued by a good Samaritan that reached out to us for help.\n\nAce may start off a little shy, but once he feels comfortable, his affectionate and playful personality shines through. He loves greeting familiar faces, enjoys being outdoors, and would thrive with an active family who loves adventures, playtime, and fresh air.\n\nAce is a true Border Collie at heart — smart, energetic, and always ready to chase, herd, or puzzle his way into fun. He does especially well with another playful, energetic dog who can help him burn off all that enthusiasm. He’s also cat-friendly and lives peacefully with a cat now. Inside, Ace is chill; he’s housebroken, can be left alone without issue, and loves settling under the dining table or solving treat puzzles.\n\nWith his nose nudges, joyful energy, and loyal nature, Ace is the kind of dog who will bond deeply with his people and bring so much life to a home. He’s still getting comfortable with leashes and harnesses, but he’s learning and making progress every day. If you’re looking for a clever, loving companion to join you on life’s adventures, Ace may be your perfect match.\n\nSide note: he has gotten to the occasional tennis shoe or stray piece of paper laying around, but otherwise sticks to his toys. And when he's been fulfilled mentally/physically he pretty much ignores the \"enticing\" objects.",
     "images": [
       "/dogs/ace-trafalgar-0",
-      "/dogs/ace-trafalgar-1",
-      "/dogs/ace-trafalgar-2",
-      "/dogs/ace-trafalgar-3",
-      "/dogs/ace-trafalgar-4",
-      "/dogs/ace-trafalgar-5",
-      "/dogs/ace-trafalgar-6"
+      "/dogs/ace-trafalgar-1"
     ]
   },
   {
@@ -120,7 +146,9 @@
     "bio": "Sparky was rescued from a shelter in LA after his former owner went into hospice. Sparky is very smart and affectionate and loyal/eager to please once he bonds with his human - he is border collie through and through and will be a wonderful companion for an experience border collie lover. Since he did not have a very good start in life, he is currently undergoing professional leash training and socialization to make sure he’s well set up for his family.\n\nSparky is fostered in Houston, TX",
     "images": [
       "/dogs/sparky-0",
-      "/dogs/sparky-1"
+      "/dogs/sparky-1",
+      "/dogs/sparky-2",
+      "/dogs/sparky-3"
     ]
   },
   {
@@ -141,8 +169,7 @@
     "images": [
       "/dogs/ruben-0",
       "/dogs/ruben-1",
-      "/dogs/ruben-2",
-      "/dogs/ruben-3"
+      "/dogs/ruben-2"
     ]
   },
   {
@@ -163,7 +190,10 @@
     "images": [
       "/dogs/dallas-0",
       "/dogs/dallas-1",
-      "/dogs/dallas-2"
+      "/dogs/dallas-2",
+      "/dogs/dallas-3",
+      "/dogs/dallas-4",
+      "/dogs/dallas-5"
     ]
   },
   {
@@ -187,7 +217,9 @@
       "/dogs/antonio-2",
       "/dogs/antonio-3",
       "/dogs/antonio-4",
-      "/dogs/antonio-5"
+      "/dogs/antonio-5",
+      "/dogs/antonio-6",
+      "/dogs/antonio-7"
     ]
   },
   {
@@ -209,11 +241,7 @@
       "/dogs/bear-0",
       "/dogs/bear-1",
       "/dogs/bear-2",
-      "/dogs/bear-3",
-      "/dogs/bear-4",
-      "/dogs/bear-5",
-      "/dogs/bear-6",
-      "/dogs/bear-7"
+      "/dogs/bear-3"
     ]
   },
   {
@@ -234,8 +262,7 @@
     "images": [
       "/dogs/nugget-0",
       "/dogs/nugget-1",
-      "/dogs/nugget-2",
-      "/dogs/nugget-3"
+      "/dogs/nugget-2"
     ]
   },
   {
@@ -256,7 +283,8 @@
     "images": [
       "/dogs/forrest-0",
       "/dogs/forrest-1",
-      "/dogs/forrest-2"
+      "/dogs/forrest-2",
+      "/dogs/forrest-3"
     ]
   },
   {
@@ -278,7 +306,11 @@
       "/dogs/katydid-0",
       "/dogs/katydid-1",
       "/dogs/katydid-2",
-      "/dogs/katydid-3"
+      "/dogs/katydid-3",
+      "/dogs/katydid-4",
+      "/dogs/katydid-5",
+      "/dogs/katydid-6",
+      "/dogs/katydid-7"
     ]
   },
   {
@@ -353,10 +385,7 @@
       "/dogs/bug-1",
       "/dogs/bug-2",
       "/dogs/bug-3",
-      "/dogs/bug-4",
-      "/dogs/bug-5",
-      "/dogs/bug-6",
-      "/dogs/bug-7"
+      "/dogs/bug-4"
     ]
   },
   {
@@ -379,7 +408,8 @@
       "/dogs/angel-1",
       "/dogs/angel-2",
       "/dogs/angel-3",
-      "/dogs/angel-4"
+      "/dogs/angel-4",
+      "/dogs/angel-5"
     ]
   },
   {
@@ -403,7 +433,8 @@
       "/dogs/winnie-2",
       "/dogs/winnie-3",
       "/dogs/winnie-4",
-      "/dogs/winnie-5"
+      "/dogs/winnie-5",
+      "/dogs/winnie-6"
     ]
   },
   {
@@ -424,11 +455,7 @@
     "images": [
       "/dogs/ariel-0",
       "/dogs/ariel-1",
-      "/dogs/ariel-2",
-      "/dogs/ariel-3",
-      "/dogs/ariel-4",
-      "/dogs/ariel-5",
-      "/dogs/ariel-6"
+      "/dogs/ariel-2"
     ]
   },
   {
@@ -449,7 +476,8 @@
     "images": [
       "/dogs/grace-0",
       "/dogs/grace-1",
-      "/dogs/grace-2"
+      "/dogs/grace-2",
+      "/dogs/grace-3"
     ]
   },
   {
@@ -471,7 +499,11 @@
       "/dogs/cavatelli-0",
       "/dogs/cavatelli-1",
       "/dogs/cavatelli-2",
-      "/dogs/cavatelli-3"
+      "/dogs/cavatelli-3",
+      "/dogs/cavatelli-4",
+      "/dogs/cavatelli-5",
+      "/dogs/cavatelli-6",
+      "/dogs/cavatelli-7"
     ]
   },
   {
@@ -542,14 +574,7 @@
     "fee": "$300",
     "bio": "Fido (renamed Bennie) was rescued from a central Texas shelter",
     "images": [
-      "/dogs/fido-0",
-      "/dogs/fido-1",
-      "/dogs/fido-2",
-      "/dogs/fido-3",
-      "/dogs/fido-4",
-      "/dogs/fido-5",
-      "/dogs/fido-6",
-      "/dogs/fido-7"
+      "/dogs/fido-0"
     ]
   },
   {
@@ -568,7 +593,9 @@
     "fee": "$100",
     "bio": "Samson was adopted from BCSAVE in 2022. About 3 years old and around 69 lbs., Samson had his first seizure in late 2024 and since then, has had several seizures and been diagnosed with idiopathic epilepsy. He has been prescribed phenobarbital, which must be given twice daily, approximately 12 hours apart.\n\nHis current family is unable to consistently administer his medication on this schedule, which can lead to additional seizures, and has asked if we could find him a new home where he can get his medication regularly.\n\nA giant teddy bear of a dog, Samson lives with kids, does well with people of all ages and is fine with other dogs (he has not been cat-tested since being a puppy). He is house-trained and leash-trained, though he can be a bit of a puller. He knows several commands, including site, shake, lay, stay, wait and come.\n\nHis current owner got Samson DNA tested early on, and he's 41% Catahoula, 17% Cattle Dog, and 10% Border Collie (plus some other stuff). He's a gentle giant and super sweet.\n\nWe are looking for a foster who can manage Samson's medication regime (we would cover the cost) while we find him a FURever home. We would even love a FURever foster - someone who could love Samson and care for him and BCSAVE would cover his medical costs.",
     "images": [
-      "/dogs/samson-0"
+      "/dogs/samson-0",
+      "/dogs/samson-1",
+      "/dogs/samson-2"
     ]
   },
   {
@@ -652,7 +679,8 @@
     "images": [
       "/dogs/heartland-no-66-0",
       "/dogs/heartland-no-66-1",
-      "/dogs/heartland-no-66-2"
+      "/dogs/heartland-no-66-2",
+      "/dogs/heartland-no-66-3"
     ]
   },
   {
@@ -672,9 +700,7 @@
     "bio": "She is super sweet and is more socialized than most of the other dogs. She is dog friendly, but is not available at this time.",
     "images": [
       "/dogs/heartland-no-67-macy-0",
-      "/dogs/heartland-no-67-macy-1",
-      "/dogs/heartland-no-67-macy-2",
-      "/dogs/heartland-no-67-macy-3"
+      "/dogs/heartland-no-67-macy-1"
     ]
   },
   {
@@ -694,7 +720,10 @@
     "bio": "Alpha all the way. She is working through being in a crate and time on the leash with harness with her foster. She is smart and stubborn and needs someone who can be her alpha. She is tolerating some affection. She has a lot of herding drive.",
     "images": [
       "/dogs/heartland-no-80-0",
-      "/dogs/heartland-no-80-1"
+      "/dogs/heartland-no-80-1",
+      "/dogs/heartland-no-80-2",
+      "/dogs/heartland-no-80-3",
+      "/dogs/heartland-no-80-4"
     ]
   },
   {
@@ -715,9 +744,7 @@
     "images": [
       "/dogs/heartland-no-93-missy-0",
       "/dogs/heartland-no-93-missy-1",
-      "/dogs/heartland-no-93-missy-2",
-      "/dogs/heartland-no-93-missy-3",
-      "/dogs/heartland-no-93-missy-4"
+      "/dogs/heartland-no-93-missy-2"
     ]
   },
   {
@@ -758,8 +785,7 @@
     "bio": "Very smart and skittish. She watches every move her foster makes.  She hasn’t let her foster touch her yet without cornering her.",
     "images": [
       "/dogs/heartland-no-102-0",
-      "/dogs/heartland-no-102-1",
-      "/dogs/heartland-no-102-2"
+      "/dogs/heartland-no-102-1"
     ]
   },
   {
@@ -779,7 +805,8 @@
     "bio": "Very smart and wild.  She goes to her foster for treats now but only lets her touch her if her foster forces it.  She is pretty quiet, barks occasionally.  She has lots of energy.  We think if she bonds she will be a super active dog.  She is showing some interest in toys and play, but stops the second she knows her foster watching her.",
     "images": [
       "/dogs/heartland-no-103-roxey-0",
-      "/dogs/heartland-no-103-roxey-1"
+      "/dogs/heartland-no-103-roxey-1",
+      "/dogs/heartland-no-103-roxey-2"
     ]
   },
   {
@@ -800,7 +827,12 @@
     "images": [
       "/dogs/theodore-0",
       "/dogs/theodore-1",
-      "/dogs/theodore-2"
+      "/dogs/theodore-2",
+      "/dogs/theodore-3",
+      "/dogs/theodore-4",
+      "/dogs/theodore-5",
+      "/dogs/theodore-6",
+      "/dogs/theodore-7"
     ]
   },
   {
@@ -821,18 +853,13 @@
     "images": [
       "/dogs/heartland-no-71-0",
       "/dogs/heartland-no-71-1",
-      "/dogs/heartland-no-71-2",
-      "/dogs/heartland-no-71-3",
-      "/dogs/heartland-no-71-4",
-      "/dogs/heartland-no-71-5",
-      "/dogs/heartland-no-71-6",
-      "/dogs/heartland-no-71-7"
+      "/dogs/heartland-no-71-2"
     ]
   },
   {
     "id": "151",
     "slug": "hollie-72",
-    "name": "Hollie (72)",
+    "name": "Hollie",
     "sex": "Female",
     "age": "1 year",
     "weight": "34 lb",
@@ -847,7 +874,12 @@
     "images": [
       "/dogs/hollie-72-0",
       "/dogs/hollie-72-1",
-      "/dogs/hollie-72-2"
+      "/dogs/hollie-72-2",
+      "/dogs/hollie-72-3",
+      "/dogs/hollie-72-4",
+      "/dogs/hollie-72-5",
+      "/dogs/hollie-72-6",
+      "/dogs/hollie-72-7"
     ]
   },
   {
@@ -869,11 +901,7 @@
       "/dogs/heartland-no-80-147-0",
       "/dogs/heartland-no-80-147-1",
       "/dogs/heartland-no-80-147-2",
-      "/dogs/heartland-no-80-147-3",
-      "/dogs/heartland-no-80-147-4",
-      "/dogs/heartland-no-80-147-5",
-      "/dogs/heartland-no-80-147-6",
-      "/dogs/heartland-no-80-147-7"
+      "/dogs/heartland-no-80-147-3"
     ]
   },
   {
@@ -895,7 +923,11 @@
       "/dogs/cooper-0",
       "/dogs/cooper-1",
       "/dogs/cooper-2",
-      "/dogs/cooper-3"
+      "/dogs/cooper-3",
+      "/dogs/cooper-4",
+      "/dogs/cooper-5",
+      "/dogs/cooper-6",
+      "/dogs/cooper-7"
     ]
   },
   {
@@ -970,10 +1002,7 @@
       "/dogs/rojo-1",
       "/dogs/rojo-2",
       "/dogs/rojo-3",
-      "/dogs/rojo-4",
-      "/dogs/rojo-5",
-      "/dogs/rojo-6",
-      "/dogs/rojo-7"
+      "/dogs/rojo-4"
     ]
   },
   {
@@ -993,10 +1022,7 @@
     "bio": "Oscar isn't grouchy; he's just the quietest dog in his group. It took a while but now he likes to be loved on and will put his very large face in his foster's hand and likes to be talked to. He may have gotten into scuffles while running feral and has some old scarred marks on his face but he has not been aggressive to his foster's current dogs or pen mates since he has arrived. He has not shown any food aggression as of yet either.",
     "images": [
       "/dogs/heartland-no-47-oscar-0",
-      "/dogs/heartland-no-47-oscar-1",
-      "/dogs/heartland-no-47-oscar-2",
-      "/dogs/heartland-no-47-oscar-3",
-      "/dogs/heartland-no-47-oscar-4"
+      "/dogs/heartland-no-47-oscar-1"
     ]
   },
   {
@@ -1016,7 +1042,8 @@
     "bio": "This guy took awhile for his foster to get around him, He is not aggressive but was very skittish and will take an experienced foster and some time to come around.",
     "images": [
       "/dogs/heartland-no-46-0",
-      "/dogs/heartland-no-46-1"
+      "/dogs/heartland-no-46-1",
+      "/dogs/heartland-no-46-2"
     ]
   },
   {
@@ -1058,7 +1085,12 @@
     "images": [
       "/dogs/willow-0",
       "/dogs/willow-1",
-      "/dogs/willow-2"
+      "/dogs/willow-2",
+      "/dogs/willow-3",
+      "/dogs/willow-4",
+      "/dogs/willow-5",
+      "/dogs/willow-6",
+      "/dogs/willow-7"
     ]
   },
   {
@@ -1129,14 +1161,7 @@
     "fee": "$300",
     "bio": "Skipper has had a rough start in life. A stray, he entered the shelter with non-contagious mange as well as a front leg that was fractured in two places. The shelter was full and medical cases are often the first to get euthanized when the shelter needs to make space. We took him in with the help of a wonderful foster.\n\nSince then, he has been treated for the mange and his leg has healed. Since then, he's been with his foster and has done fabulously! His foster tested his DNA and found out Skipper is Husky/ Shepherd mix with no BC (hard to tell when they have no hair lol).\n\nEven though he has not BC in him, he is a fantastic pup. He is a sweet, lovable, active, and friendly pup. He loves to hang outside and chew on a bone, or frolic with his foster brothers. He is always happy and friendly, and is crate and house-trained. He will make a fine pup for an active family looking for a sweet guy to just “be a dog”.",
     "images": [
-      "/dogs/skipper-0",
-      "/dogs/skipper-1",
-      "/dogs/skipper-2",
-      "/dogs/skipper-3",
-      "/dogs/skipper-4",
-      "/dogs/skipper-5",
-      "/dogs/skipper-6",
-      "/dogs/skipper-7"
+      "/dogs/skipper-0"
     ]
   },
   {
@@ -1174,7 +1199,13 @@
     "fee": "$300",
     "bio": "Gem and her siblings were rescued from an 80+ dog hoarding case in North Texas.\n\nGem (aka Gemma) was extremely shy at first, but has come around to asking for pets and scratches regularly once she gets to know her people. She loves hanging out outside with her dog pack, and playing chase and getting in the water. She is extremely food motivated but has not shown much interest in toys yet. She is a fairly active dog, and at times, her working line spirit really shows when chasing the donkeys along the fence line.\n\nGemma is not yet leash or crate trained but is house-trained with a dog door. She'll make a great active companion and would love a pup friend to run a large yard with!",
     "images": [
-      "/dogs/gem-0"
+      "/dogs/gem-0",
+      "/dogs/gem-1",
+      "/dogs/gem-2",
+      "/dogs/gem-3",
+      "/dogs/gem-4",
+      "/dogs/gem-5",
+      "/dogs/gem-6"
     ]
   },
   {
@@ -1196,10 +1227,7 @@
       "/dogs/heartland-no-7-bess-0",
       "/dogs/heartland-no-7-bess-1",
       "/dogs/heartland-no-7-bess-2",
-      "/dogs/heartland-no-7-bess-3",
-      "/dogs/heartland-no-7-bess-4",
-      "/dogs/heartland-no-7-bess-5",
-      "/dogs/heartland-no-7-bess-6"
+      "/dogs/heartland-no-7-bess-3"
     ]
   },
   {
@@ -1221,7 +1249,11 @@
       "/dogs/sassy-0",
       "/dogs/sassy-1",
       "/dogs/sassy-2",
-      "/dogs/sassy-3"
+      "/dogs/sassy-3",
+      "/dogs/sassy-4",
+      "/dogs/sassy-5",
+      "/dogs/sassy-6",
+      "/dogs/sassy-7"
     ]
   },
   {
@@ -1246,8 +1278,7 @@
       "/dogs/stella-3",
       "/dogs/stella-4",
       "/dogs/stella-5",
-      "/dogs/stella-6",
-      "/dogs/stella-7"
+      "/dogs/stella-6"
     ]
   },
   {
@@ -1267,12 +1298,7 @@
     "bio": "Abigail (aka Abby) is one of six feral, BYB pups who joined us in 2021. All unsocialized and heartworm+, Abby has come so far and is ready for a special FURever home who will love her remaining quirks as much as we do!\n\nA petite 30 lbs, Abby is a sweet girl who likes nothing more than to get scratched and petted. She’s still a little timid around men, but does very well with her foster mom and kids. She can be a bit of a jerk to cats, but she does good with other dogs that will put up with her darting at them from wherever she is hiding. She is also a toy hoarder and destroyer of all things, like mayo packets, chapstick, tennis balls, etc… She is still nervous about wide open spaces and going out the front door on her own, but can be leashed and LOVES riding in the car. She’s almost perfect with house-training but still working on being 100%.\n\n👉 Get stuck under a towel or blanket\n\nShe may be quirky but she is adorable and full of personality and will make a wonderful addition to any family who is willing to give her a little time to shine! Her new family will need to expect a transition time with Abby and will need to patient with her as she learns a new home. She may still be timid or shy, and take some time to warm up to a new family and household. She is only available to adopt in Texas in case she needs to come back to the rescue.",
     "images": [
       "/dogs/abigail-0",
-      "/dogs/abigail-1",
-      "/dogs/abigail-2",
-      "/dogs/abigail-3",
-      "/dogs/abigail-4",
-      "/dogs/abigail-5",
-      "/dogs/abigail-6"
+      "/dogs/abigail-1"
     ]
   },
   {
@@ -1292,7 +1318,11 @@
     "bio": "Twilight is a great goofy pup who is looking for a patient and loving home! A tri-colored mix boy who was transferred to BCSAVE from another rescue, he originally was surrendered in Lubbock TX, where he and a littermate were thought to be deaf. Turns out he wasn’t deaf but did have some serious trust issues. He’s still a little timid around new people, but will warm up quickly in a new home.\n\nHe has been w/ his current foster for a few years now and is doing great! He does prefers women over men, but is REALLY sweet and a bit of a goober. Once he trusts you, he is lovey-dovey and loves getting scratched all over. His nickname is “Wiggle Booty Buddy” because he’s always wagging his tail! He also LOVES to play with other dogs, and handicaps exceptionally well with smaller or younger dogs. He is very treat motivated and loves to swim. He has some hesitation about collars and leashes, but has gotten much more comfortable with touching his collar (though he still needs leash work). He knows the dog door, is house trained, and can be crated. He can hop a four ft. fence so would probably need a higher fence or to stay inside when his family is gone. He is also a cat chaser, so would probably be best in a cat-free home.\n\nThe best home for Twilight is one where he can go outside and romp, then inside for love and comfort. He needs some one on one time to learn that leashes aren’t bad and walks can be fun. He’s smart as a whip, not aggressive at all (even when scared), and is a great boy with a lot of potential. He just needs a home that can see his potential like we do. 🥰",
     "images": [
       "/dogs/twilight-0",
-      "/dogs/twilight-1"
+      "/dogs/twilight-1",
+      "/dogs/twilight-2",
+      "/dogs/twilight-3",
+      "/dogs/twilight-4",
+      "/dogs/twilight-5"
     ]
   },
   {
@@ -1314,9 +1344,7 @@
       "/dogs/dainty-0",
       "/dogs/dainty-1",
       "/dogs/dainty-2",
-      "/dogs/dainty-3",
-      "/dogs/dainty-4",
-      "/dogs/dainty-5"
+      "/dogs/dainty-3"
     ]
   },
   {
@@ -1338,7 +1366,10 @@
       "/dogs/wyatt-0",
       "/dogs/wyatt-1",
       "/dogs/wyatt-2",
-      "/dogs/wyatt-3"
+      "/dogs/wyatt-3",
+      "/dogs/wyatt-4",
+      "/dogs/wyatt-5",
+      "/dogs/wyatt-6"
     ]
   },
   {
@@ -1362,8 +1393,7 @@
       "/dogs/kirby-2",
       "/dogs/kirby-3",
       "/dogs/kirby-4",
-      "/dogs/kirby-5",
-      "/dogs/kirby-6"
+      "/dogs/kirby-5"
     ]
   },
   {
@@ -1387,7 +1417,9 @@
       "/dogs/lego-2",
       "/dogs/lego-3",
       "/dogs/lego-4",
-      "/dogs/lego-5"
+      "/dogs/lego-5",
+      "/dogs/lego-6",
+      "/dogs/lego-7"
     ]
   },
   {
@@ -1410,10 +1442,7 @@
       "/dogs/sistine-1",
       "/dogs/sistine-2",
       "/dogs/sistine-3",
-      "/dogs/sistine-4",
-      "/dogs/sistine-5",
-      "/dogs/sistine-6",
-      "/dogs/sistine-7"
+      "/dogs/sistine-4"
     ]
   },
   {
@@ -1436,7 +1465,10 @@
       "/dogs/lindy-hop-1",
       "/dogs/lindy-hop-2",
       "/dogs/lindy-hop-3",
-      "/dogs/lindy-hop-4"
+      "/dogs/lindy-hop-4",
+      "/dogs/lindy-hop-5",
+      "/dogs/lindy-hop-6",
+      "/dogs/lindy-hop-7"
     ]
   }
 ]
