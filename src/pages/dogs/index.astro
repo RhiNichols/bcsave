@@ -28,7 +28,7 @@ for (const d of dogs) counts[ageGroup(d)]++;
     <div class="wrap">
       <p class="eyebrow">Available dogs</p>
       <h1 style="font-size: clamp(1.9rem, 5.5vw, 3rem);">
-        {dogs.length} dogs are looking for homes
+        <span data-dog-count>{dogs.length}</span> dogs are looking for homes
       </h1>
       <p class="lede">
         Every one is in a foster home right now. Tap a dog to read their story.
@@ -42,21 +42,21 @@ for (const d of dogs) counts[ageGroup(d)]++;
     <div class="filters" role="group" aria-label="Filter dogs">
       <p class="filters__label" id="f-age">Age</p>
       <button class="chip" data-filter="all" aria-pressed="true">
-        All {dogs.length}
+        All <span data-chip-count>{dogs.length}</span>
       </button>
       <button class="chip" data-filter="age:puppy" aria-pressed="false">
-        Puppies ({counts.puppy})
+        Puppies (<span data-chip-count>{counts.puppy}</span>)
       </button>
       <button class="chip" data-filter="age:young" aria-pressed="false">
-        Under 3 ({counts.young})
+        Under 3 (<span data-chip-count>{counts.young}</span>)
       </button>
       <button class="chip" data-filter="age:adult" aria-pressed="false">
-        Adults ({counts.adult})
+        Adults (<span data-chip-count>{counts.adult}</span>)
       </button>
       {
         counts.senior > 0 && (
           <button class="chip" data-filter="age:senior" aria-pressed="false">
-            Seniors ({counts.senior})
+            Seniors (<span data-chip-count>{counts.senior}</span>)
           </button>
         )
       }
@@ -105,16 +105,24 @@ for (const d of dogs) counts[ageGroup(d)]++;
 </Base>
 
 <script>
+  import { refreshGrid, recount } from "../../lib/live-dogs";
+
   const chips = document.querySelectorAll<HTMLButtonElement>(".chip");
   const grid = document.getElementById("dog-grid");
   const empty = document.getElementById("filter-empty");
   const count = document.getElementById("filter-count");
 
   if (grid && empty && count) {
-    const cards = Array.from(grid.querySelectorAll<HTMLElement>(".dog"));
+    let current = "all";
+
+    // Re-queried rather than captured: the live refresh below adds and removes
+    // cards after this runs, and a stale list would filter dogs that are gone.
+    const cardsNow = () => Array.from(grid.querySelectorAll<HTMLElement>(".dog"));
 
     const apply = (filter: string) => {
+      current = filter;
       const [key, value] = filter.split(":");
+      const cards = cardsNow();
       let shown = 0;
 
       for (const card of cards) {
@@ -135,5 +143,14 @@ for (const d of dogs) counts[ageGroup(d)]++;
         apply(chip.dataset.filter ?? "all");
       });
     }
+
+    // Filters work from the first paint; this only corrects the data behind
+    // them. A failed refresh returns null and the page is left exactly as
+    // built.
+    refreshGrid(grid).then((total) => {
+      if (total === null) return;
+      recount(grid);
+      apply(current);
+    });
   }
 </script>

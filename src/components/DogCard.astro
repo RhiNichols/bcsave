@@ -21,6 +21,7 @@ const snippet = dog.bio.split("\n\n")[0] ?? "";
 
 <li
   class="dog"
+  data-id={dog.id}
   data-sex={dog.sex}
   data-age={ageGroup(dog)}
   data-location={dog.location}
