@@ -105,8 +105,14 @@ listed until it is rebuilt.
 
 ## Bug sweeps
 
-`scratchpad/audit.mjs` (needs the dev server running) walks every page at
-320/390/768/1440 and reports horizontal overflow, missing alt text, sub-24px
-tap targets, heading-level skips, console errors, failed requests, and broken
-links and anchors. Run with `--all` to cover all dog pages — real bugs have
-hidden in the tail. Last run: clean.
+```sh
+npm run dev -- --host    # the sweep needs a server to walk
+npm run audit            # key pages + a six-dog sample
+npm run audit -- --all   # every dog page too — real bugs hide in the tail
+```
+
+`scripts/audit.mjs` walks every page at 320/390/768/1440 and reports
+horizontal overflow, missing alt text, sub-24px tap targets, heading-level
+skips, console errors, failed requests, and broken links and anchors. It lives
+in the repo on purpose — an earlier copy sat in a temp directory and was lost
+on the first reboot.
