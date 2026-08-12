@@ -51,11 +51,22 @@ and this is no longer needed.
 ## Where the data comes from
 
 Nothing about dogs is hand-edited. Everything is pulled from **ShelterManager**,
-account `BCSAVE` (internal id `jb3344`), by two scripts:
+account `BCSAVE` (internal id `jb3344`):
 
+- `src/lib/asm-core.mjs` — the parser. No Node built-ins, so the build scripts
+  and the Cloudflare Worker run the *identical* code. Do not copy it; import it.
+- `scripts/lib/asm.mjs` — the build-only half: image conversion, worker pool
 - `scripts/fetch-dogs.mjs` → `src/data/dogs.json` + photos in `public/dogs/`
 - `scripts/fetch-alumni.mjs` → `src/data/alumni.json` + photos in `public/alumni/`
-- `scripts/lib/asm.mjs` — shared parser, retry logic, image conversion
+
+**Read the comment on `marksIn` in `asm-core.mjs` before touching the parser.**
+The feed interleaves each dog's card and its script one step out of phase: a
+dog's fields and bio come from the card *before* its mark, its photographs from
+the script *at* it. Reading both from one span pairs every dog with the
+previous dog's pictures, and — this is the trap — nothing looks broken. Every
+record still parses, every field is populated, and the site passes a clean
+audit. It shipped that way. Photos are now filtered by animal id so it cannot
+recur silently.
 
 The public feed is HTML-only; the `json_`/`xml_`/`csv_` variants need
 ShelterManager service credentials the rescue has not provided. If those ever
@@ -66,8 +77,31 @@ requesting the feed at each month boundary via `&days=N` and diffing the
 resulting sets. The feed hard-caps at 180 records however far back you ask, so
 alumni is recent history, not all time.
 
-**The site is a build-time snapshot.** Dogs adopted since the last build stay
-listed until it is rebuilt.
+### The site corrects itself between builds
+
+The pages are still a build-time snapshot — that is what makes them fast and
+what lets them work without JavaScript. A small Worker (`src/worker.js`) sits
+in front of the static files and closes the staleness gap:
+
+| Route | Answers |
+| --- | --- |
+| `/api/available.json` | which dogs are adoptable right now |
+| `/api/dogs/<id>.json` | one dog, for arrivals since the build |
+| `/api/dog-photo/<id>/<n>` | that dog's photos, proxied |
+
+`/dogs` calls these after it loads and fixes the difference: adopted dogs are
+removed, new arrivals appended and labelled "Just arrived" (they have no
+pre-rendered page yet, so they carry no link), and all the counts recomputed.
+If the feed is slow or down the visitor just keeps the static page.
+
+Everything is kept cheap on purpose. A Worker request has a hard CPU budget and
+the feed is ~1.5MB, so the route every visitor hits runs a single regex over the
+document instead of parsing all 64 dogs. Cloudflare caches the upstream read, so
+a burst of traffic costs BCSAVE's service account one fetch rather than one per
+visitor.
+
+A rebuild is still what publishes new dogs *properly*, with real pages and
+optimised images.
 
 ## Outstanding
 
@@ -75,10 +109,17 @@ listed until it is rebuilt.
    and compressed hard from the old site. She already vetoed one line ("Border
    Collies are not easy dogs") — some are easy and many BCSAVE dogs are mixes.
    Expect more like it. This is the biggest remaining quality gap.
-2. **GitHub Actions secrets not yet set.** `.github/workflows/deploy.yml` is
-   ready and deploys on push, every 3 hours, and on demand — but it skips the
-   deploy step (with a notice, not a failure) until `CLOUDFLARE_API_TOKEN` and
-   `CLOUDFLARE_ACCOUNT_ID` exist under repo Settings → Secrets → Actions.
+2. **Automatic deploys have never worked.** Every scheduled run fails, roughly
+   eight failure emails a day. The Cloudflare secrets *are* set — the skip-guard
+   is being skipped and the real `Deploy to Cloudflare` step is what fails, so
+   `npm ci`, the ShelterManager fetch and the build are all fine. Ruled out
+   locally: the config validates (`npx wrangler deploy --dry-run`) and the local
+   login is healthy and pinned to the right account. That leaves the API token —
+   most likely missing **Workers Scripts: Edit**, or minted on the personal
+   account rather than "Ink Lip". Read the real error with
+   `gh run view --log-failed` (gh is installed; run `gh auth login` once).
+   **Until this is fixed the live site only updates when someone runs
+   `npm run deploy` by hand.**
 3. **Real impact figures.** An early draft had invented dollar amounts on the
    donate band. They were replaced with facts from BCSAVE's own FAQ. Do not
    reintroduce numbers without the treasurer.
