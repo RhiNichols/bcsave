@@ -1,12 +1,32 @@
 [
   {
+    "id": "263",
+    "slug": "angel",
+    "name": "Angel",
+    "sex": "Male",
+    "location": "Unassigned",
+    "blurb": "Winnie and Angel were living as strays in South Texas before being taken in by a good Samaritan. They could be siblings and are both around 1 year old, sweet, dog friendly, and soc",
+    "adoptedMonth": "2026-08",
+    "image": "/alumni/angel"
+  },
+  {
+    "id": "151",
+    "slug": "hollie-72",
+    "name": "Hollie",
+    "sex": "Female",
+    "location": "Central Texas (Waco)",
+    "blurb": "Hollie was rescued from a 110+ dog plus hoarding situation in North Texas.",
+    "adoptedMonth": "2026-08",
+    "image": "/alumni/hollie-72"
+  },
+  {
     "id": "240",
     "slug": "cassian",
     "name": "Cassian",
     "sex": "Male",
     "location": "Unassigned",
     "blurb": "The ACOTAR litter (IYKYK) - Azriel (M, 10 lbs), Cassian (M, 11 lbs), and Nesta (F, 10 lbs) were born to a stray border collie mama in early Feb and were rescued by a wildlife rehab",
-    "adoptedMonth": "2026-08",
+    "adoptedMonth": "2026-07",
     "image": "/alumni/cassian"
   },
   {
@@ -30,16 +50,6 @@
     "image": "/alumni/saylor"
   },
   {
-    "id": "254",
-    "slug": "roo",
-    "name": "Roo",
-    "sex": "Female",
-    "location": "Upper Gulf Coast (Houston)",
-    "blurb": "Roo is an approximately 1 year old, 25 lb female who was found with her family - Huckleberry (dad), Grace (daughter) and Rocky (son) as strays in a Houston suburb. After some time ",
-    "adoptedMonth": "2026-06",
-    "image": "/alumni/roo"
-  },
-  {
     "id": "260",
     "slug": "luz",
     "name": "Luz",
@@ -48,6 +58,16 @@
     "blurb": "Officially introducing Luz (pronounced Loos, a Spanish name meaning “light.”) aka “Lulu.”",
     "adoptedMonth": "2026-06",
     "image": "/alumni/luz"
+  },
+  {
+    "id": "254",
+    "slug": "roo",
+    "name": "Roo",
+    "sex": "Female",
+    "location": "Upper Gulf Coast (Houston)",
+    "blurb": "Roo is an approximately 1 year old, 25 lb female who was found with her family - Huckleberry (dad), Grace (daughter) and Rocky (son) as strays in a Houston suburb. After some time ",
+    "adoptedMonth": "2026-06",
+    "image": "/alumni/roo"
   },
   {
     "id": "277",
@@ -70,16 +90,6 @@
     "image": "/alumni/buddie"
   },
   {
-    "id": "264",
-    "slug": "bingoe",
-    "name": "Bingoe",
-    "sex": "Male",
-    "location": "Upper Gulf Coast (Houston)",
-    "blurb": "This handsome boy is equal parts playful and sweet. He loves toys, enjoys being active, and is always ready for fun. Despite his energetic personality, he’s not much of a barker an",
-    "adoptedMonth": "2026-06",
-    "image": "/alumni/bingoe"
-  },
-  {
     "id": "239",
     "slug": "mor",
     "name": "Mor",
@@ -88,6 +98,16 @@
     "blurb": "Sweet mama Mor is the gave birth to The ACOTAR litter (IYKYK) - Azriel (M, 10 lbs), Cassian (M, 11 lbs), and Nesta (F, 10 lbs) as a stray and kept them safe and fed until the littl",
     "adoptedMonth": "2026-06",
     "image": "/alumni/mor"
+  },
+  {
+    "id": "264",
+    "slug": "bingoe",
+    "name": "Bingoe",
+    "sex": "Male",
+    "location": "Upper Gulf Coast (Houston)",
+    "blurb": "This handsome boy is equal parts playful and sweet. He loves toys, enjoys being active, and is always ready for fun. Despite his energetic personality, he’s not much of a barker an",
+    "adoptedMonth": "2026-06",
+    "image": "/alumni/bingoe"
   },
   {
     "id": "179",
@@ -130,16 +150,6 @@
     "image": "/alumni/cora"
   },
   {
-    "id": "257",
-    "slug": "argus",
-    "name": "Argus",
-    "sex": "Male",
-    "location": "Central Texas (Waco)",
-    "blurb": "Argus is about 6-7 months old and around 24 lbs. He joined BCSAVE when his owner (a college student) realized she would not be able to care for Argus the way he needed.",
-    "adoptedMonth": "2026-06",
-    "image": "/alumni/argus"
-  },
-  {
     "id": "175",
     "slug": "loretta",
     "name": "Loretta",
@@ -148,6 +158,16 @@
     "blurb": "Loretta is a sweet red and white Border Collie mix who came to us from a hoarding case out of Oklahoma. She's a friendly girl and is learning how to be a great family pet.",
     "adoptedMonth": "2026-06",
     "image": "/alumni/loretta"
+  },
+  {
+    "id": "257",
+    "slug": "argus",
+    "name": "Argus",
+    "sex": "Male",
+    "location": "Central Texas (Waco)",
+    "blurb": "Argus is about 6-7 months old and around 24 lbs. He joined BCSAVE when his owner (a college student) realized she would not be able to care for Argus the way he needed.",
+    "adoptedMonth": "2026-06",
+    "image": "/alumni/argus"
   },
   {
     "id": "252",
@@ -200,16 +220,6 @@
     "image": "/alumni/stellae"
   },
   {
-    "id": "245",
-    "slug": "clyde",
-    "name": "Clyde",
-    "sex": "Male",
-    "location": "Hill Country (SA/Austin)",
-    "blurb": "Clyde and his siblings Stellae and Frost were abandoned at a high school in NE Texas and were strays for several weeks before getting rescued.",
-    "adoptedMonth": "2026-05",
-    "image": "/alumni/clyde"
-  },
-  {
     "id": "242",
     "slug": "nesta",
     "name": "Nesta",
@@ -218,6 +228,16 @@
     "blurb": "The ACOTAR litter (IYKYK) - Azriel (M, 10 lbs), Cassian (M, 11 lbs), and Nesta (F, 10 lbs) were born to a stray border collie mama in early Feb and were rescued by a wildlife rehab",
     "adoptedMonth": "2026-05",
     "image": "/alumni/nesta"
+  },
+  {
+    "id": "245",
+    "slug": "clyde",
+    "name": "Clyde",
+    "sex": "Male",
+    "location": "Hill Country (SA/Austin)",
+    "blurb": "Clyde and his siblings Stellae and Frost were abandoned at a high school in NE Texas and were strays for several weeks before getting rescued.",
+    "adoptedMonth": "2026-05",
+    "image": "/alumni/clyde"
   },
   {
     "id": "258",
@@ -240,16 +260,6 @@
     "image": "/alumni/keele"
   },
   {
-    "id": "255",
-    "slug": "huckleberry",
-    "name": "Huckleberry",
-    "sex": "Male",
-    "location": "Upper Gulf Coast (Houston)",
-    "blurb": "Huckleberry is an approximately 2 year old, 35 lb male who was found with his family - Roo (mom), Grace (daughter) and Rocky (son) as strays in a Houston suburb. After some time sp",
-    "adoptedMonth": "2026-05",
-    "image": "/alumni/huckleberry"
-  },
-  {
     "id": "96",
     "slug": "katie",
     "name": "Katie",
@@ -258,6 +268,16 @@
     "blurb": "Meet Katie - she wants start off by telling you that she does have both ears - one just likes to flop and the other is perky enough for both of them!",
     "adoptedMonth": "2026-05",
     "image": "/alumni/katie"
+  },
+  {
+    "id": "255",
+    "slug": "huckleberry",
+    "name": "Huckleberry",
+    "sex": "Male",
+    "location": "Upper Gulf Coast (Houston)",
+    "blurb": "Huckleberry is an approximately 2 year old, 35 lb male who was found with his family - Roo (mom), Grace (daughter) and Rocky (son) as strays in a Houston suburb. After some time sp",
+    "adoptedMonth": "2026-05",
+    "image": "/alumni/huckleberry"
   },
   {
     "id": "235",
@@ -310,16 +330,6 @@
     "image": "/alumni/nala"
   },
   {
-    "id": "238",
-    "slug": "nyla",
-    "name": "Nyla",
-    "sex": "Female",
-    "location": "Upper Gulf Coast (Houston)",
-    "blurb": "",
-    "adoptedMonth": "2026-05",
-    "image": "/alumni/nyla"
-  },
-  {
     "id": "256",
     "slug": "appaloosa",
     "name": "Appaloosa",
@@ -328,6 +338,16 @@
     "blurb": "",
     "adoptedMonth": "2026-05",
     "image": "/alumni/appaloosa"
+  },
+  {
+    "id": "238",
+    "slug": "nyla",
+    "name": "Nyla",
+    "sex": "Female",
+    "location": "Upper Gulf Coast (Houston)",
+    "blurb": "",
+    "adoptedMonth": "2026-05",
+    "image": "/alumni/nyla"
   },
   {
     "id": "227",
@@ -370,16 +390,6 @@
     "image": "/alumni/oakley"
   },
   {
-    "id": "232",
-    "slug": "lita",
-    "name": "Lita",
-    "sex": "Female",
-    "location": "Upper Gulf Coast (Houston)",
-    "blurb": "Lita was pulled from a rural Houston area shelter, after she and her (presumed) brother were found as strays.",
-    "adoptedMonth": "2026-04",
-    "image": "/alumni/lita"
-  },
-  {
     "id": "185",
     "slug": "cash",
     "name": "Cash",
@@ -390,14 +400,14 @@
     "image": "/alumni/cash"
   },
   {
-    "id": "234",
-    "slug": "sarah",
-    "name": "Sarah",
+    "id": "232",
+    "slug": "lita",
+    "name": "Lita",
     "sex": "Female",
     "location": "Upper Gulf Coast (Houston)",
-    "blurb": "Meet Sarah, a shining star! This senior (8-10 years estimated) love bug is one of the most loving girls you will ever meet. Her favorite things are naps, belly rubs, and yummy cook",
+    "blurb": "Lita was pulled from a rural Houston area shelter, after she and her (presumed) brother were found as strays.",
     "adoptedMonth": "2026-04",
-    "image": "/alumni/sarah"
+    "image": "/alumni/lita"
   },
   {
     "id": "233",
@@ -408,6 +418,16 @@
     "blurb": "Penny was found as a stray in South Texas.",
     "adoptedMonth": "2026-04",
     "image": "/alumni/penny"
+  },
+  {
+    "id": "234",
+    "slug": "sarah",
+    "name": "Sarah",
+    "sex": "Female",
+    "location": "Upper Gulf Coast (Houston)",
+    "blurb": "Meet Sarah, a shining star! This senior (8-10 years estimated) love bug is one of the most loving girls you will ever meet. Her favorite things are naps, belly rubs, and yummy cook",
+    "adoptedMonth": "2026-04",
+    "image": "/alumni/sarah"
   },
   {
     "id": "228",
@@ -536,7 +556,7 @@
     "sex": "Female",
     "location": "Central Texas (Waco)",
     "blurb": "Blaire is one of the pups from the OK hoarding group. She is shy and timid, but is quickly learning how to be a house dog with the help of her foster, who is also a dog trainer. Un",
-    "adoptedMonth": "2026-03",
+    "adoptedMonth": "2026-02",
     "image": "/alumni/blaire-ok"
   },
   {
@@ -546,7 +566,7 @@
     "sex": "Female",
     "location": "Central Texas (Waco)",
     "blurb": "Laverne was rescued from a hoarding situation that involved over 30 dogs (along with Blaire, Duncan, Gwen)",
-    "adoptedMonth": "2026-03",
+    "adoptedMonth": "2026-02",
     "image": "/alumni/laverne-ok"
   },
   {
@@ -616,7 +636,7 @@
     "sex": "Male",
     "location": "Upper Gulf Coast (Houston)",
     "blurb": "Maximillian, Firu, Amigo, Linda and Sofi were born to a stray mama on 12/1/2025.",
-    "adoptedMonth": "2026-02",
+    "adoptedMonth": "2026-01",
     "image": "/alumni/amigo"
   },
   {
@@ -626,18 +646,8 @@
     "sex": "Male",
     "location": "Upper Gulf Coast (Houston)",
     "blurb": "Maximillian, Firu, Amigo, Linda and Sofi were born to a stray mama on 12/1/2025.",
-    "adoptedMonth": "2026-02",
-    "image": "/alumni/firu"
-  },
-  {
-    "id": "184",
-    "slug": "bernadette",
-    "name": "Bernadette",
-    "sex": "Female",
-    "location": "Unassigned",
-    "blurb": "Bernadette (formerly known as Toffee) was rescued from a North Texas shelter.",
     "adoptedMonth": "2026-01",
-    "image": "/alumni/bernadette"
+    "image": "/alumni/firu"
   },
   {
     "id": "190",
@@ -648,6 +658,16 @@
     "blurb": "Maximillian, Firu, Amigo, Linda and Sofi were born to a stray mama on 12/1/2025.",
     "adoptedMonth": "2026-01",
     "image": "/alumni/linda"
+  },
+  {
+    "id": "184",
+    "slug": "bernadette",
+    "name": "Bernadette",
+    "sex": "Female",
+    "location": "Unassigned",
+    "blurb": "Bernadette (formerly known as Toffee) was rescued from a North Texas shelter.",
+    "adoptedMonth": "2026-01",
+    "image": "/alumni/bernadette"
   },
   {
     "id": "180",
@@ -780,16 +800,6 @@
     "image": "/alumni/goofy-gus"
   },
   {
-    "id": "176",
-    "slug": "shelton-ok",
-    "name": "Shelton (OK)",
-    "sex": "Male",
-    "location": "Central Texas (Waco)",
-    "blurb": "Shelton is a black and white Border Collie mix who came to us from a hoarding case out of Oklahoma. Shawnee is very friendly and will make a great family pup.",
-    "adoptedMonth": "2025-12",
-    "image": "/alumni/shelton-ok"
-  },
-  {
     "id": "173",
     "slug": "shawnee-ok",
     "name": "Shawnee (OK)",
@@ -798,6 +808,16 @@
     "blurb": "Shawnee is a petite black and white Border Collie mix who came to us from a hoarding case out of Oklahoma. Shawnee is a little shy but warming up quickly. He is currently being fos",
     "adoptedMonth": "2025-12",
     "image": "/alumni/shawnee-ok"
+  },
+  {
+    "id": "176",
+    "slug": "shelton-ok",
+    "name": "Shelton (OK)",
+    "sex": "Male",
+    "location": "Central Texas (Waco)",
+    "blurb": "Shelton is a black and white Border Collie mix who came to us from a hoarding case out of Oklahoma. Shawnee is very friendly and will make a great family pup.",
+    "adoptedMonth": "2025-12",
+    "image": "/alumni/shelton-ok"
   },
   {
     "id": "157",
@@ -820,16 +840,6 @@
     "image": "/alumni/gracie"
   },
   {
-    "id": "162",
-    "slug": "beaux",
-    "name": "Beaux",
-    "sex": "Male",
-    "location": "Unassigned",
-    "blurb": "Beau was found abandoned and sick in a high-stray area of SE Texas.",
-    "adoptedMonth": "2025-12",
-    "image": "/alumni/beaux"
-  },
-  {
     "id": "120",
     "slug": "mallory",
     "name": "Mallory",
@@ -838,6 +848,16 @@
     "blurb": "Mallory is a sweet, older female pup whose main goal in life is to be loved. She is a super easy pup! Good around other dogs, house/ leash trained, no resource guarding issues - th",
     "adoptedMonth": "2025-12",
     "image": "/alumni/mallory"
+  },
+  {
+    "id": "162",
+    "slug": "beaux",
+    "name": "Beaux",
+    "sex": "Male",
+    "location": "Unassigned",
+    "blurb": "Beau was found abandoned and sick in a high-stray area of SE Texas.",
+    "adoptedMonth": "2025-12",
+    "image": "/alumni/beaux"
   },
   {
     "id": "93",
@@ -850,16 +870,6 @@
     "image": "/alumni/crowley"
   },
   {
-    "id": "171",
-    "slug": "perry-ok",
-    "name": "Perry (OK)",
-    "sex": "Male",
-    "location": "Central Texas (Waco)",
-    "blurb": "Perry is one of the pups from the OK hoarding group. We are still learning about him and he is not quite ready to be adopted but if interested, you should get pre-approved today!",
-    "adoptedMonth": "2025-12",
-    "image": "/alumni/perry-ok"
-  },
-  {
     "id": "99",
     "slug": "tux",
     "name": "Tux",
@@ -870,14 +880,14 @@
     "image": "/alumni/tux"
   },
   {
-    "id": "167",
-    "slug": "lilah",
-    "name": "Lilah",
-    "sex": "Female",
-    "location": "North Texas (DFW)",
-    "blurb": "Tulsa (mom) and her four pups (Avalanche, Rusty, Goofy Gus, and Lilah) hail from San Angelo by way of Oklahoma. This family was part of another hoarding case we partnered with anot",
+    "id": "171",
+    "slug": "perry-ok",
+    "name": "Perry (OK)",
+    "sex": "Male",
+    "location": "Central Texas (Waco)",
+    "blurb": "Perry is one of the pups from the OK hoarding group. We are still learning about him and he is not quite ready to be adopted but if interested, you should get pre-approved today!",
     "adoptedMonth": "2025-12",
-    "image": "/alumni/lilah"
+    "image": "/alumni/perry-ok"
   },
   {
     "id": "164",
@@ -890,14 +900,14 @@
     "image": "/alumni/avalanche"
   },
   {
-    "id": "172",
-    "slug": "abby-91",
-    "name": "Abby #91",
+    "id": "167",
+    "slug": "lilah",
+    "name": "Lilah",
     "sex": "Female",
-    "location": "Central Texas (Waco)",
-    "blurb": "",
+    "location": "North Texas (DFW)",
+    "blurb": "Tulsa (mom) and her four pups (Avalanche, Rusty, Goofy Gus, and Lilah) hail from San Angelo by way of Oklahoma. This family was part of another hoarding case we partnered with anot",
     "adoptedMonth": "2025-12",
-    "image": "/alumni/abby-91"
+    "image": "/alumni/lilah"
   },
   {
     "id": "1",
@@ -908,6 +918,16 @@
     "blurb": "Viix and her siblings were rescued from a 30+ dog hoarding case in North Texas.",
     "adoptedMonth": "2025-12",
     "image": "/alumni/viix"
+  },
+  {
+    "id": "172",
+    "slug": "abby-91",
+    "name": "Abby #91",
+    "sex": "Female",
+    "location": "Central Texas (Waco)",
+    "blurb": "",
+    "adoptedMonth": "2025-12",
+    "image": "/alumni/abby-91"
   },
   {
     "id": "158",
@@ -1000,14 +1020,14 @@
     "image": "/alumni/foster"
   },
   {
-    "id": "90",
-    "slug": "lucy",
-    "name": "Lucy",
-    "sex": "Female",
+    "id": "89",
+    "slug": "jay",
+    "name": "Jay",
+    "sex": "Male",
     "location": "Hill Country (SA/Austin)",
-    "blurb": "At just 1 year old, Lucy may have grown into her long legs and big girl looks, but don’t let that fool you—she’s still a puppy at heart! This playful Border Collie girl is all abou",
+    "blurb": "Jay and his brother Crowley were surrendered to a high kill Houston shelter after their owners lost their home.",
     "adoptedMonth": "2025-11",
-    "image": "/alumni/lucy"
+    "image": "/alumni/jay"
   },
   {
     "id": "126",
@@ -1030,14 +1050,14 @@
     "image": "/alumni/wally-76"
   },
   {
-    "id": "89",
-    "slug": "jay",
-    "name": "Jay",
-    "sex": "Male",
+    "id": "90",
+    "slug": "lucy",
+    "name": "Lucy",
+    "sex": "Female",
     "location": "Hill Country (SA/Austin)",
-    "blurb": "Jay and his brother Crowley were surrendered to a high kill Houston shelter after their owners lost their home.",
+    "blurb": "At just 1 year old, Lucy may have grown into her long legs and big girl looks, but don’t let that fool you—she’s still a puppy at heart! This playful Border Collie girl is all abou",
     "adoptedMonth": "2025-11",
-    "image": "/alumni/jay"
+    "image": "/alumni/lucy"
   },
   {
     "id": "124",
@@ -1080,16 +1100,6 @@
     "image": "/alumni/frank-111"
   },
   {
-    "id": "137",
-    "slug": "athena-113",
-    "name": "Athena",
-    "sex": "Female",
-    "location": "Central Texas (Waco)",
-    "blurb": "Athena (Heartland #113) is a 10 week old female pup that was rescued from a 110+ dog breeder hoarding case in North Texas.",
-    "adoptedMonth": "2025-11",
-    "image": "/alumni/athena-113"
-  },
-  {
     "id": "143",
     "slug": "wesley-77",
     "name": "Wesley 77",
@@ -1098,6 +1108,16 @@
     "blurb": "Wesley (#77) was rescued from a 110+ breeder hoarding case (the Heartland Hoarding Dogs) in North Texas.",
     "adoptedMonth": "2025-11",
     "image": "/alumni/wesley-77"
+  },
+  {
+    "id": "137",
+    "slug": "athena-113",
+    "name": "Athena",
+    "sex": "Female",
+    "location": "Central Texas (Waco)",
+    "blurb": "Athena (Heartland #113) is a 10 week old female pup that was rescued from a 110+ dog breeder hoarding case in North Texas.",
+    "adoptedMonth": "2025-11",
+    "image": "/alumni/athena-113"
   },
   {
     "id": "132",
@@ -1110,26 +1130,6 @@
     "image": "/alumni/flare-116"
   },
   {
-    "id": "115",
-    "slug": "flicker-118",
-    "name": "Flicker 118",
-    "sex": "Female",
-    "location": "Hill Country (SA/Austin)",
-    "blurb": "Flicker - female lighter sable tri",
-    "adoptedMonth": "2025-10",
-    "image": "/alumni/flicker-118"
-  },
-  {
-    "id": "136",
-    "slug": "ajax-114",
-    "name": "Ajax",
-    "sex": "Male",
-    "location": "North Texas (DFW)",
-    "blurb": "Ajax (Heartland #114) is a 10 week old male pup rescued from a 110+ dog breeder hoarding case in North Texas.",
-    "adoptedMonth": "2025-10",
-    "image": "/alumni/ajax-114"
-  },
-  {
     "id": "113",
     "slug": "rose-94",
     "name": "Rose 94",
@@ -1138,6 +1138,16 @@
     "blurb": "Approximately 2 year old female, timid but sweet",
     "adoptedMonth": "2025-10",
     "image": "/alumni/rose-94"
+  },
+  {
+    "id": "115",
+    "slug": "flicker-118",
+    "name": "Flicker 118",
+    "sex": "Female",
+    "location": "Hill Country (SA/Austin)",
+    "blurb": "Flicker - female lighter sable tri",
+    "adoptedMonth": "2025-10",
+    "image": "/alumni/flicker-118"
   },
   {
     "id": "116",
@@ -1158,6 +1168,16 @@
     "blurb": "Heartland #110 is a smart and sassy 9-week old pup that was rescued from a hoarding situation in North Texas.",
     "adoptedMonth": "2025-10",
     "image": "/alumni/mabel-110"
+  },
+  {
+    "id": "136",
+    "slug": "ajax-114",
+    "name": "Ajax",
+    "sex": "Male",
+    "location": "North Texas (DFW)",
+    "blurb": "Ajax (Heartland #114) is a 10 week old male pup rescued from a 110+ dog breeder hoarding case in North Texas.",
+    "adoptedMonth": "2025-10",
+    "image": "/alumni/ajax-114"
   },
   {
     "id": "122",
@@ -1210,6 +1230,16 @@
     "image": "/alumni/henry-73"
   },
   {
+    "id": "114",
+    "slug": "nacho-75",
+    "name": "Nacho 75",
+    "sex": "Male",
+    "location": "Hill Country (SA/Austin)",
+    "blurb": "Sweet and friendly red and white male. This boy will be a working dog.  He is already working feet and boots.  He is the most outgoing of the bunch.",
+    "adoptedMonth": "2025-10",
+    "image": "/alumni/nacho-75"
+  },
+  {
     "id": "123",
     "slug": "lucky-107",
     "name": "Lucky",
@@ -1228,16 +1258,6 @@
     "blurb": "River was rescued from an 80+ dog hoarding situation in N. Texas",
     "adoptedMonth": "2025-10",
     "image": "/alumni/river"
-  },
-  {
-    "id": "114",
-    "slug": "nacho-75",
-    "name": "Nacho 75",
-    "sex": "Male",
-    "location": "Hill Country (SA/Austin)",
-    "blurb": "Sweet and friendly red and white male. This boy will be a working dog.  He is already working feet and boots.  He is the most outgoing of the bunch.",
-    "adoptedMonth": "2025-10",
-    "image": "/alumni/nacho-75"
   },
   {
     "id": "79",
@@ -1306,7 +1326,7 @@
     "sex": "Female",
     "location": "North Texas (DFW)",
     "blurb": "In Oct. 2024, we were asked if we could assist with a big hoarding case in far NTX. BCSAVE and ABCR w/ rescues from TX and other states came together to save 44 pups from a much la",
-    "adoptedMonth": "2025-10",
+    "adoptedMonth": "2025-09",
     "image": "/alumni/iris"
   },
   {
@@ -1390,16 +1410,6 @@
     "image": "/alumni/gracie-heartland"
   },
   {
-    "id": "92",
-    "slug": "poe",
-    "name": "Poe",
-    "sex": "Male",
-    "location": "Upper Gulf Coast (Houston)",
-    "blurb": "Poe was rescued from a rural Texas shelter after being found as a stray. Please check back in for his bio or submit an adoption application to learn more!",
-    "adoptedMonth": "2025-09",
-    "image": "/alumni/poe"
-  },
-  {
     "id": "86",
     "slug": "frizzle",
     "name": "Frizzle",
@@ -1408,6 +1418,16 @@
     "blurb": "Frizzle was surrendered to the shelter for chasing chickens. She is dog/ kid/ cat friendly, super sweet and smart! She also loves to play while she is nervous at first, she warms u",
     "adoptedMonth": "2025-09",
     "image": "/alumni/frizzle"
+  },
+  {
+    "id": "92",
+    "slug": "poe",
+    "name": "Poe",
+    "sex": "Male",
+    "location": "Upper Gulf Coast (Houston)",
+    "blurb": "Poe was rescued from a rural Texas shelter after being found as a stray. Please check back in for his bio or submit an adoption application to learn more!",
+    "adoptedMonth": "2025-09",
+    "image": "/alumni/poe"
   },
   {
     "id": "87",
@@ -1526,7 +1546,7 @@
     "sex": "Male",
     "location": "Unassigned",
     "blurb": "",
-    "adoptedMonth": "2025-07",
+    "adoptedMonth": "2025-06",
     "image": "/alumni/penne"
   },
   {
@@ -1630,16 +1650,6 @@
     "image": "/alumni/crickette"
   },
   {
-    "id": "56",
-    "slug": "whirly",
-    "name": "Whirly",
-    "sex": "Male",
-    "location": "Unassigned",
-    "blurb": "",
-    "adoptedMonth": "2025-04",
-    "image": "/alumni/whirly"
-  },
-  {
     "id": "57",
     "slug": "flea",
     "name": "Flea",
@@ -1668,6 +1678,16 @@
     "blurb": "",
     "adoptedMonth": "2025-04",
     "image": "/alumni/bumble"
+  },
+  {
+    "id": "56",
+    "slug": "whirly",
+    "name": "Whirly",
+    "sex": "Male",
+    "location": "Unassigned",
+    "blurb": "",
+    "adoptedMonth": "2025-04",
+    "image": "/alumni/whirly"
   },
   {
     "id": "58",
@@ -1710,14 +1730,14 @@
     "image": "/alumni/eve"
   },
   {
-    "id": "40",
-    "slug": "madison",
-    "name": "Madison",
+    "id": "20",
+    "slug": "cousin-eddie",
+    "name": "Cousin Eddie",
     "sex": "Male",
-    "location": "Unassigned",
-    "blurb": "🐾 Adams is our second Big-Hair/ No-BC pupper looking for his FURever home. About a year old and 65 lbs or so, Adams looks like Gene Simmons (thanks Laura for the comparison!) but ",
+    "location": "North Texas (DFW)",
+    "blurb": "Cousin Eddie (approximately 3 years and 40 lbs) says he’s thankful that he wasn’t put to sleep in the shelter. Cousin Eddie is very appreciative of ALL the people who tagged the re",
     "adoptedMonth": "2025-02",
-    "image": "/alumni/madison"
+    "image": "/alumni/cousin-eddie"
   },
   {
     "id": "36",
@@ -1730,14 +1750,14 @@
     "image": "/alumni/ringer"
   },
   {
-    "id": "20",
-    "slug": "cousin-eddie",
-    "name": "Cousin Eddie",
+    "id": "40",
+    "slug": "madison",
+    "name": "Madison",
     "sex": "Male",
-    "location": "North Texas (DFW)",
-    "blurb": "Cousin Eddie (approximately 3 years and 40 lbs) says he’s thankful that he wasn’t put to sleep in the shelter. Cousin Eddie is very appreciative of ALL the people who tagged the re",
+    "location": "Unassigned",
+    "blurb": "🐾 Adams is our second Big-Hair/ No-BC pupper looking for his FURever home. About a year old and 65 lbs or so, Adams looks like Gene Simmons (thanks Laura for the comparison!) but ",
     "adoptedMonth": "2025-02",
-    "image": "/alumni/cousin-eddie"
+    "image": "/alumni/madison"
   },
   {
     "id": "21",
@@ -1786,7 +1806,7 @@
     "sex": "Male",
     "location": "North Texas (DFW)",
     "blurb": "January and his siblings were rescued from a 30+ dog hoarding case in North Texas and are a part of our Heartland group. Originally 29 pups, we’ve added these four into the group t",
-    "adoptedMonth": "2025-01",
+    "adoptedMonth": null,
     "image": "/alumni/january"
   }
 ]

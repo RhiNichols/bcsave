@@ -30,6 +30,11 @@ for (const a of alumni) {
 }
 const months = [...byMonth.keys()].sort().reverse();
 
+// A dog can fall past the feed's 180-record cap before its month is resolved.
+// Count only the dogs actually on the page, so the headline never overstates
+// what a visitor can see.
+const shown = alumni.filter((a) => a.adoptedMonth).length;
+
 const monthLabel = (key: string) => {
   const [y, m] = key.split("-").map(Number);
   return new Date(Date.UTC(y, m - 1, 1)).toLocaleString("en-US", {
@@ -53,12 +58,12 @@ const busiest = months
 
 <Base
   title="Alumni — Dogs Who Found Their Homes | BCSAVE"
-  description={`${alumni.length} Border Collies placed by Border Collie Save & Rescue. Every one of them was in a foster home first.`}
+  description={`${shown} Border Collies placed by Border Collie Save & Rescue. Every one of them was in a foster home first.`}
 >
   <section class="section section--tight">
     <div class="wrap">
       <p class="eyebrow">Alumni</p>
-      <h1 style="max-width: 15ch;">{alumni.length} dogs. {alumni.length} homes.</h1>
+      <h1 style="max-width: 15ch;">{shown} dogs. {shown} homes.</h1>
       <p class="lede">
         Every dog below came through a Texas shelter, a surrender, or a
         situation that was not working — and went home with somebody. This is
