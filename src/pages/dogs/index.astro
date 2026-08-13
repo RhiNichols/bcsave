@@ -34,6 +34,10 @@ for (const d of dogs) counts[ageGroup(d)]++;
         Every one is in a foster home right now. Tap a dog to read their story.
         Do not see the right fit? New dogs come in most weeks.
       </p>
+
+      {/* Filled in only after the live ShelterManager read succeeds, so it can
+          never claim a connection that is not working. */}
+      <p class="live-status" id="live-status" hidden></p>
     </div>
   </section>
 
@@ -105,7 +109,7 @@ for (const d of dogs) counts[ageGroup(d)]++;
 </Base>
 
 <script>
-  import { refreshGrid, recount } from "../../lib/live-dogs";
+  import { refreshGrid, recount, showLiveStatus } from "../../lib/live-dogs";
 
   const chips = document.querySelectorAll<HTMLButtonElement>(".chip");
   const grid = document.getElementById("dog-grid");
@@ -147,10 +151,13 @@ for (const d of dogs) counts[ageGroup(d)]++;
     // Filters work from the first paint; this only corrects the data behind
     // them. A failed refresh returns null and the page is left exactly as
     // built.
-    refreshGrid(grid).then((total) => {
-      if (total === null) return;
+    refreshGrid(grid).then((result) => {
+      if (!result) return;
       recount(grid);
       apply(current);
+
+      const status = document.getElementById("live-status");
+      if (status) showLiveStatus(status, result);
     });
   }
 </script>

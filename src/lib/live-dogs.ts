@@ -89,12 +89,15 @@ function neutraliseLink(li: HTMLLIElement) {
   if (cta) cta.textContent = "Just arrived";
 }
 
-async function liveIds(signal: AbortSignal): Promise<Set<string> | null> {
+async function liveIds(
+  signal: AbortSignal
+): Promise<{ ids: Set<string>; fetchedAt: string } | null> {
   try {
     const res = await fetch("/api/available.json", { signal });
     if (!res.ok) return null;
     const body = await res.json();
-    return body?.ok && Array.isArray(body.ids) ? new Set<string>(body.ids) : null;
+    if (!body?.ok || !Array.isArray(body.ids)) return null;
+    return { ids: new Set<string>(body.ids), fetchedAt: body.fetchedAt };
   } catch {
     return null;
   }
@@ -111,47 +114,96 @@ async function fetchDog(id: string, signal: AbortSignal): Promise<LiveDog | null
   }
 }
 
+export interface RefreshResult {
+  /** Dogs on the page after reconciling. */
+  total: number;
+  /** When the Worker last read ShelterManager. */
+  fetchedAt: string;
+  /** Listings that were removed because they had been adopted. */
+  removed: number;
+  /** Listings added that the build did not know about. */
+  added: number;
+}
+
 /**
- * Refresh a grid in place. Returns the number of dogs now shown, or null if
- * the live feed could not be reached and the page was left alone.
+ * Refresh a grid in place. Returns what changed, or null if the live feed
+ * could not be reached and the page was left exactly as built.
  */
-export async function refreshGrid(grid: HTMLElement): Promise<number | null> {
+export async function refreshGrid(grid: HTMLElement): Promise<RefreshResult | null> {
   // Cap the whole exercise. A slow feed must not leave the page half-updated
   // while someone is reading it.
   const ctl = new AbortController();
   const timer = setTimeout(() => ctl.abort(), 8000);
 
   try {
-    const ids = await liveIds(ctl.signal);
-    if (!ids) return null;
+    const live = await liveIds(ctl.signal);
+    if (!live) return null;
+    const { ids, fetchedAt } = live;
 
     const cards = Array.from(grid.querySelectorAll<HTMLLIElement>(".dog"));
     const onPage = new Set(cards.map((c) => c.dataset.id ?? ""));
 
     // Adopted since the build.
+    let removed = 0;
     for (const card of cards) {
-      if (card.dataset.id && !ids.has(card.dataset.id)) card.remove();
+      if (card.dataset.id && !ids.has(card.dataset.id)) {
+        card.remove();
+        removed++;
+      }
     }
 
     // Added since the build. Bounded — if a build is so old that dozens are
     // missing, the answer is a rebuild, not sixty requests from every visitor.
     const fresh = [...ids].filter((id) => !onPage.has(id)).slice(0, 12);
-    const added = await Promise.all(fresh.map((id) => fetchDog(id, ctl.signal)));
+    const fetched = await Promise.all(fresh.map((id) => fetchDog(id, ctl.signal)));
 
-    for (const dog of added) {
+    let added = 0;
+    for (const dog of fetched) {
       if (!dog) continue;
       const li = cardFor(dog);
       if (!li) continue;
       neutraliseLink(li);
       grid.prepend(li);
+      added++;
     }
 
-    return grid.querySelectorAll(".dog").length;
+    return { total: grid.querySelectorAll(".dog").length, fetchedAt, removed, added };
   } catch {
     return null;
   } finally {
     clearTimeout(timer);
   }
+}
+
+/**
+ * Say, on the page, that these listings came from ShelterManager.
+ *
+ * The integration is otherwise invisible — a list of dogs looks identical
+ * whether it was pulled from the rescue's own system or typed out by hand.
+ * Anyone being asked to approve this site needs to be able to see which it is,
+ * so this states it in plain language and prints the time the feed was last
+ * read as evidence.
+ *
+ * Only ever called after a successful live read, so it cannot claim a
+ * connection that is not there.
+ */
+export function showLiveStatus(el: HTMLElement, r: RefreshResult) {
+  const when = new Date(r.fetchedAt);
+  const time = Number.isNaN(when.valueOf())
+    ? null
+    : when.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+
+  const changes: string[] = [];
+  if (r.removed) changes.push(`${r.removed} adopted since the last build`);
+  if (r.added) changes.push(`${r.added} just added`);
+
+  el.innerHTML =
+    `<span class="live-dot" aria-hidden="true"></span>` +
+    `<span><strong>${r.total} dogs, live from ShelterManager.</strong> ` +
+    `Volunteers post dogs there and this page follows` +
+    (time ? `, checked at ${time}` : "") +
+    `.${changes.length ? ` ${changes.join(", ")}.` : ""}</span>`;
+  el.hidden = false;
 }
 
 /** Recompute every "N" on the page from the cards actually present. */

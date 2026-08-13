@@ -1478,3 +1478,50 @@ body {
   font-size: 0.92rem;
   color: var(--ember-deep);
 }
+
+/* ---------------------------------------------------------- live status --
+   Appears on /dogs only after the browser has actually reached
+   ShelterManager, so its presence is the evidence — it cannot be rendered
+   by a page that failed to connect. Brand blue rather than ember: this is a
+   statement of fact, not a call to act.
+   -------------------------------------------------------------------------- */
+.live-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 1.15rem;
+  padding: 0.7rem 0.95rem;
+  background: var(--brand-wash);
+  border: 1px solid rgba(10, 109, 149, 0.22);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--brand-deep);
+  max-width: 46rem;
+}
+
+.live-status strong {
+  color: var(--brand-deep);
+}
+
+.live-dot {
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.42rem;
+  border-radius: 50%;
+  background: var(--brand-bright);
+  box-shadow: 0 0 0 0.22rem rgba(0, 159, 227, 0.18);
+}
+
+/* The pulse is decoration; anyone who has asked for less motion gets a plain
+   dot, which carries the same meaning. */
+@media (prefers-reduced-motion: no-preference) {
+  .live-dot {
+    animation: live-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes live-pulse {
+    0%, 100% { box-shadow: 0 0 0 0.22rem rgba(0, 159, 227, 0.18); }
+    50%      { box-shadow: 0 0 0 0.34rem rgba(0, 159, 227, 0.05); }
+  }
+}
