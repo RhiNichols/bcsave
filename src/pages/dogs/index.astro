@@ -45,8 +45,13 @@ for (const d of dogs) counts[ageGroup(d)]++;
     <!-- Filters are progressive enhancement: without JS every dog shows. -->
     <div class="filters" role="group" aria-label="Filter dogs">
       <p class="filters__label" id="f-age">Age</p>
+      {/* One wrapper span on purpose. .chip is inline-flex, so bare text and
+          the count become separate flex items and the space between them is
+          dropped — it rendered "All64". Inside a single element the text lays
+          out normally and the space survives. The other chips escape this
+          because their count sits inside brackets. */}
       <button class="chip" data-filter="all" aria-pressed="true">
-        All <span data-chip-count>{dogs.length}</span>
+        <span>All <span data-chip-count>{dogs.length}</span></span>
       </button>
       <button class="chip" data-filter="age:puppy" aria-pressed="false">
         Puppies (<span data-chip-count>{counts.puppy}</span>)
