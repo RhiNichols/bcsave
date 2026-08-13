@@ -103,29 +103,57 @@ visitor.
 A rebuild is still what publishes new dogs *properly*, with real pages and
 optimised images.
 
+**The connection is stated on the page.** `/dogs` shows a line reading "64 dogs,
+live from ShelterManager. Volunteers post dogs there and this page follows,
+checked at 7:01 PM", naming what changed since the build when anything has.
+That exists because the board will not approve an integration they cannot see —
+a list of dogs looks identical whether it came from the rescue's own system or
+was typed by hand. It renders only after the browser has actually reached
+ShelterManager, so its presence is evidence rather than a claim; if the feed is
+unreachable it stays hidden.
+
 ## Outstanding
 
 1. **Rhiannon needs to read `/about` and `/faqs`.** Copy was written by Claude
    and compressed hard from the old site. She already vetoed one line ("Border
    Collies are not easy dogs") — some are easy and many BCSAVE dogs are mixes.
    Expect more like it. This is the biggest remaining quality gap.
-2. **Automatic deploys have never worked.** Every scheduled run fails, roughly
-   eight failure emails a day. The Cloudflare secrets *are* set — the skip-guard
-   is being skipped and the real `Deploy to Cloudflare` step is what fails, so
-   `npm ci`, the ShelterManager fetch and the build are all fine. Ruled out
-   locally: the config validates (`npx wrangler deploy --dry-run`) and the local
-   login is healthy and pinned to the right account. That leaves the API token —
-   most likely missing **Workers Scripts: Edit**, or minted on the personal
-   account rather than "Ink Lip". Read the real error with
-   `gh run view --log-failed` (gh is installed; run `gh auth login` once).
-   **Until this is fixed the live site only updates when someone runs
-   `npm run deploy` by hand.**
-3. **Real impact figures.** An early draft had invented dollar amounts on the
+2. **Automatic deploys are off, deliberately, until a token is replaced.**
+   Cloudflare rejects `CLOUDFLARE_API_TOKEN` with `Invalid access token
+   [code: 9109]` — the secret was set on 2026-08-06 and has never once worked.
+   Not a permissions gap; the token itself is invalid or expired.
+
+   CI now **passes** and warns instead of failing, because a rejected
+   credential is a configuration state and eight identical failure emails a day
+   just teaches you to ignore the inbox. The build is still fully verified on
+   every run; only the deploy step is skipped.
+
+   To re-enable: create a token on the **Ink Lip** account
+   (`https://dash.cloudflare.com/00804eb9ff865dd924e8e8cd6fb23f93/api-tokens`),
+   "Edit Cloudflare Workers" template, **no TTL**, then
+   `gh secret set CLOUDFLARE_API_TOKEN -R RhiNichols/bcsave`. Prefer an
+   **account**-owned token over a user one — it survives removing a member.
+
+   This is low urgency now: `/dogs` reconciles itself against ShelterManager in
+   the browser, so listings stay accurate between builds, and `npm run deploy`
+   publishes properly whenever needed.
+
+3. **Cloudflare account access.** `rhiannon@osmi.ai` is the *only* administrator
+   of the Ink Lip account, 2FA is off, and osmi is a dying product — if that
+   mailbox stops delivering, password reset and recovery go with it, on the
+   account serving a URL that has already been shared and cannot be moved
+   without breaking the link. Add a second Super Administrator
+   (`rhiannon@bcsave.org`) at
+   `https://dash.cloudflare.com/00804eb9ff865dd924e8e8cd6fb23f93/manage-account/members`.
+   Two earlier attempts landed on the personal account instead — there are four
+   look-alike accounts in the switcher, so use that direct link. Do not remove
+   the osmi user until the new one is confirmed working.
+4. **Real impact figures.** An early draft had invented dollar amounts on the
    donate band. They were replaced with facts from BCSAVE's own FAQ. Do not
    reintroduce numbers without the treasurer.
-4. **`/events` still points at WordPress.** The only remaining outbound link
+5. **`/events` still points at WordPress.** The only remaining outbound link
    besides the application forms, which stay on WordPress deliberately.
-5. **Custom domain.** Would make the underlying Cloudflare account irrelevant
+6. **Custom domain.** Would make the underlying Cloudflare account irrelevant
    and give a shareable address. Worth doing before any real launch.
 
 ## Deliberate decisions
