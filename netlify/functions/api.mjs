@@ -57,8 +57,116 @@ async function readFeed() {
   return html;
 }
 
+/** How recently a build must have run for another to be pointless. */
+const PUBLISH_COOLDOWN_MS = 15 * 60 * 1000;
+
+/**
+ * Ask the site when it was last built.
+ *
+ * Returns null if the stamp cannot be read — in which case we allow the
+ * publish. Refusing to publish because a check failed would be the wrong way
+ * round: the cost of one extra build is trivial, the cost of a volunteer being
+ * told "no" for no visible reason is not.
+ */
+async function lastBuiltAt(origin) {
+  try {
+    const res = await fetch(`${origin}/build-stamp.txt`, {
+      headers: { "cache-control": "no-cache" },
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!res.ok) return null;
+    const when = new Date((await res.text()).trim());
+    return Number.isNaN(when.valueOf()) ? null : when;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Let a volunteer publish their newly added dogs without waiting for the
+ * twice-daily rebuild.
+ *
+ * Guarded by a shared passphrase rather than left open: the build hook is
+ * effectively a "spend Netlify build minutes" button, and the free tier has
+ * 300 of them a month.
+ */
+async function publish(request, origin) {
+  const hook = process.env.NETLIFY_BUILD_HOOK;
+  const code = process.env.PUBLISH_CODE;
+
+  if (!hook || !code) {
+    return fail(503, "Publishing is not configured yet — NETLIFY_BUILD_HOOK and PUBLISH_CODE need setting.");
+  }
+
+  let given = "";
+  try {
+    given = ((await request.json())?.code ?? "").toString();
+  } catch {
+    return fail(400, "Could not read that request.");
+  }
+
+  if (given.trim().toLowerCase() !== code.trim().toLowerCase()) {
+    return fail(401, "That code is not right. Check the card, or ask whoever set this up.");
+  }
+
+  const built = await lastBuiltAt(origin);
+  if (built) {
+    const age = Date.now() - built.valueOf();
+    if (age < PUBLISH_COOLDOWN_MS) {
+      const wait = Math.ceil((PUBLISH_COOLDOWN_MS - age) / 60000);
+      return new Response(
+        JSON.stringify({
+          ok: true,
+          alreadyRunning: true,
+          message: `The website was updated ${Math.max(1, Math.round(age / 60000))} minutes ago, so your dogs are probably already on it. Have a look — if they are missing, try again in ${wait} minutes.`,
+        }),
+        { status: 200, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } }
+      );
+    }
+  }
+
+  // Everything a volunteer might see from here is written for a volunteer.
+  // Nobody adding a dog should be shown "fetch failed", and the reassurance
+  // matters: their work is saved in ShelterManager either way, and the site
+  // will pick it up on its own even if this button never works.
+  let res;
+  try {
+    res = await fetch(hook, { method: "POST", body: "{}", signal: AbortSignal.timeout(10000) });
+  } catch {
+    return fail(
+      502,
+      "Could not reach the website to start the update. Your dogs are saved in ShelterManager and will appear on their own shortly."
+    );
+  }
+  if (!res.ok) {
+    return fail(
+      502,
+      "The website would not start the update just now. Your dogs are saved in ShelterManager and will appear on their own shortly."
+    );
+  }
+
+  return new Response(
+    JSON.stringify({
+      ok: true,
+      alreadyRunning: false,
+      message: "Updating the website now. Your dogs will be live in about two minutes — you can close this page.",
+    }),
+    { status: 200, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } }
+  );
+}
+
 export default async function handler(request) {
   const url = new URL(request.url);
+
+  if (url.pathname === "/api/publish") {
+    if (request.method !== "POST") return fail(405, "POST only");
+    try {
+      return await publish(request, url.origin);
+    } catch (err) {
+      return fail(500, String(err?.message ?? err).slice(0, 200));
+    }
+  }
+
   if (request.method !== "GET") return fail(405, "GET only");
 
   try {

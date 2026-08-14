@@ -189,6 +189,61 @@ const mistakes = [
     </div>
   </section>
 
+  <!-- ---------------------------------------------------------- publish -- -->
+  {/*
+    Volunteers do not need this — a dog they add shows up on /dogs within a few
+    minutes on its own, and gets its own page at the next rebuild. This exists
+    because "it will appear shortly" is not reassuring to someone who has just
+    spent twenty minutes on a dog and cannot see it yet. Pressing a button and
+    being told what is happening is.
+  */}
+  <section class="section section--tight" id="publish">
+    <div class="wrap">
+      <div class="panel" style="max-width: 62rem;">
+        <p class="eyebrow">When you have finished</p>
+        <h2 style="font-size: clamp(1.3rem, 3.5vw, 1.8rem);">
+          Put your dogs on the website now
+        </h2>
+        <p style="color: var(--ink-soft);">
+          You do not have to do this. New dogs appear on the website by
+          themselves within a few minutes, and get their own page within a day.
+          This is for when you would rather not wait — press it once after you
+          have finished adding or removing dogs.
+        </p>
+
+        <form id="publish-form" style="margin-top: 1.25rem;">
+          <label for="publish-code" style="display: block; font-weight: 600; margin-bottom: 0.4rem;">
+            Volunteer code
+          </label>
+          <div class="btn-row" style="align-items: stretch;">
+            <input
+              id="publish-code"
+              name="code"
+              type="password"
+              autocomplete="off"
+              required
+              placeholder="Ask whoever set this up"
+              style="flex: 1 1 14rem; min-width: 0; padding: 0.7rem 0.9rem; font: inherit; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); color: var(--ink);"
+            />
+            <button class="btn btn--ember" type="submit" id="publish-go">
+              Update the website
+            </button>
+          </div>
+        </form>
+
+        <p
+          id="publish-status"
+          class="notice"
+          role="status"
+          aria-live="polite"
+          style="margin-top: 1.25rem;"
+          hidden
+        >
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ------------------------------------------------------------ admin -- -->
   <section class="section section--tight">
     <div class="wrap">
@@ -243,3 +298,63 @@ const mistakes = [
     </div>
   </section>
 </Base>
+
+<script>
+  const form = document.getElementById("publish-form") as HTMLFormElement | null;
+  const code = document.getElementById("publish-code") as HTMLInputElement | null;
+  const button = document.getElementById("publish-go") as HTMLButtonElement | null;
+  const status = document.getElementById("publish-status");
+
+  if (form && code && button && status) {
+    const say = (message: string, tone: "working" | "done" | "problem") => {
+      status.textContent = message;
+      status.hidden = false;
+      status.style.borderColor =
+        tone === "problem" ? "var(--ember)" : "var(--line)";
+      status.style.color =
+        tone === "problem" ? "var(--ember-deep)" : "var(--ink-soft)";
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!code.value.trim()) return;
+
+      button.disabled = true;
+      const label = button.textContent;
+      button.textContent = "Working…";
+      say("Asking the website to update…", "working");
+
+      try {
+        const res = await fetch("/api/publish", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ code: code.value }),
+        });
+        const body = await res.json().catch(() => null);
+
+        if (res.ok && body?.ok) {
+          say(body.message, "done");
+          code.value = "";
+          // Nothing more to press — another build would only queue behind this
+          // one and spend a second build for the same result.
+          button.textContent = "Started";
+          return;
+        }
+
+        say(
+          body?.error ??
+            "Something went wrong asking the website to update. Your dogs are still saved in ShelterManager and will appear on their own shortly.",
+          "problem"
+        );
+      } catch {
+        say(
+          "Could not reach the website just now. Your dogs are still saved in ShelterManager and will appear on their own shortly.",
+          "problem"
+        );
+      }
+
+      button.disabled = false;
+      button.textContent = label;
+    });
+  }
+</script>
