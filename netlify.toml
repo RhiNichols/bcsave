@@ -15,12 +15,10 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# Astro emits /dogs/bear/index.html; serve it for /dogs/bear too.
-[[redirects]]
-  from = "/dogs/*"
-  to = "/dogs/:splat/index.html"
-  status = 200
-  force = false
+# No redirect for /dogs/*. Netlify already serves /dogs/bear/index.html for
+# /dogs/bear, and that path is shared with 1,191 dog photographs in public/dogs
+# — a rewrite there is aimed at the single busiest path on the site for no gain.
+# The /api routes are claimed by netlify/functions/api.mjs via its own config.
 
 # Preview only. Remove this block when the site goes public, or search engines
 # will keep ignoring it.
