@@ -68,6 +68,42 @@ jobs:
       # schedule, that a fresh ShelterManager fetch and a full build both
       # succeed — which is how we learn the feed changed shape before visitors
       # do.
+      # A volunteer adding a dog in ShelterManager sees it on /dogs within
+      # minutes — the browser reconciles against the live feed. But that dog
+      # has no page of its own and no optimised photos until the site is built
+      # again, and pushes are the only thing that build it. So: rebuild on a
+      # schedule too.
+      #
+      # Only twice a day, though. Netlify's free tier allows 300 build minutes
+      # a month; at roughly two minutes a build, rebuilding every three hours
+      # would spend about 480 and stop deploying partway through the month.
+      # Twice a day costs ~120 and leaves plenty of headroom. The gap is
+      # covered by the live layer, which is the whole point of it.
+      #
+      # The check above still runs every three hours regardless — that is free,
+      # and it is how we learn the ShelterManager feed changed shape.
+      - name: Trigger a Netlify rebuild
+        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && (github.run_attempt > 0))
+        env:
+          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          hour=$(date -u +%H)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$hour" != "06" ] && [ "$hour" != "18" ]; then
+            echo "::notice::Verified only — scheduled rebuilds run at 06:00 and 18:00 UTC."
+            exit 0
+          fi
+          if [ -z "$HOOK" ]; then
+            echo "::warning::NETLIFY_BUILD_HOOK is not set, so nothing was rebuilt."
+            exit 0
+          fi
+          code=$(curl -sS -o /dev/null -w '%{http_code}' -X POST -d '{}' "$HOOK")
+          if [ "$code" = "200" ] || [ "$code" = "201" ] || [ "$code" = "204" ]; then
+            echo "::notice::Netlify rebuild triggered (HTTP $code)."
+          else
+            echo "::error::Netlify build hook returned HTTP $code — the site will go stale until this is fixed."
+            exit 1
+          fi
+
       - name: Report
         run: |
           echo "::notice::Build verified. Netlify publishes from main on push."
