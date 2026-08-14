@@ -145,12 +145,17 @@ unreachable it stays hidden.
    account serving a URL that has already been shared and cannot be moved.
 
    Tried on 2026-08-14 and failed:
-   - **Member invites never register.** Five attempts, `rhiannon@bcsave.org`
-     and `rhiannonbray@yahoo.com`. The final one was verified by screenshot as
-     correct — right account (`00804eb9…`), right address, Super Administrator,
-     entire account — and still produced no member and no email. The API shows
-     no pending invite on any of the four accounts. Not a delivery problem;
-     nothing is being created.
+   - **Member invites never register — this is a Cloudflare bug, not a
+     mis-click.** Six attempts, `rhiannon@bcsave.org` and
+     `rhiannonbray@yahoo.com`, several verified by screenshot as entirely
+     correct: right account (`00804eb9…`), right address, Super Administrator,
+     entire account. The form submits, redirects back to the member list, and
+     nothing is created. No member appears (Active or Pending), no email
+     arrives, the API returns only the one membership — and **the account audit
+     log holds no record of any invite attempt whatsoever**, so the requests
+     never reach Cloudflare's API. Retried in an Incognito window with
+     extensions disabled: identical silent failure, which rules out a browser
+     extension.
    - **Changing the login email is blocked twice over.** The form demands a
      password, and the account has none because it was created through Google
      sign-in. Setting one needs a reset mailed to the dying osmi address. And
