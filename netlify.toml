@@ -1,0 +1,36 @@
+# Netlify deployment.
+#
+# The site moved here from Cloudflare Workers on 2026-08-14 after the
+# Cloudflare account became unadministerable — see STATUS.md. Nothing about
+# the site itself changed: same Astro build, same ShelterManager parser, same
+# /api routes, now served by netlify/functions/api.mjs instead of a Worker.
+
+[build]
+  # `npm run build` re-fetches dogs from ShelterManager first, so every deploy
+  # publishes current listings rather than whatever was last committed.
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Astro emits /dogs/bear/index.html; serve it for /dogs/bear too.
+[[redirects]]
+  from = "/dogs/*"
+  to = "/dogs/:splat/index.html"
+  status = 200
+  force = false
+
+# Preview only. Remove this block when the site goes public, or search engines
+# will keep ignoring it.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# ShelterManager photos proxied through the function are immutable per dog.
+[[headers]]
+  for = "/api/dog-photo/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

@@ -1,4 +1,4 @@
-name: Build and deploy
+name: Build check
 
 # Three triggers:
 #  - push:     ship changes as soon as they land on main
@@ -24,12 +24,6 @@ jobs:
     permissions:
       contents: read
       deployments: write
-
-    # Lifted to job level so the deploy step's `if:` can read them. A secret
-    # referenced directly in an `if:` always evaluates empty.
-    env:
-      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
     steps:
       - uses: actions/checkout@v4
@@ -65,50 +59,15 @@ jobs:
       - name: Build site
         run: npm run build:offline
 
-      # Until the Cloudflare secrets exist, verify the build and stop there
-      # rather than failing the run on a deploy nobody configured yet.
-      - name: Skip deploy (Cloudflare secrets not set)
-        if: env.CF_TOKEN == '' || env.CF_ACCOUNT == ''
-        run: |
-          echo "::notice::Build succeeded. Deploy skipped — add the"
-          echo "::notice::CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets"
-          echo "::notice::under Settings > Secrets and variables > Actions."
-
-      # Runs the wrangler pinned in package-lock.json — the same binary
-      # `npm run deploy` uses locally, so CI and a laptop cannot drift.
+      # Deploying is Netlify's job now.
       #
-      # This used to be cloudflare/wrangler-action@v3, which fetches its own
-      # wrangler and reports failures as bare "The process '…/npx' failed with
-      # exit code 1" with wrangler's actual error hidden inside a collapsed log
-      # group — unreadable without a GitHub login. Every scheduled run failed
-      # that way for days. Calling wrangler directly keeps its error in the
-      # log, and the trap below repeats the tail as an ::error:: annotation,
-      # which is visible from the API without authenticating.
-      - name: Deploy to Cloudflare
-        if: env.CF_TOKEN != '' && env.CF_ACCOUNT != ''
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ env.CF_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ env.CF_ACCOUNT }}
+      # The site ran on Cloudflare Workers until 2026-08-14, when the
+      # Cloudflare account was deleted — see STATUS.md. Netlify builds and
+      # publishes on every push to main by itself, so this workflow no longer
+      # deploys anything. What it still earns its keep doing is proving, on a
+      # schedule, that a fresh ShelterManager fetch and a full build both
+      # succeed — which is how we learn the feed changed shape before visitors
+      # do.
+      - name: Report
         run: |
-          set -o pipefail
-          if npx --no-install wrangler deploy 2>&1 | tee deploy.log; then
-            exit 0
-          fi
-
-          tail=$(tail -c 900 deploy.log | tr '\n' ' ' | sed 's/[[:space:]]\+/ /g')
-
-          # A rejected credential is a configuration state, not a broken build.
-          # Treating it as a hard failure meant eight identical "run failed"
-          # emails a day for something no amount of re-running could fix, which
-          # trains you to ignore the one that eventually matters. Say it once,
-          # visibly, and let the run pass — the build above still proves the
-          # site compiles, and /dogs corrects itself against ShelterManager in
-          # the browser, so nothing is silently rotting while this is unset.
-          if grep -qE 'code: (9109|10000)|Invalid access token|Authentication error' deploy.log; then
-            echo "::warning::Cloudflare rejected CLOUDFLARE_API_TOKEN — the site was built and verified but NOT deployed. Replace that secret to re-enable automatic deploys. ($tail)"
-            exit 0
-          fi
-
-          # Anything else is a real failure and should shout.
-          echo "::error::wrangler deploy failed — $tail"
-          exit 1
+          echo "::notice::Build verified. Netlify publishes from main on push."
