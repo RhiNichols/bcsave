@@ -138,16 +138,46 @@ unreachable it stays hidden.
    the browser, so listings stay accurate between builds, and `npm run deploy`
    publishes properly whenever needed.
 
-3. **Cloudflare account access.** `rhiannon@osmi.ai` is the *only* administrator
-   of the Ink Lip account, 2FA is off, and osmi is a dying product — if that
-   mailbox stops delivering, password reset and recovery go with it, on the
-   account serving a URL that has already been shared and cannot be moved
-   without breaking the link. Add a second Super Administrator
-   (`rhiannon@bcsave.org`) at
-   `https://dash.cloudflare.com/00804eb9ff865dd924e8e8cd6fb23f93/manage-account/members`.
-   Two earlier attempts landed on the personal account instead — there are four
-   look-alike accounts in the switcher, so use that direct link. Do not remove
-   the osmi user until the new one is confirmed working.
+3. **Cloudflare account access — unresolved, and the invite flow does not
+   work.** `rhiannon@osmi.ai` is the *only* administrator of Ink Lip, 2FA is
+   off, sign-in is via Google, and the osmi domain is being shut down. When it
+   goes, the Google account goes with it, and with it every route into the
+   account serving a URL that has already been shared and cannot be moved.
+
+   Tried on 2026-08-14 and failed:
+   - **Member invites never register.** Five attempts, `rhiannon@bcsave.org`
+     and `rhiannonbray@yahoo.com`. The final one was verified by screenshot as
+     correct — right account (`00804eb9…`), right address, Super Administrator,
+     entire account — and still produced no member and no email. The API shows
+     no pending invite on any of the four accounts. Not a delivery problem;
+     nothing is being created.
+   - **Changing the login email is blocked twice over.** The form demands a
+     password, and the account has none because it was created through Google
+     sign-in. Setting one needs a reset mailed to the dying osmi address. And
+     `rhiannon@bcsave.org` is already its own Cloudflare user (from an earlier
+     invite), so that address cannot be adopted as a new login anyway.
+   - `rhiannon@bcsave.org` may not be a real mailbox — no invite has ever
+     arrived there. `bcsave.org` has Google MX, but that proves only the domain
+     accepts mail.
+
+   Next thing to try is **Cloudflare support**, with proof of account
+   ownership, while the osmi mailbox can still corroborate it. Do not remove or
+   change the osmi user before a second way in is confirmed working.
+
+   **Scope of the risk, honestly:** if osmi dies first, the site does *not* go
+   down — Cloudflare keeps serving it with no action from anyone. What is lost
+   is the ability to administer the account, recoverable only through support.
+   Bad, not fatal.
+
+   The four accounts are easy to confuse; only the id in the URL distinguishes
+   them, and the one *named* BCSAVE is not the one hosting the site:
+
+   | Account | Id | What is on it |
+   | --- | --- | --- |
+   | **Ink Lip** | `00804eb9…` | **the rescue's site** |
+   | BCSAVE | `b24276b6…` | empty |
+   | Rhiannon@osmi.ai's Account | `13176882…` | the three admins that landed here by mistake |
+   | Rhiannon Personal | `95e616b6…` | empty |
 4. **Real impact figures.** An early draft had invented dollar amounts on the
    donate band. They were replaced with facts from BCSAVE's own FAQ. Do not
    reintroduce numbers without the treasurer.
