@@ -1,22 +1,36 @@
 # Where this project is
 
 Living status doc. If a machine reboots, a session ends, or someone new picks
-this up — start here. Last updated 2026-08-12.
+this up — start here. Last updated 2026-08-14.
 
-## The site is live
+## Where the site lives
 
-**https://bcsave-preview.ink-lip.workers.dev**
-
-Unlisted and `noindex`, but anyone with the link can open it. It does **not**
-expire and does not depend on any local machine — it is served from
-Cloudflare's edge.
-
-Hosted as a static-asset Cloudflare Worker named `bcsave-preview` on the
-Cloudflare account **"Ink Lip"** (`00804eb9ff865dd924e8e8cd6fb23f93`), which is
-only visible when signed into Cloudflare as **rhiannon@osmi.ai**. Signing in
-with any other address will not show it.
+**Netlify**, deployed from `main` by GitHub login. Every push publishes; there
+are no deploy tokens or secrets to keep alive.
 
 Repo: `git@github.com:RhiNichols/bcsave.git` (branch `main`).
+
+Unlisted and `noindex` (set in `netlify.toml`) — anyone with the link can open
+it, but search engines are told not to index it. Remove that header block at
+launch.
+
+### It used to be on Cloudflare. Do not go looking for it there.
+
+Until 2026-08-14 this ran as a Cloudflare Worker at
+`bcsave-preview.ink-lip.workers.dev`, on an account called "Ink Lip" reachable
+only as `rhiannon@osmi.ai`. That account was deleted and the URL is dead.
+
+The short version of why, so nobody tries to resurrect it: the osmi domain is
+being shut down, and every route to making the account survivable was blocked.
+Member invites failed silently six times across two browsers, leaving no trace
+in the audit log at all. Changing the login email needed a password the account
+never had, because it was created with Google sign-in. Password resets and
+invitations were never delivered, to two different mail providers. Signing up
+fresh was refused because the addresses already existed as Cloudflare users
+that could not be signed into.
+
+Nothing was lost when it went — the whole site rebuilds from this repo — but it
+is the reason hosting moved.
 
 ## Pages
 
@@ -41,12 +55,15 @@ npm run dev            # local dev server
 npm run dev -- --host  # also reachable from a phone on the same wifi
 npm run build          # re-fetch dogs from ShelterManager, then build
 npm run build:offline  # build without touching the network
-npm run deploy         # build + deploy to Cloudflare
 ```
 
-Deploying needs Cloudflare auth: `npx wrangler login` (sign in as
-rhiannon@osmi.ai). Once GitHub Actions is wired up, pushes deploy on their own
-and this is no longer needed.
+**Deploying is just `git push`.** Netlify builds from `main` — it runs
+`npm run build`, which re-fetches ShelterManager first, so every deploy
+publishes current listings. There is no deploy command to run by hand and no
+credential on any laptop that matters.
+
+The `/api` routes are `netlify/functions/api.mjs`. To exercise them locally,
+`npx netlify dev` serves the site and the function together.
 
 ## Where the data comes from
 
@@ -54,7 +71,7 @@ Nothing about dogs is hand-edited. Everything is pulled from **ShelterManager**,
 account `BCSAVE` (internal id `jb3344`):
 
 - `src/lib/asm-core.mjs` — the parser. No Node built-ins, so the build scripts
-  and the Cloudflare Worker run the *identical* code. Do not copy it; import it.
+  and the Netlify function run the *identical* code. Do not copy it; import it.
 - `scripts/lib/asm.mjs` — the build-only half: image conversion, worker pool
 - `scripts/fetch-dogs.mjs` → `src/data/dogs.json` + photos in `public/dogs/`
 - `scripts/fetch-alumni.mjs` → `src/data/alumni.json` + photos in `public/alumni/`
@@ -80,8 +97,8 @@ alumni is recent history, not all time.
 ### The site corrects itself between builds
 
 The pages are still a build-time snapshot — that is what makes them fast and
-what lets them work without JavaScript. A small Worker (`src/worker.js`) sits
-in front of the static files and closes the staleness gap:
+what lets them work without JavaScript. A small Netlify function
+(`netlify/functions/api.mjs`) sits in front of the static files and closes the staleness gap:
 
 | Route | Answers |
 | --- | --- |
@@ -94,16 +111,16 @@ removed, new arrivals appended and labelled "Just arrived" (they have no
 pre-rendered page yet, so they carry no link), and all the counts recomputed.
 If the feed is slow or down the visitor just keeps the static page.
 
-Everything is kept cheap on purpose. A Worker request has a hard CPU budget and
+Everything is kept cheap on purpose. The function has a limited execution budget and
 the feed is ~1.5MB, so the route every visitor hits runs a single regex over the
-document instead of parsing all 64 dogs. Cloudflare caches the upstream read, so
-a burst of traffic costs BCSAVE's service account one fetch rather than one per
-visitor.
+document instead of parsing all 66 dogs, and per-dog lookups slice to a single
+record first. Responses carry an s-maxage, so a burst of traffic costs BCSAVE's
+service account one read per TTL rather than one per visitor.
 
 A rebuild is still what publishes new dogs *properly*, with real pages and
 optimised images.
 
-**The connection is stated on the page.** `/dogs` shows a line reading "64 dogs,
+**The connection is stated on the page.** `/dogs` shows a line reading "66 dogs,
 live from ShelterManager. Volunteers post dogs there and this page follows,
 checked at 7:01 PM", naming what changed since the build when anything has.
 That exists because the board will not approve an integration they cannot see —
@@ -118,78 +135,15 @@ unreachable it stays hidden.
    and compressed hard from the old site. She already vetoed one line ("Border
    Collies are not easy dogs") — some are easy and many BCSAVE dogs are mixes.
    Expect more like it. This is the biggest remaining quality gap.
-2. **Automatic deploys are off, deliberately, until a token is replaced.**
-   Cloudflare rejects `CLOUDFLARE_API_TOKEN` with `Invalid access token
-   [code: 9109]` — the secret was set on 2026-08-06 and has never once worked.
-   Not a permissions gap; the token itself is invalid or expired.
-
-   CI now **passes** and warns instead of failing, because a rejected
-   credential is a configuration state and eight identical failure emails a day
-   just teaches you to ignore the inbox. The build is still fully verified on
-   every run; only the deploy step is skipped.
-
-   To re-enable: create a token on the **Ink Lip** account
-   (`https://dash.cloudflare.com/00804eb9ff865dd924e8e8cd6fb23f93/api-tokens`),
-   "Edit Cloudflare Workers" template, **no TTL**, then
-   `gh secret set CLOUDFLARE_API_TOKEN -R RhiNichols/bcsave`. Prefer an
-   **account**-owned token over a user one — it survives removing a member.
-
-   This is low urgency now: `/dogs` reconciles itself against ShelterManager in
-   the browser, so listings stay accurate between builds, and `npm run deploy`
-   publishes properly whenever needed.
-
-3. **Cloudflare account access — unresolved, and the invite flow does not
-   work.** `rhiannon@osmi.ai` is the *only* administrator of Ink Lip, 2FA is
-   off, sign-in is via Google, and the osmi domain is being shut down. When it
-   goes, the Google account goes with it, and with it every route into the
-   account serving a URL that has already been shared and cannot be moved.
-
-   Tried on 2026-08-14 and failed:
-   - **Member invites never register — this is a Cloudflare bug, not a
-     mis-click.** Six attempts, `rhiannon@bcsave.org` and
-     `rhiannonbray@yahoo.com`, several verified by screenshot as entirely
-     correct: right account (`00804eb9…`), right address, Super Administrator,
-     entire account. The form submits, redirects back to the member list, and
-     nothing is created. No member appears (Active or Pending), no email
-     arrives, the API returns only the one membership — and **the account audit
-     log holds no record of any invite attempt whatsoever**, so the requests
-     never reach Cloudflare's API. Retried in an Incognito window with
-     extensions disabled: identical silent failure, which rules out a browser
-     extension.
-   - **Changing the login email is blocked twice over.** The form demands a
-     password, and the account has none because it was created through Google
-     sign-in. Setting one needs a reset mailed to the dying osmi address. And
-     `rhiannon@bcsave.org` is already its own Cloudflare user (from an earlier
-     invite), so that address cannot be adopted as a new login anyway.
-   - `rhiannon@bcsave.org` may not be a real mailbox — no invite has ever
-     arrived there. `bcsave.org` has Google MX, but that proves only the domain
-     accepts mail.
-
-   Next thing to try is **Cloudflare support**, with proof of account
-   ownership, while the osmi mailbox can still corroborate it. Do not remove or
-   change the osmi user before a second way in is confirmed working.
-
-   **Scope of the risk, honestly:** if osmi dies first, the site does *not* go
-   down — Cloudflare keeps serving it with no action from anyone. What is lost
-   is the ability to administer the account, recoverable only through support.
-   Bad, not fatal.
-
-   The four accounts are easy to confuse; only the id in the URL distinguishes
-   them, and the one *named* BCSAVE is not the one hosting the site:
-
-   | Account | Id | What is on it |
-   | --- | --- | --- |
-   | **Ink Lip** | `00804eb9…` | **the rescue's site** |
-   | BCSAVE | `b24276b6…` | empty |
-   | Rhiannon@osmi.ai's Account | `13176882…` | the three admins that landed here by mistake |
-   | Rhiannon Personal | `95e616b6…` | empty |
-4. **Real impact figures.** An early draft had invented dollar amounts on the
+2. **Real impact figures.** An early draft had invented dollar amounts on the
    donate band. They were replaced with facts from BCSAVE's own FAQ. Do not
    reintroduce numbers without the treasurer.
-5. **`/events` still points at WordPress.** The only remaining outbound link
+3. **`/events` still points at WordPress.** The only remaining outbound link
    besides the application forms, which stay on WordPress deliberately.
-6. **Custom domain.** Would make the underlying Cloudflare account irrelevant
-   and give a shareable address. Worth doing before any real launch.
+4. **Custom domain.** `preview.bcsave.org` would give the board a real address
+   instead of a generated one, and would make the host swappable — moving
+   between providers would stop breaking links. Needs DNS access to
+   `bcsave.org`, currently at InMotion Hosting alongside the WordPress site.
 
 ## Deliberate decisions
 
@@ -202,6 +156,9 @@ unreachable it stays hidden.
 - **Application forms stay on WordPress.** They run on the Green Forms plugin,
   render client-side, and collect an e-signature. A static site cannot host
   them and they work today.
+- **Hosting is disposable.** The site rebuilds completely from this repo, which
+  is what made losing the Cloudflare account survivable rather than fatal. Keep
+  it that way: no state that lives only at the host.
 - **No webfonts.** System fonts only, so text paints without a network
   round-trip on poor rural cell coverage.
 - **Mobile-first.** Every breakpoint is `min-width`. Most visitors are on
