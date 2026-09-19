@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import StickyCta from "../components/StickyCta.astro";
+import ThemePicker from "../components/ThemePicker.astro";
 
 interface Props {
   title: string;
@@ -13,6 +14,10 @@ interface Props {
   ctaLabel?: string;
   ctaHref?: string;
 }
+
+/* Colour vote — see ThemePicker.astro. Set PUBLIC_THEME_PICKER=off in
+   Netlify to hide it without a deploy of code changes. */
+const showThemePicker = import.meta.env.PUBLIC_THEME_PICKER !== "off";
 
 const {
   title,
@@ -40,6 +45,14 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    {
+      showThemePicker && (
+        /* Runs before the body paints, so a chosen theme never flashes
+           ember first. Deliberately inline and un-bundled for that reason. */
+        <script is:inline set:html={`(function(){try{var t=localStorage.getItem("bcsave-theme");if(t&&t!=="ember")document.documentElement.dataset.theme=t;}catch(e){}})();`} />
+      )
+    }
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -49,5 +62,6 @@ const {
     </main>
     <Footer />
     {!hideCta && <StickyCta label={ctaLabel} href={ctaHref} />}
+    {showThemePicker && <ThemePicker />}
   </body>
 </html>
