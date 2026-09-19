@@ -1,0 +1,134 @@
+---
+/*
+ * TEMPORARY — a colour vote, not a site feature.
+ *
+ * Staff are split on whether the site should keep the ember accent or go
+ * blue like the logo. Rather than run separate deploys (which would double the
+ * Netlify build minutes, and we are already near the 300/month free cap —
+ * see .github/workflows/deploy.yml), all three palettes ship in one build
+ * and this dropdown swaps them by setting data-theme on <html>.
+ *
+ * To remove after the decision: delete this file, its two hooks in
+ * Base.astro, and the themes block in global.css. Nothing else reads
+ * data-theme.
+ *
+ * Set PUBLIC_THEME_PICKER=off in Netlify to hide it without a code change.
+ */
+const themes = [
+  { value: "ember", label: "Ember (current)" },
+  { value: "blue", label: "Blue — deep" },
+  { value: "bright", label: "Blue — bright" },
+  { value: "both", label: "Both — blue with ember buttons" },
+];
+---
+
+<div class="theme-picker" data-theme-picker>
+  <label class="theme-picker__label" for="theme-select">Colour scheme</label>
+  <select id="theme-select" class="theme-picker__select">
+    {themes.map((t) => <option value={t.value}>{t.label}</option>)}
+  </select>
+  <button class="theme-picker__hide" type="button" data-theme-hide>
+    Hide for this visit
+  </button>
+</div>
+
+<style>
+  .theme-picker {
+    position: fixed;
+    z-index: 60;
+    right: 0.75rem;
+    /* Clears the sticky donate bar on phones; that bar is not shown from
+       46rem up, where this can drop back to the bottom corner. */
+    bottom: 5.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.7rem 0.8rem;
+    border-radius: var(--radius);
+    background: rgba(22, 21, 15, 0.92);
+    color: #fffdf9;
+    box-shadow: var(--shadow-lg);
+    font-family: var(--font-body);
+  }
+
+  @media (min-width: 46rem) {
+    .theme-picker {
+      bottom: 0.75rem;
+    }
+  }
+
+  .theme-picker[hidden] {
+    display: none;
+  }
+
+  .theme-picker__label {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 253, 249, 0.72);
+  }
+
+  .theme-picker__select {
+    font-family: inherit;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 253, 249, 0.28);
+    background: #16150f;
+    color: #fffdf9;
+    cursor: pointer;
+  }
+
+  .theme-picker__hide {
+    background: none;
+    border: 0;
+    /* Padded to clear the 24px minimum tap target — the audit caught this
+       at 240x13. */
+    padding: 0.35rem 0;
+    min-height: 24px;
+    font-family: inherit;
+    font-size: 0.7rem;
+    color: rgba(255, 253, 249, 0.62);
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .theme-picker__hide:hover {
+    color: #fffdf9;
+  }
+</style>
+
+<script>
+  const KEY = "bcsave-theme";
+  const root = document.documentElement;
+  const box = document.querySelector<HTMLElement>("[data-theme-picker]");
+  const select = document.getElementById("theme-select") as HTMLSelectElement;
+
+  if (box && select) {
+    // The inline script in <head> already applied the stored theme before
+    // first paint. This only has to agree with it.
+    select.value = root.dataset.theme || "ember";
+
+    select.addEventListener("change", () => {
+      root.dataset.theme = select.value;
+      try {
+        localStorage.setItem(KEY, select.value);
+      } catch {
+        /* Private browsing. The choice still applies for this page. */
+      }
+    });
+
+    box.querySelector("[data-theme-hide]")?.addEventListener("click", () => {
+      box.hidden = true;
+      try {
+        sessionStorage.setItem(KEY + "-hidden", "1");
+      } catch {}
+    });
+
+    try {
+      if (sessionStorage.getItem(KEY + "-hidden")) box.hidden = true;
+    } catch {}
+  }
+</script>

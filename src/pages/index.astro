@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import DogCard from "../components/DogCard.astro";
 import { dogs, featured, locations } from "../data/dogs";
+import ServiceArea from "../components/ServiceArea.astro";
 import { forms, partners, shop } from "../data/links";
 
 const picks = featured(8);
@@ -152,6 +153,8 @@ const covered = [
       </div>
     </div>
   </section>
+
+  <ServiceArea level={2} />
 
   <!-- ----------------------------------------------------- ways to help -- -->
   <section class="section" id="foster">

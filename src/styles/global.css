@@ -9,7 +9,9 @@
   /* Warm neutrals — border collie black/white, but nothing clinical */
   --ink: #16150f;
   --ink-soft: #45423a;
-  --ink-faint: #6f6b60;
+  /* #6f6b60 measured 4.48:1 on --paper-warm — just under the 4.5 AA
+     floor. This clears it on paper (5.31), warm (4.83) and white (5.64). */
+  --ink-faint: #6a665c;
   --paper: #faf6ee;
   --paper-warm: #f2ebdd;
   --line: #e0d7c5;
@@ -27,6 +29,35 @@
   --brand: #0a6d95;
   --brand-deep: #07536f;
   --brand-wash: #e3f2f9;
+
+  /* ---- Semantic roles ---------------------------------------------------
+     Components reference these, never --ember/--brand directly. A theme
+     remaps this block and nothing else, which is why each palette further
+     down is a dozen lines rather than a re-skin.
+
+       --accent      decorative flourishes: eyebrows, tags, fees, counts
+       --accent-ink  the same role used as TEXT on paper. Darker on purpose:
+                     #c8471a measures 4.46:1 on --paper and 4.05:1 on
+                     --paper-warm, both under the 4.5 AA floor. #b03d10
+                     clears it at 5.53 and 5.03 while still reading as ember.
+       --cta         the one action colour — donate, adopt, apply
+       --cta-ink     text that sits on a --cta fill
+       --band-*      the large donate band, which needs a fill dark enough
+                     to carry white headings
+     Every pair below was measured, not eyeballed.
+     ---------------------------------------------------------------------- */
+  --accent: var(--ember);
+  --accent-ink: #b03d10;
+  --accent-wash: var(--ember-wash);
+  --accent-line: #f0c9b6;
+
+  --cta: var(--ember);
+  --cta-hover: var(--ember-deep);
+  --cta-ink: var(--white);
+  --cta-glow: rgba(200, 71, 26, 0.32);
+
+  --band-from: var(--ember);
+  --band-to: var(--ember-deep);
 
   --font-display: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino,
     Georgia, serif;
@@ -46,6 +77,89 @@
   /* Gutter grows with the viewport; safe-area keeps clear of the notch */
   --gutter: clamp(1.15rem, 4vw, 2.5rem);
   --maxw: 1180px;
+}
+
+/* ============================== themes ==================================
+   Four palettes for the board to pick between, chosen from the dropdown in
+   the corner. "Ember" is the shipped default and needs no block — it is what
+   :root already declares.
+
+   Why there are two blues: the chrome blue the site has been using,
+   #0a6d95, is H197 S87% L31%, while the actual logo blue #009fe3 is
+   H198 S100% L45%. The site has been wearing a darkened, slightly muted
+   stand-in for the brand colour, which is why the blue reads as drab. It
+   got that way honestly — white text on the real logo blue is 2.92:1, well
+   under the 4.5 AA floor, so a darker step was needed for buttons.
+   "Bright" resolves that by putting the real logo blue on the CTA and
+   flipping its text to dark ink (6.16:1), rather than darkening the hue.
+
+   TEMPORARY. When a decision is made: fold the winner into :root, then
+   delete this section, ThemePicker.astro and its two hooks in Base.astro.
+   Nothing else reads data-theme.
+
+   Every text/fill pair below was measured, not eyeballed.
+   ====================================================================== */
+
+/* Blue — the conservative reading of "the same blue as the logo": the deep
+   chrome blue everywhere, white text throughout, no orange and no bright
+   accent. Included because it is literally what was asked for, and it is
+   the fair comparison against Bright. */
+[data-theme="blue"] {
+  --accent: var(--brand);
+  --accent-ink: var(--brand-deep);
+  --accent-wash: var(--brand-wash);
+  --accent-line: #b6dcee;
+
+  --cta: var(--brand);
+  --cta-hover: var(--brand-deep);
+  --cta-ink: var(--white);
+  --cta-glow: rgba(10, 109, 149, 0.34);
+
+  --band-from: var(--brand);
+  --band-to: var(--brand-deep);
+}
+
+/* Bright — the same family, pushed to full saturation and given the real
+   logo blue for the action.
+     chrome  #0077a8  S100% L33%  (vs S87% L31%) — white text 4.92
+     accent  #006e9c              — white text 5.57, on paper 5.25
+     CTA     #009fe3  the logo    — dark ink 6.16, and 1.94x lighter than
+                                    the chrome around it, so it reads as
+                                    the one thing to press
+   #0077a8 is the brightest fully-saturated blue at this hue that still
+   carries white text at AA; anything lighter drops below 4.5. */
+[data-theme="bright"] {
+  --brand: #0077a8;
+  --brand-deep: #005f87;
+  --brand-wash: #daeffc;
+
+  --accent: #006e9c;
+  --accent-ink: #006e9c;
+  --accent-wash: #daeffc;
+  --accent-line: #a5d8f2;
+
+  --cta: var(--brand-bright);
+  --cta-hover: #00b0f0;
+  --cta-ink: var(--ink);
+  --cta-glow: rgba(0, 159, 227, 0.45);
+
+  --band-from: #0077a8;
+  --band-to: #005f87;
+}
+
+/* Both — the brighter blue for chrome, ember kept for the one job it earns:
+   the button. #c8471a sits at hue 17deg against the blue's 198deg, close
+   enough to an exact complement that it reads as a deliberate pairing
+   rather than a leftover. The --cta and --band groups inherit ember. */
+[data-theme="both"] {
+  --brand: #0077a8;
+  --brand-deep: #005f87;
+  --brand-wash: #daeffc;
+
+  --accent: #006e9c;
+  --accent-ink: #006e9c;
+  --accent-wash: #daeffc;
+  --accent-line: #a5d8f2;
 }
 
 /* --------------------------------------------------------------- reset -- */
@@ -153,7 +267,7 @@ h3 {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ember);
+  color: var(--accent-ink);
   margin: 0 0 0.85rem;
 }
 
@@ -179,7 +293,7 @@ h3 {
 }
 
 :where(a, button, summary, input):focus-visible {
-  outline: 3px solid var(--ember);
+  outline: 3px solid var(--accent-ink);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -210,14 +324,61 @@ h3 {
   transform: translateY(1px);
 }
 
-.btn--ember {
-  background: var(--ember);
-  color: var(--white);
-  box-shadow: var(--shadow-md);
+/* The primary call to action — donate, adopt, apply.
+   .btn--cta is the name that survives a theme change; .btn--ember is kept
+   as an alias so the twelve existing call sites did not all have to move.
+
+   It carries more weight than a plain filled button on purpose: a tinted
+   halo in the action colour, and a lift on hover. The arrow is a direction
+   cue, hidden from assistive tech since the label already says where it
+   goes, and dropped in the sticky mobile bar where there is no room. */
+.btn--ember,
+.btn--cta {
+  background: var(--cta);
+  color: var(--cta-ink);
+  box-shadow: 0 1px 2px rgba(22, 21, 15, 0.12), 0 6px 20px var(--cta-glow);
 }
-.btn--ember:hover {
-  background: var(--ember-deep);
-  box-shadow: var(--shadow-lg);
+
+.btn--ember:hover,
+.btn--cta:hover {
+  background: var(--cta-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(22, 21, 15, 0.14), 0 12px 30px var(--cta-glow);
+}
+
+.btn--ember:active,
+.btn--cta:active {
+  transform: translateY(0);
+}
+
+.btn--ember::after,
+.btn--cta::after {
+  content: "\2192";
+  font-size: 1.05em;
+  line-height: 1;
+  transition: transform 0.18s ease;
+}
+
+.btn--ember:hover::after,
+.btn--cta:hover::after {
+  transform: translateX(4px);
+}
+
+/* No room for it in the fixed mobile bar. */
+.sticky-cta .btn--ember::after,
+.sticky-cta .btn--cta::after {
+  content: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn--ember:hover,
+  .btn--cta:hover {
+    transform: none;
+  }
+  .btn--ember::after,
+  .btn--cta::after {
+    transition: none;
+  }
 }
 
 .btn--brand {
@@ -359,7 +520,11 @@ h3 {
   gap: 0.15rem;
 }
 
-.hdr__nav a {
+/* :not(.btn) matters. Without it this rule (0,1,1) outranks .btn--cta
+   (0,1,0), so the header Donate button inherited --ink and rendered dark
+   text on ember at 3.81:1 — under the 4.5 AA floor, and it had been doing
+   that since the header was written. */
+.hdr__nav a:not(.btn) {
   display: block;
   padding: 0.75rem 0.25rem;
   text-decoration: none;
@@ -369,8 +534,8 @@ h3 {
   border-radius: 8px;
 }
 
-.hdr__nav a:hover {
-  color: var(--ember);
+.hdr__nav a:not(.btn):hover {
+  color: var(--accent-ink);
 }
 
 .hdr__nav .btn {
@@ -439,7 +604,7 @@ h3 {
     ),
     radial-gradient(
       120% 80% at 20% 10%,
-      rgba(200, 71, 26, 0.28) 0%,
+      var(--cta-glow) 0%,
       transparent 60%
     );
 }
@@ -610,7 +775,7 @@ h3 {
 }
 
 .dog__tag--puppy {
-  background: var(--ember);
+  background: var(--accent);
 }
 
 .dog__body {
@@ -672,7 +837,7 @@ h3 {
 }
 
 .dog__cta {
-  color: var(--ember);
+  color: var(--accent-ink);
   font-weight: 650;
 }
 
@@ -733,8 +898,8 @@ h3 {
   border-radius: 13px;
   display: grid;
   place-items: center;
-  background: var(--ember-wash);
-  color: var(--ember-deep);
+  background: var(--accent-wash);
+  color: var(--accent-ink);
   margin-bottom: 1rem;
 }
 
@@ -817,7 +982,7 @@ h3 {
 }
 
 .band--ember {
-  background: linear-gradient(150deg, var(--ember) 0%, var(--ember-deep) 100%);
+  background: linear-gradient(150deg, var(--band-from) 0%, var(--band-to) 100%);
 }
 
 .band h2 {
@@ -939,7 +1104,7 @@ h3 {
 }
 
 .gallery__thumbs button[aria-current="true"] {
-  border-color: var(--ember);
+  border-color: var(--accent);
 }
 
 .gallery__thumbs img {
@@ -1002,7 +1167,7 @@ h3 {
 }
 
 .backlink:hover {
-  color: var(--ember);
+  color: var(--accent-ink);
 }
 
 /* --------------------------------------------------------- filter bar -- */
@@ -1119,8 +1284,8 @@ h3 {
   margin-left: 0.5rem;
   padding: 0.1rem 0.45rem;
   border-radius: 999px;
-  background: var(--ember-wash);
-  color: var(--ember-deep);
+  background: var(--accent-wash);
+  color: var(--accent-ink);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -1157,7 +1322,7 @@ code {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ember);
+  color: var(--accent-ink);
 }
 
 /* Denser than the adoptable grid — this is a wall of faces, and the density
@@ -1471,12 +1636,12 @@ body {
 }
 
 .notice {
-  background: var(--ember-wash);
-  border: 1px solid #f0c9b6;
+  background: var(--accent-wash);
+  border: 1px solid var(--accent-line);
   border-radius: var(--radius);
   padding: 1rem 1.15rem;
   font-size: 0.92rem;
-  color: var(--ember-deep);
+  color: var(--accent-ink);
 }
 
 /* ---------------------------------------------------------- live status --
