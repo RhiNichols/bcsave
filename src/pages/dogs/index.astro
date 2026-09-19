@@ -2,6 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import DogCard from "../../components/DogCard.astro";
 import { dogs, locations, ageGroup } from "../../data/dogs";
+import ServiceArea from "../../components/ServiceArea.astro";
 import { forms } from "../../data/links";
 
 // Sort puppies and younger dogs first — that is what most visitors arrive for,
@@ -40,6 +41,8 @@ for (const d of dogs) counts[ageGroup(d)]++;
       <p class="live-status" id="live-status" hidden></p>
     </div>
   </section>
+
+  <ServiceArea level={2} />
 
   <section class="wrap" style="padding-bottom: 4rem;">
     <!-- Filters are progressive enhancement: without JS every dog shows. -->
