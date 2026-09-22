@@ -241,6 +241,51 @@ const freedoms = [
     </div>
   </section>
 
+  <!-- --------------------------------------------------------- akc -- -->
+  {/* BCSAVE's published position, kept in their own words — this is the
+      rescue's stance to take, not mine to soften.
+
+      The links needed work, though. HSUS rebranded to Humane World for
+      Animals, so all three originals now redirect, and the Horrible Hundred
+      one had rotted through to a generic press-release index. That is
+      replaced with /issue/horrible-hundred, the evergreen landing page for
+      the report, which will not go stale with each annual edition. All three
+      destinations verified 200 before publishing. */}
+  <section class="section section--tight" style="background: var(--paper-warm);">
+    <div class="wrap">
+      <p class="eyebrow">Before you buy a puppy</p>
+      <h2>AKC: Worst is Show</h2>
+      <p class="lede">
+        Before you, or anyone you know, decides to buy a puppy, please do a
+        little research. The AKC in particular has a long and sordid history of
+        supporting puppy mills over the welfare of the dogs, and of opposing
+        anti-animal-cruelty legislation that would hurt their bottom line.
+      </p>
+      <p class="lede">
+        Notice how none of it is positive, and how the AKC's and Petland's
+        names come up over and over.
+      </p>
+
+      <ul class="akc-links mt-2">
+        <li>
+          <a href="https://www.humaneworld.org/en/blog/american-kennel-club-opposed-450-bills" rel="noopener" target="_blank">
+            American Kennel Club opposed 450+ bills designed to help dogs
+          </a>
+        </li>
+        <li>
+          <a href="https://www.humaneworld.org/en/issue/horrible-hundred" rel="noopener" target="_blank">
+            The Horrible Hundred report on puppy mills
+          </a>
+        </li>
+        <li>
+          <a href="https://www.humaneworld.org/en/search?keys=akc" rel="noopener" target="_blank">
+            Search the AKC on humaneworld.org
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <!-- --------------------------------------------------- euthanasia -- -->
   {/* BCSAVE publishes this policy and the rebuild had dropped it. Leaving it
       out is not neutral: a rescue site that says nothing gets read as
@@ -318,6 +363,33 @@ const freedoms = [
 </Base>
 
 <style>
+  .akc-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.6rem;
+    max-width: 52ch;
+  }
+
+  .akc-links a {
+    display: block;
+    padding: 0.8rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .akc-links a:hover {
+    border-left-color: var(--accent-ink);
+    color: var(--accent-ink);
+  }
+
   /* Deliberately not .notice — that is ember-washed alarm styling, which
      reads as a warning. This is a quiet statement of fact. */
   .euth-foot {
