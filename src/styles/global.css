@@ -173,6 +173,17 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  /* The header is sticky at 63px, so without this every in-page jump lands
+     with the target's first 63px tucked underneath it — the heading you
+     clicked towards is the part that gets hidden, which reads as the link
+     not having worked at all. */
+  scroll-padding-top: 4.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
