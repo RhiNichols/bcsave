@@ -1,0 +1,170 @@
+---
+import Base from "../layouts/Base.astro";
+import { forms } from "../data/links";
+
+/*
+ * Everything on this page is condensed from BCSAVE's own foster information
+ * page at bcsave.org/foster-apply/ — the process, the responsibilities, who
+ * pays for what, and the Texas-only rule. Wording is tightened; no policy is
+ * invented. If any of it goes out of date the rescue is the source of truth,
+ * not this file.
+ *
+ * It exists because the header's "Foster" link used to jump to a card in a
+ * four-up grid on the homepage. Fostering is the hard limit on how many dogs
+ * BCSAVE can say yes to, so it earns a page that explains the job before
+ * handing someone to a long application on WordPress.
+ */
+const steps = [
+  {
+    title: "Initial phone screening",
+    body: "A get-to-know-you call with a BCSAVE volunteer to go through your application, work out what you are looking for, and answer anything you want to ask us.",
+  },
+  {
+    title: "Home check",
+    body: "A virtual home visit — photos, video or a call, whichever suits you — so we can match our dogs to a home that fits their particular needs.",
+  },
+  {
+    title: "Find your foster",
+    body: "We start talking about specific dogs. The goal is a dog who suits your household, not simply the next dog on the list.",
+  },
+  {
+    title: "Make arrangements",
+    body: "We sort out getting the dog to you, including transport where it is needed.",
+  },
+];
+
+/* The Five Freedoms, which BCSAVE requires every foster to follow. Summarised
+   from their foster page; the full text is on /about. */
+const freedoms = [
+  ["Freedom from hunger and thirst", "Fresh water and a nutritionally balanced diet."],
+  ["Freedom from discomfort", "Bedding, and a safe, healthy living environment with shelter from the elements."],
+  ["Freedom from pain, injury or disease", "Keep them from harm, seek medical attention when it is needed, give any medication, and keep vaccinations current."],
+  ["Freedom to express normal behaviour", "Enough activity, exercise and attention to keep a dog physically and mentally well."],
+  ["Freedom from fear and distress", "A safe place, and reasonable steps to avoid mental suffering and stress."],
+];
+---
+
+<Base
+  title="Foster a Border Collie — Border Collie Save & Rescue"
+  description="Fostering is the hard limit on how many dogs BCSAVE can take in. What the process involves, what we cover, and how to apply."
+  ctaLabel="Apply to foster"
+  ctaHref={forms.foster}
+>
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="eyebrow">Foster</p>
+      <h1 style="max-width: 20ch;">Every dog we save is a dog someone made room for.</h1>
+      <p class="lede">
+        BCSAVE has no kennel and no shelter building. There is no waiting area
+        a dog can sit in until a home turns up — a dog we take in is a dog a
+        foster said yes to that week. That is the whole constraint on how many
+        Border Collies we can pull out of a bad situation.
+      </p>
+      <div class="btn-row mt-2">
+        <a class="btn btn--ember" href={forms.foster}>Apply to foster</a>
+        <a class="btn btn--ghost" href="#what-it-involves">What it involves</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------- who pays what -- -->
+  <section class="section section--tight" style="background: var(--paper-warm);">
+    <div class="wrap">
+      <div class="cards cards--2">
+        <div class="panel">
+          <p class="eyebrow">You provide</p>
+          <h2 style="font-size: clamp(1.25rem, 3.4vw, 1.6rem);">Food, and a place in your home</h2>
+          <p style="color: var(--ink-soft);">
+            Fosters are asked to cover the dog's food. Beyond that, what you are
+            really providing is time, patience and a sofa — somewhere a dog can
+            decompress and start being a dog again.
+          </p>
+        </div>
+        <div class="panel">
+          <p class="eyebrow">We cover</p>
+          <h2 style="font-size: clamp(1.25rem, 3.4vw, 1.6rem);">Essentially everything else</h2>
+          <p style="color: var(--ink-soft);">
+            Vaccinations, heartworm prevention and other expenses are generally
+            paid by BCSAVE. You should not be out of pocket for a foster dog's
+            medical care — if something comes up, ask us first.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- -------------------------------------------------------- the process -->
+  <section class="section section--tight" id="what-it-involves">
+    <div class="wrap">
+      <p class="eyebrow">The process</p>
+      <h2>From application to a dog on your floor</h2>
+      <ol class="steps mt-2">
+        {steps.map((s) => (
+          <li>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ----------------------------------------------------- what we ask -- -->
+  <section class="section section--tight" style="background: var(--paper-warm);">
+    <div class="wrap">
+      <p class="eyebrow">What we ask</p>
+      <h2>The Five Freedoms</h2>
+      <p class="lede">
+        Every BCSAVE foster agrees to these. They are the standard the rescue
+        holds itself to as well, not a form of words.
+      </p>
+
+      <dl class="factlist mt-2">
+        {freedoms.map(([term, def]) => (
+          <div class="fact">
+            <dt>{term}</dt>
+            <dd>{def}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="panel mt-2">
+        <h3>And a few practical things</h3>
+        <ul style="color: var(--ink-soft); line-height: 1.7; padding-left: 1.1rem;">
+          <li>Occasional feedback, assessments and photos of your foster dog — this is how we describe them honestly to adopters.</li>
+          <li>Making the dog available now and then for volunteers to take to events and meet-and-greets.</li>
+          <li>You may be asked, though never required, to speak with potential adopters about the dog in your care.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------- geography -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="notice">
+        <strong>We only foster dogs in Texas and the immediately surrounding areas.</strong>{" "}
+        A foster dog has to stay close enough for volunteers to reach. If you
+        live further out, please consider volunteering for a Border Collie
+        rescue nearer to you — ask us and we will point you at one.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------------- cta -->
+  <section class="section section--tight band">
+    <div class="wrap center">
+      <h2 style="color: var(--white);">Ready to open your home?</h2>
+      <p style="color: rgba(255,253,249,0.88); max-width: 50ch; margin-inline: auto;">
+        The application is read by a volunteer, so give us a few days to come
+        back to you.
+      </p>
+      <div class="btn-row mt-2" style="justify-content: center;">
+        <a class="btn btn--light" href={forms.foster}>Start a foster application</a>
+        <a class="btn btn--ghost" style="color: #fffdf9;" href="/volunteer">
+          Help in another way
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

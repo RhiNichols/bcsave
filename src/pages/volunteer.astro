@@ -1,0 +1,144 @@
+---
+import Base from "../layouts/Base.astro";
+import { forms } from "../data/links";
+
+/*
+ * Condensed from BCSAVE's own volunteer information page at
+ * bcsave.org/volunteer-apply/. The six roles below are theirs, not a
+ * plausible-sounding list — an all-volunteer rescue has specific jobs that
+ * need doing, and naming them is what turns "I'd like to help somehow" into
+ * someone actually signing up.
+ *
+ * Replaces the header's old /#volunteer link, which jumped to a single card
+ * inside the homepage's four-up grid.
+ */
+const roles = [
+  {
+    title: "Foster",
+    time: "Ongoing",
+    body: "Open your home to a rescued dog until they are adopted. This is the one that decides how many dogs we can take in at all.",
+    href: "/foster",
+    cta: "How fostering works",
+  },
+  {
+    title: "Short-term foster",
+    time: "Overnight to a few days",
+    body: "Emergency cover — a dog who needs pulling out of a foster home, or somewhere to stay between transport legs. You are not asked for vet trips, evaluations, events or the usual foster tasks.",
+  },
+  {
+    title: "Events",
+    time: "A few hours",
+    body: "Set up the booth, walk the dogs, and talk to people about BCSAVE. Good if you like dogs and do not mind strangers.",
+  },
+  {
+    title: "Application processing",
+    time: "Phone, from home",
+    body: "Phone-screen adoption applicants: are they a good fit for BCSAVE, and is the dog a good match for them? Every single adoption application goes through a volunteer screener.",
+  },
+  {
+    title: "Evaluation",
+    time: "In person, flexible",
+    body: "Go out to shelters and to owners looking to surrender, and assess whether a dog is a candidate for the rescue — and what sort of foster home would suit them.",
+  },
+  {
+    title: "Transport",
+    time: "An hour to a full relay",
+    body: "Move dogs into the rescue and between foster homes. Anything from a short local hop to a long-distance relay handed between several volunteers.",
+  },
+];
+---
+
+<Base
+  title="Volunteer with Border Collie Save & Rescue"
+  description="BCSAVE is entirely volunteer run. Fostering, transport, events, phone screening and evaluations — the jobs that keep a rescue with no paid staff running."
+  ctaLabel="Volunteer with us"
+  ctaHref={forms.volunteer}
+>
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="eyebrow">Volunteer</p>
+      <h1 style="max-width: 18ch;">Nobody here is paid. That is the whole model.</h1>
+      <p class="lede">
+        BCSAVE is an all-volunteer, in-home, foster-based rescue. Every dog
+        pulled from a shelter, every application read, every drive across the
+        state is someone giving up an evening. If you have time to give, there
+        is a job here that fits it.
+      </p>
+      <div class="btn-row mt-2">
+        <a class="btn btn--ember" href={forms.volunteer}>Volunteer with us</a>
+        <a class="btn btn--ghost" href="#roles">See what needs doing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- -------------------------------------------------------------- roles -->
+  <section class="section section--tight" style="background: var(--paper-warm);" id="roles">
+    <div class="wrap">
+      <p class="eyebrow">Ways to help</p>
+      <h2>What actually needs doing</h2>
+      <p class="lede">
+        You are not signing up for all of it. Tell us on the application which
+        of these appeal and how much time you have.
+      </p>
+
+      <div class="cards cards--3 mt-2">
+        {roles.map((r) => (
+          <article class="card">
+            <p class="eyebrow" style="font-size: 0.68rem;">{r.time}</p>
+            <h3>{r.title}</h3>
+            <p>{r.body}</p>
+            {r.href && (
+              <a class="btn btn--ghost" href={r.href}>
+                {r.cta}
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------ the ask -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="cards cards--2">
+        <div>
+          <p class="eyebrow">Before you apply</p>
+          <h2>Two things worth knowing</h2>
+          <p class="lede">
+            Neither is meant to put you off. They are just the bits people are
+            usually surprised by.
+          </p>
+        </div>
+        <div class="panel">
+          <h3>You must be over 18</h3>
+          <p style="color: var(--ink-soft);">
+            BCSAVE cannot process any application from someone under 18.
+          </p>
+          <h3 style="margin-top: 1.25rem;">Volunteers read the applications</h3>
+          <p style="color: var(--ink-soft);">
+            There is no office and no one whose job this is. A person fits your
+            application around their own week, so replies take a few days.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------------- cta -->
+  <section class="section section--tight band">
+    <div class="wrap center">
+      <h2 style="color: var(--white);">Give us an evening.</h2>
+      <p style="color: rgba(255,253,249,0.88); max-width: 52ch; margin-inline: auto;">
+        Tell us what you are good at and how much time you have. We will find
+        something that fits.
+      </p>
+      <div class="btn-row mt-2" style="justify-content: center;">
+        <a class="btn btn--light" href={forms.volunteer}>Start a volunteer application</a>
+        <a class="btn btn--ghost" style="color: #fffdf9;" href="/foster">
+          Foster instead
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

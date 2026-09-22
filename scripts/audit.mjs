@@ -43,7 +43,7 @@ const dogSlugs = (ALL ? dogs : dogs.slice(0, 6)).map((d) => d.slug);
 
 const urls = [
   "/", "/dogs", "/alumni", "/about", "/faqs", "/lostdog", "/guide",
-  "/donate", "/404",
+  "/donate", "/foster", "/volunteer", "/404",
   ...dogSlugs.map((s) => `/dogs/${s}`),
 ];
 
