@@ -241,6 +241,66 @@ const freedoms = [
     </div>
   </section>
 
+  <!-- --------------------------------------------------- euthanasia -- -->
+  {/* BCSAVE publishes this policy and the rebuild had dropped it. Leaving it
+      out is not neutral: a rescue site that says nothing gets read as
+      no-kill, which is not what BCSAVE is. Condensed from their own
+      Euthanasia Policy, hedges intact — "reserved for", "will be an option
+      if" — because the whole point of the policy is how narrow it is. */}
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="eyebrow">Difficult decisions</p>
+      <h2>Our euthanasia policy</h2>
+      <p class="lede">
+        BCSAVE is committed to saving the lives of the animals in its care.
+        Euthanasia is reserved for cases deemed untreatable or not
+        rehabilitatable — and we would rather tell you that plainly than let
+        you guess.
+      </p>
+
+      <div class="cards cards--2 mt-2">
+        <div class="panel">
+          <h3>Medical</h3>
+          <p style="color: var(--ink-soft);">
+            We provide medical care and treatment to the animals in our
+            program. Euthanasia is reserved for cases where the animal is not
+            responding to treatment, there is no cure, or there is no option
+            for relief — leaving a prognosis of poor or grave — or where there
+            is a quality-of-life concern.
+          </p>
+          <p style="color: var(--ink-soft);">
+            <strong>
+              It is always done after consultation with one or more
+              veterinarians.
+            </strong>
+          </p>
+        </div>
+
+        <div class="panel">
+          <h3>Behaviour</h3>
+          <p style="color: var(--ink-soft);">
+            We provide training and behaviour rehabilitation for dogs showing
+            aggressive behaviours, using recognised behaviourists and trainers.
+            Euthanasia becomes an option only if a dog is not responding to
+            that work, is inconsistent enough to be considered unpredictable,
+            or would be a danger to the community or an adoptive family.
+          </p>
+          <p style="color: var(--ink-soft);">
+            The behaviours meant here include dog or select-dog aggression,
+            people or select-people aggression, resource guarding, severe food
+            aggression, extremely high prey drive, unprovoked bites, and
+            extreme under-socialisation.
+          </p>
+        </div>
+      </div>
+
+      <p class="euth-foot mt-2">
+        Euthanasia is performed by a veterinarian or a certified veterinary
+        technician, and conducted in the most humane way possible.
+      </p>
+    </div>
+  </section>
+
   <!-- -------------------------------------------------------------- cta -- -->
   <section class="section band">
     <div class="wrap center">
@@ -256,3 +316,17 @@ const freedoms = [
     </div>
   </section>
 </Base>
+
+<style>
+  /* Deliberately not .notice — that is ember-washed alarm styling, which
+     reads as a warning. This is a quiet statement of fact. */
+  .euth-foot {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--ink-faint);
+    border-radius: var(--radius);
+    padding: 0.9rem 1.1rem;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+</style>
