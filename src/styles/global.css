@@ -1147,6 +1147,14 @@ h3 {
   padding: 0.8rem 0.9rem;
 }
 
+/* The hairline grid above is the container's --line background showing
+   through a 1px gap, so an odd number of facts leaves the vacant cell
+   rendering as a filled block. Let the last one span the row instead.
+   Hits 8 of 25 dog pages, and the Five Freedoms list on /foster. */
+.fact:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .fact dt {
   font-size: 0.7rem;
   font-weight: 700;
