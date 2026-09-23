@@ -14,6 +14,17 @@ const sorted = [...dogs].sort(
 
 const regions = locations();
 
+/*
+ * The breed's reputation is built on its extreme end, and it costs us
+ * adopters — people decide they could not handle a Border Collie before they
+ * ever look. BCSAVE's own energy ratings say otherwise, so the numbers below
+ * are computed from the feed rather than asserted, and will stay true as the
+ * dogs change.
+ */
+const rated = dogs.filter((d) => d.energy && d.energy !== "TBD");
+const calm = rated.filter((d) => /couch|^low$|^medium$/i.test(d.energy)).length;
+const driven = rated.filter((d) => /working|sport|^high$/i.test(d.energy)).length;
+
 // Chip counts, so nobody taps a filter that returns nothing.
 const counts = { puppy: 0, young: 0, adult: 0, senior: 0 };
 for (const d of dogs) counts[ageGroup(d)]++;
@@ -33,11 +44,22 @@ for (const d of dogs) counts[ageGroup(d)]++;
       </h1>
       <p class="lede">
         Every one is in a foster home right now. Tap a dog to read their story.
-        Do not see the right fit? New dogs come in most weeks.
+        Don't see the right fit? New dogs come in most weeks.
       </p>
 
+      {rated.length > 4 && (
+        <p class="range">
+          <strong>Not sure a Border Collie would suit you?</strong> The breed's
+          reputation comes from its extreme end. Of the {rated.length} dogs here
+          with an energy level recorded, {calm} are medium or lower and only{" "}
+          {driven} are the high-drive athletes people picture — the rest are
+          somewhere in between. Some want a job. Some want a sofa. Tell us about
+          your life and we'll tell you honestly which of these would fit it.
+        </p>
+      )}
+
       {/* Filled in only after the live ShelterManager read succeeds, so it can
-          never claim a connection that is not working. */}
+          never claim a connection that isn't working. */}
       <p class="live-status" id="live-status" hidden></p>
     </div>
   </section>
@@ -115,6 +137,24 @@ for (const d of dogs) counts[ageGroup(d)]++;
     </div>
   </section>
 </Base>
+
+<style>
+  .range {
+    max-width: 68ch;
+    margin-top: 1.15rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--accent-wash);
+    border: 1px solid var(--accent-line);
+    border-radius: var(--radius);
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .range strong {
+    color: var(--ink);
+  }
+</style>
 
 <script>
   import { refreshGrid, recount, showLiveStatus } from "../../lib/live-dogs";
