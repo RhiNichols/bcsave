@@ -36,7 +36,7 @@ const mistakes = [
   {
     problem: "The dog isn't on the website at all",
     cause:
-      "Almost always the dog has no photo. A dog with no photo is skipped entirely, because a listing with no face does not get adopted.",
+      "Almost always the dog has no photo. A dog with no photo is skipped entirely, because a listing with no face doesn't get adopted.",
     fix: "Add at least one photo in ShelterManager.",
   },
   {
@@ -68,14 +68,14 @@ const mistakes = [
       <p class="eyebrow">Volunteer guide · internal</p>
       <h1 style="max-width: 17ch;">How to post a dog</h1>
       <p class="lede">
-        You already know ShelterManager. That is the only place you need to
+        You already know ShelterManager. That's the only place you need to
         work — the website reads from it automatically. You never have to log
         into the website or ask anyone to publish for you.
       </p>
 
       <div class="notice" style="max-width: 62ch;">
         <strong>The short version:</strong> add a photo, write the description,
-        make sure the dog is marked adoptable. That is genuinely it.
+        make sure the dog is marked adoptable. That's genuinely it.
       </div>
     </div>
   </section>
@@ -95,7 +95,7 @@ const mistakes = [
             website, and up to eight appear in the thumbnail strip.
           </p>
           <p>
-            <strong>A dog with no photo does not appear on the website at all.</strong>
+            <strong>A dog with no photo doesn't appear on the website at all.</strong>
             Photos straight off a phone are fine; the website shrinks them.
           </p>
         </li>
@@ -128,7 +128,7 @@ const mistakes = [
       <h2>What the website actually uses</h2>
       <p class="lede">
         ShelterManager has a great many fields. The website reads only these —
-        anything else you fill in is for the rescue's own records and will not
+        anything else you fill in is for the rescue's own records and won't
         appear publicly.
       </p>
 
@@ -158,7 +158,7 @@ const mistakes = [
 
       <p style="font-size: 0.9rem; color: var(--ink-faint); margin-top: 1rem;">
         Medical details, intake history, notes and anything else stay private.
-        They are never published.
+        They're never published.
       </p>
     </div>
   </section>
@@ -191,21 +191,21 @@ const mistakes = [
 
   <!-- ---------------------------------------------------------- publish -- -->
   {/*
-    Volunteers do not need this — a dog they add shows up on /dogs within a few
+    Volunteers don't need this — a dog they add shows up on /dogs within a few
     minutes on its own, and gets its own page at the next rebuild. This exists
-    because "it will appear shortly" is not reassuring to someone who has just
-    spent twenty minutes on a dog and cannot see it yet. Pressing a button and
+    because "it will appear shortly" isn't reassuring to someone who has just
+    spent twenty minutes on a dog and can't see it yet. Pressing a button and
     being told what is happening is.
   */}
   <section class="section section--tight" id="publish">
     <div class="wrap">
       <div class="panel" style="max-width: 62rem;">
-        <p class="eyebrow">When you have finished</p>
+        <p class="eyebrow">When you've finished</p>
         <h2 style="font-size: clamp(1.3rem, 3.5vw, 1.8rem);">
           Put your dogs on the website now
         </h2>
         <p style="color: var(--ink-soft);">
-          You do not have to do this. New dogs appear on the website by
+          You don't have to do this. New dogs appear on the website by
           themselves within a few minutes, and get their own page within a day.
           This is for when you would rather not wait — press it once after you
           have finished adding or removing dogs.
@@ -253,7 +253,7 @@ const mistakes = [
           Giving a volunteer exactly enough access
         </h2>
         <p style="color: var(--ink-soft);">
-          A volunteer who only posts dogs does not need — and should not have —
+          A volunteer who only posts dogs doesn't need — and shouldn't have —
           the run of the system. In ShelterManager, go to
           <strong>Settings → System user accounts</strong>, create a role
           called something like <em>Dog Listings</em>, and tick only these five
@@ -271,7 +271,7 @@ const mistakes = [
         <p style="color: var(--ink-soft);">
           Leave every other box unticked. Create each volunteer as a
           <strong>normal user</strong> — not a superuser — and assign them that
-          one role. They log in and see a system they cannot break, and
+          one role. They log in and see a system they can't break, and
           everything they change flows to the website on its own.
         </p>
 
@@ -348,7 +348,7 @@ const mistakes = [
         );
       } catch {
         say(
-          "Could not reach the website just now. Your dogs are still saved in ShelterManager and will appear on their own shortly.",
+          "Couldn't reach the website just now. Your dogs are still saved in ShelterManager and will appear on their own shortly.",
           "problem"
         );
       }
