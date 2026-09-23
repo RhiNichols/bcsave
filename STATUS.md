@@ -32,6 +32,14 @@ that could not be signed into.
 Nothing was lost when it went — the whole site rebuilds from this repo — but it
 is the reason hosting moved.
 
+The tooling it left behind was removed on 2026-09-22: `wrangler.jsonc`,
+`deno.lock`, `src/worker.js` (the Worker version of what is now
+`netlify/functions/api.mjs`), the `deploy` script that called `wrangler
+deploy`, and the wrangler dependency. None of it was reachable — Netlify
+deploys on push and never looked at any of it — but `npm run deploy` still
+pointed at a Cloudflare account that no longer exists, which is a trap rather
+than a leftover.
+
 ## Pages
 
 | Path | What it is |
