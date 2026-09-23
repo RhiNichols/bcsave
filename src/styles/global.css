@@ -466,6 +466,11 @@ h3 {
   justify-content: space-between;
   gap: 1rem;
   min-height: 62px;
+  /* The open nav takes a full-width basis below, and needs somewhere to wrap
+     to. Without this it stays on the same row as the logo, gets squeezed to
+     whatever is left, and runs off the right edge — which is what it was
+     doing on a real phone. */
+  flex-wrap: wrap;
 }
 
 .brand {
@@ -524,9 +529,12 @@ h3 {
   display: none;
 }
 
-/* Open state on mobile: full-width stacked sheet */
+/* Open state on mobile: full-width stacked sheet. flex-basis is what makes
+   that true — as a plain flex item it shared the row with the logo. */
 .hdr__nav[data-open="true"] {
   display: block;
+  flex-basis: 100%;
+  width: 100%;
   padding: 0.5rem 0 1.25rem;
   border-top: 1px solid var(--line);
 }
@@ -580,6 +588,10 @@ h3 {
   .hdr__nav,
   .hdr__nav[data-open="true"] {
     display: block;
+    /* back onto the row — the mobile sheet's full-width basis must not
+       survive a resize with the menu left open */
+    flex-basis: auto;
+    width: auto;
     padding: 0;
     border: 0;
   }
@@ -1617,6 +1629,12 @@ code {
   text-decoration: underline;
 }
 
+/* /logo-white.png was a blank 560x464 file and rendered as a white rectangle
+   on the dark footer. Regenerated from logo.png with sharp: alpha set to
+   255 - min(r,g,b) so the white background drops out and both the dog and the
+   blue wordmark stay fully opaque, then flattened to white. A CSS filter
+   could not do this — logo.png has no alpha channel at all, so
+   brightness(0) invert(1) produced a white block. */
 .ftr__logo {
   width: 158px;
   height: auto;

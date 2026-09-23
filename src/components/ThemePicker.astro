@@ -32,6 +32,14 @@ const themes = [
   </button>
 </div>
 
+{/* Left behind when the panel is hidden, so the picker can be brought back
+    without closing the tab — which is the only other way to clear
+    sessionStorage, and is a miserable instruction to give someone on a
+    phone. */}
+<button class="theme-restore" type="button" data-theme-restore hidden aria-label="Show the colour scheme picker">
+  Aa
+</button>
+
 <style>
   .theme-picker {
     position: fixed;
@@ -98,6 +106,34 @@ const themes = [
   .theme-picker__hide:hover {
     color: #fffdf9;
   }
+
+  .theme-restore {
+    position: fixed;
+    z-index: 60;
+    right: 0.75rem;
+    bottom: 5.5rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 253, 249, 0.28);
+    background: rgba(22, 21, 15, 0.92);
+    color: #fffdf9;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .theme-restore[hidden] {
+    display: none;
+  }
+
+  @media (min-width: 46rem) {
+    .theme-restore {
+      bottom: 0.75rem;
+    }
+  }
 </style>
 
 <script>
@@ -120,15 +156,22 @@ const themes = [
       }
     });
 
-    box.querySelector("[data-theme-hide]")?.addEventListener("click", () => {
-      box.hidden = true;
+    const restore = document.querySelector<HTMLElement>("[data-theme-restore]");
+
+    const setHidden = (hidden: boolean) => {
+      box.hidden = hidden;
+      if (restore) restore.hidden = !hidden;
       try {
-        sessionStorage.setItem(KEY + "-hidden", "1");
+        if (hidden) sessionStorage.setItem(KEY + "-hidden", "1");
+        else sessionStorage.removeItem(KEY + "-hidden");
       } catch {}
-    });
+    };
+
+    box.querySelector("[data-theme-hide]")?.addEventListener("click", () => setHidden(true));
+    restore?.addEventListener("click", () => setHidden(false));
 
     try {
-      if (sessionStorage.getItem(KEY + "-hidden")) box.hidden = true;
+      if (sessionStorage.getItem(KEY + "-hidden")) setHidden(true);
     } catch {}
   }
 </script>

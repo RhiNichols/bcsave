@@ -183,6 +183,48 @@ for (const url of urls) {
       if (hs[i] - hs[i - 1] > 1)
         add(url, vp.name, "heading", `h${hs[i - 1]} jumps to h${hs[i]}`);
 
+    /*
+     * The mobile menu, open.
+     *
+     * Everything above runs with the nav closed, which is how a real
+     * shipped bug got past: the open panel was a flex child sharing the
+     * row with the logo, so it was squeezed to whatever width was left
+     * and ran off the right edge — clipping "Available Dogs" and the
+     * Donate button. Invisible to every check here until somebody opened
+     * it on an actual phone.
+     */
+    if (vp.mobile) {
+      const opened = await page.evaluate(() => {
+        const t = document.querySelector(".hdr__toggle");
+        if (!t || getComputedStyle(t).display === "none") return false;
+        t.click();
+        return true;
+      });
+      if (opened) {
+        await new Promise((r) => setTimeout(r, 350));
+        const nav = await page.evaluate(() => {
+          const vw = document.documentElement.clientWidth;
+          const items = [...document.querySelectorAll(".hdr__nav a, .hdr__nav button")];
+          return {
+            scrollWidth: document.documentElement.scrollWidth,
+            clientWidth: vw,
+            clipped: items
+              .map((el) => {
+                const r = el.getBoundingClientRect();
+                return r.right > vw + 1 || r.left < -1
+                  ? `${(el.textContent || "").trim().slice(0, 18)} right=${Math.round(r.right)}`
+                  : null;
+              })
+              .filter(Boolean),
+          };
+        });
+        if (nav.scrollWidth > nav.clientWidth + 1)
+          add(url, vp.name, "nav-open-h-scroll", `scrollWidth ${nav.scrollWidth} > ${nav.clientWidth}`);
+        for (const c of nav.clipped.slice(0, 4))
+          add(url, vp.name, "nav-open-clipped", c);
+      }
+    }
+
     if (vp.name === "1440") for (const l of report.links) seenLinks.set(l, url);
 
     await page.close().catch(() => {});
