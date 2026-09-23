@@ -1,4 +1,8 @@
 ---
+/* Trailing slashes vary between dev and the built output, so normalise before
+   comparing or /foster/ never matches /foster. */
+const here = Astro.url.pathname.replace(/\/+$/, "") || "/";
+
 const links = [
   // "Adopt" is deliberately absent — Available Dogs is the adoption path, and
   // seven links do not fit beside the logo at the desktop breakpoint.
@@ -45,7 +49,14 @@ const links = [
     <nav class="hdr__nav" id="site-nav" aria-label="Main">
       <ul>
         {links.map((l) => (
-          <li><a href={l.href}>{l.label}</a></li>
+          <li>
+            <a
+              href={l.href}
+              aria-current={here === l.href.replace(/\/+$/, "") ? "page" : undefined}
+            >
+              {l.label}
+            </a>
+          </li>
         ))}
         <li><a class="btn btn--ember" href="/donate">Donate</a></li>
       </ul>

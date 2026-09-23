@@ -170,6 +170,15 @@
   box-sizing: border-box;
 }
 
+/* The hidden attribute is only `display: none` in the UA sheet, so any author
+   rule that sets display beats it. .live-status did exactly that — it is
+   display:flex, so the empty blue pill rendered on /dogs on every load
+   despite being marked hidden. Guard it once, here, rather than per
+   component. */
+[hidden] {
+  display: none !important;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
@@ -545,8 +554,19 @@ h3 {
   border-radius: 8px;
 }
 
-.hdr__nav a:not(.btn):hover {
+.hdr__nav a:not(.btn):hover,
+.hdr__nav a:not(.btn):focus-visible {
+  /* Colour alone was too quiet here — near-black to dark rust on cream, which
+     reads as nothing in peripheral vision. The wash gives the link a visible
+     shape under the cursor. */
   color: var(--accent-ink);
+  background: var(--accent-wash);
+}
+
+/* Current page, so the nav says where you are and not just where you can go. */
+.hdr__nav a[aria-current="page"] {
+  color: var(--accent-ink);
+  box-shadow: inset 0 -2px 0 var(--accent);
 }
 
 .hdr__nav .btn {
