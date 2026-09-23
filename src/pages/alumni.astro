@@ -66,9 +66,13 @@ const busiest = months
       <h1>{shown} dogs.<br />{shown} furever homes.</h1>
       <p class="lede">
         Every dog below reached us somehow — a shelter, another rescue, an
-        owner who could no longer keep them — and went home with somebody.
-        This is what the fostering, the vet bills and the applications are
-        actually for.
+        owner who could no longer keep them — and every one of them went home
+        with somebody.
+      </p>
+      <p class="purpose">
+        This page is the point of BCSAVE. The fostering, the vet bills, the
+        applications, the home visits, the long drives across the state —
+        all of it exists to make this list longer.
       </p>
     </div>
   </section>
@@ -163,3 +167,19 @@ const busiest = months
     </div>
   </section>
 </Base>
+
+<style>
+  /* The one line on the site that says what the work is for. Display face and
+     a rule above it so it reads as a statement rather than another paragraph
+     of body copy. */
+  .purpose {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: 58ch;
+    margin-top: 1.5rem;
+    padding-top: 1.35rem;
+    border-top: 2px solid var(--accent);
+  }
+</style>
