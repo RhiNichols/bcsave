@@ -69,6 +69,38 @@ const freedoms = [
     </div>
   </section>
 
+  {/* The hero says fostering is the limit on how many dogs BCSAVE can take.
+      This is the half that was missing: what that limit costs. Grounded in
+      BCSAVE's own FAQ — "shelters have to adopt out animals to make room for
+      new animals coming in" and "saving another pet from being put to sleep
+      ... that's our ultimate end goal" — and deliberately underclaimed. Not
+      every shelter and not every dog; saying otherwise would be the same
+      overstatement we have been pulling out of this site all day. */}
+  <section class="section section--tight stakes">
+    <div class="wrap">
+      <p class="eyebrow">Why the timing matters</p>
+      <p class="stakes__lead">
+        A dog in a shelter is not on a waiting list. They are on a clock.
+      </p>
+      <div class="stakes__body">
+        <p>
+          Shelters have to keep adopting dogs out to make room for the ones
+          arriving behind them. When a shelter is full, the decision about who
+          stays gets made on space and on time, not on whether a dog deserves
+          it. A dog can be healthy, sound, good with people and good with other
+          dogs, and still run out of time — not because anything is wrong with
+          them, but because nobody had room that week.
+        </p>
+        <p>
+          That is what a foster home actually is. Not a kennel and not a
+          favour — <strong>time</strong>. It takes a dog off that clock and
+          gives them as long as it takes to find the person who suits them.
+          Most of the dogs on this site needed exactly that and nothing else.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ---------------------------------------------------- who pays what -- -->
   <section class="section section--tight" style="background: var(--paper-warm);">
     <div class="wrap">
@@ -214,3 +246,34 @@ const freedoms = [
     </div>
   </section>
 </Base>
+
+<style>
+  .stakes {
+    background: var(--paper-warm);
+  }
+
+  .stakes__lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.45rem, 3.6vw, 2.1rem);
+    line-height: 1.25;
+    max-width: 22ch;
+    margin: 0 0 1.25rem;
+    /* The weight here is the sentence, not the styling. No alarm colour. */
+    color: var(--ink);
+  }
+
+  .stakes__body {
+    max-width: 62ch;
+    border-left: 3px solid var(--accent);
+    padding-left: 1.15rem;
+  }
+
+  .stakes__body p {
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  .stakes__body p:last-child {
+    margin-bottom: 0;
+  }
+</style>
