@@ -127,6 +127,25 @@ const roles = [
     </div>
   </section>
 
+  {/* Someone arriving here from the foster page has already been told they
+      cannot foster. Being handed a donate button next reads as a shakedown,
+      so this is a quiet line that lets them leave without being asked for
+      anything — and means it. */}
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="nofit">
+        <strong>And if none of this fits your life right now — that's fine.</strong>
+        It isn't a no forever; people's circumstances change and we'll still be
+        here. If you'd like to help from a distance in the meantime, vet care is
+        where the pressure usually is. But we'd honestly rather have you back as
+        a volunteer one day than have you feel asked for anything today.
+      </p>
+      <p class="nofit-link">
+        <a href="/donate">If you'd like to, you can donate here</a>
+      </p>
+    </div>
+  </section>
+
   <!-- ---------------------------------------------------------------- cta -->
   <section class="section section--tight band">
     <div class="wrap center">
@@ -144,3 +163,21 @@ const roles = [
     </div>
   </section>
 </Base>
+
+<style>
+  .nofit {
+    max-width: 62ch;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  .nofit strong {
+    color: var(--ink);
+  }
+
+  /* A plain link, not a button. A button here would undo the sentence. */
+  .nofit-link a {
+    color: var(--accent-ink);
+    font-weight: 600;
+  }
+</style>
