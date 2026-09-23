@@ -1,6 +1,6 @@
 ---
 /*
- * TEMPORARY — a colour vote, not a site feature.
+ * TEMPORARY — a color vote, not a site feature.
  *
  * Staff are split on whether the site should keep the ember accent or go
  * blue like the logo. Rather than run separate deploys (which would double the
@@ -23,7 +23,7 @@ const themes = [
 ---
 
 <div class="theme-picker" data-theme-picker>
-  <label class="theme-picker__label" for="theme-select">Colour scheme</label>
+  <label class="theme-picker__label" for="theme-select">Color scheme</label>
   <select id="theme-select" class="theme-picker__select">
     {themes.map((t) => <option value={t.value}>{t.label}</option>)}
   </select>
