@@ -586,11 +586,14 @@ h3 {
   .hdr__nav ul {
     flex-direction: row;
     align-items: center;
-    gap: 0.35rem;
+    gap: clamp(0.4rem, 0.15rem + 0.9vw, 0.8rem);
   }
   .hdr__nav a {
     padding: 0.5rem 0.7rem;
     font-size: 0.94rem;
+    /* A nav label breaking over two lines makes the whole bar 78px tall.
+       These are two words at most — they should never wrap. */
+    white-space: nowrap;
   }
   .hdr__nav .btn {
     margin: 0 0 0 0.6rem;
