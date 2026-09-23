@@ -138,9 +138,16 @@ unreachable it stays hidden.
 2. **Real impact figures.** An early draft had invented dollar amounts on the
    donate band. They were replaced with facts from BCSAVE's own FAQ. Do not
    reintroduce numbers without the treasurer.
-3. **`/events` still points at WordPress.** The only remaining outbound link
+3. **The euthanasia policy on `/about` is unconfirmed.** Restored 2026-09-22
+   from BCSAVE's published policy, condensed with the hedges intact. Rhiannon
+   does not know whether it still reflects current practice and decided to
+   ship it and confirm later — it is a `noindex` preview, so the exposure is
+   low. Someone on the board needs to read it before this goes near a real
+   domain. The same applies to the AKC "Worst is Show" statement next to it,
+   though that one is lower stakes.
+4. **`/events` still points at WordPress.** The only remaining outbound link
    besides the application forms, which stay on WordPress deliberately.
-4. **Custom domain.** `preview.bcsave.org` would give the board a real address
+5. **Custom domain.** `preview.bcsave.org` would give the board a real address
    instead of a generated one, and would make the host swappable — moving
    between providers would stop breaking links. Needs DNS access to
    `bcsave.org`, currently at InMotion Hosting alongside the WordPress site.
