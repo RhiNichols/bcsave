@@ -40,10 +40,15 @@ const covered = [
       />
     </div>
     <div class="wrap hero__inner">
-      <p class="hero__eyebrow">
+      {/* This is the most-looked-at thing on the page and it was inert.
+          It goes to /dogs, where the age and region filters are. */}
+      <a class="hero__eyebrow" href="/dogs">
         <span class="pulse" aria-hidden="true"></span>
         {dogs.length} dogs available right now
-      </p>
+        <svg class="hero__eyebrow-go" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </a>
       <h1>Every one of them is waiting on somebody.</h1>
       <p class="hero__lede">
         Border Collies reach us from shelters, from other rescues, and from

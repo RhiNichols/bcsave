@@ -676,6 +676,37 @@ h3 {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 1.35rem;
+  /* It is a link now, so it needs to look pressable and be big enough to
+     press. 44px min on touch, which is above the 24px the audit enforces. */
+  text-decoration: none;
+  min-height: 44px;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+a.hero__eyebrow:hover,
+a.hero__eyebrow:focus-visible {
+  background: rgba(255, 253, 249, 0.22);
+  border-color: rgba(255, 253, 249, 0.5);
+  transform: translateY(-1px);
+}
+
+.hero__eyebrow-go {
+  opacity: 0.75;
+  transition: transform 0.15s ease;
+}
+
+a.hero__eyebrow:hover .hero__eyebrow-go {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.hero__eyebrow:hover {
+    transform: none;
+  }
+  a.hero__eyebrow:hover .hero__eyebrow-go {
+    transform: none;
+  }
 }
 
 .pulse {
