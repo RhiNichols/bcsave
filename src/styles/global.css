@@ -1054,9 +1054,9 @@ a.hero__eyebrow:hover .hero__eyebrow-go {
   gap: clamp(1.5rem, 4vw, 3rem);
 }
 
-/* Grid items default to min-width:auto, so the horizontally scrolling
-   thumbnail strip inside forces its column wider than the phone and the whole
-   page scrolls sideways. Any dog with more than about four photos hit this. */
+/* Grid items default to min-width:auto, so a wide child forces its column
+   wider than the phone and the whole page scrolls sideways. Kept as a floor
+   under every child of the grid, not just the thumbnails. */
 .detail > * {
   min-width: 0;
 }
@@ -1082,14 +1082,16 @@ a.hero__eyebrow:hover .hero__eyebrow-go {
   object-fit: cover;
 }
 
+/* Thumbnails wrap onto as many rows as they need rather than scrolling
+   sideways. They used to be a horizontal scroller, which clipped the strip at
+   the column edge with no visible scrollbar on macOS or iOS, so a dog with
+   eight photos looked like a dog with five. Wrapping shows every photo at
+   once and needs no affordance. */
 .gallery__thumbs {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.55rem;
   margin-top: 0.7rem;
-  overflow-x: auto;
-  padding-bottom: 0.3rem;
-  scrollbar-width: thin;
-  -webkit-overflow-scrolling: touch;
 }
 
 .gallery__thumbs button {
