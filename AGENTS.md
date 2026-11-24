@@ -167,6 +167,57 @@ which that page listens for. Things the forms hard-code, configured inside Shelt
 Also public on the account and worth retiring: #61 SANDBOX Adoption, #64 PROD BAK Adoption, #67 PROD
 BAK Owner Surrender, #68 SANDBOX Owner Surrender, #71 TEST DEV.
 
+### Working inside ShelterManager (from the ASM admin, 2026-11-24)
+
+Operational knowledge that only exists in the ASM admin UI. Written down because it was
+delivered by email and would otherwise be lost.
+
+**Forms live at ASM → Edit Online Forms, and render through a three-layer cascade:**
+
+1. ASM's own base code, generated from the form builder, with default formatting. Not editable.
+2. **Edit Header/Footer** — one global script applied to *every* form.
+3. The **edit icon beside each form name** — header and footer boxes for that form alone.
+
+Consequences, all of them learned the hard way:
+
+- **Back up the original before editing any global or per-form HTML.** The three layers
+  step on each other and the result often isn't what you'd predict from reading it.
+- **ASM's CSS is an older dialect.** Modern CSS3 syntax and formatting silently don't
+  apply. Don't assume a rule works because it's valid.
+- **ASM caches form output for up to four hours.** There is a no-cache development-mode
+  icon beside each form for seeing changes immediately — use it, or you'll edit blind.
+- There is a newer **Renderer** option (legacy vs bootstrap) that is untested here. It may
+  fix layout problems. Try it on a retired form first: it changes the markup, and
+  `src/pages/[form].astro` depends on the form posting its height via `postMessage`.
+
+**Post-submit redirects are set inside ASM, per form.** They currently point at
+`https://bcsave.org/success.html` and `https://bcsave.org/thankyou` — see the table above.
+While bcsave.org is down, every applicant who submits lands on a dead page even though
+the application itself is captured in Incoming Forms.
+
+**Dogs:** ASM → Publishing → Edit HTML publishing templates. BCSAVE's own template is
+`BCSAVELittlebox`, which the old WordPress site called in an iframe. **This site does not
+need it** — it reads `html_adoptable_animals` and builds real pages, so the old
+iframe-sizing and scrollbar fights don't apply here and the lost backup costs nothing.
+
+**Still worth asking for: the ASM *service* username and password.** The `json_`, `xml_`
+and `csv_` endpoints need them. With that login the HTML parser in `src/lib/asm-core.mjs`
+could be replaced by `json_adoptable_animals`, and most of its subtlety — including the
+off-by-one card/script trap — would simply go away.
+
+### The web store can be embedded rather than linked
+
+The footer links out to FulfillEngine today. It can be iframed, using the publisher's own
+height-messaging script, which is what the old site did:
+
+```html
+<iframe id="fulfillengineiframe" src="https://app.fulfillengine.com/campaign/bcsave-online-store"
+        width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+```
+
+It posts `["setIframeHeight", n]` and `["iframeScrollUp"]` to the parent, the same pattern
+`[form].astro` already handles for ASM forms.
+
 **The only real Green Forms form was `/lostdog/`** (14 fields, photo upload, captcha). It is now a
 pre-filled `mailto:` on `/lostdog`; rebuilding it as a ShelterManager form is the clean end state.
 
