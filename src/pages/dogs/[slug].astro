@@ -152,6 +152,16 @@ const more = dogs.filter((d) => d.slug !== dog.slug).slice(0, 4);
 </Base>
 
 <script>
+  // Opening a dog's page is what puts them in "Recently viewed" on /dogs.
+  // Recorded here rather than on the click that got here, so arriving by a
+  // shared link or a bookmark counts the same as arriving from the list.
+  import { remember } from "../../lib/recent";
+
+  const idEl = document.querySelector<HTMLElement>("[data-dog-id]");
+  if (idEl?.dataset.dogId) remember(idEl.dataset.dogId);
+</script>
+
+<script>
   // Swap the main photo when a thumbnail is tapped. No library needed.
   const main = document.getElementById("main-photo") as HTMLImageElement | null;
   const thumbs = document.querySelectorAll<HTMLButtonElement>(
