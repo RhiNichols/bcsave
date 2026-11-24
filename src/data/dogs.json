@@ -1,32 +1,436 @@
 [
   {
-    "id": "306",
-    "slug": "freckles",
-    "name": "Freckles",
+    "id": "332",
+    "slug": "chance-332",
+    "name": "Chance",
+    "sex": "Male",
+    "age": "3 years",
+    "weight": "30 lb",
+    "color": "Black & White",
+    "coat": "Rough (Long)",
+    "energy": "Med/High",
+    "fixed": "Yes",
+    "heartworm": "Negative",
+    "location": "Upper Gulf Coast (Houston)",
+    "fee": "$300",
+    "bio": "Are you looking for the perfect happy go lucky, playful, well mannered dog? Here is your Chance!! Found as as a stray puppy several years ago, Chance grew up in a happy home but was unfortunately relinquished now at 4Y old due to his previous owner's health issues. However, it is clear how well loved he was because there is nothing Chance loves more than LOVE! He is a bona fide lovebug that loves to make new friends and to seal the friendship with a good snuggle. Don't mistaken this cuddly poof for a couch potato though - this boy treats play time as seriously as nap time and loves to RUN around with his dog friends or after a ball.\n\nChance is just easy to love and easy to live with - he is housetrained, crate trained, and doesn't get into things he shouldn't. He is a best friend in waiting waiting for his forever home.\n\nChance is fostered in Houston, TX",
+    "images": [
+      "/dogs/chance-332-0",
+      "/dogs/chance-332-1",
+      "/dogs/chance-332-2",
+      "/dogs/chance-332-3",
+      "/dogs/chance-332-4",
+      "/dogs/chance-332-5",
+      "/dogs/chance-332-6",
+      "/dogs/chance-332-7"
+    ]
+  },
+  {
+    "id": "331",
+    "slug": "pippa-331",
+    "name": "Pippa",
+    "sex": "Female",
+    "age": "13 weeks",
+    "weight": "8 lb",
+    "color": "Black & White",
+    "coat": "Rough (Medium)",
+    "energy": "Med/High",
+    "fixed": "No",
+    "heartworm": "",
+    "location": "Hill Country (SA/Austin)",
+    "fee": "$350",
+    "bio": "Pippa was a stray puppy found in South Texas and brought to a rural high-kill shelter.\n\nFollow Pippa’s adventures at https://www.facebook.com/share/1Ehd9LgvG8/?mibextid=wwXIfr\n\nPippa is the perfect puppy package. She is sweet, curious and confident, but also cuddly without being too needy. She loves the attention of people and the adult dog she is in foster with, but is also happy to retire to her crate to silently chew on a chew stick. She's so much fun to be around!\n\nPippa is ready for action early. She's up around 6:30am, goes potty, and is then very eager for breakfast. We play for an hour and then she rests in her crate quietly. Since she's a young puppy, she appreciates regular potty breaks. She is okay being loose in a room as long as the room is puppy-proofed because she is still in her teething phase. She is on a 3x day feeding schedule, eating at morning, noon and early evening. She plays hard for 30 minutes or an hour at a time and then likes to rest. She's happy to be cuddled up by your side, but she's also content in her crate or on a bed on the floor. At night, she enjoys a crazy hour of play before bedtime and then sleeps in her crate silently until the morning.\n\nZooming, playing tug and bitey-face with her much larger foster dog sibling, shaking toys. She loves to steal something twice her size and tug it back to her spot. She seems to have an interest in balls and fetch.\n\nShe is just learning to walk on a leash and her tiny puppy size makes it a little more challenging. She has taken walks and done quite well. She will bite the leash if it is clipped in front, so we have been using a tiny harness with a back-clip.\n\nPippa has met a number of new people in and out of her foster's home, including babies in a stroller She is friendly and playful with new people after a quick warm up. She does not have a preference for women or men, but because of her small puppy size, she may be just a little nervous at first when someone approaches, but she almost immediately approaches them to play.\n\nPippa loves her crate and will go in willingly and does not object when she is carried and placed into her crate. She is almost always completely silent when crated. She has the best crate behavior I've ever seen. She is still working on consistent housebreaking (which is normal for her age). She has some excitement-related accidents first thing in the morning and when her people come home. She is learning to go outside and we have set up a temporary grass pad outside of her kennel for when she first exits in the morning. She is finally getting the idea that we try to hold it until we can get outside. She will continue to need help learning to potty on leash\n\nPippa is very confident and brave with our resident adult dog who is around 50 lbs, and has finally won her affection. Pippa is learning to respect Gemma's boundaries and takes correction really well. They do their form of wresting, play tug with toys, play keep-away with tennis balls, and generally just enjoy teasing each other. She is also okay being on her own, away from Gemma. Pippa has a great off switch.\n\nPippa is very affectionate and would love someone to provide her with attention throughout the day. She will do well living with a patient adult dog that doesn't mind her puppy antics and will continue to teach her healthy boundaries. As mentioned, Pippa is very quick to learn and adaptive to different playstyles. She is teething and it's important to keep cords and other dangerous items out of her reach. Her fosters think she will grow to be one cool little dog and have been impressed with her personality and intelligence!",
+    "images": [
+      "/dogs/pippa-331-0",
+      "/dogs/pippa-331-1",
+      "/dogs/pippa-331-2",
+      "/dogs/pippa-331-3"
+    ]
+  },
+  {
+    "id": "330",
+    "slug": "mack-330",
+    "name": "Mack",
+    "sex": "Male",
+    "age": "11 months",
+    "weight": "47 lb",
+    "color": "Red & White",
+    "coat": "Rough (Medium)",
+    "energy": "Med/High",
+    "fixed": "Yes",
+    "heartworm": "Negative",
+    "location": "North Texas (DFW)",
+    "fee": "$350",
+    "bio": "Mack is a super happy, bubbly ~10M old BC that was found as a stray and brought into a rural E. Texas shelter before joining the rescue.\n\nHe like a big, sweet puppy - outgoing, happy go lucky, and just wants to play with everyone he meets. Mack is adapting well to structure and routine in his foster home, and is working on balancing his high energy, playful side with some chill.\n\nMack is currently being fostered in Daingerfield, TX, with available transport assistance.",
+    "images": [
+      "/dogs/mack-330-0",
+      "/dogs/mack-330-1"
+    ]
+  },
+  {
+    "id": "329",
+    "slug": "dini-329",
+    "name": "Dini",
     "sex": "Female",
     "age": "1 year",
-    "weight": "45 lb",
-    "color": "Not Specified",
+    "weight": "35 lb",
+    "color": "Red Merle",
+    "coat": "Rough (Medium)",
+    "energy": "Medium",
+    "fixed": "No",
+    "heartworm": "Negative",
+    "location": "Upper Gulf Coast (Houston)",
+    "fee": "$300",
+    "bio": "Dini (short for Houdini and formerly Pixie) is a ~1.5Y female pup that was rescued from a hoarding situation in east Texas, along with Acorn, Bramble, Fig, and Mouse.\n\nDini is warming up and has taken very well to the routine of living in her foster home. She is very observant and fairly balanced even in new situations she has not experienced before (which because of her background, is pretty much everything). She gets along very well with other dogs and is great with cats. Dini loves to go on walks and is\n\nDini is being fostered in Houston, TX.",
+    "images": [
+      "/dogs/dini-329-0",
+      "/dogs/dini-329-1"
+    ]
+  },
+  {
+    "id": "328",
+    "slug": "luana-328",
+    "name": "Luana",
+    "sex": "Female",
+    "age": "1 year",
+    "weight": "30 lb",
+    "color": "Black Tri",
+    "coat": "Rough (Medium)",
+    "energy": "TBD",
+    "fixed": "No",
+    "heartworm": "",
+    "location": "North Texas (DFW)",
+    "fee": "$300",
+    "bio": "What started off as a slow Friday in late October became a race against the clock for Luana, a stray pup at the Weatherford shelter. Found with injuries including what was later identified as a fractured leg and puncture wounds, the shelter was desperate to find a place for Luana because they weren't going to be able to give her much time due to her injuries and the fact that they just got in a bunch of other dogs from an ordinance violation and were over-capacity.\n\nWith the amazing help from our friends at Weatherford Wags and one of their fosters, we rallied to get Luana out of the shelter and to our fantastic and always helpful vets and vet techs at Bridgeport Animal Hospital. We're still waiting on an update on Luana's injuries, but so far everyone who has met this sweet, 30 lbs, year old (estimated) pup has said she's all love and kisses, even in pain!",
+    "images": [
+      "/dogs/luana-328-0",
+      "/dogs/luana-328-1",
+      "/dogs/luana-328-2",
+      "/dogs/luana-328-3",
+      "/dogs/luana-328-4",
+      "/dogs/luana-328-5"
+    ]
+  },
+  {
+    "id": "327",
+    "slug": "riley-327",
+    "name": "Riley",
+    "sex": "Female",
+    "age": "1 year",
+    "weight": "30 lb",
+    "color": "Brown Tri",
+    "coat": "Rough (Medium)",
+    "energy": "TBD",
+    "fixed": "No",
+    "heartworm": "Negative",
+    "location": "Central Texas (Waco)",
+    "fee": "$350",
+    "bio": "Riley is a super sweet, affectionate, and smart girl. She loves her belly rubs and nibbles on your hand when she isn't ready for you to stop. She is a ball of energy but has a subtle and calmer side to her as well. She is very affectionate and loves to lay on a lap and follow her person around. Riley loves to play with balls and stuffed toy - although she likes to remove squeakers, eyes and noses.\n\nRiley is crate trained and has made a lot of improvements in being housebroken with a good routine. She loves going on walks but can be pull towards things she's interested (like an object or smell), but is it isn't a hard or consistent pull and she is otherwise not too reactive to other things on leash and can be easily redirected with a correction. Riley is a young dog and would benefit from continued positive training and structure - she is smart and eager to please and loves to learn! One fun quirk about her is that when you tell her to sit she spins in a circle before sitting. She also likes to stand up on her back legs in-between your to get a belly rub.\n\nRiley is being fostered in El Campo, Tx (an hour SW of Houston)",
+    "images": [
+      "/dogs/riley-327-0",
+      "/dogs/riley-327-1",
+      "/dogs/riley-327-2",
+      "/dogs/riley-327-3",
+      "/dogs/riley-327-4",
+      "/dogs/riley-327-5"
+    ]
+  },
+  {
+    "id": "321",
+    "slug": "dex-321",
+    "name": "Dex",
+    "sex": "Male",
+    "age": "2 years",
+    "weight": "38 lb",
+    "color": "Black & White",
+    "coat": "Rough (Medium)",
+    "energy": "Med/High",
+    "fixed": "Yes",
+    "heartworm": "",
+    "location": "Hill Country (SA/Austin)",
+    "fee": "$300",
+    "bio": "Dex is a handsome, black-and-white Border Collie boy, just under 2 years old and 27 lbs (he needs to gain weight), who was rescued from an Oklahoma shelter and is currently being fostered in Austin, TX.\n\nNo one ever taught Dex how to be a dog, but somehow, he figured out how to be an incredibly sweet one! He’s affectionate, gentle, curious, and loves nothing more than being close to his humans. Whether he’s following you around the house, investigating what’s happening in the kitchen, or cuddling on the couch, Dex just wants to be part of the family.\n\nDex is a bit of a blank slate when it comes to training, but he’s smart, attentive, and already learning household routines. He’s comfortable in his crate, rides quietly in the car once loaded, walks reasonably well on leash, and is making progress with potty training. He’s also extremely food motivated, which makes him an enthusiastic student—although you might want to keep an eye on that sandwich!\n\nDex is wonderful with people, including children, and generally tolerates other dogs, although he’s still learning how to play and interact with his canine friends. He can be protective of food and high-value treats around other dogs, so separate feeding and thoughtful supervision are important. He has strong Border Collie chase instincts, particularly around passing cars, airplanes, and small animals. He’s working on impulse control and recall, but needs secure containment, a leash, and supervised outdoor time. A cat-free home is recommended.\n\nDex is heartworm-positive and receiving veterinary care as he works toward a healthier weight. His approximately 90-day treatment process requires restricted physical activity, with restrictions continuing until his veterinarian clears him. This gives his foster an opportunity to concentrate on basic obedience, household manners, and confidence-building. Once medically cleared, Dex has the potential to become a wonderful active companion.\n\nDex would do best with a patient, Border Collie-savvy family willing to continue his training and help him discover the world at his own pace. He’s got a lot to learn, but all the important ingredients are already there: intelligence, affection, curiosity, and a genuinely kind heart.",
+    "images": [
+      "/dogs/dex-321-0",
+      "/dogs/dex-321-1",
+      "/dogs/dex-321-2",
+      "/dogs/dex-321-3",
+      "/dogs/dex-321-4"
+    ]
+  },
+  {
+    "id": "320",
+    "slug": "kevin-320",
+    "name": "Kevin",
+    "sex": "Male",
+    "age": "10 months",
+    "weight": "25 lb",
+    "color": "Black & White",
+    "coat": "Rough (Medium)",
+    "energy": "Med/High",
+    "fixed": "Yes",
+    "heartworm": "Negative",
+    "location": "Hill Country (SA/Austin)",
+    "fee": "$300",
+    "bio": "Kevin (rename Murray by his foster) is approximately 9 months old and spent three months in an Oklahoma shelter after being found as a stray. He is sensitive and exceptionally shy; however, brief moments of goofy, happy behavior suggest a sweet personality emerging. He may eventually become cuddly as his trust grows.\n\nKevin is crate trained and has not been observed eliminating in his crate or the house. He currently needs help getting outside to potty. He is learning to walk on leash: he moves reasonably well toward predictable destinations, such as outside or back to his crate, but may brace or resist when headed somewhere unfamiliar.\n\nHe is quiet indoors and eats reliably at mealtimes. He rides well in the car, although stress may cause excessive drooling. He needs a predictable routine and a safe space where he can rest without being pressured to interact.\n\nKevin is wary of unfamiliar people and dogs and usually chooses to retreat. He has shown occasional curiosity and tentative playfulness with his foster siblings. Dog parks overwhelm him and prompt escape-seeking behavior; busy or uncontrolled social settings are not appropriate for him now. A calm, socially appropriate senior dog may help him gain confidence through gentle example.\n\nKevin’s immediate priorities are decompression, trust building, comfortable leash walking, and confidence in everyday environments. His interest in sports or other activities cannot yet be assessed. He responds best to predictable routines, gentle handling, and gradual, reward-based exposure rather than forced interactions.\n\nHe is currently being fostered in New Orleans, LA",
+    "images": [
+      "/dogs/kevin-320-0",
+      "/dogs/kevin-320-1",
+      "/dogs/kevin-320-2",
+      "/dogs/kevin-320-3",
+      "/dogs/kevin-320-4",
+      "/dogs/kevin-320-5",
+      "/dogs/kevin-320-6"
+    ]
+  },
+  {
+    "id": "319",
+    "slug": "lliira-319",
+    "name": "Lliira",
+    "sex": "Female",
+    "age": "2 years",
+    "weight": "38 lb",
+    "color": "Tricolour",
     "coat": "Rough (Medium)",
     "energy": "Medium",
     "fixed": "Yes",
     "heartworm": "Negative",
     "location": "Upper Gulf Coast (Houston)",
     "fee": "$300",
-    "bio": "Freckles (FKA Stella) was rescued from a DFW area shelter after being found tied to a local business along with another dog.\n\nFreckles is being fostered in Manvel, TX",
+    "bio": "Lliira was rescued from the euthanasia at a rural south Texas shelter, after she was found as a stray. She is still getting to know her fosters and vice versa but is super sweet and bouncy and loves to lean on people for pets and is a big cuddler. She’s fine with other dogs and probably fine with cats (has been mostly non reactive to a colony of outdoor cats).\n\nShe is being fostered in Houston, TX",
     "images": [
-      "/dogs/freckles-0",
-      "/dogs/freckles-1",
-      "/dogs/freckles-2"
+      "/dogs/lliira-319-0",
+      "/dogs/lliira-319-1",
+      "/dogs/lliira-319-2",
+      "/dogs/lliira-319-3",
+      "/dogs/lliira-319-4",
+      "/dogs/lliira-319-5",
+      "/dogs/lliira-319-6",
+      "/dogs/lliira-319-7"
     ]
   },
   {
-    "id": "305",
-    "slug": "collin",
-    "name": "Collin",
+    "id": "318",
+    "slug": "badger-318",
+    "name": "Badger",
     "sex": "Male",
     "age": "1 year",
-    "weight": "55 lb",
+    "weight": "38 lb",
+    "color": "Black & White",
+    "coat": "Rough (Long)",
+    "energy": "Med/High",
+    "fixed": "Yes",
+    "heartworm": "Negative",
+    "location": "Central Texas (Waco)",
+    "fee": "$300",
+    "bio": "Badger was rescued as a near-emaciated stray running along the side of a highway in central Texas.\n\nBadger is quintessential border collie.  Enthusiastic, cheerful, very intelligent, gentle, shy but trusting, busy and a bit of a thinker.  He is adaptable to new people and situations. He can be crated for several hours at a stretch but requires activities, focused attention, and quality time with his people.\n\nBadger loves to walk and run, and fetch.  He is gentle and social with other dogs and people. He loves his walks and is generally very good on the leash, although can be a bit pully when he's excited. SO far, he has been very well-behaved walking by other dogs and people and has not barked at other dogs or people. Badger also currently lives with a cat (very good most of the time, although when he gets bored he can want to play with the kitty and needs to be told to back off) and fenced off chickens (the chickens are NOT free range so we can't attest to that, but he seems to leave them alone behind their fencing/does not fixate).\n\nBadger is a beautiful dog that will only grow with age emotionally, intellectually, and border collie-y!\n\nBadger is currently fostered in Austin, TX.",
+    "images": [
+      "/dogs/badger-318-0",
+      "/dogs/badger-318-1",
+      "/dogs/badger-318-2",
+      "/dogs/badger-318-3",
+      "/dogs/badger-318-4",
+      "/dogs/badger-318-5",
+      "/dogs/badger-318-6",
+      "/dogs/badger-318-7"
+    ]
+  },
+  {
+    "id": "317",
+    "slug": "fig-317",
+    "name": "Fig",
+    "sex": "Male",
+    "age": "1 year",
+    "weight": "20 lb",
+    "color": "Red Tri",
+    "coat": "Rough (Medium)",
+    "energy": "Medium",
+    "fixed": "Yes",
+    "heartworm": "Negative",
+    "location": "North Texas (DFW)",
+    "fee": "$350",
+    "bio": "Fig is a ~1Y pup that was rescued from a hoarding situation in east Texas, along with Acorn, Bramble, Mouse, and Dini.\n\nFig is a sweet and affectionate little guy and is building confidence by the day. Due to background, he can be shy and standoffish around to strangers at first but warms up quickly. He loves snuggles and pets once he gets to know you and is the perfect lap dog. He loves other dogs and enjoys playing with and cuddling the resident dog and giving her kisses whenever he can.\n\n8am morning walk followed by breakfast, free roam of the house while I work in my home office. 11:30am potty break and quick walk outside. Plays with my other dog and/or naps on the office sofa. 3pm long walk to the apartment complex dog park but kept on leash when inside and only if there are no other dogs around (note: BCSAVE does not recommend dog parks due to safety risks). Dinner time at 5:30pm followed by evening walk a few hours later. He has started showing interest in toys like rubber chew bones and plush toys. He definitely prefers a quiet calm atmosphere but has bursts of energy 3 or 4 times a day where he likes to wrestle with the other dog for a few minutes, then naps.\n\nHe prefers walking on tree lined paths and not so much wide open spaces, but he's getting more and more comfortable with each walk. Loud noises do make him jump but I just reassure him and redirect his attention verbally. He's about 50/50 on either wanting to pull ahead or walking beside me. He can still get a little spooked/ distracted by ppl walking by but again, each walk gets a little better. He walks well with my 60lb shepherd and prefers walking with her as opposed to walking alone.\n\nFig is crate trained but does very well free roaming even when home alone (with another dog), with no chewing or destructive behavior. He prefers to just relax on the couch or on the various dog beds or he just sploots on the hard wood floor. He has only had 1 accident the first night in his foster home, as he was getting used to apartment living, and has had no accidents in the weeks since.\n\nFig has lived with dogs closer to his size most of his life but has also done great with the resident GSD. Sometimes, the GSD forgets how big she is when they wrestle but Fig will let her know if she plays too rough. They sleep side by side on the bed at night. Due to Fig's background and getting confidence from other dogs, we will prioritize a home that has another friendly, confident and playful dog.\n\nFig likes to climb on my chest in the morning to wake me up and give kisses. He has the cutest sploot. He also likes to steal socks when I'm not looking and he is quite a stealth little Ninja because I never even hear him come in the closet to grab them :) I think the perfect home would be one that is not too chaotic, has one other small to medium sized dog. He is the perfect apartment sized dog too at only ~20lbs. He goes up and down 3 flights of stairs with no issue. He seems to do well with just a couple of long walks during the day and doesn't seem to need a backyard (especially since he is still a little anxious with wide open spaces). He would be fine with older kids but probably not little ones that may grab or poke him. Not that he is aggressive at all, just anxious if too many hands are around :)\n\nFig is being fostered in McKinney (north of Dallas), TX",
+    "images": [
+      "/dogs/fig-317-0",
+      "/dogs/fig-317-1",
+      "/dogs/fig-317-2",
+      "/dogs/fig-317-3",
+      "/dogs/fig-317-4",
+      "/dogs/fig-317-5",
+      "/dogs/fig-317-6",
+      "/dogs/fig-317-7"
+    ]
+  },
+  {
+    "id": "316",
+    "slug": "mouse-316",
+    "name": "Mouse",
+    "sex": "Female",
+    "age": "1 year",
+    "weight": "30 lb",
+    "color": "Black Tri",
+    "coat": "Rough (Medium)",
+    "energy": "Medium",
+    "fixed": "No",
+    "heartworm": "Negative",
+    "location": "Hill Country (SA/Austin)",
+    "fee": "$300",
+    "bio": "Mouse is a ~1Y old girl that was rescued from a hoarding situation in east Texas, along with Acorn, Bramble, Fig, and Dini.\n\nMouse is timid but very sweet and smart, picking up leash training in just a couple of days and is starting to bond with her fosters and play with the other dogs. Please check back in as she builds confidence and is ready for her forever home.\n\nMouse is being fostered in Hutto (north of Austin), TX.",
+    "images": [
+      "/dogs/mouse-316-0",
+      "/dogs/mouse-316-1",
+      "/dogs/mouse-316-2",
+      "/dogs/mouse-316-3"
+    ]
+  },
+  {
+    "id": "315",
+    "slug": "luke-315",
+    "name": "Luke",
+    "sex": "Male",
+    "age": "1 year",
+    "weight": "43 lb",
+    "color": "Black & White",
+    "coat": "Rough (Medium)",
+    "energy": "Medium",
+    "fixed": "Yes",
+    "heartworm": "Negative",
+    "location": "North Texas (DFW)",
+    "fee": "$300",
+    "bio": "Luke is a BC mix pup, approximately 1.5 years old and 43 lbs. He might be a BC/ Corgi mix, as he has shorter legs that usual. He first entered the shelter system as 12 week old puppy in May 2025 and was adopted, but was recently found running loose again in September 2026. No contact could be made with his former owner, so he stayed at the shelter until he came into the rescue\n\nLuke is a perfect pup - already house and leash-trained. He gets along great with other dogs and seems to be okay with cats. He loves a good snuggle and likes to sleep on the bed though he doesn't get on other furniture. He does NOT like to be crated, expressing himself loudly but has been a perfect gentleman in his new foster home. He is super smart. moderately active, and knows the dog door. We're still evaluating whether or not he truly has separation anxiety or if he just needs time to acclimate. He is a great, laid-back pup for someone who can give him free rein in the house (which he is fine with) and the yard when you leave.\n\nLuke is being fostered in Springtown, TX",
+    "images": [
+      "/dogs/luke-315-0",
+      "/dogs/luke-315-1",
+      "/dogs/luke-315-2",
+      "/dogs/luke-315-3",
+      "/dogs/luke-315-4",
+      "/dogs/luke-315-5",
+      "/dogs/luke-315-6"
+    ]
+  },
+  {
+    "id": "313",
+    "slug": "acorn-313",
+    "name": "Acorn",
+    "sex": "Female",
+    "age": "12 weeks",
+    "weight": "6 lb",
+    "color": "Red & White",
+    "coat": "Rough (Medium)",
+    "energy": "TBD",
+    "fixed": "No",
+    "heartworm": "",
+    "location": "Central Texas (Waco)",
+    "fee": "$350",
+    "bio": "This 12 week old, 6 lb firecracker of a pup can't be stopped by any stoopid artificial intelligence! An active, confident, social pup, Acorn is likely a BC and a mini-Aussie, and definitely leans on the MINI side as she'll probably get no larger than 20 lbs full grown!\n\nSaved from a bad situation with her brother Bramble and mom Dini and dad Fig, Acorn is a typical ginger girl - not afraid of anything or anyone! She is fiesty and runs circles around her foster family, and loves dogs, cats, adults, and kids alike. She loves to play and with toys (non-stop!) and is super smart.\n\nAcorn is being fostered in Killeen, TX",
+    "images": [
+      "/dogs/acorn-313-0",
+      "/dogs/acorn-313-1",
+      "/dogs/acorn-313-2",
+      "/dogs/acorn-313-3",
+      "/dogs/acorn-313-4",
+      "/dogs/acorn-313-5",
+      "/dogs/acorn-313-6"
+    ]
+  },
+  {
+    "id": "312",
+    "slug": "bennie-312",
+    "name": "Bennie",
+    "sex": "Male",
+    "age": "1 year",
+    "weight": "33 lb",
+    "color": "Black & White",
+    "coat": "Rough (Medium)",
+    "energy": "Medium",
+    "fixed": "Yes",
+    "heartworm": "Positive",
+    "location": "Unassigned",
+    "fee": "$350",
+    "bio": "Bennie was rescued from a rural East Tx shelter after being found as a stray.\n\nBennie is a sweet, affectionate boy who loves nothing more than a good lap to curl up in, with just a sprinkle of mischief to keep things interesting! He loves food puzzles, exploring, and is always curious about what might be on your kitchen counters. He can be a little shy at first but warms up quickly; he's still very much a puppy, with some mouthy tendencies and strong Border Collie herding instincts that he takes pretty seriously! Bennie would do best in a home with older children who understand his puppy energy and herding behaviors (he is not at all aggressive with the toddler in the home but does show herding tendencies towards her).\n\nBennie's routine includes plenty of outdoor time, play, enrichment, training, and cuddles throughout the day. He sleeps in his crate at night, voluntarily uses it for naps, and settles easily for both. Bennie enjoys playing with teaser toys, tug ropes, and we're gradually introducing him to a soccer ball. Squeaky toys seem to startle him right now, so he prefers quieter play. He gets occasional bursts of puppy zoomies, although he can sometimes get a little carried away and lose track of his surroundings! He has shown interest in playing with our resident dog, making attempts to initiate play, but is still a little unsure and sometimes runs off. Bennie walks well on leash and is responsive to guidance, especially when treats are involved! He's very food-motivated, which makes training enjoyable. He's still building confidence with the outside world, and busy streets or loud noises can make him a little nervous, so continued positive exposure and encouragement will help him grow more comfortable.\n\nBennie loves to sing along whenever he hears emergency vehicles, is a big fan of belly rubs, and has the cutest little smiley snarl when he gets excited! He's full of personality and has plenty of silly little quirks that make him fun to have around. He would thrive with someone who can provide consistent, hands-on training, mental stimulation, and one-on-one attention in a home with fewer distractions.\n\nHe is being fostered in Aubrey, TX",
+    "images": [
+      "/dogs/bennie-312-0",
+      "/dogs/bennie-312-1",
+      "/dogs/bennie-312-2",
+      "/dogs/bennie-312-3",
+      "/dogs/bennie-312-4",
+      "/dogs/bennie-312-5",
+      "/dogs/bennie-312-6"
+    ]
+  },
+  {
+    "id": "310",
+    "slug": "buddy-310",
+    "name": "Buddy",
+    "sex": "Male",
+    "age": "1 year",
+    "weight": "50 lb",
+    "color": "Black & White",
+    "coat": "Rough (Medium)",
+    "energy": "TBD",
+    "fixed": "Yes",
+    "heartworm": "Negative",
+    "location": "Central Texas (Waco)",
+    "fee": "$300",
+    "bio": "Buddy was surrendered to the rescue due to his previous owner's significant health problems",
+    "images": [
+      "/dogs/buddy-310-0",
+      "/dogs/buddy-310-1",
+      "/dogs/buddy-310-2"
+    ]
+  },
+  {
+    "id": "309",
+    "slug": "alara-309",
+    "name": "Alara",
+    "sex": "Female",
+    "age": "1 year",
+    "weight": "40 lb",
+    "color": "Tricolour",
+    "coat": "Rough (Medium)",
+    "energy": "Med/High",
+    "fixed": "Yes",
+    "heartworm": "Negative",
+    "location": "Central Texas (Waco)",
+    "fee": "$300",
+    "bio": "Alara was a stray that was brought to a rural Tx shelter\n\nWe are still learning about her but so far, she is a little shy with new people but quick to warm and very affectionate with people she knows, crate trained, housebroken, and great with other dogs. Please check back in as we get to know more about her personality!\n\nAlara is being fostered in Bryan, TX",
+    "images": [
+      "/dogs/alara-309-0",
+      "/dogs/alara-309-1",
+      "/dogs/alara-309-2",
+      "/dogs/alara-309-3"
+    ]
+  },
+  {
+    "id": "308",
+    "slug": "pickles-308",
+    "name": "Pickles",
+    "sex": "Female",
+    "age": "1 year",
+    "weight": "33 lb",
+    "color": "Tricolour",
+    "coat": "Smooth (Short)",
+    "energy": "Medium",
+    "fixed": "Yes",
+    "heartworm": "Negative",
+    "location": "North Texas (DFW)",
+    "fee": "$300",
+    "bio": "Pickles was saved from a rural shelter, where she ended up after being found as a stray and having a litter of puppies that were given away on the side of the road.\n\nPickles is such a happy girl - she gives full body wags when she sees her people and is gentle and sweet when she meets strangers. She is great with other young dog she is fostered with and likes to play chase with her but is very respectful with the senior dog of the house. She is housebroken, crate and leash trained and is great with kids.\n\nPickles is being fostered in Willis Point, TX (outside of Dallas).",
+    "images": [
+      "/dogs/pickles-308-0",
+      "/dogs/pickles-308-1",
+      "/dogs/pickles-308-2",
+      "/dogs/pickles-308-3",
+      "/dogs/pickles-308-4"
+    ]
+  },
+  {
+    "id": "307",
+    "slug": "margarine-307",
+    "name": "Margarine",
+    "sex": "Female",
+    "age": "2 years",
+    "weight": "40 lb",
     "color": "Black & White",
     "coat": "Rough (Medium)",
     "energy": "Medium",
@@ -34,20 +438,24 @@
     "heartworm": "Negative",
     "location": "Upper Gulf Coast (Houston)",
     "fee": "$300",
-    "bio": "Collin was rescued from a DFW area shelter after being found as a stray.\n\nWe are still getting to know this sweet boy, but so far, he is friendly, playful and has a gentle demeanor around people and other dogs.\n\nCollin is being fostered in Brenham, TX",
+    "bio": "Margarine / Margie (formerly Freckles) was saved from a rural shelter, where she ended up after being found as a stray and having a litter of puppies that were given away on the side of the road.\n\nMargie is gentle in everything she does (her soft personality reminded her fosters of butter) - greeting new people with a slow wagging tail. She is still acclimating to life out of the shelter and we expect her personality to continue to grow over the coming days and weeks, but so far, she is a very calm and sweet companion that gets along with other dogs, cats, is crate and leash trained, and has had no accidents. She loves to nap next to her people and follow them around the house. She doesn't jump in a car on her own yet but she rides very calmly and naps once she is in a car (and she's been on some very long car rides!). She has also met and engaged with kids (younger and older) and uses the same gentle demeanor with them  Please check back in for more details as we continue to learn more about this sweet girl!\n\nMargie is being fostered in Houston, TX",
     "images": [
-      "/dogs/collin-0",
-      "/dogs/collin-1",
-      "/dogs/collin-2",
-      "/dogs/collin-3"
+      "/dogs/margarine-307-0",
+      "/dogs/margarine-307-1",
+      "/dogs/margarine-307-2",
+      "/dogs/margarine-307-3",
+      "/dogs/margarine-307-4",
+      "/dogs/margarine-307-5",
+      "/dogs/margarine-307-6",
+      "/dogs/margarine-307-7"
     ]
   },
   {
     "id": "304",
-    "slug": "popeye",
+    "slug": "popeye-304",
     "name": "Popeye",
     "sex": "Male",
-    "age": "11 months",
+    "age": "1 year",
     "weight": "55 lb",
     "color": "Black & White",
     "coat": "Rough (Medium)",
@@ -56,65 +464,20 @@
     "heartworm": "Negative",
     "location": "North Texas (DFW)",
     "fee": "$300",
-    "bio": "Popeye was rescued from a DFW area shelter after being found as a stray.\n\nWe are still getting to know this sweet boy, but so far, he is a happy go lucky, dog and people friendly boy with lots of playful energy.\n\nPopeye is being fostered in Dallas, TX",
+    "bio": "Popeye was rescued from a DFW area shelter after being found as a stray.\n\nWe are still getting to know this sweet boy, but so far, he is a happy go lucky, dog and people friendly boy with lots of playful energy and a love of toys!\n\nPopeye is being fostered in Houston, TX",
     "images": [
-      "/dogs/popeye-0",
-      "/dogs/popeye-1",
-      "/dogs/popeye-2"
-    ]
-  },
-  {
-    "id": "302",
-    "slug": "chilly",
-    "name": "Chilly",
-    "sex": "Male",
-    "age": "18 weeks",
-    "weight": "21 lb",
-    "color": "Tricolour",
-    "coat": "Rough (Medium)",
-    "energy": "Med/High",
-    "fixed": "No",
-    "heartworm": "",
-    "location": "Upper Gulf Coast (Houston)",
-    "fee": "$350",
-    "bio": "Chillie and his sister Millie were rescued from a breeder along with their mom.\n\nChillie is a smart boy that can take a moment to warm up but does great with kids, dogs and cats. Since he was very attached to his sister, his personality is really starting to come out now that she is in a different foster home. Stay tuned as we learn more about this gorgeous little guy.\n\nChillie is being fostered in Magnolia, TX",
-    "images": [
-      "/dogs/chilly-0",
-      "/dogs/chilly-1",
-      "/dogs/chilly-2"
-    ]
-  },
-  {
-    "id": "301",
-    "slug": "milly",
-    "name": "Milly",
-    "sex": "Female",
-    "age": "18 weeks",
-    "weight": "19 lb",
-    "color": "Black & White",
-    "coat": "Rough (Medium)",
-    "energy": "Med/High",
-    "fixed": "No",
-    "heartworm": "",
-    "location": "Upper Gulf Coast (Houston)",
-    "fee": "$350",
-    "bio": "Millie and her brother Chillie were rescued from a breeder along with their mom.\n\nMillie is an affectionate cuddle bug that loves kids and people. She is great in a crate and rarely has an accident. She does great learning and respecting other dogs’ boundaries and has been very well behaved around the resident cat.\n\nMillie is being fostered in Katy, TX",
-    "images": [
-      "/dogs/milly-0",
-      "/dogs/milly-1",
-      "/dogs/milly-2",
-      "/dogs/milly-3",
-      "/dogs/milly-4",
-      "/dogs/milly-5",
-      "/dogs/milly-6"
+      "/dogs/popeye-304-0",
+      "/dogs/popeye-304-1",
+      "/dogs/popeye-304-2",
+      "/dogs/popeye-304-3"
     ]
   },
   {
     "id": "300",
-    "slug": "sallie",
+    "slug": "sallie-300",
     "name": "Sallie",
     "sex": "Female",
-    "age": "9 months",
+    "age": "11 months",
     "weight": "25 lb",
     "color": "Tricolour",
     "coat": "Rough (Medium)",
@@ -125,64 +488,18 @@
     "fee": "$350",
     "bio": "Sallie was a stray that showed up to the house of a Good Samaritan along with another dog.\n\nShe is a sweet and gentle pup that loves a lap to cuddle on. Now that she's more settled in, the puppy in her is coming out and she just wants to play and play. She loves herding balls, fetch, and trying to catch the 'jet' stream of water from the hose. Although she can be a little intimidated by new dogs at first, she does great once she's had a chance to warm up and wants every dog to play with her. Sallie hasn't met a stranger yet. She is very open and friendly with new people. She does not hesitated to gently put her feet up on your legs and lean the top of her head against you for a hug. She LOVES attention and is very affectionate. When she's gotten her energy out, she wants to sit in your lap and be petted or get belly rubs while you watch TV You don't need to shower or bathe, she will give you kisses till you're clean.\n\nBeing a puppy, Sallie is still in her chewing phase - she is redirectable with an appropriate chew toy (like a bully stick) but should be monitored until she grows out of the phase (like any dog of her age). Sallie's fun/weird/PSA quirk is that she will run and jump into the air expecting to be caught.  Literally an airborne dog expecting to be caught. Does not matter if you're standing up or sitting down.\n\nSallie is being fostered near Beaumont, TX",
     "images": [
-      "/dogs/sallie-0",
-      "/dogs/sallie-1",
-      "/dogs/sallie-2",
-      "/dogs/sallie-3",
-      "/dogs/sallie-4",
-      "/dogs/sallie-5",
-      "/dogs/sallie-6"
-    ]
-  },
-  {
-    "id": "299",
-    "slug": "pennie",
-    "name": "Pennie",
-    "sex": "Female",
-    "age": "5 years",
-    "weight": "38 lb",
-    "color": "Black & White",
-    "coat": "Rough (Long)",
-    "energy": "Medium",
-    "fixed": "Yes",
-    "heartworm": "Negative",
-    "location": "Hill Country (SA/Austin)",
-    "fee": "$300",
-    "bio": "Penny is a brilliant, affectionate, and loyal 5-year-old Border Collie/Mini Aussie mix who thrives on routine. At 39 lbs, she is the perfect medium size, fully crate-trained, house-trained, and knows basic obedience like sit and stay. She is incredibly gentle and patient, living safely with a 4-year-old child, and she gets along excellently with other dogs. True to her working breed roots, Penny is smart and needs a job or mental enrichment to stay happy; if she gets too bored, she might shred an unattended Amazon box or look for a snack on the counter. She is looking for an active, experienced family who understands herding breeds and is ready for a snuggly, eager-to-please best friend.\n\nPenny is currently being fostered in Austin, Tx",
-    "images": [
-      "/dogs/pennie-0",
-      "/dogs/pennie-1",
-      "/dogs/pennie-2",
-      "/dogs/pennie-3"
-    ]
-  },
-  {
-    "id": "297",
-    "slug": "zuzu",
-    "name": "Zuzu",
-    "sex": "Female",
-    "age": "1 year",
-    "weight": "35 lb",
-    "color": "Brown & White",
-    "coat": "Rough (Medium)",
-    "energy": "Med/High",
-    "fixed": "Yes",
-    "heartworm": "Negative",
-    "location": "Upper Gulf Coast (Houston)",
-    "fee": "$300",
-    "bio": "Zuzu (short for Azula) was rescued from a central Texas shelter.\n\nZuzu is a very sweet, active, and very playful pup that enjoys playing with toys and water! She is very playful with other dogs but would do well with another dog that is tolerant of her sometimes persistent invitations to play. She is crate trained and appears to be house trained but is still learning house manners, like not counter surfing. She’s currently living with cats and isn’t cat aggressive but does seem to enjoy chasing them, so would probably do better in a cat free household.\n\nZuzu is being fostered in Houston, TX",
-    "images": [
-      "/dogs/zuzu-0",
-      "/dogs/zuzu-1",
-      "/dogs/zuzu-2",
-      "/dogs/zuzu-3",
-      "/dogs/zuzu-4",
-      "/dogs/zuzu-5"
+      "/dogs/sallie-300-0",
+      "/dogs/sallie-300-1",
+      "/dogs/sallie-300-2",
+      "/dogs/sallie-300-3",
+      "/dogs/sallie-300-4",
+      "/dogs/sallie-300-5",
+      "/dogs/sallie-300-6"
     ]
   },
   {
     "id": "298",
-    "slug": "nocona",
+    "slug": "nocona-298",
     "name": "Nocona",
     "sex": "Female",
     "age": "1 year",
@@ -196,111 +513,17 @@
     "fee": "$300",
     "bio": "Nocona is a 27 lb, year old, bouncy, leggy, lovey BC mix girl. This girl is ALL Border Collie and LOOOOOOOVES toys. She is also dog, cat *and* chicken friendly! Unfortunately, she is also heartworm positive.\n\nWe're still learning about Nocona but if you are interested in possibly adopting her, fill out your application now!",
     "images": [
-      "/dogs/nocona-0",
-      "/dogs/nocona-1",
-      "/dogs/nocona-2",
-      "/dogs/nocona-3",
-      "/dogs/nocona-4",
-      "/dogs/nocona-5"
-    ]
-  },
-  {
-    "id": "221",
-    "slug": "raisin",
-    "name": "Raisin",
-    "sex": "Female",
-    "age": "1 year",
-    "weight": "35 lb",
-    "color": "Brindle",
-    "coat": "Rough (Medium)",
-    "energy": "Med/High",
-    "fixed": "Yes",
-    "heartworm": "Negative",
-    "location": "Upper Gulf Coast (Houston)",
-    "fee": "$400",
-    "bio": "Raisin was relinquished by her owners due to life changes (divorce) and a upcoming move.\n\nAre you looking for the adventure buddy of a lifetime? Raisin might just be that gal! She is incredibly intelligent, loyal, playful, and athletic and brings fun and life to everything she encounters! A walking/jogging companion? She's your girl! Looking to throw a frisbee at a park? She loves it! Even though Raisin is a high-drive / high energy pup, she is well balanced between play and rest and does great with structured crate naps during the day. After spending sometime during the value of down time, Raisin is doing great settling next to her fosters on the couch for naps and is a very sweet, affectionate and cuddly girl all around who loves to check in on everyone she lives with (a regular little shadow).\n\nRaisin picked up her basic obedience in a flash (literally one session), and has been practicing sit, down, shake, twirl, rollover and WAIT (even though she's a highly food motivated pup, she has been developing a great wait threshold and can even wait through scatter feeding).\n\nRaisin would THRIVE with an owner that is looking for and is experienced with higher energy/drive dogs, and one that knows how to balance her physical needs (e.g., 2-3 hours per day of playing, walking, fetching), her mental needs (e.g., daily training, learning, sniffing, problem solving), and her wellness (e.g., reinforcing off switch/chill time). She would be an awesome candidate for anyone interested in amateur dog sports, but would be perfectly happy with someone that wants to provide her with a routine that includes lots of structured play time and engagement.\n\nRaisin bonds very closely with her people but can also be standoffish with new people - what we've mostly observed from her around new people coming into the home is the occasional grumble or bark, but she's mostly neutral and tends to ignore new people in favor of her own (especially if they ignore her). We would recommend that her new adopters continue to socialize her positively around new people.\n\nRaisin is currently being fostered in the Seattle, WA area (Lake Stevens). Raisin's adoption fee is $400, which includes the adoption fee, 2 months of heartworm prevention and a portion of the transport cost from Texas. She is fully vaccinated, spayed and microchipped.",
-    "images": [
-      "/dogs/raisin-0",
-      "/dogs/raisin-1",
-      "/dogs/raisin-2",
-      "/dogs/raisin-3",
-      "/dogs/raisin-4",
-      "/dogs/raisin-5",
-      "/dogs/raisin-6",
-      "/dogs/raisin-7"
-    ]
-  },
-  {
-    "id": "296",
-    "slug": "jupiter",
-    "name": "Jupiter",
-    "sex": "Male",
-    "age": "1 year",
-    "weight": "58 lb",
-    "color": "Red & White",
-    "coat": "Rough (Medium)",
-    "energy": "TBD",
-    "fixed": "Yes",
-    "heartworm": "Positive",
-    "location": "North Texas (DFW)",
-    "fee": "$300",
-    "bio": "Jupiter was found abandoned in a home in the Fort Worth area. Probably a BC/ Aussie mix, he's about a year old and 58 lbs. and is heartworm positive. We've got him to a foster who will take him through fast kill heartworm treatment, so he actually won't be available to adopt for several weeks but we've already learned he's people and dog friendly so when his treatment is near completion, we think he'll be very popular!\n\nHe'll be fostered in the San Antonio area for now, but if you think you might be interested in this cuddly ginger teddy bear, we'd recommend you get your adoption applications in now and get pre-approved.",
-    "images": [
-      "/dogs/jupiter-0",
-      "/dogs/jupiter-1",
-      "/dogs/jupiter-2",
-      "/dogs/jupiter-3",
-      "/dogs/jupiter-4"
-    ]
-  },
-  {
-    "id": "295",
-    "slug": "graham",
-    "name": "Graham",
-    "sex": "Male",
-    "age": "9 months",
-    "weight": "17 lb",
-    "color": "Black Tri",
-    "coat": "Smooth (Short)",
-    "energy": "Medium",
-    "fixed": "Yes",
-    "heartworm": "Negative",
-    "location": "North Texas (DFW)",
-    "fee": "$300",
-    "bio": "Named after the location of one of our fave shelter partners, Graham is approximately 8 month old and 17 lbs. He is a loving little dog who loves to play with his foster friends and loves your lap even more!\n\nHe's slightly shy but is quickly gaining the confidence to explore and wander on his own. He's moderately active and would be great with a family and another dog friend.\n\nGraham is being fostered in Houston, TX",
-    "images": [
-      "/dogs/graham-0",
-      "/dogs/graham-1",
-      "/dogs/graham-2",
-      "/dogs/graham-3",
-      "/dogs/graham-4",
-      "/dogs/graham-5"
-    ]
-  },
-  {
-    "id": "294",
-    "slug": "leonidas",
-    "name": "Leonidas",
-    "sex": "Male",
-    "age": "3 years",
-    "weight": "45 lb",
-    "color": "Black & White",
-    "coat": "Rough (Long)",
-    "energy": "Medium",
-    "fixed": "Yes",
-    "heartworm": "Negative",
-    "location": "Upper Gulf Coast (Houston)",
-    "fee": "$300",
-    "bio": "Leo was rescued from a North Texas shelter after being taken in as a stray.\n\nWe are still learning about him but so far he is a sweet boy that seems to get along with dogs and cats.\n\nLeo is being fostered near Beaumont, Tx",
-    "images": [
-      "/dogs/leonidas-0",
-      "/dogs/leonidas-1",
-      "/dogs/leonidas-2"
+      "/dogs/nocona-298-0",
+      "/dogs/nocona-298-1",
+      "/dogs/nocona-298-2",
+      "/dogs/nocona-298-3",
+      "/dogs/nocona-298-4",
+      "/dogs/nocona-298-5"
     ]
   },
   {
     "id": "293",
-    "slug": "rockie",
+    "slug": "rockie-293",
     "name": "Rockie",
     "sex": "Male",
     "age": "1 year",
@@ -312,20 +535,21 @@
     "heartworm": "Negative",
     "location": "Out of State - OK",
     "fee": "$300",
-    "bio": "Rockie was surrender to a rural OK shelter due to him having too much energy for his previous family.\n\nSince moving into a foster home, he has shown himself to be the sweetest, affectionate and most happy go lucky pup. He loves other dogs and people and is doing great at crate training, picking up some basic obedience and housebreaking. He can get a little excitable at times, but is learning to settle down well - just a smart little dude that will make an awesome companion with some patience and guidance.\n\nRockie is being fostered in Stillwater, OK. Third party transport options may be available into Texas.",
+    "bio": "Rockie was surrender to a rural OK shelter due to him having too much energy for his previous family.\n\nRockie is the canine embodiment of “literally just a guy”. He loves big, feels big, and wants\n\nnothing more than to be where you are, all wrapped into one little guy. If you’re looking for a\n\nloyal sidekick, Rockie might be the guy for you!\n\nRockie is an incredibly affectionate pup with a sensitive heart. He takes life very personally\n\nsometimes and can become overwhelmed when there’s too much going on around him. In\n\nthese moments, since he is very well crate trained, he often chooses to retreat to his crate to\n\ntake a break and decompress. Because of this, Rockie is looking for a home that will handle him\n\nwith patience, understanding, and kindness as he continues to build confidence. While he loves\n\npeople, Rockie can be a little hesitant around some men initially and appreciates slow\n\nintroductions. With a little time to feel safe, he’ll soon be right by your side.\n\nRockie is a smart pup that has a lot of thoughts he wants to tell his people! Whether he's\n\nalerting you to dangerous backyard intruders (squirrels) or singing the song of his people (awoos)\n\nbecause you're taking too long to open the back door. Rockie always has something to say and\n\nwants to make sure you know he has big feelings.\n\nWhen he’s not providing commentary, his favorite pastimes include anything that involves water.\n\nRockie is a big water bug and really enjoys swimming and wading around in water. We think he\n\ncould even be interested in dock diving. Rockie also enjoys playing and roughousing with other dogs\n\nand would thrive in a home with another canine companion. Rockie is incredibly affectionate with\n\nboth his human and canine family members. We often find him sprawled out beside his foster dog sister\n\nnapping or seeking her out to play when he gets bored.\n\nRockie is learning many basic commands and continues to work on leash manners. While he’s not\n\nthe most training focused pup, he’s very food and toy motivated which helps keep him on track. We\n\nhave found that he can be a bit of an opportunist when it comes to open doors. While we’re working\n\non his door manners, he still has some learning to do and will need a home committed to helping\n\nIn all things, Rockie thrives in routine, consistency and a sense of security. He’s a very sweet and\n\nsensitive boy that’s looking for a family that will appreciate his big feelings and cheer him on as he\n\nRockie is being fostered in Stillwater, OK. Third party transport options may be available into Texas.",
     "images": [
-      "/dogs/rockie-0",
-      "/dogs/rockie-1",
-      "/dogs/rockie-2",
-      "/dogs/rockie-3",
-      "/dogs/rockie-4",
-      "/dogs/rockie-5",
-      "/dogs/rockie-6"
+      "/dogs/rockie-293-0",
+      "/dogs/rockie-293-1",
+      "/dogs/rockie-293-2",
+      "/dogs/rockie-293-3",
+      "/dogs/rockie-293-4",
+      "/dogs/rockie-293-5",
+      "/dogs/rockie-293-6",
+      "/dogs/rockie-293-7"
     ]
   },
   {
     "id": "291",
-    "slug": "shade",
+    "slug": "shade-291",
     "name": "Shade",
     "sex": "Male",
     "age": "2 years",
@@ -339,63 +563,13 @@
     "fee": "$300",
     "bio": "Shade is a 55 lb., approximately 2 years old mixed boy who was picked up by the shelter in late June after running down the highway. He has a fractured right rear leg and was not able to put weight on it.\n\nA friendly, sweet boy, we were able to pull him into rescue and he's currently under foster and medical care in the DFW area. We will keep you posted on his progress!",
     "images": [
-      "/dogs/shade-0",
-      "/dogs/shade-1"
-    ]
-  },
-  {
-    "id": "290",
-    "slug": "mochi",
-    "name": "Mochi",
-    "sex": "Female",
-    "age": "11 months",
-    "weight": "25 lb",
-    "color": "Blonde",
-    "coat": "Rough (Medium)",
-    "energy": "Med/High",
-    "fixed": "Yes",
-    "heartworm": "Negative",
-    "location": "Upper Gulf Coast (Houston)",
-    "fee": "$350",
-    "bio": "Mochi was a stray that was rescued by an independent rescuer that asked us to step in to help find her a breed knowledgeable home.\n\nMochi is a real lover! She is super affectionate and loves nothing more than to sit cuddled up on a lap. She is very playful and loves toys and running around with her dog friends. She's also lives with cats and while playful, has learned to be respectful of their space.\n\nMochi is being fostered in Houston, TX",
-    "images": [
-      "/dogs/mochi-0",
-      "/dogs/mochi-1",
-      "/dogs/mochi-2",
-      "/dogs/mochi-3",
-      "/dogs/mochi-4",
-      "/dogs/mochi-5",
-      "/dogs/mochi-6"
-    ]
-  },
-  {
-    "id": "70",
-    "slug": "ziti",
-    "name": "Ziti",
-    "sex": "Female",
-    "age": "1 year",
-    "weight": "45 lb",
-    "color": "Tricolour",
-    "coat": "Rough (Medium)",
-    "energy": "Med/High",
-    "fixed": "Yes",
-    "heartworm": "Negative",
-    "location": "Unassigned",
-    "fee": "$300",
-    "bio": "Ziti (renamed Susie Q) was originally rescued with her 4 siblings and mom from a rural shelter and adopted from the rescue. Unfortunately, her adopter recently had to surrender her back to the rescue due to a life-changing family event that required her to move out of state with very little notice.\n\nZiti is a very sweet, affectionate, pup that loves to cuddle and be close to her people. She loves playing with other dogs, going on walks, chewing on bully sticks and chew toys, and attention! She can still be shy around unfamiliar men; however, once the new person gets close to her, she is super submissive and will roll onto her back and show her belly and once she gets a few min to warm up, becomes very affectionate and attention seeking. She is building confidence quickly and this behavior is becoming much more rare.\n\nZiti would thrive in a patient and loving home that will encourage positive introductions with new people and continue to help her becoming the social butterfly that she really wants to be!\n\nZiti is being fostered in Houston, TX",
-    "images": [
-      "/dogs/ziti-0",
-      "/dogs/ziti-1",
-      "/dogs/ziti-2",
-      "/dogs/ziti-3",
-      "/dogs/ziti-4",
-      "/dogs/ziti-5",
-      "/dogs/ziti-6"
+      "/dogs/shade-291-0",
+      "/dogs/shade-291-1"
     ]
   },
   {
     "id": "289",
-    "slug": "ace",
+    "slug": "ace-289",
     "name": "Ace",
     "sex": "Male",
     "age": "1 year",
@@ -403,20 +577,23 @@
     "color": "Black & White",
     "coat": "Rough (Medium)",
     "energy": "TBD",
-    "fixed": "No",
-    "heartworm": "",
+    "fixed": "Yes",
+    "heartworm": "Negative",
     "location": "Central Texas (Waco)",
     "fee": "$300",
     "bio": "Ace was abandoned as a stray and rescued by a good Samaritan that reached out to us for help.\n\nAce may start off a little shy, but once he feels comfortable, his affectionate and playful personality shines through. He loves greeting familiar faces, enjoys being outdoors, and would thrive with an active family who loves adventures, playtime, and fresh air.\n\nAce is a true Border Collie at heart — smart, energetic, and always ready to chase, herd, or puzzle his way into fun. He does especially well with another playful, energetic dog who can help him burn off all that enthusiasm. He’s also cat-friendly and lives peacefully with a cat now. Inside, Ace is chill; he’s housebroken, can be left alone without issue, and loves settling under the dining table or solving treat puzzles.\n\nWith his nose nudges, joyful energy, and loyal nature, Ace is the kind of dog who will bond deeply with his people and bring so much life to a home. He’s still getting comfortable with leashes and harnesses, but he’s learning and making progress every day. If you’re looking for a clever, loving companion to join you on life’s adventures, Ace may be your perfect match.\n\nSide note: he has gotten to the occasional tennis shoe or stray piece of paper laying around, but otherwise sticks to his toys. And when he's been fulfilled mentally/physically he pretty much ignores the \"enticing\" objects.",
     "images": [
-      "/dogs/ace-0",
-      "/dogs/ace-1",
-      "/dogs/ace-2"
+      "/dogs/ace-289-0",
+      "/dogs/ace-289-1",
+      "/dogs/ace-289-2",
+      "/dogs/ace-289-3",
+      "/dogs/ace-289-4",
+      "/dogs/ace-289-5"
     ]
   },
   {
     "id": "288",
-    "slug": "sparky",
+    "slug": "sparky-288",
     "name": "Sparky",
     "sex": "Male",
     "age": "3 years",
@@ -430,88 +607,18 @@
     "fee": "$300",
     "bio": "Sparky was rescued from a shelter in LA after his former owner went into hospice. Sparky is very smart and affectionate and loyal/eager to please once he bonds with his human - he is border collie through and through and will be a wonderful companion for an experience border collie lover. Since he did not have a very good start in life, he is currently undergoing professional leash training and socialization to make sure he’s well set up for his family.\n\nSparky is fostered in Houston, TX",
     "images": [
-      "/dogs/sparky-0",
-      "/dogs/sparky-1",
-      "/dogs/sparky-2",
-      "/dogs/sparky-3"
-    ]
-  },
-  {
-    "id": "283",
-    "slug": "ruben",
-    "name": "Ruben",
-    "sex": "Male",
-    "age": "1 year",
-    "weight": "30 lb",
-    "color": "Blue Merle",
-    "coat": "Rough (Medium)",
-    "energy": "Med/High",
-    "fixed": "Yes",
-    "heartworm": "Negative",
-    "location": "Hill Country (SA/Austin)",
-    "fee": "$300",
-    "bio": "Ruben was rescued from a central Tx shelter.\n\nRuben is an energetic and playful young pup. He is very smart and loving with his people, but can be a bit shy meeting new people. He loves to with play with the two small dogs in the house, learned to use a dog door very quickly and is crate trained. He has a great toy drive and loves to play with squeaky toys and soccer balls.\n\nRuben is being fostered Georgetown (north of Austin), TX",
-    "images": [
-      "/dogs/ruben-0",
-      "/dogs/ruben-1",
-      "/dogs/ruben-2",
-      "/dogs/ruben-3",
-      "/dogs/ruben-4",
-      "/dogs/ruben-5"
-    ]
-  },
-  {
-    "id": "286",
-    "slug": "dallas",
-    "name": "Dallas",
-    "sex": "Female",
-    "age": "15 weeks",
-    "weight": "5 lb",
-    "color": "Black & White",
-    "coat": "Not Specified",
-    "energy": "High",
-    "fixed": "No",
-    "heartworm": "",
-    "location": "Hill Country (SA/Austin)",
-    "fee": "$350",
-    "bio": "Dallas may be the smallest puppy in the litter, but she certainly has the biggest personality. She is the problem child - expressive, vocal, and never hesitates to let everyone know when she wants attention, needs to go outside, or disagrees with her current accommodations.\n\nShe is easily the most affectionate puppy of the group and absolutely loves physical affection. She actively seeks cuddles, happily showers people with puppy kisses, and has never met a human she didn't immediately like.\n\nDallas is confident in familiar surroundings and takes only a short time to adjust to new environments. She is one of the more athletic puppies, loves running and wrestling with her siblings, and was the first puppy to become interested in chewing bones. Her toy drive continues to develop.\n\nSomeone looking for a constant companion who enjoys affection, interaction, and being involved in every part of the day.\n\n•\tRequires frequent human interaction and attention.\n\n•\tMost vocal puppy in the litter.\n\n•\tCan be demanding when she wants affection or activity.\n\n•\tPersistent with her siblings and will happily continue pestering them long after they've decided playtime is over.",
-    "images": [
-      "/dogs/dallas-0",
-      "/dogs/dallas-1",
-      "/dogs/dallas-2",
-      "/dogs/dallas-3",
-      "/dogs/dallas-4",
-      "/dogs/dallas-5"
-    ]
-  },
-  {
-    "id": "281",
-    "slug": "bear",
-    "name": "Bear",
-    "sex": "Male",
-    "age": "1 year",
-    "weight": "44 lb",
-    "color": "Black & White",
-    "coat": "Rough (Medium)",
-    "energy": "Med/High",
-    "fixed": "No",
-    "heartworm": "",
-    "location": "Central Texas (Waco)",
-    "fee": "$300",
-    "bio": "I love to play! I get very excited and grab your arm to bring you along with me. I’m very loyal boy and extremely smart, I just don’t quite know how to manage it yet. My best friend was a ten year old boy who I had such a loving bond with. I have so much energy and love to run! I come from a blended family with so many different pets, I love them all and get along so very well. I’m still a puppy at heart so please be patient with me and help guide me. Sometimes I’m too smart for my own good but with the right teacher I’ll be the star student.\n\nBear is being fostered in Springtown, TX",
-    "images": [
-      "/dogs/bear-0",
-      "/dogs/bear-1",
-      "/dogs/bear-2",
-      "/dogs/bear-3"
+      "/dogs/sparky-288-0",
+      "/dogs/sparky-288-1",
+      "/dogs/sparky-288-2",
+      "/dogs/sparky-288-3"
     ]
   },
   {
     "id": "274",
-    "slug": "katydid",
+    "slug": "katydid-274",
     "name": "Katydid",
     "sex": "Female",
-    "age": "21 weeks",
+    "age": "7 months",
     "weight": "20 lb",
     "color": "Blonde",
     "coat": "Smooth (Short)",
@@ -522,97 +629,72 @@
     "fee": "$300",
     "bio": "To learn more about Katy, check out her adventures on Instagram @foster_gma_abcr\n\nKatydid and her littermates were born at the end of April to Momma Bug.\n\nKaty is one of the sweetest pups you'll ever meet. She’s curious, playful, observant, and self assured. She doesn’t startle easy and if she does, recovers quickly. She’s not fearful of vacuums, storms, or fireworks. She loves to sleep on her back cuddled in a fuzzy blanket after a long day. She will sleep all through the night in bed. She isn’t a fan of the crate but is improving little by little. She is a more laid back puppy but has a nice balance of also wanting to play. She would like to have a doggy companion. She is doing great with potty training and leash training. Katy is a people person through and through. She wants to be where you are, doing what you are doing. Super sweet, super cuddly, and a good amount of energy!\n\nKaty was confirmed through a vet eye specialist exam to be blind in her right eye. The condition does not require any special care and based on what the vet has told us, is not uncommon in large litters. Katy is not at all bothered by her \"bad\" eye and it in no way impacts her activity, development or life in anyway!\n\nKaty is currently being fostered in Rockwall, TX (DFW area)",
     "images": [
-      "/dogs/katydid-0",
-      "/dogs/katydid-1",
-      "/dogs/katydid-2",
-      "/dogs/katydid-3",
-      "/dogs/katydid-4",
-      "/dogs/katydid-5",
-      "/dogs/katydid-6",
-      "/dogs/katydid-7"
+      "/dogs/katydid-274-0",
+      "/dogs/katydid-274-1",
+      "/dogs/katydid-274-2",
+      "/dogs/katydid-274-3",
+      "/dogs/katydid-274-4",
+      "/dogs/katydid-274-5",
+      "/dogs/katydid-274-6",
+      "/dogs/katydid-274-7"
     ]
   },
   {
     "id": "272",
-    "slug": "jewel",
+    "slug": "jewel-272",
     "name": "Jewel",
     "sex": "Female",
-    "age": "21 weeks",
-    "weight": "6.79 lb",
+    "age": "7 months",
+    "weight": "27 lb",
     "color": "Not Specified",
     "coat": "Not Specified",
     "energy": "TBD",
     "fixed": "No",
-    "heartworm": "",
+    "heartworm": "Negative",
     "location": "Hill Country (SA/Austin)",
-    "fee": "$350",
-    "bio": "Jewel and her littermates were born at the end of April to Momma Bug. They are currently being fostered south west of Austin, in Cedar Creek and will be available to adopt the second week of June.\n\nJewel is a quiet, loving girly. She can take a little time to observe before jumping into new things, but still wants to give new experiences a try at her own pace! She is very go-with-the-flow, and absolutely loves meeting new people and dogs!",
+    "fee": "$300",
+    "bio": "Jewel and her littermates were born at the end of April to momma Bug. Although mama Bug looks like a BC mix, Jewel and her siblings appear to be shepherd mixes with a smaller dog. Whatever they are, the whole family is super sweet and has great, loving temperaments AND genes for the best ears ever!!\n\nJewel is a quiet, loving girly. She can take a little time to observe before jumping into new things, but still wants to give new experiences a try at her own pace. She is very go-with-the-flow, loves running around the yard and playing with toys. She gets along great with other dogs though she can be shy with new people.\n\nJewel is being fostered in Springtown, TX (west of Dallas).",
     "images": [
-      "/dogs/jewel-0",
-      "/dogs/jewel-1",
-      "/dogs/jewel-2",
-      "/dogs/jewel-3",
-      "/dogs/jewel-4",
-      "/dogs/jewel-5",
-      "/dogs/jewel-6",
-      "/dogs/jewel-7"
+      "/dogs/jewel-272-0",
+      "/dogs/jewel-272-1",
+      "/dogs/jewel-272-2",
+      "/dogs/jewel-272-3",
+      "/dogs/jewel-272-4",
+      "/dogs/jewel-272-5"
     ]
   },
   {
     "id": "271",
-    "slug": "mayfly",
+    "slug": "mayfly-271",
     "name": "Mayfly",
     "sex": "Female",
-    "age": "21 weeks",
-    "weight": "17 lb",
-    "color": "Not Specified",
-    "coat": "Not Specified",
-    "energy": "TBD",
+    "age": "7 months",
+    "weight": "30 lb",
+    "color": "Tricolour",
+    "coat": "Smooth (Short)",
+    "energy": "Medium",
     "fixed": "No",
     "heartworm": "",
     "location": "Hill Country (SA/Austin)",
     "fee": "$300",
-    "bio": "Mayfly, born to Momma Bug at the end of April and WHAT A LOOKER!!!!\n\nShe has a gorgeous smooth coat with beautiful silver and grey highlights in her fur, especially her ears. We think she's mixed with husky based on her coloring and markings. Whatever she is though - she is a gorgeous little girl!. And those ears!!!\n\nBesides being beautiful, Mayfly is also a really stable, confident puppy. She gets along great with people and other dogs and loves to snuggle. She will follow her person if that's what you want, but she is confident enough to go explore on her own. She has no fear of new things and would be great in an active family.\n\nMayfly is already crate and leash savvy, and is perfecting her potty-training. She is starting to show interest in toys and rides well in the car. If you are looking for a dog and people friendly pup to take on new adventures, Mayfly is your girl!\n\nMay is being fostered in Houston, TX",
+    "bio": "Mayfly, born to Momma Bug at the end of April and WHAT A LOOKER!!!!\n\nSweet, friendly, confident, gorgeous, playful, smart as a whip and with ears that won't quit, Mayfly (F, 5M, 22lbs) is as a perfect of a pup as it gets! We think she's mixed with husky based on her coloring and markings. Whatever she is though - she is a gorgeous little girl (and have we mentioned her ears??!)\n\nBesides being beautiful, Mayfly is also a really stable, confident puppy. She gets along great with people and other dogs and loves to snuggle. She loves following her people around (and has great recall for a young pup), but she is confident enough to go explore on her own. She has no fear of new things and would be great in an active family. Maymay is also super smart and picked up most of her basic obedience tricks in just a couple of days (sit, down, touch, spin, shake, wait)!\n\nMayfly is already crate and leash trained, and is perfecting her potty-training. She loves playing with toys (balls, lure/teaser, frisbee, tug) and rides well in the car. If you are looking for a dog and people friendly pup to take on new adventures, Mayfly is your girl!\n\nMayfly is being fostered in Houston, TX",
     "images": [
-      "/dogs/mayfly-0",
-      "/dogs/mayfly-1",
-      "/dogs/mayfly-2",
-      "/dogs/mayfly-3",
-      "/dogs/mayfly-4",
-      "/dogs/mayfly-5",
-      "/dogs/mayfly-6",
-      "/dogs/mayfly-7"
-    ]
-  },
-  {
-    "id": "268",
-    "slug": "bug",
-    "name": "Bug",
-    "sex": "Female",
-    "age": "2 years",
-    "weight": "37.4 lb",
-    "color": "Tricolour",
-    "coat": "Rough (Medium)",
-    "energy": "TBD",
-    "fixed": "No",
-    "heartworm": "Positive",
-    "location": "Hill Country (SA/Austin)",
-    "fee": "$300",
-    "bio": "Bug is approximately 2.5yrs old, 42 lbs, a gorgeous tri-color BC mix, and HW+. She and her eight 2wk old babies (7  females and 1 male) were surrendered to one of our shelter partners. The shelter reached out, desperate to find Momma Bug and her puppies a safe place and our BCSAVE family came through with a foster!\n\nMomma Bug is a really good mama and is super sweet with a cute helicopter tail. She's a little shy with new people but warms up quickly and is very loving and people focused.\n\nSince she's heartworm positive, and will be undergoing treatment after she weans her pups.",
-    "images": [
-      "/dogs/bug-0",
-      "/dogs/bug-1",
-      "/dogs/bug-2",
-      "/dogs/bug-3",
-      "/dogs/bug-4"
+      "/dogs/mayfly-271-0",
+      "/dogs/mayfly-271-1",
+      "/dogs/mayfly-271-2",
+      "/dogs/mayfly-271-3",
+      "/dogs/mayfly-271-4",
+      "/dogs/mayfly-271-5",
+      "/dogs/mayfly-271-6",
+      "/dogs/mayfly-271-7"
     ]
   },
   {
     "id": "261",
-    "slug": "ariel",
+    "slug": "ariel-261",
     "name": "Ariel",
     "sex": "Female",
-    "age": "8 months",
+    "age": "11 months",
     "weight": "26 lb",
     "color": "Black & White",
     "coat": "Rough (Medium)",
@@ -623,36 +705,14 @@
     "fee": "$350",
     "bio": "Ariel is a 4 mo old BCmix who was surrendered by her owner. Ariel, in true BC fashion, was trying to herd the young child in the house and the family felt it would be better to find Ariel a new home.\n\nWe are still learning about this beautiful pup, and will keep you posted as we get more information about her personality and temperament!",
     "images": [
-      "/dogs/ariel-0",
-      "/dogs/ariel-1",
-      "/dogs/ariel-2"
-    ]
-  },
-  {
-    "id": "253",
-    "slug": "grace",
-    "name": "Grace",
-    "sex": "Female",
-    "age": "8 months",
-    "weight": "20 lb",
-    "color": "Red & White",
-    "coat": "Not Specified",
-    "energy": "TBD",
-    "fixed": "No",
-    "heartworm": "",
-    "location": "Upper Gulf Coast (Houston)",
-    "fee": "$350",
-    "bio": "Meet Grace, a four‑month‑old rescued pup with the classic look and temperament of herding breeds — smart, athletic, people‑oriented, and eager to learn.\n\nGrace and her brother Rocky were found as strays in a Houston suburb along with their parents, and the whole little family is now safe, healthy, and thriving.\n\nSome folks guess Australian Shepherd, others say Border Collie, and the truth is they may be a blend of both. What we do know is that Rocky is affectionate, playful, and already showing the loyal, sensitive nature herding dogs are known for.\n\nBoth pups are doing wonderfully with their housebreaking and are well on their way, though they’re still in the normal crate‑and‑pen stage of puppy development. They thrive with structure, routine, and a safe space to settle, and they’re at the perfect age to continue building great habits.\n\nGrace and Rocky love exploring the yard, playing tug, and curling up once the fun is over. They’re curious, bright, and soaking up every bit of positive attention they get. With adopters who enjoy an active lifestyle and are ready for the fun of raising a young herding‑breed pup, each of them will grow into an incredible companion.",
-    "images": [
-      "/dogs/grace-0",
-      "/dogs/grace-1",
-      "/dogs/grace-2",
-      "/dogs/grace-3"
+      "/dogs/ariel-261-0",
+      "/dogs/ariel-261-1",
+      "/dogs/ariel-261-2"
     ]
   },
   {
     "id": "243",
-    "slug": "reese",
+    "slug": "reese-243",
     "name": "Reese",
     "sex": "Male",
     "age": "7 years",
@@ -666,67 +726,48 @@
     "fee": "$300",
     "bio": "Reese is a sweet and charming 7 year old purebred BC. He loves to cuddle and bonds deeply with his people. His favorite thing is playing with toys - he loves a good tennis ball but also loves “herding” bigger balls like basketballs, shoving them around with his nose. He can get really hyper focused on his toys and will ignore everything around him when he is in drive. He can be very demanding when he wants you to play fetch with him - he’ll shove a ball repeatedly at your feet, or literally throw a tug toy at you. But he’s good about disengaging if you put the toy away and tell him all done. He has a really great off switch and settles really well - he is relaxed around the house and if you are with him and sit down/stop he will lay down and settle until you ask him to do something or start moving again. Though he has a deep love of toys, he also has a high food drive - he loves treats and eats his meals well.\n\nReese is very neutral about other dogs, he will ignore them when he is out walking with you, and when meeting other dogs he very quickly will dismiss and leave them alone. He also doesn’t really care to play with or interact with other dogs either, he prefers his people, so he would probably do well in an only dog home. But it’s not a requirement - he currently is living with a number of other dogs at his foster home with no issues. He also ignores the cat and has not reacted when the cat has hissed at or smacked him. He lives with a professional dog trainer and has accompanied her to work where he works as a demo/neutral dog - even with other dogs barking at him he won’t react. He is eager to learn new things and work with you, he is very smart and learns quickly. He is also very trustworthy off leash - he wants to stay with you and will stay with you, even if you don’t have a toy or food. He likes to carry his ball while he walks with you - he’s been a great trail dog.\n\nIf it sounds like he’s the perfect dog - he is - 90% of the time. Reese can get startled relatively easily and will alarm bark at strange humans. This is primarily when he’s at home, but it does sometimes happen when he is surprised by strangers out and about, especially children. He is also not a fan of the vet and has been muzzled during veterinary procedures as a precaution, but if he focuses on his foster mom with food or a toy, he has tolerated blood draws and vaccines and stayed still. He is also very environmentally confident and does not get bothered by loud noises or other sudden environmental changes (like something large falling and clattering).\n\nOne of the things we suspect has caused his startle and occasional grumpiness is that he was not in great shape when we got him into rescue. He had fleas and hair loss and was incredibly itchy, but flea treatment and a cytopoint injection fixed that. While he was neutered, the vet x-rayed his hips and spine after he had shown some weakness and sensitivity in his rear. He has spondylosis and significant arthritis in both hips. Since then he has started taking carprofen and is on several joint supplements and that has made a big improvement. He also had a lot of muscle wasting so his foster mom has been working on improving his muscle tone and stamina which has also helped. Since he’s started feeling better, in addition to doing training sessions with his foster mom, his behavior around strangers has improved notably. However, his foster mom believes he will always harbor some level of sensitivity around strangers and especially young children. He should not go to a home with children, and his new home will need to exercise caution when he is out of the house so he doesn’t end up in a situation that causes him to lash out or react.\n\nHis ideal home is an moderately active individual or couple who will be devoted to them, who has another dog or two and a relatively calm home without frequent visitors. Bonus if they let him sleep in bed with them. He does not actually require a large amount of exercise, but enjoys doing everything with his people. He would not do well accompanying a runner or other high impact activities, but he likes walking (in the neighborhood or on trails) and swimming and those are good for him. He also enjoys training and other mental enrichment. He is one of the sweetest dogs you’ll meet, and fun and silly. He deserves a great home that is understanding of his quirks and understand that he will always need to be managed (with children/strangers and with his arthritis and spondylosis) to some extent, but overall can live a happy normal life and bring joy to you every day.",
     "images": [
-      "/dogs/reese-0",
-      "/dogs/reese-1",
-      "/dogs/reese-2",
-      "/dogs/reese-3",
-      "/dogs/reese-4",
-      "/dogs/reese-5",
-      "/dogs/reese-6",
-      "/dogs/reese-7"
+      "/dogs/reese-243-0",
+      "/dogs/reese-243-1",
+      "/dogs/reese-243-2",
+      "/dogs/reese-243-3",
+      "/dogs/reese-243-4",
+      "/dogs/reese-243-5",
+      "/dogs/reese-243-6",
+      "/dogs/reese-243-7"
     ]
   },
   {
     "id": "241",
-    "slug": "azriel",
+    "slug": "azriel-241",
     "name": "Azriel",
     "sex": "Male",
-    "age": "7 months",
-    "weight": "28 lb",
+    "age": "9 months",
+    "weight": "41.1 lb",
     "color": "Black & White",
     "coat": "Smooth (Short)",
     "energy": "Medium",
-    "fixed": "No",
-    "heartworm": "",
+    "fixed": "Yes",
+    "heartworm": "Negative",
     "location": "Unassigned",
     "fee": "$350",
     "bio": "The ACOTAR litter (IYKYK) - Azriel (M, 10 lbs), Cassian (M, 11 lbs), and Nesta (F, 10 lbs) were born to a stray border collie mama in early Feb and were rescued by a wildlife rehabilitation group. They have grown up to be an extremely sweet, friendly and playful little group and are ready to find their forever homes.\n\nAzriel: This sweet boy is the perfect mix of playful and loving. He’s always up for an adventure, but his favorite place to be is right by your side—your little shadow wherever you go.\n\nAzriel is incredibly affectionate and hands out a million kisses to anyone (human or dog) willing to accept them. He loves to play, explore, and then come right back for snuggles and attention.\n\nWith his friendly, loving nature, Azriel would make a wonderful addition to just about any home.\n\nAzriel is being fostered in Spring, TX",
     "images": [
-      "/dogs/azriel-0",
-      "/dogs/azriel-1",
-      "/dogs/azriel-2",
-      "/dogs/azriel-3",
-      "/dogs/azriel-4",
-      "/dogs/azriel-5",
-      "/dogs/azriel-6",
-      "/dogs/azriel-7"
-    ]
-  },
-  {
-    "id": "226",
-    "slug": "fido",
-    "name": "Fido",
-    "sex": "Male",
-    "age": "2 years",
-    "weight": "48 lb",
-    "color": "Black & White",
-    "coat": "Not Specified",
-    "energy": "TBD",
-    "fixed": "No",
-    "heartworm": "",
-    "location": "Hill Country (SA/Austin)",
-    "fee": "$300",
-    "bio": "Fido (renamed Bennie) was rescued from a central Texas shelter",
-    "images": [
-      "/dogs/fido-0"
+      "/dogs/azriel-241-0",
+      "/dogs/azriel-241-1",
+      "/dogs/azriel-241-2",
+      "/dogs/azriel-241-3",
+      "/dogs/azriel-241-4",
+      "/dogs/azriel-241-5",
+      "/dogs/azriel-241-6",
+      "/dogs/azriel-241-7"
     ]
   },
   {
     "id": "223",
-    "slug": "samson",
+    "slug": "samson-223",
     "name": "Samson",
     "sex": "Male",
-    "age": "3 years",
+    "age": "4 years",
     "weight": "68 lb",
     "color": "Black & White",
     "coat": "Not Specified",
@@ -737,14 +778,14 @@
     "fee": "$100",
     "bio": "Samson was adopted from BCSAVE in 2022. About 3 years old and around 69 lbs., Samson had his first seizure in late 2024 and since then, has had several seizures and been diagnosed with idiopathic epilepsy. He has been prescribed phenobarbital, which must be given twice daily, approximately 12 hours apart.\n\nHis current family is unable to consistently administer his medication on this schedule, which can lead to additional seizures, and has asked if we could find him a new home where he can get his medication regularly.\n\nA giant teddy bear of a dog, Samson lives with kids, does well with people of all ages and is fine with other dogs (he has not been cat-tested since being a puppy). He is house-trained and leash-trained, though he can be a bit of a puller. He knows several commands, including site, shake, lay, stay, wait and come.\n\nHis current owner got Samson DNA tested early on, and he's 41% Catahoula, 17% Cattle Dog, and 10% Border Collie (plus some other stuff). He's a gentle giant and super sweet.\n\nWe are looking for a foster who can manage Samson's medication regime (we would cover the cost) while we find him a FURever home. We would even love a FURever foster - someone who could love Samson and care for him and BCSAVE would cover his medical costs.",
     "images": [
-      "/dogs/samson-0",
-      "/dogs/samson-1",
-      "/dogs/samson-2"
+      "/dogs/samson-223-0",
+      "/dogs/samson-223-1",
+      "/dogs/samson-223-2"
     ]
   },
   {
     "id": "216",
-    "slug": "heartland-no-59",
+    "slug": "heartland-no-59-216",
     "name": "Heartland No. 59",
     "sex": "Female",
     "age": "3 years",
@@ -758,14 +799,14 @@
     "fee": "$300",
     "bio": "Since she has been in the house, she has been started her on harness and leash but she was 100 percent feral so she still freaks out on the leash. She has not offered to nip a single time and is starting to come out of her area to explore the house.  She comes in and out  of the house when asked.  When other dogs get treats, she will very quietly ask for hers but will not take a treat out of her foster's hand yet.  She has not chewed up anything in the house and hasn’t had an accident in the house in weeks.  She is very quiet and timid.",
     "images": [
-      "/dogs/heartland-no-59-0",
-      "/dogs/heartland-no-59-1",
-      "/dogs/heartland-no-59-2"
+      "/dogs/heartland-no-59-216-0",
+      "/dogs/heartland-no-59-216-1",
+      "/dogs/heartland-no-59-216-2"
     ]
   },
   {
     "id": "215",
-    "slug": "heartland-no-60",
+    "slug": "heartland-no-60-215",
     "name": "Heartland No. 60",
     "sex": "Female",
     "age": "2 years",
@@ -779,14 +820,14 @@
     "fee": "$300",
     "bio": "She is dark velvety red with a heart in white on her little head. She will be a smaller dog than most of the others. She she is timid and quiet and has accepted a collar and harness. She needs some time in the house before she is ready for foster. She is submissive to her pen mates and has not barked at all since being in care.",
     "images": [
-      "/dogs/heartland-no-60-0",
-      "/dogs/heartland-no-60-1",
-      "/dogs/heartland-no-60-2"
+      "/dogs/heartland-no-60-215-0",
+      "/dogs/heartland-no-60-215-1",
+      "/dogs/heartland-no-60-215-2"
     ]
   },
   {
     "id": "214",
-    "slug": "heartland-no-65",
+    "slug": "heartland-no-65-214",
     "name": "Heartland No. 65",
     "sex": "Female",
     "age": "1 year",
@@ -800,37 +841,14 @@
     "fee": "$300",
     "bio": "She will pick on the smaller timid dogs but does not challenge any of the leader or alpha dogs.  She is very vocal and barks a lot.  She is very smart and is picking up some hand signals to be quieted.  She hasn’t had any one on one time with her foster yet and is skittish when cornered or they get close to her.  She will tolerate being touched.",
     "images": [
-      "/dogs/heartland-no-65-0",
-      "/dogs/heartland-no-65-1",
-      "/dogs/heartland-no-65-2"
-    ]
-  },
-  {
-    "id": "213",
-    "slug": "dizzy-heartland-no-66",
-    "name": "Dizzy - Heartland No. 66",
-    "sex": "Female",
-    "age": "1 year",
-    "weight": "40 lb",
-    "color": "Blue Merle",
-    "coat": "Rough (Medium)",
-    "energy": "TBD",
-    "fixed": "No",
-    "heartworm": "",
-    "location": "Central Texas (Waco)",
-    "fee": "$300",
-    "bio": "Dizzy (No. 66) was rescued from a 120+ dog hoarding situation in North Texas.\n\nHaving grown up in a dog pack largely left to survive on their own on a 80+ acre farm, Dizzy is a very shy but sweet girl. She's come a longg way after a few months in her foster home, and has learned her name, as well as a few words like \"kennel, outside, load up.\"  She will jump into a car on her own and does pretty well on a leash / harness, but is still not confident in enough to go to the bathroom on a leash, so the best her environment would be a house with a fenced yard for her to do her business before walks. The more training and social time you spend with her, the more confident she becomes, but her future family has to be patient and understand that she will open up more and more with time. She is fine with both men and women but is more comfortable with women (when meeting new people). She is also totally fine in a high activity and gets along with pretty much any dog and gets her confidence with dogs, so would do best not being a solo dog. She has great house manners, is crate trained and house broken.\n\nDizzy is a gorgeous, sweet, girl with duo-toned blue and brown eyes (heterochromia, confirmed by a vet to have completely normal vision). She will continue to blossom and become the dog she's supposed to be!\n\nDizzy is being fostered near College Station, TX",
-    "images": [
-      "/dogs/dizzy-heartland-no-66-0",
-      "/dogs/dizzy-heartland-no-66-1",
-      "/dogs/dizzy-heartland-no-66-2",
-      "/dogs/dizzy-heartland-no-66-3",
-      "/dogs/dizzy-heartland-no-66-4"
+      "/dogs/heartland-no-65-214-0",
+      "/dogs/heartland-no-65-214-1",
+      "/dogs/heartland-no-65-214-2"
     ]
   },
   {
     "id": "212",
-    "slug": "heartland-no-67-macy",
+    "slug": "heartland-no-67-macy-212",
     "name": "Heartland No. 67 Macy",
     "sex": "Female",
     "age": "2 years",
@@ -844,13 +862,13 @@
     "fee": "$300",
     "bio": "She is super sweet and is more socialized than most of the other dogs. She is dog friendly, but is not available at this time.",
     "images": [
-      "/dogs/heartland-no-67-macy-0",
-      "/dogs/heartland-no-67-macy-1"
+      "/dogs/heartland-no-67-macy-212-0",
+      "/dogs/heartland-no-67-macy-212-1"
     ]
   },
   {
     "id": "210",
-    "slug": "heartland-no-80",
+    "slug": "heartland-no-80-210",
     "name": "Heartland No. 80",
     "sex": "Female",
     "age": "2 years",
@@ -864,16 +882,16 @@
     "fee": "$300",
     "bio": "Alpha all the way. She is working through being in a crate and time on the leash with harness with her foster. She is smart and stubborn and needs someone who can be her alpha. She is tolerating some affection. She has a lot of herding drive.",
     "images": [
-      "/dogs/heartland-no-80-0",
-      "/dogs/heartland-no-80-1",
-      "/dogs/heartland-no-80-2",
-      "/dogs/heartland-no-80-3",
-      "/dogs/heartland-no-80-4"
+      "/dogs/heartland-no-80-210-0",
+      "/dogs/heartland-no-80-210-1",
+      "/dogs/heartland-no-80-210-2",
+      "/dogs/heartland-no-80-210-3",
+      "/dogs/heartland-no-80-210-4"
     ]
   },
   {
     "id": "209",
-    "slug": "heartland-no-93-missy",
+    "slug": "heartland-no-93-missy-209",
     "name": "Heartland No. 93 (Missy)",
     "sex": "Female",
     "age": "7 years",
@@ -887,14 +905,14 @@
     "fee": "$300",
     "bio": "Missy is very timid. She cannot be kept in a pen, she either digs out or crawls over. She is content with her own dog house next to the dog/puppy pens. She will let her foster pet her and pick her up but is timid about it. She was picked on a great deal and tends to want to hide away in her dog house.",
     "images": [
-      "/dogs/heartland-no-93-missy-0",
-      "/dogs/heartland-no-93-missy-1",
-      "/dogs/heartland-no-93-missy-2"
+      "/dogs/heartland-no-93-missy-209-0",
+      "/dogs/heartland-no-93-missy-209-1",
+      "/dogs/heartland-no-93-missy-209-2"
     ]
   },
   {
     "id": "208",
-    "slug": "heartland-no-69",
+    "slug": "heartland-no-69-208",
     "name": "Heartland No. 69",
     "sex": "Male",
     "age": "3 years",
@@ -908,14 +926,14 @@
     "fee": "$300",
     "bio": "This pup is very fearful, but now will tolerate touching.  He will need a very experienced foster to work with him.  He is pretty much terrified of all human touch.  He is skittish and quick to get away from his foster.",
     "images": [
-      "/dogs/heartland-no-69-0",
-      "/dogs/heartland-no-69-1",
-      "/dogs/heartland-no-69-2"
+      "/dogs/heartland-no-69-208-0",
+      "/dogs/heartland-no-69-208-1",
+      "/dogs/heartland-no-69-208-2"
     ]
   },
   {
     "id": "207",
-    "slug": "heartland-no-102",
+    "slug": "heartland-no-102-207",
     "name": "Heartland No. 102",
     "sex": "Female",
     "age": "4 years",
@@ -929,13 +947,13 @@
     "fee": "$300",
     "bio": "Very smart and skittish. She watches every move her foster makes.  She hasn’t let her foster touch her yet without cornering her.",
     "images": [
-      "/dogs/heartland-no-102-0",
-      "/dogs/heartland-no-102-1"
+      "/dogs/heartland-no-102-207-0",
+      "/dogs/heartland-no-102-207-1"
     ]
   },
   {
     "id": "206",
-    "slug": "heartland-no-103-roxey",
+    "slug": "heartland-no-103-roxey-206",
     "name": "Heartland No. 103 Roxey",
     "sex": "Female",
     "age": "4 years",
@@ -949,14 +967,14 @@
     "fee": "$300",
     "bio": "Very smart and wild.  She goes to her foster for treats now but only lets her touch her if her foster forces it.  She is pretty quiet, barks occasionally.  She has lots of energy.  We think if she bonds she will be a super active dog.  She is showing some interest in toys and play, but stops the second she knows her foster watching her.",
     "images": [
-      "/dogs/heartland-no-103-roxey-0",
-      "/dogs/heartland-no-103-roxey-1",
-      "/dogs/heartland-no-103-roxey-2"
+      "/dogs/heartland-no-103-roxey-206-0",
+      "/dogs/heartland-no-103-roxey-206-1",
+      "/dogs/heartland-no-103-roxey-206-2"
     ]
   },
   {
     "id": "191",
-    "slug": "theodore",
+    "slug": "theodore-191",
     "name": "Theodore",
     "sex": "Male",
     "age": "1 year",
@@ -970,19 +988,19 @@
     "fee": "$300",
     "bio": "Teddy was saved from a high-kill rural TX shelter.\n\n​Teddy is a sweet, loving, outgoing and very smart pup that loves to make friends with all dogs and people and has been tested around cats as well. He is very well trained and has his Good Canine Citizen certification! He loves to run, play fetch, run around with his doggie friends, a good adventure in a car and belly rubs. He is well mannered in the house (has never had an accident) and sleeps quietly in a crate overnight.​\n\nTeddy is being fostered in Gunter, TX (north of DFW).",
     "images": [
-      "/dogs/theodore-0",
-      "/dogs/theodore-1",
-      "/dogs/theodore-2",
-      "/dogs/theodore-3",
-      "/dogs/theodore-4",
-      "/dogs/theodore-5",
-      "/dogs/theodore-6",
-      "/dogs/theodore-7"
+      "/dogs/theodore-191-0",
+      "/dogs/theodore-191-1",
+      "/dogs/theodore-191-2",
+      "/dogs/theodore-191-3",
+      "/dogs/theodore-191-4",
+      "/dogs/theodore-191-5",
+      "/dogs/theodore-191-6",
+      "/dogs/theodore-191-7"
     ]
   },
   {
     "id": "211",
-    "slug": "heartland-no-71",
+    "slug": "heartland-no-71-211",
     "name": "Heartland No. 71",
     "sex": "Male",
     "age": "2 years",
@@ -996,9 +1014,9 @@
     "fee": "$300",
     "bio": "",
     "images": [
-      "/dogs/heartland-no-71-0",
-      "/dogs/heartland-no-71-1",
-      "/dogs/heartland-no-71-2"
+      "/dogs/heartland-no-71-211-0",
+      "/dogs/heartland-no-71-211-1",
+      "/dogs/heartland-no-71-211-2"
     ]
   },
   {
@@ -1025,10 +1043,10 @@
   },
   {
     "id": "141",
-    "slug": "cooper",
+    "slug": "cooper-141",
     "name": "Cooper",
     "sex": "Male",
-    "age": "2 years",
+    "age": "3 years",
     "weight": "25 lb",
     "color": "Red Tri",
     "coat": "Not Specified",
@@ -1039,19 +1057,19 @@
     "fee": "$300",
     "bio": "Meet Cooper, a 2 year old purebred red merle BC boy in Abilene TX. Cooper was rehomed about a year ago and it was discovered that Cooper's owner had some serious cognitive decline and had not been caring for Cooper (and a few other fur friends).\n\nThrough the help of a local rescue angel, we were able to get Cooper to a secure spot where he's begun his road to recovery. Initially too weak to even stand, Cooper had hardly any muscle mass and had not received any vaccinations recently. Since joining us, he's gained weight and gotten healthy.\n\nCurrently, Cooper is great with his foster family but can be reactive to new people. He is such a sweet boy and has come such a long way though.  He has gotten better with several people who come around on a regular basis though visitors to his foster home are careful and guarded around him. But once Cooper trusts you, he has no issues. Cooper also LOVES his foster sister, and plays with her constantly.\n\nCooper does also need work on leash and in the car, but practice will make perfect with Cooper. Otherwise, Cooper will require an experienced and patient home with another dog but will make a fantastic new best friend for the right home.",
     "images": [
-      "/dogs/cooper-0",
-      "/dogs/cooper-1",
-      "/dogs/cooper-2",
-      "/dogs/cooper-3",
-      "/dogs/cooper-4",
-      "/dogs/cooper-5",
-      "/dogs/cooper-6",
-      "/dogs/cooper-7"
+      "/dogs/cooper-141-0",
+      "/dogs/cooper-141-1",
+      "/dogs/cooper-141-2",
+      "/dogs/cooper-141-3",
+      "/dogs/cooper-141-4",
+      "/dogs/cooper-141-5",
+      "/dogs/cooper-141-6",
+      "/dogs/cooper-141-7"
     ]
   },
   {
     "id": "139",
-    "slug": "whisky",
+    "slug": "whisky-139",
     "name": "Whisky",
     "sex": "Male",
     "age": "2 years",
@@ -1065,19 +1083,19 @@
     "fee": "$300",
     "bio": "Whisky is a sweet red and white smooth coat that was likely dumped by the same breeder that had previously abandoned several other BCSAVE alumni  (BB, CeeCee, DD, Echo, Sally and Nick).\n\nHe was very shy/shut down when he first came into his foster home, but has made many advances in the last 4 months. He now walks very well on a leash, and is crate trained and house trained. He is still shy when meeting strangers but will approach if you sit or lay with him and loves to play and wrestle (\"grab that mouth\" is his favorite game to play in the morning).\n\nWhisky has learned many commands and will happily jump into the car for a ride. He has pretty good recall, loves the outdoors and will run and do zoomies around the yard. He LOVES dogs of any kind and loves to play chase. He is good with baths and loves a good bully stick to chew on. Like all his predecessors, this sweet boy has had a very rough and neglected start to life but is loving and intelligent and is growing to be a great companion with love and patience.\n\nWhisky is being fostered Gloster, LA",
     "images": [
-      "/dogs/whisky-0",
-      "/dogs/whisky-1",
-      "/dogs/whisky-2",
-      "/dogs/whisky-3",
-      "/dogs/whisky-4",
-      "/dogs/whisky-5",
-      "/dogs/whisky-6",
-      "/dogs/whisky-7"
+      "/dogs/whisky-139-0",
+      "/dogs/whisky-139-1",
+      "/dogs/whisky-139-2",
+      "/dogs/whisky-139-3",
+      "/dogs/whisky-139-4",
+      "/dogs/whisky-139-5",
+      "/dogs/whisky-139-6",
+      "/dogs/whisky-139-7"
     ]
   },
   {
     "id": "111",
-    "slug": "wrangler",
+    "slug": "wrangler-111",
     "name": "Wrangler",
     "sex": "Male",
     "age": "1 year",
@@ -1089,21 +1107,21 @@
     "heartworm": "Negative",
     "location": "North Texas (DFW)",
     "fee": "$300",
-    "bio": "Wrangler was found at about 12 weeks old by a Good Samaritan. He had a broken leg, and they nursed him back to health. Wrangler is your classic border collie: super smart, full of energy, and always ready to chase something or someone. He’s crate trained and potty trained, but has little toy/ food/ tug drive though he'll probably herd sheep all day and all night if he could.\n\nWrangler's also a dog's dog. He loves his person, but not enough to want to stay with them if there is something fun going on outside. His prey drive is strong, so he’ll need a home where he won’t be tempted to chase small animals. He can also clear a 5 ft fence but isn't an escape artist.\n\nHe can still be shy around new people but warms up quicky. He loves playing with his dog friends and with his special dog friends, will wrestle and give kisses. The others are for chasing only, and Wrangler loves that game too!\n\nHe's likely best or an active home where he can go on hikes and play in the yard with his new best fur-friend!",
+    "bio": "Wrangler was found at about 12 weeks old by a Good Samaritan. He had a broken leg, and they nursed him back to health. Wrangler is your classic border collie: super smart, full of energy, and always ready to chase something or someone. He’s crate trained and potty trained, but has little toy/ food/ tug drive though he'll probably herd sheep all day and all night if he could.\n\nWrangler's also a dog's dog. He loves his person, but not enough to want to stay with them if there is something fun going on outside. His prey drive is strong, so he’ll need a home where he won’t be tempted to chase small animals. He can also clear a 5 ft fence but isn't an escape artist.\n\nHe can still be shy around new people but warms up quicky. He loves playing with his dog friends and with his special dog friends, will wrestle and give kisses. The others are for chasing only, and Wrangler loves that game too!\n\nHe's likely best or an active home where he can go on hikes and play in the yard with his new best fur-friend!\n\nWrangler is being fostered in Springtown, TX",
     "images": [
-      "/dogs/wrangler-0",
-      "/dogs/wrangler-1",
-      "/dogs/wrangler-2",
-      "/dogs/wrangler-3",
-      "/dogs/wrangler-4",
-      "/dogs/wrangler-5",
-      "/dogs/wrangler-6",
-      "/dogs/wrangler-7"
+      "/dogs/wrangler-111-0",
+      "/dogs/wrangler-111-1",
+      "/dogs/wrangler-111-2",
+      "/dogs/wrangler-111-3",
+      "/dogs/wrangler-111-4",
+      "/dogs/wrangler-111-5",
+      "/dogs/wrangler-111-6",
+      "/dogs/wrangler-111-7"
     ]
   },
   {
     "id": "107",
-    "slug": "rojo",
+    "slug": "rojo-107",
     "name": "Rojo",
     "sex": "Female",
     "age": "2 years",
@@ -1117,16 +1135,16 @@
     "fee": "$300",
     "bio": "In Oct. 2024, we were asked if we could assist with a big hoarding case in far NTX. BCSAVE and ABCR w/ rescues from TX and other states came together to save 44 pups from a much larger group, a breeding program gone awry. These pups had no regular human contact and were essentially feral, but we worked with the family and got the first group of 29 (!) here in TX vetted, heartworm tested, spayed/ neutered and into fantastic fosters home and most have been adopted (still have a few waiting).\n\nThen in January 2025, we were able to get 4 young pups (the J Group) and into foster and adoptive homes.\n\nNow, the next batch is here! Starting with #45 (because we forgot to number the J’s 🤣), we have FOURTEEN new pups! These pups are slightly less feral than the first batch, but will still require patience and experience with unsocialized pups. Our preference is to place them in foster homes first, then find the perfect adoptive families once they learn to “dog”. They have lived outside all their lives, but are super smart and the last 48 pups have learned house rules super quickly! They have all also been super dog-friendly, and come from working stock so some are *very* herdy.",
     "images": [
-      "/dogs/rojo-0",
-      "/dogs/rojo-1",
-      "/dogs/rojo-2",
-      "/dogs/rojo-3",
-      "/dogs/rojo-4"
+      "/dogs/rojo-107-0",
+      "/dogs/rojo-107-1",
+      "/dogs/rojo-107-2",
+      "/dogs/rojo-107-3",
+      "/dogs/rojo-107-4"
     ]
   },
   {
     "id": "104",
-    "slug": "heartland-no-47-oscar",
+    "slug": "heartland-no-47-oscar-104",
     "name": "Heartland No. 47 Oscar",
     "sex": "Male",
     "age": "3 years",
@@ -1140,13 +1158,13 @@
     "fee": "$300",
     "bio": "Oscar isn't grouchy; he's just the quietest dog in his group. It took a while but now he likes to be loved on and will put his very large face in his foster's hand and likes to be talked to. He may have gotten into scuffles while running feral and has some old scarred marks on his face but he has not been aggressive to his foster's current dogs or pen mates since he has arrived. He has not shown any food aggression as of yet either.",
     "images": [
-      "/dogs/heartland-no-47-oscar-0",
-      "/dogs/heartland-no-47-oscar-1"
+      "/dogs/heartland-no-47-oscar-104-0",
+      "/dogs/heartland-no-47-oscar-104-1"
     ]
   },
   {
     "id": "103",
-    "slug": "heartland-no-46",
+    "slug": "heartland-no-46-103",
     "name": "Heartland No. 46",
     "sex": "Male",
     "age": "3 years",
@@ -1160,14 +1178,14 @@
     "fee": "$300",
     "bio": "This guy took awhile for his foster to get around him, He is not aggressive but was very skittish and will take an experienced foster and some time to come around.",
     "images": [
-      "/dogs/heartland-no-46-0",
-      "/dogs/heartland-no-46-1",
-      "/dogs/heartland-no-46-2"
+      "/dogs/heartland-no-46-103-0",
+      "/dogs/heartland-no-46-103-1",
+      "/dogs/heartland-no-46-103-2"
     ]
   },
   {
     "id": "101",
-    "slug": "benson-45",
+    "slug": "benson-45-101",
     "name": "Benson #45",
     "sex": "Male",
     "age": "3 years",
@@ -1181,40 +1199,14 @@
     "fee": "$300",
     "bio": "This pup is sweet, friendly and outgoing.  He wants to say hi to everyone but is skittish around everyone at first.  He wants to be loved on and will be a loyal  once he finds his family. He is not aggressive to other dogs but will need some time to get used to his new family.",
     "images": [
-      "/dogs/benson-45-0",
-      "/dogs/benson-45-1",
-      "/dogs/benson-45-2"
-    ]
-  },
-  {
-    "id": "83",
-    "slug": "willow",
-    "name": "Willow",
-    "sex": "Female",
-    "age": "1 year",
-    "weight": "35 lb",
-    "color": "Black & White",
-    "coat": "Rough (Medium)",
-    "energy": "High",
-    "fixed": "Yes",
-    "heartworm": "Negative",
-    "location": "North Texas (DFW)",
-    "fee": "$300",
-    "bio": "Willow is a BC mix pup found as a stray in Fort Worth in June 2025. She appears to be a large border collie/Pap mix, about 23 lbs and 17 1/2 in tall.\n\nWillow is one of the sweetest dogs you will ever met.  She is just a little cautious when she meets new people but quickly forgets and loves everyone, male or female.  She will jump in your lap for long snuggles and kisses. Her weight and height make it easy to pick her up and carry her around like a sheltie!  She knows how to sit and the word off (as in \"get off the couch\").\n\nWhen we first brought Willow into the rescue, she was super-reactive to other dogs and the occasional person walking by in public, however she has improved in this area. She does live currently with several other dogs, but her foster allowed Willow a month before integrating her into the larger pack. If an adopter has another dog in the home, Willow would need a long introduction, with several walks and meets with the dog to become familiar before being placed.\n\nWillow is now very comfortable with her foster brothers and sisters, though she still challenges the matriarch female occasionally. She would probably be most easily introduced to a submissive male dog. Once she gets over her reactivity, she LOVES to play with the others. She has convinced all the young dogs to play with her, two of whom had never played with any other foster before Willow.\n\nWillow is a whirlwind, racing in the yard after squirrels but will also snuggle with you while you watch TV.  She is very food motivated and will also play with toys. She loves tennis balls and toys that crinkle and squeak, particularly a large stuffed chicken from Pets Supplies Plus. She enjoys tug of war with the leash toys with fluff at the end. She is very high energy and has learned how to scale a 3 foot fence so her adopter should have a 6 foot privacy fence. She is crate trained but her foster has started leaving her out and she has done very well, with no items destroyed and no accidents in the house.  She is doggy door trained as well.\n\nWe think Willow would do well in an experienced home with no other pets that can work with her dog reactivity, or one that is willing to give her the time she needs to get used to any dogs in the family. She is a fun, fantastic pup who just needs a little but of patience (if there are other dogs) to become your best girl!",
-    "images": [
-      "/dogs/willow-0",
-      "/dogs/willow-1",
-      "/dogs/willow-2",
-      "/dogs/willow-3",
-      "/dogs/willow-4",
-      "/dogs/willow-5",
-      "/dogs/willow-6",
-      "/dogs/willow-7"
+      "/dogs/benson-45-101-0",
+      "/dogs/benson-45-101-1",
+      "/dogs/benson-45-101-2"
     ]
   },
   {
     "id": "80",
-    "slug": "king",
+    "slug": "king-80",
     "name": "King",
     "sex": "Male",
     "age": "5 years",
@@ -1228,45 +1220,19 @@
     "fee": "$300",
     "bio": "King was surrendered in MS last year with his sister by owners who had to move and were not able to safely keep them, so they opted to find a rescue.\n\nKing has that lively, non-stop border collie energy that makes him seem more like two years old instead of almost seven. When his foster first got him, he loved to snatch things and prance off, inviting his foster family to chase him. Don't get that confused with fetch though (unless he is in zoomie mode lol).! He does love tug and overall, is a happy, friendly boy who loves meeting new people, including children but he's not into super cuddles, preferring to hang out and get pet instead.\n\nKing has also been good with most other dogs with the exception of his foster mom's daughter's husky, so we would recommend slow introductions to make sure King and any current fur-friends will get along. He has no interest in squirrels or deer, but can go into a barking frenzy over lawnmower equipment, motorcycles, bicycles and golf carts. We think King would benefit from a more rural home where he doesn't constantly have to hear equipment noises right outside (though he feels the same way about tractors).\n\nKing’s absolute favorite thing in the universe is a car ride, especially with the windows down so he can patrol the back seat. When his foster mom gets home, instead of greeting me, he runs to the car and asks for a car ride!\n\nLike a lot of our BC pups, King does not like thunderstorms and usually goes upstairs to his crate when he is nervous, though sometimes he can’t settle and wraps himself around his foster mom's legs.\n\nSome things that need to be worked on with King are his leash pulling, waiting calmly at the door to be released, and recall (which is usually very good except with the lawn equipment triggers).\n\nKing is absolutely the sweetest and most delightful boy. He will bring so much joy and energy to a family who will love him and who can help him rechannel his impulses.\n\nKing is currently being fostered in Spring, TX",
     "images": [
-      "/dogs/king-0",
-      "/dogs/king-1",
-      "/dogs/king-2",
-      "/dogs/king-3",
-      "/dogs/king-4",
-      "/dogs/king-5",
-      "/dogs/king-6",
-      "/dogs/king-7"
-    ]
-  },
-  {
-    "id": "47",
-    "slug": "lakona",
-    "name": "Lakona",
-    "sex": "Male",
-    "age": "2 years",
-    "weight": "45 lb",
-    "color": "Black & White",
-    "coat": "Rough (Medium)",
-    "energy": "Medium",
-    "fixed": "Yes",
-    "heartworm": "Negative",
-    "location": "North Texas (DFW)",
-    "fee": "$300",
-    "bio": "Follow Kona’s adventures on Instagram @foster_gma_abcr\n\nLakona (Kona) was surrendered to our partner vet in March 2025 as a puppy to be euthanized after he suffered a medical issue and his family could not afford his care. BCSAVE stepped in to cover the cost and take Lakona (aka Kona) under our wing. After surgery to remove a cloth foreign body that was anchored in his stomach and extended into his intestines, and subsequent fluid removal from his belly, he joined the rescue. After about a year in foster care, Kona grew up to be the sweetest, gentlest, best-behaved boy.\n\nKona is a very friendly and gentle boy that takes a minute to warm up to new people, but once he does, he is all about love. He is affectionate and adores all the dogs that he meets and has learned to live with cats. He does great and has all the confidence in the world when he has another confident dog with him, but he’s still timid when solo with new people and situations.\n\nHe is 100% crate trained, and has grown out of his chewing phase with bedding and plush toys. He walks great on and off leash, and mostly wants to hang out with his people with his easy/sweet ways. When he gets zoomies, he might knock over younger kids with his goofy play because he has no idea what to do with his legs. He knows his basics: sit, wait, down, crate, heel, come. He just likes to play!\n\nHe is a velcro dog and meets everyone with kindness. He would love a fun, playful fur-friend to romp with and a loving family who can continue working with him to build his confidence.\n\nKona is being fostered in Houston, TX",
-    "images": [
-      "/dogs/lakona-0",
-      "/dogs/lakona-1",
-      "/dogs/lakona-2",
-      "/dogs/lakona-3",
-      "/dogs/lakona-4",
-      "/dogs/lakona-5",
-      "/dogs/lakona-6",
-      "/dogs/lakona-7"
+      "/dogs/king-80-0",
+      "/dogs/king-80-1",
+      "/dogs/king-80-2",
+      "/dogs/king-80-3",
+      "/dogs/king-80-4",
+      "/dogs/king-80-5",
+      "/dogs/king-80-6",
+      "/dogs/king-80-7"
     ]
   },
   {
     "id": "37",
-    "slug": "skipper",
+    "slug": "skipper-37",
     "name": "Skipper",
     "sex": "Male",
     "age": "4 years",
@@ -1280,12 +1246,12 @@
     "fee": "$300",
     "bio": "Skipper has had a rough start in life. A stray, he entered the shelter with non-contagious mange as well as a front leg that was fractured in two places. The shelter was full and medical cases are often the first to get euthanized when the shelter needs to make space. We took him in with the help of a wonderful foster.\n\nSince then, he has been treated for the mange and his leg has healed. Since then, he's been with his foster and has done fabulously! His foster tested his DNA and found out Skipper is Husky/ Shepherd mix with no BC (hard to tell when they have no hair lol).\n\nEven though he has not BC in him, he is a fantastic pup. He is a sweet, lovable, active, and friendly pup. He loves to hang outside and chew on a bone, or frolic with his foster brothers. He is always happy and friendly, and is crate and house-trained. He will make a fine pup for an active family looking for a sweet guy to just “be a dog”.",
     "images": [
-      "/dogs/skipper-0"
+      "/dogs/skipper-37-0"
     ]
   },
   {
     "id": "35",
-    "slug": "raya",
+    "slug": "raya-35",
     "name": "Raya",
     "sex": "Female",
     "age": "3 years",
@@ -1299,12 +1265,12 @@
     "fee": "$300",
     "bio": "We received a call for help from another rescue for a BC pup that had begun to demonstrate pretty bad dog reactivity and anxiety issues. The other rescue was not able to bring the pup back into their fold, so we sent out our #1 Behaviorist Deeds Canine Connection to assess Raya and let us know if she could be rehabilitated and adopted.\n\nhttps://www.deedscanineconnection.com/\n\nRaya was heavily punished for her reactions, so her fear got worse. She has been decompressing and acclimating to life in the forest (a previous city dog). She has some decent toy play as well so that will be utilized as part of her training once Karen can get it functional! She is under a year old and about 32 pounds and an athletic little thing. Karen and her team will be taking weeks (if not months) working with Raya and building her confidence and showing her that other dogs (and cats) can be her friend.",
     "images": [
-      "/dogs/raya-0"
+      "/dogs/raya-35-0"
     ]
   },
   {
     "id": "22",
-    "slug": "gem",
+    "slug": "gem-22",
     "name": "Gem",
     "sex": "Female",
     "age": "2 years",
@@ -1318,18 +1284,18 @@
     "fee": "$300",
     "bio": "Gem and her siblings were rescued from an 80+ dog hoarding case in North Texas.\n\nGem (aka Gemma) was extremely shy at first, but has come around to asking for pets and scratches regularly once she gets to know her people. She loves hanging out outside with her dog pack, and playing chase and getting in the water. She is extremely food motivated but has not shown much interest in toys yet. She is a fairly active dog, and at times, her working line spirit really shows when chasing the donkeys along the fence line.\n\nGemma is not yet leash or crate trained but is house-trained with a dog door. She'll make a great active companion and would love a pup friend to run a large yard with!",
     "images": [
-      "/dogs/gem-0",
-      "/dogs/gem-1",
-      "/dogs/gem-2",
-      "/dogs/gem-3",
-      "/dogs/gem-4",
-      "/dogs/gem-5",
-      "/dogs/gem-6"
+      "/dogs/gem-22-0",
+      "/dogs/gem-22-1",
+      "/dogs/gem-22-2",
+      "/dogs/gem-22-3",
+      "/dogs/gem-22-4",
+      "/dogs/gem-22-5",
+      "/dogs/gem-22-6"
     ]
   },
   {
     "id": "19",
-    "slug": "heartland-no-7-bess",
+    "slug": "heartland-no-7-bess-19",
     "name": "Heartland No. 7 Bess",
     "sex": "Female",
     "age": "2 years",
@@ -1343,15 +1309,15 @@
     "fee": "$300",
     "bio": "Bess is a petite black and white pup who is pure working dog at heart. She was one of the most feral of the Heartland Hoarding group. Very similar to Sistene, Bess likes to herd you all the time. Bess will never be cuddly or affectionate but enjoys being around her foster family.  She goes everywhere her foster mom does on the ranch and is content with hanging out. She does gets annoyed by kids and just walks away from them.  She is a peculiar dog and often her foster mom would find her sitting in a flower pot, laying on a bench, or find she has dug a giant hole to lay in.  It took awhile but she can finally be walked on a leash and harness. She has finally started asking for affection and will now put her paws in her foster mom's lap when she wants something.",
     "images": [
-      "/dogs/heartland-no-7-bess-0",
-      "/dogs/heartland-no-7-bess-1",
-      "/dogs/heartland-no-7-bess-2",
-      "/dogs/heartland-no-7-bess-3"
+      "/dogs/heartland-no-7-bess-19-0",
+      "/dogs/heartland-no-7-bess-19-1",
+      "/dogs/heartland-no-7-bess-19-2",
+      "/dogs/heartland-no-7-bess-19-3"
     ]
   },
   {
     "id": "17",
-    "slug": "sassy",
+    "slug": "sassy-17",
     "name": "Sassy",
     "sex": "Female",
     "age": "8 years",
@@ -1365,19 +1331,19 @@
     "fee": "$300",
     "bio": "Sassy is a BC female who was rescued by a Good Samaritan several years ago after Sassy had been at the vet for injuries related to falling out of a truck (twice). While she is mostly healed, she does have some toes that are crooked and nails that are sensitive. She seems to have “phantom” issues with her hip and will “massage” with her mouth, but she’s been through all sorts of testing and medications and we can’t find anything wrong. Currently, her hip is managed somewhat with Gabapentin and Carprofen.\n\nA high energy, high drive dog, Sassy has extreme ball and disc drive, assertive and focused. She needs a secure fence if there is any roads nearby, as she is obsessed with chasing cars along the fence line. She has good recall and walks well on a leash, and is cat friendly. Sassy does NOT play with other dogs – she ignores them and can live happily with them, but she is only focused on her ball and her people. She does love to snuggle with you on the couch or bed. She also loves to swim and will fetch whatever you throw in the water for her.\n\nSassy has LOTS of “quirks”. She is very car-reactive – barking at them along a fence if she can see/ hear them, or barking at them while riding IN the car. She also digs and barks at dirt, as well as chases her tail at times. Sassy will need a home that can be okay with her obsessive tendencies. But otherwise, Sassy is perfectly well-behaved. She self-entertains, though she would prefer to engage with you, is super smart, and has a fantastic personality. Even with her quirks, Sassy is a loving girl who lives for her ball and snuggling. She has a great personality and disposition and will provide her new family with lots of fun times!",
     "images": [
-      "/dogs/sassy-0",
-      "/dogs/sassy-1",
-      "/dogs/sassy-2",
-      "/dogs/sassy-3",
-      "/dogs/sassy-4",
-      "/dogs/sassy-5",
-      "/dogs/sassy-6",
-      "/dogs/sassy-7"
+      "/dogs/sassy-17-0",
+      "/dogs/sassy-17-1",
+      "/dogs/sassy-17-2",
+      "/dogs/sassy-17-3",
+      "/dogs/sassy-17-4",
+      "/dogs/sassy-17-5",
+      "/dogs/sassy-17-6",
+      "/dogs/sassy-17-7"
     ]
   },
   {
     "id": "16",
-    "slug": "stella",
+    "slug": "stella-16",
     "name": "Stella",
     "sex": "Female",
     "age": "8 years",
@@ -1391,18 +1357,18 @@
     "fee": "$100",
     "bio": "Stella is one of six puppies rescued from a backyard breeder in Tennessee. There were many more seized and through the partnership of several rescues across the US and shelters and local law enforcement, all were placed in rescues. ALL of the pups were extremely unsocialized, very fearful of people, and heartworm positive. Their lives to date had been spent crowded in outdoor cages with little access to people, regular care or vetting. Some were so matted they had to be shaved and were ALL intact (neither spayed or neutered). Unfortunately several have crossed the rainbow bridge due to health issues and complications related to their heartworm treatment.\n\nStella has come such as long way! She will readily follow you around and has started to explore on her own, but reach down and she may or may not run away. If you are quick enough to scratch her butt, she might slowly inch closer for more, and while she won’t come when called, you can catch her and hold her for a minute before she gets anxious.\n\nShe is great around other dogs (never been around cats), but she barks to express her EVERY emotion. She likes to protect her space too, and will dart out and yip if another dog gets too close. But nothing serious – Stella is really ALL bark and very little bite! She rarely ever chews things up, but she expresses her frustration by grabbing and tugging loose fabric – chair, carpet tread, slipcovers, etc… She is house-trained if you get her out early and often or crate her.\n\n👉 Barking at you and other dogs\n\nShe will take some time to warm up to a new family, and is only available to adopt in Texas in case she needs to come back to the rescue. Stella is a work in progress but great for someone who likes a little challenge in the cutest little package ever!",
     "images": [
-      "/dogs/stella-0",
-      "/dogs/stella-1",
-      "/dogs/stella-2",
-      "/dogs/stella-3",
-      "/dogs/stella-4",
-      "/dogs/stella-5",
-      "/dogs/stella-6"
+      "/dogs/stella-16-0",
+      "/dogs/stella-16-1",
+      "/dogs/stella-16-2",
+      "/dogs/stella-16-3",
+      "/dogs/stella-16-4",
+      "/dogs/stella-16-5",
+      "/dogs/stella-16-6"
     ]
   },
   {
     "id": "14",
-    "slug": "abigail",
+    "slug": "abigail-14",
     "name": "Abigail",
     "sex": "Female",
     "age": "8 years",
@@ -1416,13 +1382,13 @@
     "fee": "$300",
     "bio": "Abigail (aka Abby) is one of six feral, BYB pups who joined us in 2021. All unsocialized and heartworm+, Abby has come so far and is ready for a special FURever home who will love her remaining quirks as much as we do!\n\nA petite 30 lbs, Abby is a sweet girl who likes nothing more than to get scratched and petted. She’s still a little timid around men, but does very well with her foster mom and kids. She can be a bit of a jerk to cats, but she does good with other dogs that will put up with her darting at them from wherever she is hiding. She is also a toy hoarder and destroyer of all things, like mayo packets, chapstick, tennis balls, etc… She is still nervous about wide open spaces and going out the front door on her own, but can be leashed and LOVES riding in the car. She’s almost perfect with house-training but still working on being 100%.\n\n👉 Get stuck under a towel or blanket\n\nShe may be quirky but she is adorable and full of personality and will make a wonderful addition to any family who is willing to give her a little time to shine! Her new family will need to expect a transition time with Abby and will need to patient with her as she learns a new home. She may still be timid or shy, and take some time to warm up to a new family and household. She is only available to adopt in Texas in case she needs to come back to the rescue.",
     "images": [
-      "/dogs/abigail-0",
-      "/dogs/abigail-1"
+      "/dogs/abigail-14-0",
+      "/dogs/abigail-14-1"
     ]
   },
   {
     "id": "13",
-    "slug": "twilight",
+    "slug": "twilight-13",
     "name": "Twilight",
     "sex": "Male",
     "age": "6 years",
@@ -1436,17 +1402,17 @@
     "fee": "$300",
     "bio": "Twilight is a great goofy pup who is looking for a patient and loving home! A tri-colored mix boy who was transferred to BCSAVE from another rescue, he originally was surrendered in Lubbock TX, where he and a littermate were thought to be deaf. Turns out he wasn’t deaf but did have some serious trust issues. He’s still a little timid around new people, but will warm up quickly in a new home.\n\nHe has been w/ his current foster for a few years now and is doing great! He does prefers women over men, but is REALLY sweet and a bit of a goober. Once he trusts you, he is lovey-dovey and loves getting scratched all over. His nickname is “Wiggle Booty Buddy” because he’s always wagging his tail! He also LOVES to play with other dogs, and handicaps exceptionally well with smaller or younger dogs. He is very treat motivated and loves to swim. He has some hesitation about collars and leashes, but has gotten much more comfortable with touching his collar (though he still needs leash work). He knows the dog door, is house trained, and can be crated. He can hop a four ft. fence so would probably need a higher fence or to stay inside when his family is gone. He is also a cat chaser, so would probably be best in a cat-free home.\n\nThe best home for Twilight is one where he can go outside and romp, then inside for love and comfort. He needs some one on one time to learn that leashes aren’t bad and walks can be fun. He’s smart as a whip, not aggressive at all (even when scared), and is a great boy with a lot of potential. He just needs a home that can see his potential like we do. 🥰",
     "images": [
-      "/dogs/twilight-0",
-      "/dogs/twilight-1",
-      "/dogs/twilight-2",
-      "/dogs/twilight-3",
-      "/dogs/twilight-4",
-      "/dogs/twilight-5"
+      "/dogs/twilight-13-0",
+      "/dogs/twilight-13-1",
+      "/dogs/twilight-13-2",
+      "/dogs/twilight-13-3",
+      "/dogs/twilight-13-4",
+      "/dogs/twilight-13-5"
     ]
   },
   {
     "id": "12",
-    "slug": "dainty",
+    "slug": "dainty-12",
     "name": "Dainty",
     "sex": "Female",
     "age": "7 years",
@@ -1460,15 +1426,15 @@
     "fee": "$300",
     "bio": "Dainty is likely a Border Collie/ Terrier (?) mix. Dainty was a stray captured in the Weatherford area. She was heartworm positive at the time she was rescued and has been going through slow kill treatment.\n\nShe has finally come around to be pet, though she is still nervous about it at times. She is dog door and house trained, and loves to sleep on a soft dog bed. She is playful with other pups, though she can get a little pushy at times (we think that’s the Terrier in her). She is still difficult to hold for longer than a few seconds and can not be leashed.\n\nDainty needs a patient family who is willing to work with her while she gets used to any new location. She is not an affectionate dog, and is likely going to take a long time to become comfortable in a new home.",
     "images": [
-      "/dogs/dainty-0",
-      "/dogs/dainty-1",
-      "/dogs/dainty-2",
-      "/dogs/dainty-3"
+      "/dogs/dainty-12-0",
+      "/dogs/dainty-12-1",
+      "/dogs/dainty-12-2",
+      "/dogs/dainty-12-3"
     ]
   },
   {
     "id": "11",
-    "slug": "wyatt",
+    "slug": "wyatt-11",
     "name": "Wyatt",
     "sex": "Male",
     "age": "7 years",
@@ -1482,18 +1448,18 @@
     "fee": "$300",
     "bio": "Wyatt joined BCSAVE in May 2020 with several dogs who were living in ETX in pretty bad conditions. The owner was a man who we believe was mentally handicapped and never cared for the dogs. He ended up in the hospital, and the dogs (never vaccinated and pretty feral) were falling prey not only to poor care and each other, but to coyotes.\n\nThe rescuer was able to begin to trap pups (with the sister’s permission) and we found ourselves slowing taking in one dog after another. George and Martha were the first we got (about 6 wks old puppies) in May. Mercedes came after, and Butch, the oldest, came with Sundance and Sloane about six weeks later. But while the rescuers were able to get most of the dogs, there were still two left that were too savvy or cunning to get trapped.\n\nThe rescuer continued to go out to the property at least 1x week to feed the two last dogs and try to trap them and were having no success. They kept in touch with us, sending us pics from the trail cameras they had put on the property to track the pups. Finally, in desperation, they hired a trapper to come and dart both the pups. Finally, the last two pups arrived loopy, drugged, scared. We named them Wyatt and Doc, after Wyatt Earp and Doc Holliday. Wyatt is obviously not a Border Collie but we didn’t want to split them up or leave one out there.\n\nWyatt has come a LONG way since that day in 2020. He’s one of our “project” dogs. He has become a great house and farm dog. He sleeps inside, comes when called, plays ball and loves to swim. He will eat from your hand and loves to sleep in his dog bed. He’s dog friendly and will run and chase and is house-trained with a dog door. He will allow himself to be pet now, though he’s still not too sure about it. The ONLY thing is that he still cannot be leashed/ walked. He can be trapped in a room and held in order to get his shots, and is not aggressive at all (just scared).\n\nWyatt would love to be a farm dog, where he can run the property but come in at night. He would love to have someone spend some one on one time with him, working with him to get over this last hump. He has so much promise and is a great dog who just needs a little more help!",
     "images": [
-      "/dogs/wyatt-0",
-      "/dogs/wyatt-1",
-      "/dogs/wyatt-2",
-      "/dogs/wyatt-3",
-      "/dogs/wyatt-4",
-      "/dogs/wyatt-5",
-      "/dogs/wyatt-6"
+      "/dogs/wyatt-11-0",
+      "/dogs/wyatt-11-1",
+      "/dogs/wyatt-11-2",
+      "/dogs/wyatt-11-3",
+      "/dogs/wyatt-11-4",
+      "/dogs/wyatt-11-5",
+      "/dogs/wyatt-11-6"
     ]
   },
   {
     "id": "9",
-    "slug": "kirby",
+    "slug": "kirby-9",
     "name": "Kirby",
     "sex": "Male",
     "age": "6 years",
@@ -1507,20 +1473,20 @@
     "fee": "$300",
     "bio": "Kirby is a transfer from our friends at Duck Team 6, a street dog rescue in the Dallas area with a mission to reduce the street dog population through trapping and rehoming. Back in April, Kirby showed up on a nice lady’s property in Joshua, TX and decided he didn’t want to leave and the owner asked DT6 for help. Their capture team went out and set the trap but before they finished dropping the food trail, Kirby was captured!\n\nKirby was then placed in a boarding facility while DT6 looked for his owners (1st) then a rescue to transfer him to (2nd). They reached out to us because Kirby, likely a BC/ Aussie mix, is also probably a former ranch dog and not really used to people, so they wanted to make sure Kirby could go someplace that understood his quirks and could help him find the perfect place to call his FURever home.\n\nKirby has been with us since April 2022, and what we know so far is that he does NOT like a leash, likes to roam his property but always comes back, and is still hesitant around people. He gets along fine with other dogs and has learned how to play. He knows when to come eat and knows the dog door, though he prefers to stay outside. He will take treats from your hand and wants to be inside when it thunders.\n\nKirby is looking for a foster home who can work with him on his fear of people and leashes, and would do best with lots of room to roam and a really good fence.",
     "images": [
-      "/dogs/kirby-0",
-      "/dogs/kirby-1",
-      "/dogs/kirby-2",
-      "/dogs/kirby-3",
-      "/dogs/kirby-4",
-      "/dogs/kirby-5"
+      "/dogs/kirby-9-0",
+      "/dogs/kirby-9-1",
+      "/dogs/kirby-9-2",
+      "/dogs/kirby-9-3",
+      "/dogs/kirby-9-4",
+      "/dogs/kirby-9-5"
     ]
   },
   {
     "id": "6",
-    "slug": "lego",
+    "slug": "lego-6",
     "name": "Lego",
     "sex": "Male",
-    "age": "4 years",
+    "age": "5 years",
     "weight": "40 lb",
     "color": "Black & White",
     "coat": "Rough (Medium)",
@@ -1531,19 +1497,19 @@
     "fee": "$300",
     "bio": "Lego is a dynamic black and white bundle of joy weighing in at 40 lbs. He’s a true athlete, always on the go, and his love for toys is unmatched! 🏃‍♂️🎾\n\nOne of Lego’s unique quirks is his adorable duck-like bark – it’s bound to make you smile every time you hear it! 🦆 He’s also quite the problem solver; Lego has been known to jump baby gates with ease to get where he wants to go. He will counter surf, so his family needs to make sure there is nothing to tempt him while teaching him the rules of the roost.\n\nLego is a social butterfly, getting along well with kids, people and other dogs. He does have herding tendencies, and will nip the heels of smaller kids and even an adult on occasion, so he needs a child-free family and one that is familiar with herding behaviors. He is not very toy-motivated but does loves his treats and is very receptive to learning new commands.\n\nIf you’re an active individual or family looking for a four-legged adventure buddy, Lego could be the perfect match for you! He’s ready to share his boundless energy and affection with a loving forever home.",
     "images": [
-      "/dogs/lego-0",
-      "/dogs/lego-1",
-      "/dogs/lego-2",
-      "/dogs/lego-3",
-      "/dogs/lego-4",
-      "/dogs/lego-5",
-      "/dogs/lego-6",
-      "/dogs/lego-7"
+      "/dogs/lego-6-0",
+      "/dogs/lego-6-1",
+      "/dogs/lego-6-2",
+      "/dogs/lego-6-3",
+      "/dogs/lego-6-4",
+      "/dogs/lego-6-5",
+      "/dogs/lego-6-6",
+      "/dogs/lego-6-7"
     ]
   },
   {
     "id": "2",
-    "slug": "sistine",
+    "slug": "sistine-2",
     "name": "Sistine",
     "sex": "Female",
     "age": "2 years",
@@ -1557,16 +1523,16 @@
     "fee": "$300",
     "bio": "Sistene and her siblings were rescued from a 30+ dog hoarding case in North Texas and are a part of our Heartland 29 group.\n\nSistene is a working dog who needs a job. Her favorite activity is running with the other pups who like to herd. Sistene will also still need leash and crate work, and you'll need to take training slow with Sistene. She has finally allowed her foster family to pet her and give her treats, but her real love is for running outside with her pack.",
     "images": [
-      "/dogs/sistine-0",
-      "/dogs/sistine-1",
-      "/dogs/sistine-2",
-      "/dogs/sistine-3",
-      "/dogs/sistine-4"
+      "/dogs/sistine-2-0",
+      "/dogs/sistine-2-1",
+      "/dogs/sistine-2-2",
+      "/dogs/sistine-2-3",
+      "/dogs/sistine-2-4"
     ]
   },
   {
     "id": "39",
-    "slug": "lindy-hop",
+    "slug": "lindy-hop-39",
     "name": "Lindy Hop",
     "sex": "Female",
     "age": "7 years",
@@ -1580,14 +1546,14 @@
     "fee": "$100",
     "bio": "Lindy (as in Lindy Hop because she’s so bouncy) is mix girl, we think maybe with pointer or even some sort of sighthound. Whatever Lindy is mixed with, it’s an active dog, because Lindy is all about running and playing and jumping and wrestling all day long!\n\nLindy was adopted in 2023 by a handler who trained her in search and rescue but returned her because her dog and Lindy were getting into fights plus Lindy had a rear leg injury.\n\nWe’ve had Lindy back now for several months. She is a VERY high drive dog for search and hunt, and is nearly fully trained for some sort of cadaver training; we’re not SAR-lingo proficient but we were told she’s just a couple of tests shy of becoming “certified” in Search and Rescue/ Human Remain Detection.\n\nLindy is now fully healed up, released from the vet, she’s gone back to her original trainer to evaluate, and she’s got no issues that we can see.\n\nWe’d love to get her back to work, since that is what SHE loves. She’s a fantastic dog, and while her leg bothers her if she overexerts herself, it never slows her down. She’s fearless and driven, climbs on everything and anything, and when in the house, crates beautifully and is extremely loving and sweet. If another dog in our (very busy) house puffs up to her, she’ll stand her ground but she’s not starting fights or causing ruckus. In fact, she’ll crate herself if there is too much hubbub going on. She LOVES climbing rubble and swimming and toys and balls and fetch and nosework…She is an exuberant girl, and is built for action – she is lean and muscled, even if she is a bit of a bull in a china shop.\n\nLindy was reevaluated at a training seminar several weeks ago and her trainer handler took some video (below).\n\nAny handlers looking for a pretty turn-key middle age pup to do SAR stuff with?",
     "images": [
-      "/dogs/lindy-hop-0",
-      "/dogs/lindy-hop-1",
-      "/dogs/lindy-hop-2",
-      "/dogs/lindy-hop-3",
-      "/dogs/lindy-hop-4",
-      "/dogs/lindy-hop-5",
-      "/dogs/lindy-hop-6",
-      "/dogs/lindy-hop-7"
+      "/dogs/lindy-hop-39-0",
+      "/dogs/lindy-hop-39-1",
+      "/dogs/lindy-hop-39-2",
+      "/dogs/lindy-hop-39-3",
+      "/dogs/lindy-hop-39-4",
+      "/dogs/lindy-hop-39-5",
+      "/dogs/lindy-hop-39-6",
+      "/dogs/lindy-hop-39-7"
     ]
   }
 ]

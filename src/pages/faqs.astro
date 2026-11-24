@@ -13,6 +13,10 @@ const groups = [
     title: "Adopting",
     items: [
       {
+        // The ShelterManager foster form links to bcsave.org/faqs/#heartworm.
+        // The old site never wrote that FAQ ("Coming Soon"), so the anchor
+        // sits on the closest real answer until the rescue writes one.
+        id: "heartworm",
         q: "What is the adoption fee, and what does it cover?",
         a: [
           "Fees depend on the dog:",
@@ -198,7 +202,7 @@ function emphasise(text: string): string {
           <h2>{group.title}</h2>
           <div class="faq mt-2">
             {group.items.map((item) => (
-              <details class="faq__item">
+              <details class="faq__item" id={(item as { id?: string }).id}>
                 <summary>
                   <span>{item.q}</span>
                   <svg class="faq__chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -234,3 +238,14 @@ function emphasise(text: string): string {
     </div>
   </section>
 </Base>
+
+<script>
+  // A link straight to one answer (e.g. #heartworm) should land on it open,
+  // not on a closed question the reader has to spot and tap.
+  const openFromHash = () => {
+    const el = location.hash && document.getElementById(location.hash.slice(1));
+    if (el instanceof HTMLDetailsElement) el.open = true;
+  };
+  openFromHash();
+  window.addEventListener("hashchange", openFromHash);
+</script>

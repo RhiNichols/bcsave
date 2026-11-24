@@ -1,9 +1,11 @@
 ---
+import { url } from "../../lib/url";
 import Base from "../../layouts/Base.astro";
 import DogCard from "../../components/DogCard.astro";
 import { dogs, isPuppy, bioParagraphHtml } from "../../data/dogs";
 import type { Dog } from "../../data/dogs";
 import { forms } from "../../data/links";
+import { factRows } from "../../lib/dog-format";
 
 export function getStaticPaths() {
   return dogs.map((dog) => ({ params: { slug: dog.slug }, props: { dog } }));
@@ -15,18 +17,7 @@ interface Props {
 
 const { dog } = Astro.props;
 
-const facts = [
-  ["Sex", dog.sex],
-  ["Age", dog.age],
-  ["Weight", dog.weight],
-  ["Color", dog.color],
-  ["Coat", dog.coat],
-  ["Energy", dog.energy],
-  ["Spayed/Neutered", dog.fixed],
-  ["Heartworm", dog.heartworm],
-  ["Location", dog.location],
-  ["Adoption fee", dog.fee],
-].filter(([, v]) => v && v !== "TBD" && v !== "Unassigned");
+const facts = factRows(dog);
 
 const paragraphs = dog.bio.split("\n\n").filter(Boolean);
 
@@ -41,7 +32,7 @@ const more = dogs.filter((d) => d.slug !== dog.slug).slice(0, 4);
 >
   <section class="section section--tight">
     <div class="wrap">
-      <a class="backlink" href="/dogs">&larr; All available dogs</a>
+      <a class="backlink" href={url("/dogs")}>&larr; All available dogs</a>
 
       <div class="detail">
         <!-- ------------------------------------------------------ gallery -->
@@ -49,7 +40,7 @@ const more = dogs.filter((d) => d.slug !== dog.slug).slice(0, 4);
           <div class="gallery__main">
             <img
               id="main-photo"
-              src={`${dog.images[0]}.webp`}
+              src={url(`${dog.images[0]}.webp`)}
               alt={`${dog.name}, a Border Collie available for adoption`}
               width="1100"
               height="825"
@@ -64,13 +55,13 @@ const more = dogs.filter((d) => d.slug !== dog.slug).slice(0, 4);
                 {dog.images.map((img, i) => (
                   <button
                     type="button"
-                    data-full={`${img}.webp`}
+                    data-full={url(`${img}.webp`)}
                     aria-label={`Show photo ${i + 1} of ${dog.name}`}
                     aria-current={i === 0 ? "true" : "false"}
                   >
                     {/* Button carries the label; empty alt avoids a double announcement. */}
                     <img
-                      src={`${img}-t.webp`}
+                      src={url(`${img}-t.webp`)}
                       alt=""
                       width="68"
                       height="68"
@@ -105,18 +96,32 @@ const more = dogs.filter((d) => d.slug !== dog.slug).slice(0, 4);
             }
           </dl>
 
-          <div class="btn-row">
-            <a class="btn btn--ember btn--block" href={forms.adopt}>
-              Apply to adopt {dog.name}
-            </a>
-            <a class="btn btn--ghost btn--block" href={forms.foster}>Foster instead</a>
+          {/* Shown by the script below if this dog has left ShelterManager's
+              adoptable list since the page was built. */}
+          <div class="panel adopted-note" data-adopted-note hidden>
+            <p style="margin: 0;">
+              <strong>{dog.name} has found a home.</strong> This page is from
+              before the adoption, so the details here may be out of date.
+            </p>
+            <div class="btn-row mt-2">
+              <a class="btn btn--brand btn--block" href={url("/dogs")}>Meet the dogs still waiting</a>
+            </div>
           </div>
 
-          <p style="font-size: 0.88rem; color: var(--ink-faint); margin-top: 1rem;">
-            Applications are reviewed by volunteers, so give us a few days. We
-            check references and talk through whether {dog.name} genuinely suits
-            your home.
-          </p>
+          <div data-apply data-dog-id={dog.id}>
+            <div class="btn-row">
+              <a class="btn btn--ember btn--block" href={forms.adopt}>
+                Apply to adopt {dog.name}
+              </a>
+              <a class="btn btn--ghost btn--block" href={forms.foster}>Foster instead</a>
+            </div>
+
+            <p style="font-size: 0.88rem; color: var(--ink-faint); margin-top: 1rem;">
+              Applications are reviewed by volunteers, so give us a few days. We
+              check references and talk through whether {dog.name} genuinely suits
+              your home.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -136,11 +141,11 @@ const more = dogs.filter((d) => d.slug !== dog.slug).slice(0, 4);
   <section class="section section--tight" style="background: var(--paper-warm);">
     <div class="wrap">
       <h2 style="font-size: clamp(1.4rem, 3.5vw, 1.9rem);">More dogs waiting</h2>
-      <ul class="dog-grid mt-2">
+      <ul class="dog-grid mt-2" data-more-dogs>
         {more.map((d) => <DogCard dog={d} />)}
       </ul>
       <div class="btn-row mt-2">
-        <a class="btn btn--brand" href="/dogs">See all {dogs.length} dogs</a>
+        <a class="btn btn--brand" href={url("/dogs")}>See all {dogs.length} dogs</a>
       </div>
     </div>
   </section>
@@ -162,4 +167,27 @@ const more = dogs.filter((d) => d.slug !== dog.slug).slice(0, 4);
       btn.setAttribute("aria-current", "true");
     });
   }
+
+</script>
+
+<script>
+  // Pages are a build-time snapshot, so a dog adopted since the last build
+  // would still show an Apply button here — the failure that costs the rescue
+  // the most time. Check the live feed and, if this dog has gone, say so and
+  // take the buttons away. If the feed can't be reached, the page is left as
+  // built.
+  import { adoptableNow, dropAdopted } from "../../lib/live-dogs";
+
+  const apply = document.querySelector<HTMLElement>("[data-apply]");
+  const note = document.querySelector<HTMLElement>("[data-adopted-note]");
+  const more = document.querySelector<HTMLElement>("[data-more-dogs]");
+
+  adoptableNow().then((ids) => {
+    if (!ids) return;
+    if (apply && note && !ids.has(apply.dataset.dogId ?? "")) {
+      apply.hidden = true;
+      note.hidden = false;
+    }
+    if (more) dropAdopted(more, ids);
+  });
 </script>

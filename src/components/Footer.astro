@@ -1,4 +1,5 @@
 ---
+import { url } from "../lib/url";
 import { forms, social, shop } from "../data/links";
 const year = new Date().getFullYear();
 ---
@@ -8,7 +9,7 @@ const year = new Date().getFullYear();
     <div>
       <img
         class="ftr__logo"
-        src="/logo-white.png"
+        src={url("/logo-white.png")}
         alt="Border Collie Save &amp; Rescue"
         width="560"
         height="406"
@@ -38,10 +39,10 @@ const year = new Date().getFullYear();
     <div>
       <h3>Adopt &amp; Help</h3>
       <ul>
-        <li><a href="/dogs">Available Dogs</a></li>
-        <li><a href="/foster">Foster a Dog</a></li>
-        <li><a href="/volunteer">Volunteer</a></li>
-        <li><a href="/alumni">Alumni</a></li>
+        <li><a href={url("/dogs")}>Available Dogs</a></li>
+        <li><a href={url("/foster")}>Foster a Dog</a></li>
+        <li><a href={url("/volunteer")}>Volunteer</a></li>
+        <li><a href={url("/alumni")}>Alumni</a></li>
         <li><a href={forms.adopt}>Adoption Application</a></li>
         <li><a href={forms.foster}>Foster Application</a></li>
         <li><a href={forms.volunteer}>Volunteer Application</a></li>
@@ -52,12 +53,12 @@ const year = new Date().getFullYear();
     <div>
       <h3>Support</h3>
       <ul>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/donate">Donate</a></li>
+        <li><a href={url("/about")}>About Us</a></li>
+        <li><a href={url("/donate")}>Donate</a></li>
         <li><a href={shop} rel="noopener" target="_blank">Shop</a></li>
-        <li><a href="https://bcsave.org/events/">Events</a></li>
-        <li><a href="/faqs">FAQs</a></li>
-        <li><a href="/lostdog">Found a Stray Dog?</a></li>
+        <li><a href={social.facebook} rel="noopener" target="_blank">Events (on Facebook)</a></li>
+        <li><a href={url("/faqs")}>FAQs</a></li>
+        <li><a href={url("/lostdog")}>Found a Stray Dog?</a></li>
       </ul>
     </div>
   </div>

@@ -2,17 +2,42 @@
  * Reconcile the static dog grid against ShelterManager, in the browser.
  *
  * The page ships with whatever dogs existed at build time. Seconds later this
- * asks the Worker what is adoptable *now* and fixes the difference:
+ * reads ShelterManager's public feed directly and fixes the difference:
  *
  *   - a dog adopted since the build is removed, so nobody applies for a dog
  *     who is already home — the failure that actually costs the rescue time
- *   - a dog added since the build is fetched and appended
+ *   - a dog added since the build is parsed out of the same feed and added,
+ *     linking to their permanent /dogs/<name>-<id>/ address. That page does
+ *     not exist until the next rebuild, so until then GitHub Pages answers it
+ *     with 404.html, which renders the dog live (src/pages/404.astro)
  *   - every count on the page is recomputed from what is left
  *
  * All of it is optional. If the fetch fails, is slow, or JavaScript is off,
  * the visitor keeps the static page and is none the wiser — which is why the
  * static build stays the source of truth for first paint.
+ *
+ * Why the browser talks to ShelterManager itself: the site is plain files on
+ * GitHub Pages, with no server of its own to ask. That works because
+ * ShelterManager sends `Access-Control-Allow-Origin: *` on the feed (both the
+ * redirect and the final answer), so any page may read it. The feed is about
+ * 63 KB over the wire (1.1 MB once unzipped) and ShelterManager caches it for
+ * ten minutes, so a visitor costs BCSAVE's account very little. It is fetched
+ * once per page load and every lookup below reads that one copy.
+ *
+ * The parser is src/lib/asm-core.mjs — the same file the build scripts use, so
+ * the static build and this live refresh can never disagree about a dog.
  */
+import {
+  ADOPTABLE_URL,
+  ASM_BASE,
+  ASM_IMAGE_ACCOUNT,
+  adoptableIds,
+  parseOne,
+  photoRef,
+} from "./asm-core.mjs";
+import { url } from "./url";
+// The same rule src/data/dogs.ts uses, so the filters agree with the build.
+import { ageGroupFromAge as ageGroup } from "./dog-format";
 
 export interface LiveDog {
   id: string;
@@ -21,28 +46,28 @@ export interface LiveDog {
   sex: string;
   age: string;
   weight: string;
+  color: string;
+  coat: string;
+  energy: string;
+  fixed: string;
+  heartworm: string;
   location: string;
   fee: string;
   bio: string;
+  /** Full ShelterManager image URLs, loaded straight into <img>. */
   photos: string[];
 }
 
-/** Mirrors ageGroup() in src/data/dogs.ts — the filters key off these. */
-function ageGroup(age: string): "puppy" | "young" | "adult" | "senior" {
-  const m = age.match(/([\d.]+)\s*(week|month|year)/i);
-  const n = m ? parseFloat(m[1]) : 99;
-  const unit = m ? m[2].toLowerCase() : "year";
-  const years = unit === "week" ? n / 52 : unit === "month" ? n / 12 : n;
-  if (years < 1) return "puppy";
-  if (years < 3) return "young";
-  if (years < 8) return "adult";
-  return "senior";
-}
-
-const esc = (s: string) =>
+export const esc = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-/** Build a card matching DogCard.astro's markup for a dog added since the build. */
+/**
+ * Build a card matching DogCard.astro's markup for a dog added since the build.
+ *
+ * It links to the dog's permanent address. Until the next rebuild publishes
+ * that page, the 404 page renders it live from the same feed, so the link
+ * works from the moment the card appears and never changes afterwards.
+ */
 function cardFor(dog: LiveDog): HTMLLIElement | null {
   // No photo means no card. A pictureless dog reads as broken, and the build
   // scripts drop these for the same reason.
@@ -64,9 +89,10 @@ function cardFor(dog: LiveDog): HTMLLIElement | null {
       <img src="${esc(dog.photos[0])}" alt="${esc(dog.name)}, a Border Collie available for adoption"
            width="500" height="625" loading="lazy" decoding="async" />
       ${ageGroup(dog.age) === "puppy" ? '<span class="dog__tag dog__tag--puppy">Puppy</span>' : ""}
+      <span class="dog__tag dog__tag--new">Just arrived</span>
     </div>
     <div class="dog__body">
-      <h2 class="dog__name"><a href="/dogs/${esc(dog.slug)}">${esc(dog.name)}</a></h2>
+      <h2 class="dog__name"><a href="${esc(url(`/dogs/${dog.slug}`))}">${esc(dog.name)}</a></h2>
       <p class="dog__meta">${esc(meta)}</p>
       ${snippet ? `<p class="dog__snippet">${esc(snippet)}</p>` : ""}
       <div class="dog__foot">
@@ -78,46 +104,80 @@ function cardFor(dog: LiveDog): HTMLLIElement | null {
 }
 
 /**
- * A dog added after the build has no pre-rendered /dogs/<slug> page, so its
- * card would link to a 404. Point those at the grid until the next build
- * publishes the real page.
+ * Read the whole adoptable feed once. Null on any failure — the caller treats
+ * that as "leave the page alone".
+ *
+ * A plain GET with no custom headers on purpose: anything fancier would make
+ * the browser send a CORS preflight, which ShelterManager is not set up for.
  */
-function neutraliseLink(li: HTMLLIElement) {
-  const a = li.querySelector<HTMLAnchorElement>(".dog__name a");
-  if (a) a.removeAttribute("href");
-  const cta = li.querySelector(".dog__cta");
-  if (cta) cta.textContent = "Just arrived";
-}
-
-async function liveIds(
-  signal: AbortSignal
-): Promise<{ ids: Set<string>; fetchedAt: string } | null> {
+export async function readFeed(signal: AbortSignal): Promise<string | null> {
   try {
-    const res = await fetch("/api/available.json", { signal });
+    const res = await fetch(ADOPTABLE_URL, { signal });
     if (!res.ok) return null;
-    const body = await res.json();
-    if (!body?.ok || !Array.isArray(body.ids)) return null;
-    return { ids: new Set<string>(body.ids), fetchedAt: body.fetchedAt };
+    const html = await res.text();
+    // Same sanity floor as the build's fetchText: a near-empty body is an
+    // error page, not a feed with no dogs in it.
+    return html.length < 200 ? null : html;
   } catch {
     return null;
   }
 }
 
-async function fetchDog(id: string, signal: AbortSignal): Promise<LiveDog | null> {
+/**
+ * The ids ShelterManager lists as adoptable right now, or null if the feed
+ * can't be trusted (unreachable, slow, or parsing to zero dogs). For pages
+ * that only need to know who has gone — a dog's own page, the homepage —
+ * without rebuilding a whole grid.
+ */
+export async function adoptableNow(timeoutMs = 15000): Promise<Set<string> | null> {
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), timeoutMs);
   try {
-    const res = await fetch(`/api/dogs/${id}.json`, { signal });
-    if (!res.ok) return null;
-    const body = await res.json();
-    return body?.ok ? (body.dog as LiveDog) : null;
+    const html = await readFeed(ctl.signal);
+    if (!html) return null;
+    const ids = new Set<string>(adoptableIds(html));
+    return ids.size ? ids : null;
   } catch {
     return null;
+  } finally {
+    clearTimeout(timer);
   }
+}
+
+/** Remove cards for dogs no longer adoptable. Returns how many went. */
+export function dropAdopted(root: ParentNode, ids: Set<string>): number {
+  let removed = 0;
+  for (const card of root.querySelectorAll<HTMLElement>(".dog[data-id]")) {
+    if (!ids.has(card.dataset.id ?? "")) {
+      card.remove();
+      removed++;
+    }
+  }
+  return removed;
+}
+
+/** A ShelterManager photo URL, loaded straight into an <img> (no CORS needed). */
+const photoUrl = (id: string, seq: string) =>
+  `${ASM_BASE}?account=${ASM_IMAGE_ACCOUNT}&method=animal_image&animalid=${id}&seq=${seq}`;
+
+/** One dog parsed out of the feed we already have — no extra request. */
+export function dogFrom(html: string, id: string): LiveDog | null {
+  const dog = parseOne(html, id);
+  if (!dog) return null;
+  const { _photos, ...rest } = dog;
+  return {
+    ...rest,
+    photos: (_photos as string[])
+      .map(photoRef)
+      .filter((p): p is { id: string; seq: string } => p !== null)
+      .map((p) => photoUrl(p.id, p.seq)),
+  };
 }
 
 export interface RefreshResult {
   /** Dogs on the page after reconciling. */
   total: number;
-  /** When the Worker last read ShelterManager. */
+  /** When this page read ShelterManager (browser clock). */
   fetchedAt: string;
   /** Listings that were removed because they had been adopted. */
   removed: number;
@@ -131,14 +191,22 @@ export interface RefreshResult {
  */
 export async function refreshGrid(grid: HTMLElement): Promise<RefreshResult | null> {
   // Cap the whole exercise. A slow feed must not leave the page half-updated
-  // while someone is reading it.
+  // while someone is reading it. Generous because the visitor's phone now
+  // downloads the feed itself, possibly on a weak rural signal — and the page
+  // is fully usable while it waits.
   const ctl = new AbortController();
-  const timer = setTimeout(() => ctl.abort(), 8000);
+  const timer = setTimeout(() => ctl.abort(), 15000);
 
   try {
-    const live = await liveIds(ctl.signal);
-    if (!live) return null;
-    const { ids, fetchedAt } = live;
+    const html = await readFeed(ctl.signal);
+    if (!html) return null;
+
+    const ids = new Set<string>(adoptableIds(html));
+    // A feed that parses to zero dogs is far more likely a format change or an
+    // error page than an empty rescue. Emptying the page on that evidence
+    // would be worse than leaving it stale.
+    if (!ids.size) return null;
+    const fetchedAt = new Date().toISOString();
 
     const cards = Array.from(grid.querySelectorAll<HTMLLIElement>(".dog"));
     const onPage = new Set(cards.map((c) => c.dataset.id ?? ""));
@@ -152,17 +220,18 @@ export async function refreshGrid(grid: HTMLElement): Promise<RefreshResult | nu
       }
     }
 
-    // Added since the build. Bounded — if a build is so old that dozens are
-    // missing, the answer is a rebuild, not sixty requests from every visitor.
-    const fresh = [...ids].filter((id) => !onPage.has(id)).slice(0, 12);
-    const fetched = await Promise.all(fresh.map((id) => fetchDog(id, ctl.signal)));
+    // Added since the build. Unbounded on purpose: the cap of 12 dated from
+    // when each arrival cost a request to a server function. Now every dog
+    // comes out of the one feed already downloaded, and card photos lazy-load,
+    // so a visitor never misses a dog just because the last build was old.
+    const fresh = [...ids].filter((id) => !onPage.has(id));
 
     let added = 0;
-    for (const dog of fetched) {
+    for (const id of fresh) {
+      const dog = dogFrom(html, id);
       if (!dog) continue;
       const li = cardFor(dog);
       if (!li) continue;
-      neutraliseLink(li);
       grid.prepend(li);
       added++;
     }

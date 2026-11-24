@@ -1,6 +1,7 @@
 ---
 import type { Dog } from "../data/dogs";
 import { isPuppy, ageGroup } from "../data/dogs";
+import { url } from "../lib/url";
 
 interface Props {
   dog: Dog;
@@ -15,7 +16,11 @@ interface Props {
 
 const { dog, eager = false, level = 3 } = Astro.props;
 const Heading = `h${level}` as "h2" | "h3";
-const img = dog.images[0];
+// Image stems in dogs.json are root-relative ("/dogs/bear-312-0"). Prefixed
+// here, at render time, so the data file stays host-agnostic. The extension
+// goes on *before* url(): a bare stem looks like a page path and would get a
+// trailing slash — see src/lib/url.ts.
+const stem = dog.images[0];
 const snippet = dog.bio.split("\n\n")[0] ?? "";
 ---
 
@@ -28,8 +33,8 @@ const snippet = dog.bio.split("\n\n")[0] ?? "";
 >
   <div class="dog__media">
     <img
-      src={`${img}-t.webp`}
-      srcset={`${img}-t.webp 500w, ${img}.webp 1100w`}
+      src={url(`${stem}-t.webp`)}
+      srcset={`${url(`${stem}-t.webp`)} 500w, ${url(`${stem}.webp`)} 1100w`}
       sizes="(min-width: 68rem) 260px, (min-width: 40rem) 33vw, 90vw"
       alt={`${dog.name}, a Border Collie available for adoption`}
       width="500"
@@ -41,7 +46,7 @@ const snippet = dog.bio.split("\n\n")[0] ?? "";
   </div>
 
   <div class="dog__body">
-    <Heading class="dog__name"><a href={`/dogs/${dog.slug}`}>{dog.name}</a></Heading>
+    <Heading class="dog__name"><a href={url(`/dogs/${dog.slug}`)}>{dog.name}</a></Heading>
     <p class="dog__meta">
       {[dog.sex, dog.age, dog.weight].filter(Boolean).join(" · ")}
     </p>

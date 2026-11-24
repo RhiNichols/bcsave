@@ -1,4 +1,5 @@
 ---
+import { url } from "../lib/url";
 import Base from "../layouts/Base.astro";
 import { forms } from "../data/links";
 
@@ -240,7 +241,7 @@ const freedoms = [
       </p>
       <div class="btn-row mt-2" style="justify-content: center;">
         <a class="btn btn--light" href={forms.foster}>Start a foster application</a>
-        <a class="btn btn--ghost" style="color: #fffdf9;" href="/volunteer">
+        <a class="btn btn--ghost" style="color: #fffdf9;" href={url("/volunteer")}>
           Help in another way
         </a>
       </div>

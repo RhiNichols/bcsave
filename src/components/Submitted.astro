@@ -1,0 +1,33 @@
+---
+import Base from "../layouts/Base.astro";
+import { url } from "../lib/url";
+
+/*
+ * Shown after someone submits a ShelterManager form. Every BCSAVE form
+ * redirects to https://bcsave.org/success.html (set inside ShelterManager),
+ * and the owner-surrender form also references /thankyou, so both routes
+ * render this. It has to work for every form — adoption, foster, volunteer
+ * and surrender — so it says nothing form-specific.
+ */
+---
+
+<Base title="Thank you — Border Collie Save & Rescue">
+  <section class="section">
+    <div class="wrap" style="max-width: 46rem;">
+      <p class="eyebrow">Received</p>
+      <h1>Thank you, we've got it</h1>
+      <p class="lede">
+        Your form went straight to our volunteers. You don't need to send it
+        again.
+      </p>
+      <p>
+        Everyone here is a volunteer, so it can take up to two weeks for someone
+        to reach out. Please keep an eye on your spam folder.
+      </p>
+      <div class="btn-row mt-2">
+        <a class="btn btn--ember" href={url("/dogs")}>Meet the dogs</a>
+        <a class="btn btn--ghost" href={url("/faqs")}>Read the FAQs</a>
+      </div>
+    </div>
+  </section>
+</Base>

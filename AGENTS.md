@@ -2,27 +2,20 @@
 
 A rebuild of [bcsave.org](https://bcsave.org), the website for **Border Collie Save & Rescue**, an
 all-volunteer 501(c)(3) dog rescue in Springtown, TX serving Central and North Texas. Their current
-site is WordPress. This is Rhiannon's project; it is separate from her Roblox game business and from
-her personal notes — don't route things between those repos.
-
-## Working with Rhiannon
-
-- She has some coding experience but is not a full-time developer. Claude leads the technical build
-  directly — actually write and edit the code, don't just point her at docs.
-- She has Inattentive-type ADHD and real memory issues. Distill; lead with the point; don't wall-of-text.
-- Give pros/cons and a clear recommendation when she's deciding — that's her favorite input mode.
-- One tiny concrete next step when she's stuck, not a menu.
-- Always be honest — she wants direct, unvarnished truth, including realistic odds and timelines,
-  over encouragement that sets false expectations.
-- Prefer terminal workflows over walking her through GUI click-paths.
+site is WordPress. This is Rhiannon's project.
 
 ## Stack
 
 - **Astro** (minimal template, relaxed TypeScript). No framework integrations yet.
 - Chosen because Astro is HTML-first, ships almost no JavaScript, and hosts free — good fit for a
   content site run by a nonprofit with no budget.
-- **Planned hosting:** Cloudflare Pages, using its auto-generated unlisted `*.pages.dev` URL as a
-  private preview to show the rescue's board before anything goes live. Add `noindex` on the preview.
+- **Hosting:** GitHub Pages, built and deployed by GitHub Actions (`.github/workflows/deploy.yml`) on
+  every push to `main` and hourly on a schedule. Served at `https://<owner>.github.io/bcsave/` as an
+  unlisted preview for the rescue's board; every page carries `noindex` until launch (the
+  `NOINDEX_PREVIEW` switch in `src/lib/indexing.ts`). No server: the live dog refresh runs in the
+  browser. History (Cloudflare, then Netlify, then this) is in STATUS.md.
+- **Base path:** because the preview lives in a `/bcsave/` subfolder, every internal link, image and
+  fetch goes through `url()` from `src/lib/url.ts`. Never write a bare `href="/..."`.
 - No custom domain needed for now. `bcsave.com` is taken (parked for sale on Namestar, registered
   2004); the org already owns `bcsave.org`.
 
@@ -33,6 +26,27 @@ Rhiannon's direction (2026-08-03): **rebuild the whole site**, make it more attr
 
 "Revamp" means keep what the site says, improve how it looks and performs — not reinvent their
 content.
+
+**Decided 2026-11-24: this site replaces bcsave.org entirely and WordPress is retired.** Nothing
+stays on WordPress long-term. The applications turned out to be ShelterManager forms already (see
+below), so only the found-dog report needed a replacement. Cutover order:
+
+1. Confirm access: Namecheap (registrar, renews 2027-11-15), InMotion/cPanel, WP admin,
+   ShelterManager admin.
+2. Move DNS off InMotion (`ns1/ns2.inmotionhosting.com`) before anything is cancelled. Copy every
+   record; **email is Google Workspace** (`aspmx.l.google.com`) — keep the MX and SPF/DKIM TXT records
+   intact.
+3. ~~Replace the forms~~ — done 2026-11-24: the four applications are embedded at their old paths;
+   the found-dog report is a pre-filled email to lost@bcsave.org until it becomes a ShelterManager
+   form. Remaining: change each form's post-submit redirect in ShelterManager if bcsave.org is still
+   down, and retire the public TEST/SANDBOX/PROD BAK forms.
+4. Rebuild `/qr/`, `/ddi/`, `/dog-names/`. (~~Add stub pages forwarding old WordPress URLs~~ — done
+   2026-11-24: `src/data/redirects.ts` plus pattern rules on the 404 page; see STATUS.md, "Redirects
+   and old addresses". Never delete a public address — add it to the map.) (`/events/`
+   was an empty calendar plus a Facebook feed; the footer now links Facebook.)
+5. Point bcsave.org at GitHub Pages; turn indexing on.
+6. Archive WordPress (DB export, `wp-content/uploads`, form submissions CSV), keep it read-only for
+   about a month, then cancel InMotion.
 
 ### Current site inventory (from bcsave.org/wp-sitemap-posts-page-1.xml)
 
@@ -112,44 +126,60 @@ which is also where medical records and adoption workflow live. Adding Decap or 
 a *second* place to type the same dog — strictly worse. The site should read ShelterManager, not
 replace it.
 
-Current implementation: dogs are fetched, parsed and committed as `src/data/dogs.json`, with photos
-converted to WebP under `public/dogs/`. That's a build-time snapshot, so **the site goes stale until
-it is rebuilt.** Options once it matters: a scheduled rebuild (Cloudflare Pages cron / GitHub
-Action), or fetch at build time in an Astro loader.
+Current implementation: dogs are fetched and parsed into `src/data/dogs.json` (committed as a
+fallback snapshot), with photos converted to WebP under `public/dogs/` (not committed; carried between
+builds in the Actions cache). GitHub Actions rebuilds hourly, and between rebuilds `/dogs` reads the
+ShelterManager feed directly in the browser and patches itself. See STATUS.md.
 
-### The one real WordPress dependency: Green Forms
+Every dog's slug — page address and photo file names — is `<name>-<ShelterManager id>`
+(`/dogs/abigail-14/`, `public/dogs/abigail-14-0.webp`), for current dogs and alumni alike. It comes from
+`slugify` in `src/lib/asm-core.mjs`, which the build and the browser share; never build a slug any
+other way. A dog added since the last build is rendered live by the 404 page at that same address.
 
-All five applications (`/adopt-form/`, `/foster-form/`, `/volunteer-form/`, `/os-form/`, `/apply/`)
-run on the `halfdata-green-forms` plugin — **not** Gravity Forms. Notes:
+### Applications → ShelterManager online forms (verified 2026-11-24)
 
-- Forms render client-side via `https://bcsave.org/wp-admin/admin-ajax.php`. The field definitions
-  are **not in the page HTML**, so they can't be scraped — reproducing them needs WP admin access or
-  filling each form manually to capture the fields.
-- It loads `signature_pad.min.js`, so adoption applications **collect an e-signature**. Whether that
-  signature is legally load-bearing for them or just a formality decides which replacement works.
-- Submissions land in the WordPress database. Ask where they get read from today, and whether anyone
-  needs the back catalogue.
+An earlier version of this file said the applications ran on the `halfdata-green-forms` WordPress
+plugin. **That was wrong** — the plugin's scripts load on every page, which hid what the page bodies
+actually contain. Archived copies of the WordPress pages (Wayback Machine, May–July 2026) show each
+application is a ShelterManager online form in an iframe:
 
-This is the only piece that genuinely can't come along — and it's a far smaller problem than
-checkout would have been. It is no longer a reason to withhold a launch estimate.
+| Old path | ShelterManager form |
+|---|---|
+| `/adopt-form/` | #69 BCSAVE Adoption Application |
+| `/foster-form/` | #65 BCSAVE Foster Application |
+| `/volunteer-form/` | #70 BCSAVE Volunteer Application |
+| `/os-form/` | #56 BCSAVE Owner Surrender |
+
+URL: `https://service.sheltermanager.com/asmservice?account=bcsave&method=online_form_html&formid=N`.
+Public, no auth, frameable. The e-signature and file uploads are ShelterManager fields, and
+submissions land in ShelterManager's Incoming Forms, so the screening workflow never touched WordPress.
+
+The site embeds them at their old paths via `src/pages/[form].astro` (IDs live in
+`src/data/links.ts`). The forms post their height to the parent (`postMessage({ iframeHeight })`),
+which that page listens for. Things the forms hard-code, configured inside ShelterManager:
+
+- **Post-submit redirect: `https://bcsave.org/success.html`.** `src/pages/success.html.astro` answers
+  it; the `exact-files` step in `astro.config.mjs` makes it a real file rather than a folder.
+- `https://bcsave.org/thankyou` (owner-surrender form) → `src/pages/thankyou.astro`.
+- `https://bcsave.org/faqs/#heartworm` (foster form) → anchor on the fee/vaccination FAQ. The old site
+  never wrote a heartworm FAQ ("Coming Soon"); the rescue should write one.
+
+Also public on the account and worth retiring: #61 SANDBOX Adoption, #64 PROD BAK Adoption, #67 PROD
+BAK Owner Surrender, #68 SANDBOX Owner Surrender, #71 TEST DEV.
+
+**The only real Green Forms form was `/lostdog/`** (14 fields, photo upload, captcha). It is now a
+pre-filled `mailto:` on `/lostdog`; rebuilding it as a ShelterManager form is the clean end state.
 
 ## Settled
 
 - **CMS for dog listings.** Resolved: **ShelterManager already is the CMS.** Volunteers publish dogs
   there today and the site reads that feed. Do not add Decap or Sanity for dogs.
-- **Who Rhiannon is.** She is a BCSAVE volunteer, foster and donor of 15+ years who currently screens
-  adoption applicants — an insider, not an outside contractor pitching a redesign. She came to BCSAVE
-  after Border Collie Rescue Texas closed.
 
 ## Still unknown
 
-- **Credentials.** Whether she holds WordPress admin, the ShelterManager service login, and DNS.
-  Screening applicants implies some access, but it hasn't been confirmed. The ShelterManager login in
-  particular would upgrade the dog feed from scraped HTML to real JSON.
-- **How applications are actually reviewed.** She screens applicants, so any Green Forms replacement
-  has to preserve *her* workflow, not just capture fields. Ask before proposing a form tool.
-- **Whether the adoption e-signature is legally load-bearing** or just a formality. Decides whether a
-  simple hosted form is enough.
+- **Credentials.** Whether the project has WordPress admin, the ShelterManager service login, and
+  DNS. None of it has been confirmed. The ShelterManager login in particular would upgrade the dog
+  feed from scraped HTML to real JSON.
 - **Real impact figures.** The donate-page giving tiers in `src/pages/index.astro` are invented
   placeholders. They need real numbers from the treasurer before anyone outside sees them.
 

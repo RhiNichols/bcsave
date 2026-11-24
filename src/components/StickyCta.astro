@@ -1,4 +1,5 @@
 ---
+import { url } from "../lib/url";
 import { forms } from "../data/links";
 
 interface Props {
@@ -13,6 +14,6 @@ const { label = "Meet the Dogs", href = "/dogs" } = Astro.props;
 ---
 
 <div class="sticky-cta">
-  <a class="btn btn--ghost" href={href}>{label}</a>
-  <a class="btn btn--ember" href="/donate">Donate</a>
+  <a class="btn btn--ghost" href={url(href)}>{label}</a>
+  <a class="btn btn--ember" href={url("/donate")}>Donate</a>
 </div>

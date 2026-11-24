@@ -1,0 +1,85 @@
+---
+import Base from "../layouts/Base.astro";
+import { asmForms, ASM_FORM_BASE } from "../data/links";
+
+/*
+ * One page per ShelterManager application form, at the form's old WordPress
+ * path (/adopt-form/, /foster-form/, /volunteer-form/, /os-form/).
+ *
+ * The form itself is ShelterManager's, embedded in an iframe exactly as the
+ * WordPress site did it. BCSAVE's forms already post their own height to the
+ * page around them (`postMessage({ iframeHeight })`), so the script below
+ * only has to listen and resize — no scrollbar inside a scrollbar on a phone.
+ *
+ * The "open in its own tab" link is the fallback for anything that stops the
+ * iframe working: a blocked third-party frame, an old browser, no JavaScript
+ * (the frame still shows at its minimum height, just without resizing).
+ */
+export function getStaticPaths() {
+  return asmForms.map((f) => ({
+    params: { form: f.path.replace(/\//g, "") },
+    props: { title: f.title, src: ASM_FORM_BASE + f.formid },
+  }));
+}
+
+const { title, src } = Astro.props;
+---
+
+<Base title={`${title} — Border Collie Save & Rescue`} hideCta>
+  <section class="section section--tight">
+    <div class="wrap">
+      <p class="eyebrow">Apply</p>
+      <h1>{title}</h1>
+      <p class="lede">
+        Applications are read by volunteers, so give us a few days to come back
+        to you, and please check your spam folder.
+      </p>
+      <p>
+        <a href={src} rel="noopener" target="_blank">Open the form in its own tab</a>{" "}
+        if it doesn't load below.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight" style="padding-top: 0;">
+    <div class="wrap">
+      <iframe
+        class="asm-form"
+        src={src}
+        title={title}
+        loading="eager"
+        data-asm-form
+      ></iframe>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .asm-form {
+    display: block;
+    width: 100%;
+    /* Tall enough to be usable before the form reports its real height. */
+    min-height: 80vh;
+    border: 0;
+    background: var(--white);
+    border-radius: var(--radius);
+  }
+</style>
+
+<script>
+  const frame = document.querySelector<HTMLIFrameElement>("[data-asm-form]");
+
+  window.addEventListener("message", (event) => {
+    // Only the embedded form may resize itself. ShelterManager redirects the
+    // service URL to a regional host (us10d.sheltermanager.com today), so
+    // match the domain rather than one hostname.
+    if (!frame || event.source !== frame.contentWindow) return;
+    if (!/^https:\/\/([a-z0-9-]+\.)*sheltermanager\.com$/.test(event.origin)) return;
+
+    const h = Number(event.data?.iframeHeight);
+    if (Number.isFinite(h) && h > 200 && h < 20000) {
+      frame.style.height = `${Math.ceil(h) + 24}px`;
+      frame.style.minHeight = "0";
+    }
+  });
+</script>

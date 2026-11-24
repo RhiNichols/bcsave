@@ -2,11 +2,11 @@
  * ShelterManager feed parsing — the half that runs anywhere.
  *
  * Deliberately free of Node built-ins so the same parser can run in the build
- * scripts *and* inside the Cloudflare Worker. If these two ever drift, the
- * static build and the live refresh start disagreeing about the same dog, so
- * they share this file rather than each keeping a copy.
+ * scripts *and* in the visitor's browser (src/lib/live-dogs.ts). If these two
+ * ever drift, the static build and the live refresh start disagreeing about
+ * the same dog, so they share this file rather than each keeping a copy.
  *
- * The image half (sharp, fs) stays in scripts/lib/asm.mjs — the edge has
+ * The image half (sharp, fs) stays in scripts/lib/asm.mjs — the browser has
  * neither.
  */
 
@@ -107,9 +107,46 @@ function visibleLines(chunk) {
   return out;
 }
 
+/** Names sometimes carry a disambiguating suffix like "Hollie (72)". */
+export function cleanName(name) {
+  return name.replace(/\s*\(\d+\)\s*$/, "").trim();
+}
+
+/**
+ * The name half of a slug: "Ellie Mae" → "ellie-mae", "Zoë" → "zoe".
+ *
+ * Also used on its own by the old-address lookup (src/pages/dog-index.json.ts
+ * and the 404 page), which matches WordPress-era URLs like /dogs/abigail/ by
+ * name. Empty for a name with no letters or digits in it.
+ */
+export function nameSlug(name) {
+  return cleanName(name)
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+/**
+ * A dog's permanent address: "<name>-<ShelterManager id>", e.g. "abigail-312".
+ *
+ * The id is what makes it permanent. Name-only slugs collided — a new dog
+ * named after an adopted one inherited the old dog's URL and, worse, the old
+ * dog's cached photo files, which are named after the slug. The id also lets
+ * the 404 page recognise a dog added since the last build and render them
+ * live (src/pages/404.astro).
+ *
+ * Build scripts and the browser both call this, so they always agree.
+ */
 export function slugify(name, id) {
-  const s = name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-  return s || `dog-${id}`;
+  return `${nameSlug(name) || "dog"}-${id}`;
+}
+
+/** Split a slug back into its parts. Null when it has no trailing id. */
+export function parseSlug(slug) {
+  const m = /^(.*)-(\d+)$/.exec(slug);
+  return m ? { name: m[1], id: m[2] } : null;
 }
 
 /** Every animalId in a feed, in feed order. Cheap — used for date bucketing. */
@@ -202,8 +239,7 @@ function dogFromChunk(cardChunk, ownScript, id, name) {
   return {
     id,
     slug: slugify(name, id),
-    // Names sometimes carry a disambiguating suffix like "Hollie (72)".
-    name: name.replace(/\s*\(\d+\)\s*$/, "").trim(),
+    name: cleanName(name),
     sex: info.Sex ?? "",
     age: info.Age ?? "",
     weight: info.Weight ? `${info.Weight.replace(/\.0$/, "")} lb` : "",
@@ -239,13 +275,7 @@ export function parseFeed(html) {
     );
   }
 
-  const seen = new Map();
-  for (const d of dogs) {
-    const n = (seen.get(d.slug) ?? 0) + 1;
-    seen.set(d.slug, n);
-    if (n > 1) d.slug = `${d.slug}-${d.id}`;
-  }
-
+  // Slugs carry the animal id, so they are unique without any bookkeeping.
   return dogs;
 }
 
@@ -265,24 +295,17 @@ export function parseOne(html, id) {
   if (i === -1) return null;
   if (isPlaceholder(marks[i].name)) return null;
 
-  const dog = dogFromChunk(
+  // Same slug parseFeed gives this dog, so a live-added dog's URL is the one
+  // the next rebuild publishes.
+  return dogFromChunk(
     html.slice(marks[i - 1]?.pos ?? 0, marks[i].pos),
     html.slice(marks[i].pos, marks[i + 1]?.pos ?? html.length),
     marks[i].id,
     marks[i].name
   );
-
-  // parseFeed suffixes the id onto the *second* dog to claim a slug. Repeat
-  // that count here so a live-added dog gets the same URL a rebuild will.
-  const earlier = marks
-    .slice(0, i)
-    .filter((m) => !isPlaceholder(m.name) && slugify(m.name, m.id) === slugify(marks[i].name, id));
-  if (earlier.length) dog.slug = `${dog.slug}-${dog.id}`;
-
-  return dog;
 }
 
-/** Split a ShelterManager image URL into the bits our proxy route needs. */
+/** Split a ShelterManager image URL into its animal id and photo number. */
 export function photoRef(url) {
   const id = url.match(/animalid=(\d+)/)?.[1];
   const seq = url.match(/seq=(\d+)/)?.[1] ?? "1";

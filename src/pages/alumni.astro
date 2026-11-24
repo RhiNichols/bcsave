@@ -1,4 +1,5 @@
 ---
+import { url } from "../lib/url";
 import Base from "../layouts/Base.astro";
 import raw from "../data/alumni.json";
 import { dogs } from "../data/dogs";
@@ -117,12 +118,15 @@ const busiest = months
             </span>
           </div>
 
+          {/* Each id is the dog's slug ("abigail-312"). Old links to an
+              adopted dog's page are forwarded to /alumni/#<slug> by the 404
+              page — see src/pages/dog-index.json.ts. */}
           <ul class="alumni-grid">
             {byMonth.get(month)!.map((a, i) => (
-              <li class="alum">
+              <li class="alum" id={a.slug}>
                 <div class="alum__media">
                   <img
-                    src={`${a.image}-t.webp`}
+                    src={url(`${a.image}-t.webp`)}
                     alt={`${a.name}, adopted ${monthLabel(month)}`}
                     width="500"
                     height="500"
@@ -152,8 +156,8 @@ const busiest = months
         forever one.
       </p>
       <div class="btn-row mt-2" style="justify-content: center;">
-        <a class="btn btn--light" href="/dogs">Meet the dogs</a>
-        <a class="btn btn--ghost" style="color: #fffdf9;" href="/donate">Donate</a>
+        <a class="btn btn--light" href={url("/dogs")}>Meet the dogs</a>
+        <a class="btn btn--ghost" style="color: #fffdf9;" href={url("/donate")}>Donate</a>
       </div>
     </div>
   </section>
@@ -171,6 +175,12 @@ const busiest = months
 </Base>
 
 <style>
+  /* Arrived from an old link to this dog's page: make them easy to spot. */
+  .alum:target .alum__media {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+
   /* The one line on the site that says what the work is for. Display face and
      a rule above it so it reads as a statement rather than another paragraph
      of body copy. */

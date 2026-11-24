@@ -1,4 +1,5 @@
 ---
+import { url } from "../lib/url";
 import Base from "../layouts/Base.astro";
 import DogCard from "../components/DogCard.astro";
 import { dogs, featured, locations } from "../data/dogs";
@@ -30,8 +31,12 @@ const covered = [
   <!-- ------------------------------------------------------------ hero -- -->
   <section class="hero">
     <div class="hero__media">
+      {/* A copy of Pennie's photo kept at public/hero.webp, not her file in
+          public/dogs. Dog photos are no longer committed and are deleted when
+          a dog leaves the feed, so pointing here at her /dogs/pennie-<id>-0.webp would
+          break the hero the day she is adopted. */}
       <img
-        src="/dogs/pennie-0.webp"
+        src={url("/hero.webp")}
         alt=""
         width="1024"
         height="1021"
@@ -42,9 +47,9 @@ const covered = [
     <div class="wrap hero__inner">
       {/* This is the most-looked-at thing on the page and it was inert.
           It goes to /dogs, where the age and region filters are. */}
-      <a class="hero__eyebrow" href="/dogs">
+      <a class="hero__eyebrow" href={url("/dogs")}>
         <span class="pulse" aria-hidden="true"></span>
-        {dogs.length} dogs available right now
+        <span data-live-total>{dogs.length}</span> dogs available right now
         <svg class="hero__eyebrow-go" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polyline points="9 18 15 12 9 6" />
         </svg>
@@ -58,8 +63,8 @@ const covered = [
         shelter building. Just foster homes and volunteers.
       </p>
       <div class="btn-row">
-        <a class="btn btn--ember btn--block" href="/dogs">Meet the Dogs</a>
-        <a class="btn btn--light btn--block" href="/donate">Donate</a>
+        <a class="btn btn--ember btn--block" href={url("/dogs")}>Meet the Dogs</a>
+        <a class="btn btn--light btn--block" href={url("/donate")}>Donate</a>
       </div>
     </div>
   </section>
@@ -69,7 +74,7 @@ const covered = [
     <div class="wrap">
       <div class="stats__grid">
         <div class="stat">
-          <span class="stat__num">{dogs.length}</span>
+          <span class="stat__num" data-live-total>{dogs.length}</span>
           <span class="stat__label">Dogs in our care</span>
         </div>
         <div class="stat">
@@ -99,13 +104,13 @@ const covered = [
         and cover spay/neuter, vaccines and microchipping.
       </p>
 
-      <ul class="dog-grid mt-2">
+      <ul class="dog-grid mt-2" data-featured>
         {picks.map((dog, i) => <DogCard dog={dog} eager={i < 4} />)}
       </ul>
 
       <div class="btn-row mt-2">
-        <a class="btn btn--brand" href="/dogs">
-          See all {dogs.length} available dogs
+        <a class="btn btn--brand" href={url("/dogs")}>
+          See all <span data-live-total>{dogs.length}</span> available dogs
         </a>
       </div>
     </div>
@@ -177,7 +182,7 @@ const covered = [
           </div>
           <h3>Adopt</h3>
           <p>Give a dog the home they have been waiting for.</p>
-          <a class="btn btn--ghost" href="/dogs">See the dogs</a>
+          <a class="btn btn--ghost" href={url("/dogs")}>See the dogs</a>
         </article>
 
         <article class="card">
@@ -192,7 +197,7 @@ const covered = [
             opened their home to — fostering is the hard limit on how many we
             can save.
           </p>
-          <a class="btn btn--ghost" href="/foster">How fostering works</a>
+          <a class="btn btn--ghost" href={url("/foster")}>How fostering works</a>
         </article>
 
         <article class="card" id="volunteer">
@@ -208,7 +213,7 @@ const covered = [
             Transport, events, photography, home visits, admin — all of it
             helps.
           </p>
-          <a class="btn btn--ghost" href="/volunteer">Ways to volunteer</a>
+          <a class="btn btn--ghost" href={url("/volunteer")}>Ways to volunteer</a>
         </article>
 
         <article class="card">
@@ -220,7 +225,7 @@ const covered = [
           </div>
           <h3>Donate</h3>
           <p>Medical care is our largest expense by a wide margin.</p>
-          <a class="btn btn--ember" href="/donate">Donate now</a>
+          <a class="btn btn--ember" href={url("/donate")}>Donate now</a>
         </article>
       </div>
     </div>
@@ -238,7 +243,7 @@ const covered = [
           to their care, because nobody here draws a salary.
         </p>
         <div class="btn-row">
-          <a class="btn btn--light btn--block" href="/donate">Donate to BCSAVE</a>
+          <a class="btn btn--light btn--block" href={url("/donate")}>Donate to BCSAVE</a>
           <a
             class="btn btn--ghost btn--block"
             style="color: #fffdf9;"
@@ -296,7 +301,7 @@ const covered = [
             surrender a Border Collie you can no longer keep, start here.
           </p>
           <div class="btn-row">
-            <a class="btn btn--brand btn--block" href="/lostdog">
+            <a class="btn btn--brand btn--block" href={url("/lostdog")}>
               Found a dog
             </a>
             <a class="btn btn--ghost btn--block" href={forms.surrender}>
@@ -319,7 +324,7 @@ const covered = [
         {
           partners.map((p) => (
             <a href={p.url} rel="noopener" target="_blank" aria-label={p.name}>
-              <img src={p.img} alt={p.name} loading="lazy" decoding="async" />
+              <img src={url(p.img)} alt={p.name} loading="lazy" decoding="async" />
             </a>
           ))
         }
@@ -327,3 +332,20 @@ const covered = [
     </div>
   </section>
 </Base>
+
+<script>
+  // The counts and featured dogs are frozen at build time. Correct them from
+  // the live feed: adopted dogs leave the featured grid, and every count shows
+  // how many are listed right now. If the feed can't be reached, nothing
+  // changes.
+  import { adoptableNow, dropAdopted } from "../lib/live-dogs";
+
+  adoptableNow().then((ids) => {
+    if (!ids) return;
+    for (const el of document.querySelectorAll<HTMLElement>("[data-live-total]")) {
+      el.textContent = String(ids.size);
+    }
+    const grid = document.querySelector<HTMLElement>("[data-featured]");
+    if (grid) dropAdopted(grid, ids);
+  });
+</script>

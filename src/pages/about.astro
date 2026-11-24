@@ -1,4 +1,5 @@
 ---
+import { url } from "../lib/url";
 import Base from "../layouts/Base.astro";
 import { dogs } from "../data/dogs";
 import { forms } from "../data/links";
@@ -134,7 +135,7 @@ const freedoms = [
             That's also the hard limit on how many dogs we can say yes to.
           </p>
           <div class="btn-row">
-            <a class="btn btn--ember btn--block" href="/foster">
+            <a class="btn btn--ember btn--block" href={url("/foster")}>
               How fostering works
             </a>
           </div>
@@ -318,8 +319,8 @@ const freedoms = [
         different angles.
       </p>
       <div class="btn-row mt-2" style="justify-content: center;">
-        <a class="btn btn--light" href="/dogs">Meet the dogs</a>
-        <a class="btn btn--ghost" style="color: #fffdf9;" href="/donate">Donate</a>
+        <a class="btn btn--light" href={url("/dogs")}>Meet the dogs</a>
+        <a class="btn btn--ghost" style="color: #fffdf9;" href={url("/donate")}>Donate</a>
       </div>
     </div>
   </section>
