@@ -15,7 +15,7 @@
 import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
-import { parseFeed, idsIn, fetchPhoto, pool, fetchText, breathe } from "./lib/asm.mjs";
+import { parseFeed, idsIn, fetchPhoto, pool, fetchText, breathe, prunePhotos } from "./lib/asm.mjs";
 
 const ACCOUNT = "jb3344";
 const BASE = `https://service.sheltermanager.com/asmservice?account=${ACCOUNT}&method=html_adopted_animals`;
@@ -110,7 +110,16 @@ async function main() {
 
   const dated = alumni.filter((a) => a.adoptedMonth).length;
   await fs.writeFile(DATA, JSON.stringify(alumni, null, 2) + "\n");
-  console.log(`Wrote ${alumni.length} alumni (${dated} with an adoption month) to src/data/alumni.json`);
+
+  // Dogs who have aged out of the feed's 180-record window. Same rule as
+  // fetch-dogs: only after a good fetch, never on the fallback path.
+  const keep = new Set(alumni.flatMap((a) => [`${a.slug}.webp`, `${a.slug}-t.webp`]));
+  const pruned = await prunePhotos(IMG_DIR, keep);
+
+  console.log(
+    `Wrote ${alumni.length} alumni (${dated} with an adoption month) to src/data/alumni.json` +
+      (pruned ? `, removed ${pruned} old photo files` : "")
+  );
 }
 
 main().catch((err) => {

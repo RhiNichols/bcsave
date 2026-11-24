@@ -46,6 +46,13 @@ for (const d of dogs) counts[ageGroup(d)]++;
       {/* Filled in only after the live ShelterManager read succeeds, so it can
           never claim a connection that isn't working. */}
       <p class="live-status" id="live-status" hidden></p>
+
+      {/* Shown when the 404 page forwards an old link to a dog it could not
+          pin down (src/pages/404.astro sets the flag). */}
+      <p class="notice" id="moved-note" hidden>
+        We couldn't find the dog that link was for. They may well have found a
+        home — here's everyone still waiting.
+      </p>
     </div>
   </section>
 
@@ -143,6 +150,15 @@ for (const d of dogs) counts[ageGroup(d)]++;
 
 <script>
   import { refreshGrid, recount, showLiveStatus } from "../../lib/live-dogs";
+
+  // One-shot: show the note once, then forget it so a reload doesn't repeat it.
+  try {
+    if (sessionStorage.getItem("bcsave:dog-moved")) {
+      sessionStorage.removeItem("bcsave:dog-moved");
+      const note = document.getElementById("moved-note");
+      if (note) note.hidden = false;
+    }
+  } catch {}
 
   const chips = document.querySelectorAll<HTMLButtonElement>(".chip");
   const grid = document.getElementById("dog-grid");

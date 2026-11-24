@@ -23,6 +23,22 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# Dog and alumni photos. Regenerated from ShelterManager on every deploy and
+# carried between deploys in the GitHub Actions cache. Committed, every
+# refresh added more to the repo's history for good (~86 MB in the working
+# tree alone by 2026-11). The JSON in src/data/ stays committed as the
+# fallback snapshot.
+public/dogs/
+public/alumni/
 
-# Local Netlify folder
-.netlify
+# Old Cloudflare Workers local state. The Cloudflare setup is gone (see
+# STATUS.md); this stops a stray `wrangler` run from re-adding it.
+.wrangler/
+
+# Bookkeeping the deploy workflow keeps in its Actions cache (e.g. the date
+# alumni were last refreshed). Never meaningful on a laptop.
+.ci-state/
+
+# Personal notes about the project lead, kept out of the committed docs.
+# Claude Code loads this automatically.
+CLAUDE.local.md

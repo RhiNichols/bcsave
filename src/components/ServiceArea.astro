@@ -1,4 +1,5 @@
 ---
+import { url } from "../lib/url";
 /*
  * Where BCSAVE actually adopts and fosters.
  *
@@ -75,7 +76,7 @@ const tiers = [
     <p class="service-area__note mt-2">
       <strong>Fostering is Texas and the immediately surrounding areas only.</strong>{" "}
       If you live further out and want to help, our{" "}
-      <a href="/faqs#adopting">FAQ</a>{" "}covers the out-of-state adoption process
+      <a href={url("/faqs#adopting")}>FAQ</a>{" "}covers the out-of-state adoption process
       in full — including transport costs and timelines.
     </p>
   </div>

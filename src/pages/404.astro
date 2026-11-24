@@ -1,43 +1,296 @@
 ---
+import { url } from "../lib/url";
 import Base from "../layouts/Base.astro";
 import DogCard from "../components/DogCard.astro";
 import { dogs, featured } from "../data/dogs";
+import { HANDLED_PREFIX } from "../lib/old-addresses";
 
 /*
+ * GitHub Pages serves this page for every address that has no file. It does
+ * three jobs, in this order:
+ *
+ *   1. A dog added since the last build. Their card on /dogs already links to
+ *      their permanent /dogs/<name>-<id>/ address, but that page is only
+ *      written by the next hourly rebuild. Until then the address lands here,
+ *      and the script below reads ShelterManager's feed and renders the dog.
+ *   2. Old WordPress addresses, by pattern (src/lib/old-addresses.ts): old
+ *      dog pages are looked up by name, shop/event/tag pages are forwarded.
+ *      Exact old paths never get here — they are stub pages (redirects.ts).
+ *   3. Everything else: the plain 404 below.
+ *
+ * The plain 404 is in the HTML from the start and is only hidden while the
+ * script is working on a path it recognises. If the script fails, the feed
+ * is down, or JavaScript is off, the visitor gets the plain 404.
+ *
  * Dogs get adopted, so links to their pages go stale — shared on Facebook, or
  * saved by someone who came back a week later. A dead end is a lost adopter,
- * so this page leads straight back to dogs who are still waiting.
+ * so the plain 404 leads straight back to dogs who are still waiting.
  */
 const picks = featured(4);
+const base = import.meta.env.BASE_URL.replace(/\/*$/, "/");
+const handled = HANDLED_PREFIX.source;
 ---
 
 <Base
   title="Page not found — Border Collie Save & Rescue"
   description="That page couldn't be found, but there are still Border Collies waiting for homes."
 >
-  <section class="section">
+  {/* Runs before first paint so a recognised path never flashes the 404. */}
+  <script is:inline define:vars={{ base, handled }}>
+    var p = location.pathname;
+    if (p.indexOf(base) === 0) {
+      var rel = p.slice(base.length).toLowerCase();
+      if (rel.slice(-1) !== "/") rel += "/";
+      if (new RegExp(handled).test(rel)) document.documentElement.dataset.nf = "pending";
+    }
+  </script>
+
+  <section class="section nf-loading" aria-live="polite">
     <div class="wrap center">
-      <p class="eyebrow">404</p>
-      <h1 style="max-width: 18ch; margin-inline: auto;">
-        This page has wandered off
-      </h1>
-      <p class="lede">
-        If you followed a link to a particular dog, there's a good chance they
-        have been adopted — which is the best possible reason for a broken
-        link. These dogs are still waiting.
-      </p>
-      <div class="btn-row mt-2" style="justify-content: center;">
-        <a class="btn btn--ember" href="/dogs">See all {dogs.length} dogs</a>
-        <a class="btn btn--ghost" href="/">Back to the homepage</a>
-      </div>
+      <p class="lede" id="nf-loading-text">One moment…</p>
     </div>
   </section>
 
-  <section class="section section--tight" style="background: var(--paper-warm);">
-    <div class="wrap">
-      <ul class="dog-grid">
-        {picks.map((dog) => <DogCard dog={dog} level={2} />)}
-      </ul>
-    </div>
-  </section>
+  <div id="nf-live" class="nf-live"></div>
+
+  <div class="nf-default">
+    <section class="section">
+      <div class="wrap center">
+        <p class="eyebrow">404</p>
+        <h1 style="max-width: 18ch; margin-inline: auto;">
+          This page has wandered off
+        </h1>
+        <p class="lede">
+          If you followed a link to a particular dog, there's a good chance they
+          have been adopted — which is the best possible reason for a broken
+          link. These dogs are still waiting.
+        </p>
+        <div class="btn-row mt-2" style="justify-content: center;">
+          <a class="btn btn--ember" href={url("/dogs")}>See all {dogs.length} dogs</a>
+          <a class="btn btn--ghost" href={url("/")}>Back to the homepage</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight" style="background: var(--paper-warm);">
+      <div class="wrap">
+        <ul class="dog-grid">
+          {picks.map((dog) => <DogCard dog={dog} level={2} />)}
+        </ul>
+      </div>
+    </section>
+  </div>
 </Base>
+
+<style is:global>
+  .nf-loading,
+  .nf-live {
+    display: none;
+  }
+  html[data-nf="pending"] .nf-loading,
+  html[data-nf="live"] .nf-live {
+    display: block;
+  }
+  html[data-nf="pending"] .nf-default,
+  html[data-nf="live"] .nf-default {
+    display: none;
+  }
+
+  .nf-arrived {
+    display: inline-block;
+    margin: 0 0 1.2rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    background: var(--accent-wash);
+    border: 1px solid var(--accent-line);
+    font-size: 0.9rem;
+  }
+</style>
+
+<script>
+  import { plan, nameCandidates } from "../lib/old-addresses";
+  import { readFeed, dogFrom, esc, type LiveDog } from "../lib/live-dogs";
+  import { parseSlug } from "../lib/asm-core.mjs";
+  import { bioParagraphHtml, factRows, ageGroupFromAge } from "../lib/dog-format";
+  import { forms } from "../data/links";
+  import { url } from "../lib/url";
+
+  const BASE = import.meta.env.BASE_URL.replace(/\/*$/, "/");
+  const root = document.documentElement;
+  const loadingText = document.getElementById("nf-loading-text");
+
+  /** Give up and show the plain 404 that is already on the page. */
+  const plain404 = () => {
+    delete root.dataset.nf;
+  };
+
+  /**
+   * Leave for `to` without leaving this dead address in the history. The
+   * visitor's ?query and #hash come along unless the target sets its own.
+   */
+  function go(to: string) {
+    let dest = url(to);
+    if (!dest.includes("?") && !dest.includes("#")) dest += location.search;
+    if (!dest.includes("#")) dest += location.hash;
+    location.replace(dest);
+  }
+
+  /** Forward to /dogs/ with a note that the dog may have been adopted. */
+  function toDogsWithNote() {
+    try {
+      sessionStorage.setItem("bcsave:dog-moved", "1");
+    } catch {}
+    go("/dogs/");
+  }
+
+  interface DogIndex {
+    names: Record<string, string | number>;
+    ids: Record<string, string>;
+  }
+
+  async function loadIndex(): Promise<DogIndex | null> {
+    try {
+      const res = await fetch(url("/dog-index.json"));
+      return res.ok ? await res.json() : null;
+    } catch {
+      return null;
+    }
+  }
+
+  /** The name half of an index target: "/alumni/#abigail-312" → "abigail". */
+  const targetName = (target: string) =>
+    parseSlug(target.replace(/^.*[/#]([^/#]+)\/?$/, "$1"))?.name ?? null;
+
+  /** Render a dog who is in ShelterManager but has no built page yet. */
+  function renderLive(dog: LiveDog) {
+    const box = document.getElementById("nf-live");
+    if (!box) return plain404();
+
+    document.title = `${dog.name} — Available for Adoption | BCSAVE`;
+
+    const photos = dog.photos;
+    const name = esc(dog.name);
+    const meta = [dog.sex, dog.age, dog.weight].filter(Boolean).join(" · ") +
+      (ageGroupFromAge(dog.age) === "puppy" ? " · Puppy" : "");
+    const facts = factRows(dog)
+      .map(([k, v]) => `<div class="fact"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`)
+      .join("");
+    const paragraphs = dog.bio.split("\n\n").filter(Boolean);
+
+    box.innerHTML = `
+      <section class="section section--tight">
+        <div class="wrap">
+          <a class="backlink" href="${esc(url("/dogs"))}">&larr; All available dogs</a>
+          <div class="detail">
+            <div>
+              ${photos.length ? `
+                <div class="gallery__main">
+                  <img id="main-photo" src="${esc(photos[0])}"
+                       alt="${name}, a Border Collie available for adoption"
+                       width="1100" height="825" fetchpriority="high" decoding="async" />
+                </div>` : ""}
+              ${photos.length > 1 ? `
+                <div class="gallery__thumbs" role="group" aria-label="More photos of ${name}">
+                  ${photos.map((p, i) => `
+                    <button type="button" data-full="${esc(p)}"
+                            aria-label="Show photo ${i + 1} of ${name}"
+                            aria-current="${i === 0}">
+                      <img src="${esc(p)}" alt="" width="68" height="68" loading="lazy" decoding="async" />
+                    </button>`).join("")}
+                </div>` : ""}
+            </div>
+            <div class="detail__aside">
+              <h1 style="font-size: clamp(2.1rem, 6vw, 3.2rem); margin-bottom: 0.2em;">${name}</h1>
+              <p class="lede" style="margin-bottom: 1rem;">${esc(meta)}</p>
+              <p class="nf-arrived"><strong>Just arrived.</strong> ${name} was added in the last hour or so; their full page is on its way.</p>
+              <dl class="factlist">${facts}</dl>
+              <div class="btn-row">
+                <a class="btn btn--ember btn--block" href="${esc(forms.adopt)}">Apply to adopt ${name}</a>
+                <a class="btn btn--ghost btn--block" href="${esc(forms.foster)}">Foster instead</a>
+              </div>
+            </div>
+          </div>
+          ${paragraphs.length ? `
+            <div class="bio" style="max-width: 68ch; margin-top: clamp(2rem, 5vw, 3.5rem);">
+              <h2 style="font-size: clamp(1.5rem, 4vw, 2rem);">About ${name}</h2>
+              ${paragraphs.map((p) => `<p>${bioParagraphHtml(p)}</p>`).join("")}
+            </div>` : ""}
+        </div>
+      </section>`;
+
+    // Same thumbnail swap as the built page.
+    const main = box.querySelector<HTMLImageElement>("#main-photo");
+    const thumbs = box.querySelectorAll<HTMLButtonElement>(".gallery__thumbs button");
+    for (const btn of thumbs) {
+      btn.addEventListener("click", () => {
+        if (main && btn.dataset.full) main.src = btn.dataset.full;
+        for (const b of thumbs) b.setAttribute("aria-current", "false");
+        btn.setAttribute("aria-current", "true");
+      });
+    }
+
+    root.dataset.nf = "live";
+  }
+
+  /** /dogs/<slug>/, /product/<slug>/ and friends. */
+  async function resolveDog(slug: string) {
+    const parts = parseSlug(slug);
+    let index: DogIndex | null = null;
+
+    // "<name>-<id>": this site's own address shape. Most likely a dog added
+    // since the last build, so ask ShelterManager first.
+    if (parts) {
+      if (loadingText) loadingText.textContent = "Fetching this dog's details…";
+      const ctl = new AbortController();
+      const timer = setTimeout(() => ctl.abort(), 15000);
+      const html = await readFeed(ctl.signal);
+      clearTimeout(timer);
+
+      // The whole slug must match, not just the id: ids are small numbers,
+      // and an old WordPress address like /dogs/bandit-2/ looks just like
+      // "<name>-<id>" — it must not open whichever dog has id 2.
+      const dog = html ? dogFrom(html, parts.id) : null;
+      if (dog && dog.slug === slug) return renderLive(dog);
+
+      // Not adoptable now: adopted (alumni) since the link was made.
+      index = await loadIndex();
+      const known = index?.ids[parts.id];
+      if (known && targetName(known) === parts.name) return go(known);
+
+      // With the feed down we cannot tell a brand-new dog from a bad link, so
+      // do not guess — the plain 404 is the honest answer.
+      if (!html) return plain404();
+    }
+
+    // An old WordPress address: look the name up.
+    index ??= await loadIndex();
+    if (!index) return plain404();
+    for (const name of nameCandidates(slug)) {
+      const hit = index.names[name];
+      if (typeof hit === "string") return go(hit);
+      if (typeof hit === "number") return toDogsWithNote(); // several dogs share it
+    }
+    toDogsWithNote();
+  }
+
+  async function main() {
+    if (!root.dataset.nf) return; // the inline check found nothing to do
+    const path = location.pathname;
+    if (!path.startsWith(BASE)) return plain404();
+
+    let rel: string;
+    try {
+      rel = decodeURIComponent(path.slice(BASE.length)).toLowerCase();
+    } catch {
+      return plain404();
+    }
+    if (!rel.endsWith("/")) rel += "/";
+
+    const p = plan(rel);
+    if (!p) return plain404();
+    if (p.kind === "go") return go(p.to);
+    await resolveDog(p.slug);
+  }
+
+  main().catch(plain404);
+</script>

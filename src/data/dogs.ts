@@ -1,4 +1,5 @@
 import raw from "./dogs.json";
+import { yearsFromAge, ageGroupFromAge } from "../lib/dog-format";
 
 export interface Dog {
   id: string;
@@ -21,35 +22,10 @@ export interface Dog {
 
 export const dogs = raw as Dog[];
 
-/**
- * Escape a bio paragraph, then turn bare URLs into real links.
- *
- * Volunteers type plain text into ShelterManager, so links arrive unclickable.
- * Escaping happens first and the only markup added afterwards is our own
- * anchor, so the result is safe to render with set:html.
- */
-export function bioParagraphHtml(text: string): string {
-  const escaped = text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+export { bioParagraphHtml } from "../lib/dog-format";
 
-  return escaped.replace(/https?:\/\/[^\s<]+[^\s<.,;:!?)\]]/g, (url) => {
-    const label = url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
-    return `<a href="${url}" rel="noopener nofollow" target="_blank">${label}</a>`;
-  });
-}
-
-/** ShelterManager writes ages as "10 weeks", "1 year", "3 years". */
 export function ageInYears(dog: Dog): number {
-  const m = dog.age.match(/([\d.]+)\s*(week|month|year)/i);
-  if (!m) return 99;
-  const n = parseFloat(m[1]);
-  const unit = m[2].toLowerCase();
-  if (unit === "week") return n / 52;
-  if (unit === "month") return n / 12;
-  return n;
+  return yearsFromAge(dog.age);
 }
 
 export function isPuppy(dog: Dog): boolean {
@@ -57,11 +33,7 @@ export function isPuppy(dog: Dog): boolean {
 }
 
 export function ageGroup(dog: Dog): "puppy" | "young" | "adult" | "senior" {
-  const y = ageInYears(dog);
-  if (y < 1) return "puppy";
-  if (y < 3) return "young";
-  if (y < 8) return "adult";
-  return "senior";
+  return ageGroupFromAge(dog.age);
 }
 
 /** Regions, most-populated first, for the filter bar. */

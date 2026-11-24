@@ -1,4 +1,5 @@
 ---
+import { url } from "../lib/url";
 import Base from "../layouts/Base.astro";
 import { forms } from "../data/links";
 
@@ -88,7 +89,7 @@ const roles = [
             <h3>{r.title}</h3>
             <p>{r.body}</p>
             {r.href && (
-              <a class="btn btn--ghost" href={r.href}>
+              <a class="btn btn--ghost" href={url(r.href)}>
                 {r.cta}
               </a>
             )}
@@ -141,7 +142,7 @@ const roles = [
         a volunteer one day than have you feel asked for anything today.
       </p>
       <p class="nofit-link">
-        <a href="/donate">If you'd like to, you can donate here</a>
+        <a href={url("/donate")}>If you'd like to, you can donate here</a>
       </p>
     </div>
   </section>
@@ -156,7 +157,7 @@ const roles = [
       </p>
       <div class="btn-row mt-2" style="justify-content: center;">
         <a class="btn btn--light" href={forms.volunteer}>Start a volunteer application</a>
-        <a class="btn btn--ghost" style="color: #fffdf9;" href="/foster">
+        <a class="btn btn--ghost" style="color: #fffdf9;" href={url("/foster")}>
           Foster instead
         </a>
       </div>

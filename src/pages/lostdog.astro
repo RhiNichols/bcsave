@@ -3,17 +3,35 @@ import Base from "../layouts/Base.astro";
 import { forms, lostDogEmail } from "../data/links";
 
 /*
- * The report form itself takes photo uploads and a captcha, so it stays on
- * WordPress — a static site cannot host it. This page carries the content and
- * hands off cleanly, rather than the nav dead-ending at the old site.
+ * The old found-dog report was the one form on bcsave.org that really did run
+ * on WordPress (Green Forms), and WordPress is being retired. Until it is
+ * rebuilt as a ShelterManager online form, reports go by email, pre-filled
+ * with the same questions the old form asked so nothing useful gets left out.
+ * Email also takes photos, which was the reason the form existed.
  */
+const reportBody = [
+  "Your name:",
+  "Phone number (and can we text you?):",
+  "Where you found the dog:",
+  "Dog's name (if on a tag):",
+  "Rabies tag number:",
+  "Microchip number:",
+  "Other identifying information:",
+  "About the dog:",
+  "Anything else that might help:",
+  "",
+  "Please attach photos of the dog if you can.",
+].join("\n");
+const reportHref =
+  `mailto:${lostDogEmail}?subject=${encodeURIComponent("Found dog report")}` +
+  `&body=${encodeURIComponent(reportBody)}`;
 ---
 
 <Base
   title="Found a Dog? — Border Collie Save & Rescue"
   description="What to do if you've found a Border Collie in Texas, including dogs wearing a BCSAVE tag or microchip."
   ctaLabel="Report a found dog"
-  ctaHref={forms.lostDog}
+  ctaHref={reportHref}
 >
   <section class="section section--tight">
     <div class="wrap">
@@ -29,28 +47,27 @@ import { forms, lostDogEmail } from "../data/links";
   <section class="section section--tight" style="padding-top: 0;">
     <div class="wrap">
       <div class="cards cards--2">
-        <div class="panel" style="border-color: var(--ember); border-width: 2px;">
+        <div class="panel" style="border-color: var(--accent); border-width: 2px;">
           <p class="eyebrow">Urgent</p>
           <h2 style="font-size: clamp(1.3rem, 3.5vw, 1.7rem);">
             The dog has a BCSAVE or ABCR tag, or a microchip that came back to us
           </h2>
           <p style="color: var(--ink-soft);">
-            Then the dog is ours and we want to hear from you immediately. Fill
-            out the report form — it takes photos, tag numbers and microchip
-            details — and someone will be with you as soon as possible.
+            Then the dog is ours and we want to hear from you immediately. Email
+            us a report with photos, tag numbers and microchip details, and
+            someone will be with you as soon as possible.
           </p>
           {/* Both routes are full-size targets on purpose — someone using this
               page has a loose dog in front of them and one hand free. */}
           <div class="btn-row">
-            <a class="btn btn--ember btn--block" href={forms.lostDog}>
-              Report a found BCSAVE dog
-            </a>
-            <a class="btn btn--ghost btn--block" href={`mailto:${lostDogEmail}`}>
-              Email {lostDogEmail}
+            <a class="btn btn--ember btn--block" href={reportHref}>
+              Email a found-dog report
             </a>
           </div>
           <p style="font-size: 0.9rem; color: var(--ink-soft); margin: 1rem 0 0;">
-            Photos, tag numbers and where you found them help most.
+            The button opens an email to <strong>{lostDogEmail}</strong> with
+            the questions filled in. Photos, tag numbers and where you found
+            the dog help most.
           </p>
         </div>
 

@@ -1,6 +1,9 @@
 ---
-/* Trailing slashes vary between dev and the built output, so normalise before
-   comparing or /foster/ never matches /foster. */
+import { url } from "../lib/url";
+/* Trailing slashes vary between dev and the built output, so normalize before
+   comparing or /foster/ never matches /foster. Astro.url.pathname includes the
+   base path ("/bcsave/foster"), so the links are compared after url() adds
+   the same prefix. */
 const here = Astro.url.pathname.replace(/\/+$/, "") || "/";
 
 const links = [
@@ -19,10 +22,10 @@ const links = [
 
 <header class="hdr">
   <div class="wrap hdr__bar">
-    <a class="brand" href="/">
+    <a class="brand" href={url("/")}>
       <img
         class="brand__mark"
-        src="/logo-mark.png"
+        src={url("/logo-mark.png")}
         alt=""
         width="260"
         height="107"
@@ -53,14 +56,14 @@ const links = [
         {links.map((l) => (
           <li>
             <a
-              href={l.href}
-              aria-current={here === (l.href.replace(/\/+$/, "") || "/") ? "page" : undefined}
+              href={url(l.href)}
+              aria-current={here === (url(l.href).replace(/\/+$/, "") || "/") ? "page" : undefined}
             >
               {l.label}
             </a>
           </li>
         ))}
-        <li><a class="btn btn--ember" href="/donate">Donate</a></li>
+        <li><a class="btn btn--ember" href={url("/donate")}>Donate</a></li>
       </ul>
     </nav>
   </div>

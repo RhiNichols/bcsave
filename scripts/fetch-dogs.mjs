@@ -18,7 +18,7 @@
 import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
-import { ADOPTABLE_URL, fetchText, parseFeed, fetchPhoto, pool } from "./lib/asm.mjs";
+import { ADOPTABLE_URL, fetchText, parseFeed, fetchPhoto, pool, prunePhotos } from "./lib/asm.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const IMG_DIR = path.join(ROOT, "public", "dogs");
@@ -64,9 +64,23 @@ async function main() {
 
   await fs.writeFile(DATA, JSON.stringify(withPhotos, null, 2) + "\n");
 
+  // Photos of dogs who have left the feed (adopted, renamed, or no longer
+  // marked adoptable). Reached only after a good fetch and parse — the
+  // fallback in the catch below never prunes.
+  const keep = new Set(
+    withPhotos.flatMap((d) =>
+      d.images.flatMap((stem) => {
+        const base = path.basename(stem);
+        return [`${base}.webp`, `${base}-t.webp`];
+      })
+    )
+  );
+  const pruned = await prunePhotos(IMG_DIR, keep);
+
   console.log(
     `Wrote ${withPhotos.length} dogs to src/data/dogs.json ` +
-      `(${downloaded} new photos${dropped ? `, ${dropped} dogs dropped for having none` : ""})`
+      `(${downloaded} new photos${dropped ? `, ${dropped} dogs dropped for having none` : ""}` +
+      `${pruned ? `, ${pruned} old photo files removed` : ""})`
   );
 }
 

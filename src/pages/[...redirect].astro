@@ -1,0 +1,57 @@
+---
+/*
+ * One forwarding stub per old WordPress address in src/data/redirects.ts.
+ *
+ * GitHub Pages cannot send HTTP redirects, so each old path gets a tiny page
+ * that forwards straight away:
+ *   - <meta http-equiv="refresh" content="0"> works with JavaScript off
+ *   - location.replace() runs first when it can, keeps any #hash and ?query,
+ *     and keeps the dead address out of the back-button history
+ *   - rel="canonical" tells search engines where the page lives now
+ *   - a plain link, for anything that does neither
+ *
+ * No site header or footer: nobody should ever see this page for longer than
+ * a blink. The `bcsave-redirect` meta tag is how the post-build check in
+ * astro.config.mjs recognises a stub (and so spots a real page that took the
+ * same path).
+ */
+import { redirects } from "../data/redirects";
+import { url } from "../lib/url";
+import { NOINDEX_PREVIEW } from "../lib/indexing";
+
+export function getStaticPaths() {
+  return Object.entries(redirects).map(([source, target]) => ({
+    // "/give/donate/" → "give/donate"
+    params: { redirect: source.replace(/^\/|\/$/g, "") },
+    props: { target },
+  }));
+}
+
+const { target } = Astro.props as { target: string };
+// url() leaves external URLs alone and adds the base path to internal ones.
+const href = url(target);
+const canonical = Astro.site && href.startsWith("/") ? new URL(href, Astro.site).href : href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>This page has moved — Border Collie Save &amp; Rescue</title>
+    {NOINDEX_PREVIEW && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="bcsave-redirect" content={target} />
+    <link rel="canonical" href={canonical} />
+    <script is:inline define:vars={{ href }}>
+      // Carry the visitor's #hash and ?query across, unless the target sets its own.
+      var to = href;
+      if (to.indexOf("?") === -1 && to.indexOf("#") === -1) to += location.search;
+      if (to.indexOf("#") === -1) to += location.hash;
+      location.replace(to);
+    </script>
+    <meta http-equiv="refresh" content={`0; url=${href}`} />
+  </head>
+  <body style="font-family: system-ui, sans-serif; padding: 2rem; line-height: 1.5;">
+    <p>This page has moved. <a href={href}>Continue to the new page</a>.</p>
+  </body>
+</html>

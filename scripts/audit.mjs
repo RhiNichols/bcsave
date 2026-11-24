@@ -41,10 +41,12 @@ const dogs = JSON.parse(
 const ALL = process.argv.includes("--all");
 const dogSlugs = (ALL ? dogs : dogs.slice(0, 6)).map((d) => d.slug);
 
+// Trailing slashes: astro.config.mjs sets trailingSlash "always", so the dev
+// server answers "/dogs/" and not "/dogs" — the same as GitHub Pages.
 const urls = [
-  "/", "/dogs", "/alumni", "/about", "/faqs", "/lostdog", "/guide",
-  "/donate", "/foster", "/volunteer", "/404",
-  ...dogSlugs.map((s) => `/dogs/${s}`),
+  "/", "/dogs/", "/alumni/", "/about/", "/faqs/", "/lostdog/", "/guide/",
+  "/donate/", "/foster/", "/volunteer/", "/404/",
+  ...dogSlugs.map((s) => `/dogs/${s}/`),
 ];
 
 const widths = [

@@ -1,20 +1,37 @@
+import { url } from "../lib/url";
+
 /**
- * Every outbound link the current site depends on.
+ * Every outbound link the site depends on, plus the application forms.
  *
- * The application forms still live on WordPress (Green Forms plugin) and the
- * shop is a FulfillEngine campaign, so these point at the live systems on
- * purpose — nothing about this rebuild breaks an existing link. Swap the
- * `forms` URLs when/if the applications move off WordPress.
+ * The four applications are ShelterManager online forms. They always were:
+ * the old WordPress pages only wrapped them in an iframe (verified from
+ * archived copies, 2026-11-24). Submissions land in ShelterManager's Incoming
+ * Forms, where the screening already happens, so nothing about the review
+ * workflow depends on this site.
+ *
+ * Each form gets a page on this site at its OLD WordPress path, so links in
+ * emails, Facebook posts and printouts keep working after cutover. Those pages
+ * are generated from this list by src/pages/[form].astro.
+ *
+ * Every form redirects to https://bcsave.org/success.html after a submission
+ * (a setting inside ShelterManager, not here) — src/pages/success.html.astro
+ * exists to answer that.
  */
+export const ASM_FORM_BASE =
+  "https://service.sheltermanager.com/asmservice?account=bcsave&method=online_form_html&formid=";
+
+export const asmForms = [
+  { key: "adopt", path: "/adopt-form/", formid: 69, title: "Adoption application" },
+  { key: "foster", path: "/foster-form/", formid: 65, title: "Foster application" },
+  { key: "volunteer", path: "/volunteer-form/", formid: 70, title: "Volunteer application" },
+  { key: "surrender", path: "/os-form/", formid: 56, title: "Owner surrender" },
+] as const;
 
 export const forms = {
-  adopt: "https://bcsave.org/adopt-form/",
-  foster: "https://bcsave.org/foster-form/",
-  volunteer: "https://bcsave.org/volunteer-form/",
-  surrender: "https://bcsave.org/os-form/",
-  // Found-dog report. Takes photo uploads and a captcha, so it stays on
-  // WordPress — a static site cannot host it.
-  lostDog: "https://bcsave.org/lostdog/",
+  adopt: url("/adopt-form/"),
+  foster: url("/foster-form/"),
+  volunteer: url("/volunteer-form/"),
+  surrender: url("/os-form/"),
 };
 
 /** Monitored inbox for found-dog reports, from the lost dog form's own page. */

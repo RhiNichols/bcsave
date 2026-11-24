@@ -1,30 +1,52 @@
-name: Build check
+name: Deploy to GitHub Pages
 
+# The whole hosting setup lives in this file. GitHub Actions builds the site
+# and GitHub Pages serves the result — no other host, no server, no secrets.
+#
 # Three triggers:
-#  - push:     ship changes as soon as they land on main
-#  - schedule: re-pull ShelterManager so adopted dogs drop off the site
-#  - manual:   "Run workflow" button when someone needs it refreshed now
+#  - push:     ship code changes as soon as they land on main
+#  - schedule: re-pull ShelterManager so new dogs get their own pages and
+#              optimized photos, and adopted dogs drop off
+#  - manual:   "Run workflow" button (Actions tab) for an immediate refresh
+#
+# Between rebuilds, /dogs still stays current: the browser reads ShelterManager
+# directly and patches the list (src/lib/live-dogs.ts). The rebuild is what
+# gives a new dog a proper page.
 on:
   push:
     branches: [main]
   schedule:
-    # Every 3 hours. Dogs are added and adopted throughout the day, and a
-    # stale listing means applications for a dog who is already home.
-    - cron: "0 */3 * * *"
+    # Hourly, at minute 17 rather than :00. The top of the hour is when most
+    # of GitHub's scheduled jobs fire, and those runs are the ones that get
+    # delayed or dropped.
+    #
+    # Two things to know about GitHub schedules:
+    #  - They are best-effort. A run often starts late — sometimes by hours
+    #    under load — and occasionally not at all. Nothing below may assume a
+    #    run happens at the time the cron line says.
+    #  - In a public repository, GitHub disables scheduled workflows after 60
+    #    days with no commits. The site keeps serving, but stops refreshing.
+    #    GitHub emails a warning first; any commit (or re-enabling the
+    #    workflow on the Actions tab) restarts it.
+    - cron: "17 * * * *"
   workflow_dispatch:
 
-# A scheduled run and a push run must never deploy over each other.
+# Exactly what deploying to Pages needs, nothing more.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time. A push and a scheduled run that overlap queue up
+# rather than cancel each other: cancelling a deploy halfway can leave Pages
+# with no finished deployment.
 concurrency:
-  group: deploy-site
+  group: pages
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      deployments: write
-
     steps:
       - uses: actions/checkout@v4
 
@@ -35,75 +57,116 @@ jobs:
 
       - run: npm ci
 
-      # Adoptable dogs turn over constantly, so this runs every time.
+      # Tells us where Pages will serve the site. For a project site that is
+      # https://<owner>.github.io/<repo>/, so base_path is "/<repo>"; with a
+      # custom domain it is empty. Fed into the build below.
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      # Dog and alumni photos are not in git (see .gitignore). They are carried
+      # from one run to the next in the Actions cache instead, so each run only
+      # downloads photos it has not seen before.
+      #
+      # The key changes every run (run id + attempt), so every run saves a fresh
+      # cache, and restore-keys picks the most recent one. A fixed key would be
+      # saved once and never updated. GitHub evicts old entries on its own once
+      # a repository passes 10 GB of cache, so these do not pile up forever.
+      #
+      # The two JSON files are cached with the photos on purpose. Photos are
+      # pruned to match whatever data was last fetched; if a later run fell back
+      # to the older committed JSON instead, it would point at photos already
+      # deleted. Restoring the JSON too keeps data and photos in step.
+      # (A successful fetch below overwrites the JSON anyway.)
+      - name: Restore photos from the last run
+        uses: actions/cache@v4
+        with:
+          path: |
+            public/dogs
+            public/alumni
+            src/data/dogs.json
+            src/data/alumni.json
+            .ci-state
+          key: site-photos-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            site-photos-
+
+      # Adoptable dogs turn over constantly, so this runs every time. If
+      # ShelterManager is down it keeps the existing data and exits cleanly —
+      # a stale site beats a failed deploy.
       - name: Refresh available dogs
         run: npm run fetch:dogs
 
-      # Alumni costs ~25 requests of several MB each to derive adoption months.
-      # Worth it, but not eight times a day — once daily is plenty, and pushes
-      # and manual runs always refresh so you are never stuck with stale data.
+      # Alumni costs ~25 requests of several MB each to work out adoption
+      # months. Worth doing, but once a day is plenty.
+      #
+      # "Once a day" is not "the 06:00 run": scheduled runs start late, so a
+      # check for exactly hour 06 could miss every run on a busy day. Instead
+      # the date of the last refresh is kept in the cache (.ci-state), and the
+      # first scheduled run at or after 06:00 UTC on a new day does it — 06:00
+      # UTC is midnight or 1 AM in Texas, the quietest time for the feed.
+      # Pushes and manual runs always refresh, so you are never stuck with
+      # stale alumni after changing something.
       - name: Decide whether to refresh alumni
         id: alumni
         run: |
-          if [ "${{ github.event_name }}" != "schedule" ] || [ "$(date -u +%H)" = "06" ]; then
+          today=$(date -u +%F)
+          last=$(cat .ci-state/alumni-refreshed-on 2>/dev/null || echo never)
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "refresh=true" >> "$GITHUB_OUTPUT"
+          elif [ "$last" != "$today" ] && [ "$(date -u +%H)" -ge 6 ]; then
             echo "refresh=true" >> "$GITHUB_OUTPUT"
           else
             echo "refresh=false" >> "$GITHUB_OUTPUT"
+            echo "Alumni last refreshed $last; skipping."
           fi
 
+      # fetch-alumni also exits cleanly when ShelterManager is down, so a
+      # failed day is recorded as done and retried tomorrow rather than on
+      # every run in between — the same as before this moved to Pages.
       - name: Refresh alumni
         if: steps.alumni.outputs.refresh == 'true'
-        run: npm run fetch:alumni
+        run: |
+          npm run fetch:alumni
+          mkdir -p .ci-state
+          date -u +%F > .ci-state/alumni-refreshed-on
 
       # Data is already fetched above, so build without re-fetching.
+      #
+      # SITE and BASE_PATH make every link carry the /<repo> prefix — see
+      # astro.config.mjs and src/lib/url.ts. PUBLIC_ALLOW_INDEXING is an
+      # optional repository variable (Settings → Secrets and variables →
+      # Actions → Variables); unset, the site stays noindex.
+      #   PUBLIC_ALLOW_INDEXING=yes let search engines index the site (launch)
       - name: Build site
         run: npm run build:offline
-
-      # Deploying is Netlify's job now.
-      #
-      # The site ran on Cloudflare Workers until 2026-08-14, when the
-      # Cloudflare account was deleted — see STATUS.md. Netlify builds and
-      # publishes on every push to main by itself, so this workflow no longer
-      # deploys anything. What it still earns its keep doing is proving, on a
-      # schedule, that a fresh ShelterManager fetch and a full build both
-      # succeed — which is how we learn the feed changed shape before visitors
-      # do.
-      # A volunteer adding a dog in ShelterManager sees it on /dogs within
-      # minutes — the browser reconciles against the live feed. But that dog
-      # has no page of its own and no optimised photos until the site is built
-      # again, and pushes are the only thing that build it. So: rebuild on a
-      # schedule too.
-      #
-      # Only twice a day, though. Netlify's free tier allows 300 build minutes
-      # a month; at roughly two minutes a build, rebuilding every three hours
-      # would spend about 480 and stop deploying partway through the month.
-      # Twice a day costs ~120 and leaves plenty of headroom. The gap is
-      # covered by the live layer, which is the whole point of it.
-      #
-      # The check above still runs every three hours regardless — that is free,
-      # and it is how we learn the ShelterManager feed changed shape.
-      - name: Trigger a Netlify rebuild
-        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && (github.run_attempt > 0))
         env:
-          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
-        run: |
-          hour=$(date -u +%H)
-          if [ "${{ github.event_name }}" = "schedule" ] && [ "$hour" != "06" ] && [ "$hour" != "18" ]; then
-            echo "::notice::Verified only — scheduled rebuilds run at 06:00 and 18:00 UTC."
-            exit 0
-          fi
-          if [ -z "$HOOK" ]; then
-            echo "::warning::NETLIFY_BUILD_HOOK is not set, so nothing was rebuilt."
-            exit 0
-          fi
-          code=$(curl -sS -o /dev/null -w '%{http_code}' -X POST -d '{}' "$HOOK")
-          if [ "$code" = "200" ] || [ "$code" = "201" ] || [ "$code" = "204" ]; then
-            echo "::notice::Netlify rebuild triggered (HTTP $code)."
-          else
-            echo "::error::Netlify build hook returned HTTP $code — the site will go stale until this is fixed."
-            exit 1
-          fi
+          SITE: ${{ steps.pages.outputs.origin }}
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          PUBLIC_ALLOW_INDEXING: ${{ vars.PUBLIC_ALLOW_INDEXING }}
 
-      - name: Report
-        run: |
-          echo "::notice::Build verified. Netlify publishes from main on push."
+      # Never publish broken images over a working site. If the photo cache was
+      # evicted and ShelterManager was down in the same run, the build above
+      # used the committed dogs.json with no photos behind it. This fails the
+      # run before upload, so the last good deployment stays live — and because
+      # the job fails, the cache step does not save this incomplete state.
+      - name: Check every referenced file exists
+        run: npm run check:dist
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
