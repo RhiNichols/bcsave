@@ -2,7 +2,7 @@
 
 A rebuild of [bcsave.org](https://bcsave.org), the website for **Border Collie Save & Rescue**, an
 all-volunteer 501(c)(3) dog rescue in Springtown, TX serving Central and North Texas. Their current
-site is WordPress. This is Rhiannon's project.
+site is WordPress. The rebuild is led by a BCSAVE volunteer; the rescue owns this repository.
 
 ## Stack
 
@@ -21,7 +21,7 @@ site is WordPress. This is Rhiannon's project.
 
 ## Scope — decided
 
-Rhiannon's direction (2026-08-03): **rebuild the whole site**, make it more attractive and faster,
+Direction set 2026-08-03: **rebuild the whole site**, make it more attractive and faster,
 **volunteers must be able to post dogs**, and **preserve all existing donation and form links**.
 
 "Revamp" means keep what the site says, improve how it looks and performs — not reinvent their
@@ -113,7 +113,7 @@ https://service.sheltermanager.com/asmservice?account=BCSAVE&method=html_adoptab
 - The default `html_adoptable_animals` method is **public, no auth**, and returns full records:
   name, sex, age, weight, colour, coat, energy, spay/neuter, heartworm status, region, adoption fee,
   a prose bio, and up to 8 photos per dog. As of 2026-08-03 that's 63 adoptable dogs.
-- The `json_`, `xml_` and `csv_` variants exist but require credentials. If Rhiannon can get the
+- The `json_`, `xml_` and `csv_` variants exist but require credentials. If someone can get the
   ShelterManager service username/password, switch to `json_adoptable_animals` — parsing HTML is a
   workaround, not the destination.
 - `?template=animalviewadoptable` is BCSAVE's own custom template and returns images only. Don't use

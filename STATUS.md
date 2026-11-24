@@ -254,17 +254,18 @@ Open TODOs (marked in `redirects.ts`):
 
 ## Outstanding
 
-1. **Rhiannon needs to read `/about` and `/faqs`.** Copy was written by Claude
-   and compressed hard from the old site. She already vetoed one line ("Border
-   Collies are not easy dogs") — some are easy and many BCSAVE dogs are mixes.
-   Expect more like it. This is the biggest remaining quality gap.
+1. **Someone at the rescue needs to read `/about` and `/faqs`.** Copy was
+   written by Claude and compressed hard from the old site. One line has
+   already been vetoed ("Border Collies are not easy dogs") — some are easy
+   and many BCSAVE dogs are mixes. Expect more like it. This is the biggest
+   remaining quality gap.
 2. **Real impact figures.** An early draft had invented dollar amounts on the
    donate band. They were replaced with facts from BCSAVE's own FAQ. Do not
    reintroduce numbers without the treasurer.
 3. **The euthanasia policy on `/about` is unconfirmed.** Restored 2026-09-22
-   from BCSAVE's published policy, condensed with the hedges intact. Rhiannon
-   does not know whether it still reflects current practice and decided to
-   ship it and confirm later — it is a `noindex` preview, so the exposure is
+   from BCSAVE's published policy, condensed with the hedges intact. Nobody has
+   confirmed whether it still reflects current practice; the call was to ship
+   it and confirm later — it is a `noindex` preview, so the exposure is
    low. Someone on the board needs to read it before this goes near a real
    domain. The same applies to the AKC "Worst is Show" statement next to it,
    though that one is lower stakes.

@@ -14,7 +14,7 @@ import { redirects } from './src/data/redirects.ts';
  * Both values come from the environment so no code has to know which host
  * the site is on:
  *
- *   SITE       full origin, e.g. https://rhinichols.github.io
+ *   SITE       full origin, e.g. https://bcsave.github.io
  *   BASE_PATH  subfolder, e.g. /bcsave
  *
  * The deploy workflow (.github/workflows/deploy.yml) fills both in from
